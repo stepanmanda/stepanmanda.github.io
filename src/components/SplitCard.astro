@@ -1,0 +1,21 @@
+---
+interface Props {
+    href: string;
+    accent: 'orange' | 'gold';
+    eyebrow: string;
+    title: string;
+    body: string;
+    ctaLabel: string;
+    ctaClass?: string;
+}
+
+const { href, accent, eyebrow, title, body, ctaLabel, ctaClass = 'btn--primary' } = Astro.props;
+const cls = accent === 'orange' ? 'split__card split__card--accent-orange' : 'split__card split__card--accent-gold';
+---
+
+<a class={cls} href={href}>
+    <span class="eyebrow">{eyebrow}</span>
+    <h3 set:html={title}></h3>
+    <p set:html={body}></p>
+    <span class={`btn ${ctaClass} btn-arrow`}>{ctaLabel}</span>
+</a>

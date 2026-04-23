@@ -1,0 +1,19 @@
+---
+interface Props {
+    tagline?: string;
+    variant?: 'split' | 'dense';
+}
+
+const { tagline, variant = 'dense' } = Astro.props;
+const variantClass = variant === 'split' ? 'hero hero--split' : 'hero hero--dense';
+---
+
+<section class={variantClass}>
+    <div class="hero__grid"></div>
+    <div class="hero__glow"></div>
+    <div class="hero__accent-line"></div>
+    <div class="container">
+        {tagline && <div class="hero__tagline">{tagline}</div>}
+        <slot />
+    </div>
+</section>

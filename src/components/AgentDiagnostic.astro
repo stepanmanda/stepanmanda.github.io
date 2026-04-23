@@ -1,0 +1,176 @@
+---
+// AgentDiagnostic — prezentační sekce pro agenta (widget sám je globálně v Layoutu)
+interface Props {
+    agentId?: string; // ponechané pro kompatibilitu, reálně widget je v Layout.astro
+}
+---
+
+<section class="agent-diagnostic" id="diagnostikovat">
+    <div class="agent-diagnostic__glow"></div>
+    <div class="container container--narrow">
+        <div class="agent-diagnostic__inner" data-reveal>
+            <div class="agent-diagnostic__badge">
+                <span class="agent-diagnostic__dot"></span>
+                <span class="agent-diagnostic__badge-text">Diagnostika · dvě cesty · pár minut</span>
+            </div>
+
+            <h2 class="agent-diagnostic__title">
+                Pár minut. Bez obchodníka. <span class="accent">Vyberte si, jak to uděláme.</span>
+            </h2>
+
+            <p class="agent-diagnostic__lead">
+                Na stránce <strong>diagnostiky</strong> máte dvě rovnocenné cesty —
+                přirozený hlasový rozhovor s naší AI agentkou Stelou, nebo krátký strukturovaný formulář.
+                Obě cesty končí u stejného specialisty, který vám zavolá do 24 hodin.
+            </p>
+
+            <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku</a>
+
+            <ul class="agent-diagnostic__points">
+                <li>
+                    <span class="agent-diagnostic__check">✓</span>
+                    <span><strong>Hlasový hovor s agentem</strong> — mluvíte přirozeně, jako s kolegou. 5–7 minut.</span>
+                </li>
+                <li>
+                    <span class="agent-diagnostic__check">✓</span>
+                    <span><strong>Písemný formulář</strong> — pokud raději píšete. 10 polí, 3 minuty.</span>
+                </li>
+                <li>
+                    <span class="agent-diagnostic__check">✓</span>
+                    <span>Zdarma, bez obchodního tlaku. Agent mluví ve 13 jazycích.</span>
+                </li>
+            </ul>
+
+            <p class="agent-diagnostic__footnote">
+                Spěcháte? Klikněte na kontrolku agenta <strong>vpravo dole</strong> — Stela začne poslouchat hned,
+                i bez přechodu na stránku diagnostiky.
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .agent-diagnostic {
+        background: var(--alpine-white);
+        padding: var(--space-24) 0;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid var(--black-08);
+        border-bottom: 1px solid var(--black-08);
+    }
+
+    .agent-diagnostic__glow {
+        position: absolute;
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(232, 93, 31, 0.08) 0%, transparent 65%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        animation: glowBreathe 8s ease-in-out infinite;
+    }
+
+    .agent-diagnostic .container { position: relative; z-index: 1; }
+
+    .agent-diagnostic__inner {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-6);
+    }
+
+    .agent-diagnostic__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.4rem 0.95rem;
+        background: rgba(232, 93, 31, 0.08);
+        border: 1px solid rgba(232, 93, 31, 0.25);
+        border-radius: 999px;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--velocity-orange);
+    }
+
+    .agent-diagnostic__dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--velocity-orange);
+        box-shadow: 0 0 0 0 rgba(232, 93, 31, 0.6);
+        animation: agentPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes agentPulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(232, 93, 31, 0.6); }
+        50%      { box-shadow: 0 0 0 8px rgba(232, 93, 31, 0); }
+    }
+
+    .agent-diagnostic__title {
+        font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+        letter-spacing: -0.02em;
+        max-width: 22ch;
+        margin: 0;
+        line-height: 1.1;
+    }
+
+    .agent-diagnostic__title .accent {
+        color: var(--velocity-orange);
+    }
+
+    .agent-diagnostic__lead {
+        font-size: 1.1rem;
+        color: var(--black-60);
+        max-width: 52ch;
+        margin: 0;
+        line-height: 1.55;
+    }
+
+    .agent-diagnostic__points {
+        list-style: none;
+        padding: 0;
+        margin: var(--space-2) 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        text-align: left;
+        max-width: 46ch;
+    }
+
+    .agent-diagnostic__points li {
+        display: flex;
+        gap: 0.7rem;
+        font-size: 0.95rem;
+        color: var(--black-60);
+        line-height: 1.5;
+    }
+
+    .agent-diagnostic__check {
+        color: var(--velocity-orange);
+        font-weight: 600;
+        flex-shrink: 0;
+    }
+
+    .agent-diagnostic__footnote {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 0.95rem;
+        color: var(--mist-gray);
+        margin: var(--space-2) 0 0;
+    }
+
+    .agent-diagnostic__footnote a {
+        color: var(--velocity-black);
+        border-bottom: 1px solid var(--gold-30);
+    }
+
+    .agent-diagnostic__footnote a:hover {
+        color: var(--velocity-orange);
+        border-bottom-color: var(--velocity-orange);
+    }
+
+</style>

@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Features from '../components/Features.astro';
+import Feature from '../components/Feature.astro';
+import Callout from '../components/Callout.astro';
+import CtaBand from '../components/CtaBand.astro';
+---
+
+<Layout
+    title="VELYOS — O nás | Definujeme náskok."
+    description="VELYOS je tým, ne software. Stavíme automatizaci, která firmám vrací čas, peníze a klid. Přijímáme omezený počet klientů ročně."
+    active="o-nas"
+    footerTagline="Tým, ne software."
+    footerVariant="v0.2 preview · o nás"
+>
+    <Hero tagline="· O nás · Definujeme náskok.">
+        <h1 class="hero__title">Nejsme software. Jsme tým, <span class="accent">který to za vás postaví.</span></h1>
+        <p class="hero__lead">
+            VELYOS vznikl z jednoduché věty, kterou zakladatel slyšel příliš často: <em>„Máme rozjeto pět věcí — a ani jedna z nich pořádně neběží."</em>
+            Rozhodli jsme se postavit firmu, která to dělá jinak. Jeden partner. Konec od začátku. Garance ve smlouvě.
+        </p>
+    </Hero>
+
+    <section class="section--editorial">
+        <div class="container container--narrow">
+            <div data-reveal>
+                <span class="eyebrow">· Manifesto</span>
+                <h2 style="margin-top:var(--space-4); margin-bottom:var(--space-8);">Čas je jediné aktivum, které se nedá koupit zpátky.</h2>
+                <div class="section-body">
+                    <p>Většina firem ho spaluje v procesech, které měly být dávno automatizované. V hovorech, které nikdo neměl vést. V administrativě, která neměla existovat.</p>
+                    <p>VELYOS je partner, který vám firmu postaví, zapojí a udrží v chodu. Nejsme další software, který si musíte nastavit sami. Pro firmy a profesionály, kteří rozumí hodnotě vlastního času.</p>
+                    <p><strong>Implementujeme za 4 týdny. Návratnost do 6 měsíců. Garantováno smlouvou.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Naše hodnoty"
+                title="Pět principů, podle kterých pracujeme."
+                lead="Žádné hezké slogany na stěnu. Každý princip má dopad do toho, co klientovi dodáme."
+            />
+
+            <Features cols={3}>
+                <Feature
+                    num="01 / VELOCITY"
+                    title="Měříme v týdnech, ne v měsících."
+                    body="Plné nasazení v rozmezí 4 týdnů. Žádné „pilotní fáze na půl roku“. Rychlost je naše osa."
+                />
+                <Feature
+                    num="02 / PRECISION"
+                    title="Žádné &bdquo;skoro&ldquo;. Jen exaktní výsledky."
+                    body="Měřitelné úspory, lidský dohled, architektura v duchu ISO 27001. Nestavíme na dohady."
+                />
+                <Feature
+                    num="03 / DISCRETION"
+                    title="Vaše data. Vaše výsledky. Vaše tajemství."
+                    body="Všechno anonymizujeme. Případové studie vydáváme jen se souhlasem. Co řešíme, zůstává u nás."
+                />
+                <Feature
+                    num="04 / MASTERY"
+                    title="Implementace je řemeslo, ne produkt."
+                    body="Nenosíme vám krabici se softwarem. Postavíme řešení přesně na váš provoz. Od návrhu po údržbu."
+                />
+                <Feature
+                    num="05 / SELECTIVE"
+                    title="Přijímáme omezený počet klientů ročně."
+                    body="Pokud váš provoz nesedne, řekneme vám to rovnou — a doporučíme dál. Řemeslo nejde dělat v množství."
+                />
+            </Features>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 03 · Zakladatel"
+                title="Štěpán Švanda — Founder & CEO"
+            />
+
+            <div class="section-body" data-reveal>
+                <p class="italic-serif" style="color:var(--signal-gold); font-size:1.2rem; margin-bottom:var(--space-8);">
+                    „Začalo to tím, že jsem viděl, jak české firmy ztrácejí roky v procesech, které měly být dávno automatizované."
+                </p>
+
+                <p>
+                    Většina poradců o AI jen mluví. My jsme se rozhodli ji nasadit — a to tak, aby se vrátila do půl roku.
+                    VELYOS není agentura. Je to partnerský tým s omezeným portfoliem klientů. Ne proto, že chceme vytvořit hype — ale proto, že řemeslo nejde dělat v množství.
+                </p>
+
+                <p>
+                    Naše smlouva obsahuje jeden odstavec, který konkurence nemá: <strong>garanci návratnosti</strong>. Když nedodáme, neplatíte. To není marketing. To je disciplína.
+                </p>
+            </div>
+
+            <div style="margin-top:var(--space-10); padding-top:var(--space-8); border-top:1px solid var(--black-08); display:grid; grid-template-columns:1fr 1fr; gap:var(--space-8);" data-reveal>
+                <div>
+                    <span class="eyebrow" style="color:var(--signal-gold);">Vzdělání &amp; zkušenosti</span>
+                    <p style="color:var(--black-60); font-size:0.95rem; margin-top:var(--space-3); line-height:1.6;">
+                        Střední škola informatiky a finančních služeb v Plzni — obor programování.
+                        Praxe: správce systémů ve <strong>DHL</strong>, následně vlastní podnikání.
+                        Nyní zakládá <strong>VELYOS</strong> — firmu, která bonitním klientům automatizuje procesy,
+                        kde ztrácejí nejvíc času.
+                    </p>
+                </div>
+                <div>
+                    <span class="eyebrow" style="color:var(--signal-gold);">Kontakt</span>
+                    <p style="margin-top:var(--space-3); line-height:1.6;">
+                        <a href="mailto:stepan@velyos.ai" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">stepan@velyos.ai</a><br>
+                        <span style="color:var(--mist-gray); font-size:0.9rem; font-style:italic;">LinkedIn po registraci firmy.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · Jak vypadá tým"
+                title="Malý. Zkušený. Přímo odpovědný."
+                lead="Nejsme agentura s 50 juniory. Jsme tým specialistů, kteří se osobně podepisují pod každý projekt. Klient má vždy jednoho hlavního kontaktu — a ten zná jeho provoz nazpaměť."
+            />
+
+            <Features cols={3}>
+                <Feature
+                    num="STRATEGIE"
+                    title="Procesní analytik."
+                    body="Rozebere váš provoz do detailu. Najde místa, kde se nejvíc ztrácí čas a peníze. Navrhne řád."
+                />
+                <Feature
+                    num="STAVBA"
+                    title="Tým integrátorů a vývojářů."
+                    body="Napojuje systémy, staví automatizace, trénuje AI. Zná vaše ERP, CRM i účetnictví."
+                />
+                <Feature
+                    num="DOHLED"
+                    title="Operátor systému."
+                    body="Denně monitoruje, co systém dělá. Ladí, učí, opravuje. AI nenecháme samu."
+                />
+            </Features>
+
+            <Callout>
+                <strong>Partneři:</strong> Spolupracujeme s ověřenými partnery pro obory, kde potřebujeme specializovanou expertízu — právo a compliance, daně, bezpečnost, design. Všichni pod NDA, všichni s přímým vztahem k vašemu případu.
+            </Callout>
+        </div>
+    </section>
+
+    <CtaBand
+        id="chci-poznat"
+        eyebrow="· 05 · Poznejme se"
+        title="Nejlepší způsob, jak VELYOS poznat, je s ním mluvit."
+        lead="Náš diagnostický agent vám dá orientaci za 5 minut. Pak vám zavolá člověk. Bez obchodního tlaku. Bez prezentace."
+        directPrefix="Raději e-mailem?"
+    >
+        <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku</a>
+        <a href="/kontakt" class="btn btn--ghost btn--lg">Všechny cesty na kontakt</a>
+    </CtaBand>
+</Layout>

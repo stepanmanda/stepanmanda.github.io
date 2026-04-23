@@ -1,0 +1,11 @@
+---
+interface Props {
+    reveal?: boolean;
+}
+
+const { reveal = true } = Astro.props;
+---
+
+<div class="callout" {...reveal ? { 'data-reveal': '' } : {}}>
+    <slot />
+</div>

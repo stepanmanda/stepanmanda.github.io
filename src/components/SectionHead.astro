@@ -1,0 +1,18 @@
+---
+interface Props {
+    eyebrow?: string;
+    title: string;
+    lead?: string;
+    maxLeadWidth?: string;
+    reveal?: boolean;
+}
+
+const { eyebrow, title, lead, maxLeadWidth = '62ch', reveal = true } = Astro.props;
+const revealAttr = reveal ? 'data-reveal' : undefined;
+---
+
+<div class="section-head" {...revealAttr !== undefined ? { 'data-reveal': '' } : {}}>
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h2 set:html={title}></h2>
+    {lead && <p style={`color:var(--black-60); font-size:1.1rem; max-width:${maxLeadWidth}; margin-top:var(--space-2);`} set:html={lead}></p>}
+</div>

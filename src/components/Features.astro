@@ -1,0 +1,13 @@
+---
+interface Props {
+    cols?: 2 | 3;
+    stagger?: boolean;
+}
+
+const { cols = 2, stagger = true } = Astro.props;
+const cls = cols === 3 ? 'features features--3' : 'features';
+---
+
+<div class={cls} {...stagger ? { 'data-stagger': '' } : {}}>
+    <slot />
+</div>

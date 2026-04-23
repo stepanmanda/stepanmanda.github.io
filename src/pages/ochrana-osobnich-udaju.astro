@@ -1,0 +1,244 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+
+const lastUpdated = '23. dubna 2026';
+---
+
+<Layout
+    title="VELYOS — Ochrana osobních údajů | GDPR"
+    description="Jak VELYOS zpracovává osobní údaje. Právní základ, účely, lhůty, práva subjektu. Plný soulad s GDPR a ISO 27001 principy."
+    primaryCta={null}
+    footerTagline="Vaše data. Vaše výsledky. Vaše tajemství."
+    footerVariant="v0.2 preview · GDPR"
+>
+    <Hero tagline="· Ochrana osobních údajů · GDPR">
+        <h1 class="hero__title">Vaše data. <span class="accent">Vaše tajemství.</span></h1>
+        <p class="hero__lead">
+            Tato stránka popisuje, jak VELYOS nakládá s osobními údaji, které od vás získáme
+            — přes web, e-mail, telefon nebo našeho AI agenta. Všechno pod GDPR, bez výjimek.
+        </p>
+        <p class="hero__lead" style="font-size:0.9rem; margin-top:var(--space-4); color:var(--black-60); font-style:italic;">
+            Platnost od: {lastUpdated}
+        </p>
+    </Hero>
+
+    <section>
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 01 · Správce údajů"
+                title="Kdo zpracovává vaše údaje."
+            />
+            <div class="section-body" data-reveal>
+                <p>
+                    Správcem osobních údajů je <strong>VELYOS</strong> (dále „VELYOS" nebo „my").
+                    Kompletní identifikační údaje správce včetně IČO a sídla najdete v <a href="/impresum" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">impresu</a>.
+                </p>
+                <p>
+                    Kontaktní osoba pro otázky ohledně zpracování osobních údajů:
+                    <br><strong>Štěpán Švanda</strong>, <a href="mailto:stepan@velyos.ai" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">stepan@velyos.ai</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 02 · Jaké údaje zpracováváme"
+                title="Jen to, co potřebujeme. Nic navíc."
+            />
+            <div class="section-body" data-reveal>
+                <h3>Při kontaktu přes web (formulář, diagnostika, e-mail)</h3>
+                <p>
+                    Jméno, e-mail, telefon (je-li uveden), název firmy, obor, velikost týmu, popis vaší situace,
+                    preferovaný čas pro zpětné volání. V agentem dodaném briefu také shrnutí rozhovoru.
+                </p>
+
+                <h3>Při hovoru s AI agentem</h3>
+                <p>
+                    Hlasový záznam rozhovoru (uchováván pouze po dobu zpracování briefu, následně mazán).
+                    Text přepisu rozhovoru. Metadata (čas hovoru, délka, jazyk).
+                </p>
+
+                <h3>Při návštěvě webu</h3>
+                <p>
+                    Aktuálně nepoužíváme cookies pro sledování ani analytické nástroje jako Google Analytics.
+                    Web neukládá do prohlížeče žádné identifikační cookies kromě nezbytných technických.
+                </p>
+
+                <h3>Při smluvní spolupráci</h3>
+                <p>
+                    Fakturační údaje, přístupové údaje k systémům, které integrujeme, veškerá data vašeho provozu,
+                    se kterými VELYOS pracuje. Tyto údaje jsou předmětem NDA a zpracovatelské smlouvy.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 03 · Proč je zpracováváme"
+                title="Právní základ a účel zpracování."
+            />
+            <div class="section-body" data-reveal>
+                <h3>Plnění smlouvy</h3>
+                <p>
+                    Pokud jste náš klient, zpracováváme údaje k plnění smlouvy — dodávce služeb, fakturaci, podpoře.
+                    Právní základ: čl. 6 odst. 1 písm. b) GDPR.
+                </p>
+
+                <h3>Odpověď na poptávku</h3>
+                <p>
+                    Pokud jste nám napsali přes formulář, agentem nebo e-mailem, vaše údaje zpracováváme pro účely
+                    komunikace s vámi a přípravy nabídky. Právní základ: čl. 6 odst. 1 písm. b) GDPR (předsmluvní opatření).
+                </p>
+
+                <h3>Oprávněný zájem</h3>
+                <p>
+                    Pro zlepšování služeb, interní reporting a obranu proti zneužití používáme údaje na základě
+                    oprávněného zájmu (čl. 6 odst. 1 písm. f) GDPR). Všechna data v těchto případech anonymizujeme
+                    před jakoukoliv další analýzou.
+                </p>
+
+                <h3>Právní povinnost</h3>
+                <p>
+                    Fakturační údaje uchováváme po dobu stanovenou zákonem o účetnictví a DPH (10 let).
+                    Právní základ: čl. 6 odst. 1 písm. c) GDPR.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 04 · Jak dlouho údaje uchováváme"
+                title="Jen tak dlouho, jak je potřeba."
+            />
+            <div class="section-body" data-reveal>
+                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:var(--space-4);">
+                    <li style="display:grid; grid-template-columns:200px 1fr; gap:var(--space-4); padding-bottom:var(--space-4); border-bottom:1px solid var(--black-08);">
+                        <strong>Záznam hovoru s agentem</strong>
+                        <span>Do 30 dnů, pak se maže. Přepis briefu uchován podle pravidla poptávky (níže).</span>
+                    </li>
+                    <li style="display:grid; grid-template-columns:200px 1fr; gap:var(--space-4); padding-bottom:var(--space-4); border-bottom:1px solid var(--black-08);">
+                        <strong>Poptávka / brief</strong>
+                        <span>1 rok od posledního kontaktu. Pokud nevznikne spolupráce, smažeme dříve na vyžádání.</span>
+                    </li>
+                    <li style="display:grid; grid-template-columns:200px 1fr; gap:var(--space-4); padding-bottom:var(--space-4); border-bottom:1px solid var(--black-08);">
+                        <strong>Klientská data a smlouvy</strong>
+                        <span>Po dobu trvání spolupráce + 3 roky (běžná promlčecí doba).</span>
+                    </li>
+                    <li style="display:grid; grid-template-columns:200px 1fr; gap:var(--space-4);">
+                        <strong>Fakturační údaje</strong>
+                        <span>10 let od konce účetního období (zákonná povinnost).</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 05 · Komu údaje předáváme"
+                title="Jen nezbytným zpracovatelům."
+            />
+            <div class="section-body" data-reveal>
+                <p>
+                    VELYOS osobní údaje <strong>nikdy neprodává, nepronajímá ani nepředává třetím stranám pro jejich marketingové účely.</strong>
+                    Údaje předáváme pouze zpracovatelům, kteří jsou pro chod služby nezbytní:
+                </p>
+                <ul style="margin-left:1.5rem; line-height:1.8;">
+                    <li><strong>Poskytovatel hostingu webu</strong> — standardní cloud provider, data v EU</li>
+                    <li><strong>Poskytovatel e-mailové infrastruktury</strong> — zpracování příchozí a odchozí pošty</li>
+                    <li><strong>Poskytovatel AI agenta</strong> (ElevenLabs) — hlasový rozhovor a přepis</li>
+                    <li><strong>Poskytovatel účetního softwaru</strong> — fakturace a účetnictví</li>
+                </ul>
+                <p>
+                    Se všemi zpracovateli máme uzavřenou smlouvu o zpracování osobních údajů (DPA) v souladu s GDPR.
+                </p>
+                <p>
+                    <strong>Vaše data nikdy nepoužíváme k tréninku veřejných AI modelů.</strong>
+                    Pracujeme pouze s izolovanými modely nebo zpracováním, které vaše data nenechává „uniknout" do obecných systémů.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 06 · Vaše práva"
+                title="Máte kontrolu nad svými daty."
+            />
+            <div class="section-body" data-reveal>
+                <p>Podle GDPR máte tato práva:</p>
+                <ul style="margin-left:1.5rem; line-height:1.8;">
+                    <li><strong>Právo na přístup</strong> — zeptat se, jaké údaje o vás máme</li>
+                    <li><strong>Právo na opravu</strong> — upravit nepřesné údaje</li>
+                    <li><strong>Právo na výmaz</strong> („právo být zapomenut") — smazat údaje, pokud už nejsou potřeba</li>
+                    <li><strong>Právo na omezení zpracování</strong> — omezit, jak data používáme</li>
+                    <li><strong>Právo na přenositelnost</strong> — získat data ve strojově čitelné formě</li>
+                    <li><strong>Právo vznést námitku</strong> proti zpracování na základě oprávněného zájmu</li>
+                    <li><strong>Právo odvolat souhlas</strong>, pokud byl zpracování vázán souhlasem</li>
+                </ul>
+                <p>
+                    Jakékoliv z těchto práv uplatníte e-mailem na
+                    <a href="mailto:stepan@velyos.ai?subject=GDPR%20%E2%80%94%20uplatn%C4%9Bn%C3%AD%20pr%C3%A1va" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">stepan@velyos.ai</a>.
+                    Odpovídáme do 30 dnů, obvykle do týdne.
+                </p>
+                <p>
+                    Pokud máte pocit, že vaše práva porušujeme, můžete podat stížnost u dozorového úřadu —
+                    <strong>Úřad pro ochranu osobních údajů</strong>, Pplk. Sochora 27, Praha 7,
+                    <a href="https://www.uoou.cz" target="_blank" rel="noopener" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">uoou.cz</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 07 · Zabezpečení"
+                title="Jak data chráníme."
+            />
+            <div class="section-body" data-reveal>
+                <p>
+                    Všechna data jsou šifrována v klidu i při přenosu (AES-256, TLS 1.3).
+                    Přístup k osobním údajům má pouze tým VELYOS, který je přímo potřebuje pro danou práci.
+                    Architektura a procesy jsou navrženy v duchu principů ISO 27001 — pravidelné audity,
+                    role-based access, logging operací, incident response plán.
+                </p>
+                <p>
+                    Pokud dojde k bezpečnostnímu incidentu, který by mohl ohrozit vaše osobní údaje,
+                    informujeme vás do 72 hodin od zjištění, jak nám ukládá GDPR.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--editorial">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 08 · Změny této politiky"
+                title="Pokud se něco změní, řekneme vám."
+            />
+            <div class="section-body" data-reveal>
+                <p>
+                    Tato politika může být aktualizována (změny v zákonech, nových služeb, zpracovatelů).
+                    Datum poslední změny je uvedeno v úvodu stránky.
+                    Pokud půjde o podstatnou změnu, která ovlivňuje zpracování vašich údajů,
+                    aktivně vás o ní informujeme e-mailem.
+                </p>
+                <p>
+                    Dotazy, připomínky, stížnosti ohledně zpracování osobních údajů —
+                    <a href="mailto:stepan@velyos.ai" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">stepan@velyos.ai</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+</Layout>

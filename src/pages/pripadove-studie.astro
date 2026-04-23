@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Note from '../components/Note.astro';
+import Callout from '../components/Callout.astro';
+import CtaBand from '../components/CtaBand.astro';
+---
+
+<Layout
+    title="VELYOS — Vzory nasazení | Co umíme dodat."
+    description="Vzory nasazení VELYOS podle oboru — zdravotnictví, stavebnictví, reality, služby. Cíle typických projektů, které pro podobné firmy stavíme."
+    active="pripadove-studie"
+    footerTagline="Vzory toho, co umíme dodat."
+    footerVariant="v0.2 preview · vzory nasazení"
+>
+    <Hero tagline="· Vzory nasazení · Definujeme náskok.">
+        <h1 class="hero__title">Co pro vás <span class="accent">umíme dodat.</span></h1>
+        <p class="hero__lead">
+            Vzory typických nasazení podle oboru. Nejsou to konkrétní případové studie —
+            <strong>jsou to cíle, které u klientů v podobných situacích dosahujeme.</strong>
+            Když se uvidíme, probereme, co je reálné pro vaši firmu.
+        </p>
+        <p class="hero__lead" style="font-size:0.95rem; margin-top:var(--space-4); max-width:60ch; color:var(--black-60); font-style:italic;">
+            Reálné anonymizované studie s konkrétními čísly a firmami poskytujeme pod NDA vážným zájemcům.
+        </p>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Zdravotnictví"
+                title="Klinika nebo ordinace: dokumentace žere lékařům hodiny denně."
+                lead="Typický scénář u menších a středních zdravotnických provozů — kliniky, specializované ordinace, rehabilitační centra."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Výchozí situace</h3>
+                <p>
+                    Lékař tráví významnou část dne dokumentací, výkazy pro pojišťovny a přípisy.
+                    Ordinace končí a začíná „papírovací druhá směna". Administrativa zasahuje do péče o pacienta.
+                </p>
+
+                <h3>Co stavíme</h3>
+                <p>
+                    Lékař nadiktuje shrnutí návštěvy. Systém strukturuje zdravotní kartu, připraví kódy MKN-10
+                    a podklad pro pojišťovnu. Lékař zkontroluje a schválí. Vše uvnitř klinické databáze —
+                    žádná data neopouští prostředí ordinace.
+                </p>
+
+                <h3>Cílový výsledek</h3>
+                <p>
+                    Čas na dokumentaci se zkrátí z desítek minut na <strong style="color:var(--velocity-orange);">jednotky minut na pacienta</strong>.
+                    Každý lékař získá denně <strong>hodiny pro pacienty nebo na odchod v rozumnou dobu</strong>.
+                    Kapacita ordinace roste bez přidání personálu.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 03 · Stavebnictví"
+                title="Stavební firma: propočty nabídek ukrajují polovinu obchodního dne."
+                lead="Typický scénář u firem s vlastním odhadcem a rozmanitými subdodavateli — rekonstrukce, pozemní stavby, technologie."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Výchozí situace</h3>
+                <p>
+                    Obchodník připravuje každou nabídku ručně — ceníky, sazby subdodavatelů, marže, kontrola rozsahu.
+                    Jedna kvalitní nabídka zabere polovinu dne. Firma nestíhá reagovat na příchozí poptávky a část leadů ztratí.
+                </p>
+
+                <h3>Co stavíme</h3>
+                <p>
+                    Obchodník zadá parametry zakázky. Systém sáhne do interních ceníků, zohlední aktuální sazby,
+                    napočte marži a vygeneruje PDF nabídku ve firemní identitě. Obchodník jen zkontroluje a odesílá.
+                </p>
+
+                <h3>Cílový výsledek</h3>
+                <p>
+                    Čas na jednu nabídku se zkrátí z <strong style="color:var(--velocity-orange);">hodin na jednotky minut</strong>.
+                    Počet vyřízených poptávek denně se násobí. Obchod reaguje na lead dřív než konkurence — víc uzavřených zakázek.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · Reality"
+                title="Realitní kancelář: poptávky o víkendu mizí ke konkurenci."
+                lead="Typický scénář u středních kanceláří s několika makléři a přicházejícími leady přes portály, web a telefon."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Výchozí situace</h3>
+                <p>
+                    Poptávky přes web, telefon a realitní portály přicházejí 24/7. Makléři je zpracovávají v pracovní době —
+                    nejpozději v pondělí ráno. V té době už klient často mluví s jinou kanceláří.
+                </p>
+
+                <h3>Co stavíme</h3>
+                <p>
+                    Systém přijímá poptávky z všech kanálů automaticky. Ohodnotí bonitu zájemce, doplní údaje z katastru,
+                    navrhne vhodné nemovitosti z portfolia. Kvalifikovaný lead putuje makléři s kompletním kontextem —
+                    připravený k okamžitému volání.
+                </p>
+
+                <h3>Cílový výsledek</h3>
+                <p>
+                    Průměrná doba první reakce klesá z <strong style="color:var(--velocity-orange);">hodin na minuty</strong>.
+                    Konverze lead → schůzka výrazně roste. Víkendové poptávky už neztrácejí — systém je zachytí dřív než konkurence.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 05 · Profesionální služby"
+                title="Advokáti, poradci, účetní: příprava klientského hovoru zabírá fakturovatelný čas."
+                lead="Typický scénář u kanceláří, kde senior tráví hodiny procházením historie klienta před každou schůzkou."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Výchozí situace</h3>
+                <p>
+                    Před každým klientským hovorem strávil senior advokát/poradce hodiny procházením e-mailů,
+                    dokumentů a předchozích porad. Juniorní kolegové trávili ještě víc. Fakturovatelný čas se rozmělňoval
+                    v přípravě, kterou klient nikdy neviděl.
+                </p>
+
+                <h3>Co stavíme</h3>
+                <p>
+                    Systém projde veškerou dokumentaci klienta, všechny předchozí interakce a aktuální právní nebo věcný rámec.
+                    Připraví briefing: co řešíte, kam navazujete, co má klient v plánu, jaký je aktuální stav.
+                </p>
+
+                <h3>Cílový výsledek</h3>
+                <p>
+                    Příprava se zkrátí z desítek minut na <strong style="color:var(--velocity-orange);">jednotky minut</strong>.
+                    Senior přichází ke klientovi lépe připravený. Fakturovatelná kapacita roste bez najímání.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--editorial">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· Poznámka"
+                title="Proč sdílíme vzory, a ne konkrétní klienty."
+            />
+
+            <div class="section-body" data-reveal>
+                <p>
+                    Naši klienti s námi pracují ze tří důvodů: <strong>rychlosti, garance a diskrétnosti</strong>.
+                    Diskrétnost znamená, že jejich konkrétní nasazení, data a know-how nenecháváme putovat po marketingových materiálech.
+                </p>
+
+                <p>
+                    Vzory nahoře popisují <strong>typická zadání a cíle</strong>, se kterými pracujeme.
+                    Konkrétní čísla a detaily u vás probereme na prvním hovoru — podle vašich systémů, procesů a priorit.
+                </p>
+
+                <p>
+                    Pokud jste vážný zájemce a chcete vidět anonymizovanou studii konkrétního projektu,
+                    napište nám. V druhé fázi rozhovoru s vámi probereme, co je reálné přímo u vás.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <CtaBand
+        id="chci-vic"
+        eyebrow="· 06 · Chcete probrat váš případ?"
+        title="Řekněte nám, co vás zajímá — probereme konkrétní scénář."
+        lead="Nejrychlejší cesta je pár minut s naším diagnostickým agentem nebo krátký formulář. Do 24 hodin vám zavolá specialista s konkrétním rozborem pro váš obor."
+        directPrefix="Nebo rovnou na"
+    >
+        <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku</a>
+        <a href="/kontakt" class="btn btn--ghost btn--lg">Všechny cesty na kontakt</a>
+    </CtaBand>
+</Layout>

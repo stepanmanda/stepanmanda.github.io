@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Note from '../components/Note.astro';
+---
+
+<Layout
+    title="VELYOS — Impresum | Identifikační údaje provozovatele"
+    description="Provozovatel webu VELYOS, identifikační údaje, zodpovědná osoba, kontakty. Informace podle zákona č. 480/2004 Sb."
+    primaryCta={null}
+    footerTagline="Transparentně. Podle zákona."
+    footerVariant="v0.2 preview · impresum"
+>
+    <Hero tagline="· Impresum · Identifikační údaje">
+        <h1 class="hero__title">Kdo provozuje <span class="accent">tento web.</span></h1>
+        <p class="hero__lead">
+            Povinné informace o provozovateli podle zákona č. 480/2004 Sb. o některých službách informační společnosti
+            a podle občanského zákoníku.
+        </p>
+    </Hero>
+
+    <section>
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 01 · Provozovatel"
+                title="Identifikační údaje."
+            />
+
+            <div data-reveal style="margin-top:var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-radius:var(--radius-lg); padding:var(--space-8);">
+                <dl style="display:grid; grid-template-columns:200px 1fr; gap:var(--space-4) var(--space-6); margin:0;">
+                    <dt style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--signal-gold);">Obchodní jméno</dt>
+                    <dd style="margin:0; font-weight:500;">Štěpán Švanda</dd>
+
+                    <dt style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--signal-gold);">Značka</dt>
+                    <dd style="margin:0;">VELYOS</dd>
+
+                    <dt style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--signal-gold);">Právní forma</dt>
+                    <dd style="margin:0;">Podnikající fyzická osoba (OSVČ)</dd>
+
+                    <dt style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--signal-gold);">IČO</dt>
+                    <dd style="margin:0;"><span style="color:var(--mist-gray); font-style:italic;">— doplníme po registraci —</span></dd>
+
+                    <dt style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--signal-gold);">DIČ</dt>
+                    <dd style="margin:0;"><span style="color:var(--mist-gray); font-style:italic;">— doplníme po registraci —</span></dd>
+
+                    <dt style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--signal-gold);">Zapsáno v</dt>
+                    <dd style="margin:0;">Živnostenský rejstřík</dd>
+
+                    <dt style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--signal-gold);">Sídlo</dt>
+                    <dd style="margin:0;">Františkovy Lázně 553/7<br>351 01 Františkovy Lázně<br>Česká republika</dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 02 · Kontakt"
+                title="Jak nás zastihnete."
+            />
+
+            <div data-reveal style="margin-top:var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-radius:var(--radius-lg); padding:var(--space-8);">
+                <dl style="display:grid; grid-template-columns:200px 1fr; gap:var(--space-4) var(--space-6); margin:0;">
+                    <dt style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--signal-gold);">E-mail</dt>
+                    <dd style="margin:0;"><a href="mailto:stepan@velyos.ai" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30); font-weight:500;">stepan@velyos.ai</a></dd>
+
+                    <dt style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--signal-gold);">Telefon</dt>
+                    <dd style="margin:0;"><span style="color:var(--mist-gray); font-style:italic;">Doplníme po registraci firmy. Zatím pište na e-mail.</span></dd>
+
+                    <dt style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--signal-gold);">Pracovní doba</dt>
+                    <dd style="margin:0;">Pondělí–pátek, 9:00–17:00 CET</dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 03 · Dozorové orgány"
+                title="Ke komu se můžete obrátit."
+            />
+
+            <div class="section-body" data-reveal>
+                <p>
+                    Činnost provozovatele podléhá dozoru následujících orgánů:
+                </p>
+                <ul style="margin-left:1.5rem; line-height:1.8;">
+                    <li>
+                        <strong>Živnostenský úřad</strong> — Obecní živnostenský úřad příslušný podle místa podnikání
+                    </li>
+                    <li>
+                        <strong>Česká obchodní inspekce</strong> — dozor nad dodržováním povinností podle
+                        zákona č. 634/1992 Sb., o ochraně spotřebitele
+                        (<a href="https://www.coi.cz" target="_blank" rel="noopener" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">coi.cz</a>)
+                    </li>
+                    <li>
+                        <strong>Úřad pro ochranu osobních údajů</strong> — dozor nad zpracováním osobních údajů
+                        (<a href="https://www.uoou.cz" target="_blank" rel="noopener" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">uoou.cz</a>)
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 04 · Řešení sporů"
+                title="Mimosoudní řešení."
+            />
+
+            <div class="section-body" data-reveal>
+                <p>
+                    V případě vzniku sporu mezi klientem a VELYOS je klient oprávněn obrátit se
+                    na <strong>Českou obchodní inspekci</strong>, která je subjektem mimosoudního řešení spotřebitelských sporů
+                    (<a href="https://adr.coi.cz" target="_blank" rel="noopener" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">adr.coi.cz</a>).
+                </p>
+                <p>
+                    Klient může využít také platformu pro online řešení sporů zřízenou Evropskou komisí
+                    na adrese
+                    <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">ec.europa.eu/consumers/odr</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 05 · Autorská práva"
+                title="Obsah tohoto webu."
+            />
+
+            <div class="section-body" data-reveal>
+                <p>
+                    Veškerý obsah tohoto webu (texty, grafické prvky, loga, fotografie, design) je chráněn
+                    autorským zákonem č. 121/2000 Sb. a je vlastnictvím provozovatele nebo partnerů, kteří
+                    provozovateli poskytli souhlas s jeho užitím.
+                </p>
+                <p>
+                    Jakékoliv reprodukce, kopírování, modifikace nebo komerční užití obsahu bez
+                    předchozího písemného souhlasu provozovatele jsou zakázány.
+                </p>
+            </div>
+
+            <Note maxWidth="60ch">
+                Provozovatel si vyhrazuje právo kdykoliv změnit obsah tohoto impresa v souvislosti
+                se změnami v právní formě podnikání nebo v identifikačních údajích. Aktuální verze je
+                vždy zveřejněna na této stránce.
+            </Note>
+        </div>
+    </section>
+</Layout>

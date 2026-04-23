@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <!-- VELYOS monogram — Velocity Black pozadí s Velocity Orange "V" -->
+    <rect width="64" height="64" fill="#0B0F19" rx="10"/>
+    <!-- "V" tvar — jednoduchý stylizovaný, odkazuje na logo -->
+    <path d="M 16 14 L 32 50 L 48 14"
+          stroke="#F5F3EE"
+          stroke-width="6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"/>
+    <!-- Oranžová "OS" kontrolka v pravém horním rohu -->
+    <circle cx="51" cy="13" r="4" fill="#E85D1F"/>
+</svg>

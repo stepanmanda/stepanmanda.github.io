@@ -1,0 +1,25 @@
+---
+// Duo — „Napojíme se" vs „Postavíme od nuly" hierarchie s gold dividerem
+interface Props {
+    leftEyebrow: string;
+    leftTitle: string;
+    rightEyebrow: string;
+    rightTitle: string;
+}
+
+const { leftEyebrow, leftTitle, rightEyebrow, rightTitle } = Astro.props;
+---
+
+<div class="duo" data-reveal>
+    <div class="duo__col duo__col--left">
+        <span class="eyebrow">{leftEyebrow}</span>
+        <h3 set:html={leftTitle}></h3>
+        <slot name="left" />
+    </div>
+    <div class="duo__divider"></div>
+    <div class="duo__col duo__col--right">
+        <span class="eyebrow">{rightEyebrow}</span>
+        <h3 set:html={rightTitle}></h3>
+        <slot name="right" />
+    </div>
+</div>

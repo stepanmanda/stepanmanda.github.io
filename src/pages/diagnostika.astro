@@ -1,0 +1,351 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DiagnosticForm from '../components/DiagnosticForm.astro';
+---
+
+<Layout
+    title="VELYOS — Diagnostika | Zjistíme, kde vám utíká čas."
+    description="Spusťte diagnostiku: strukturovaný formulář nebo živý hovor s AI agentem. Do 24 hodin dostanete odpověď od specialisty. Bez obchodního tlaku."
+    primaryCta={{ label: 'Kontakt', href: '/kontakt' }}
+    footerTagline="Brief. Ne prezentace."
+    footerVariant="v0.2 preview · diagnostika"
+>
+    <section class="diagnostika-hero">
+        <div class="diagnostika-hero__grid"></div>
+        <div class="diagnostika-hero__glow"></div>
+        <div class="container">
+            <div class="diagnostika-hero__inner" data-reveal>
+                <span class="eyebrow">· Diagnostika · Definujeme náskok.</span>
+                <h1 class="diagnostika-hero__title">
+                    Dvě cesty. <span class="accent">Stejný specialista na druhé straně.</span>
+                </h1>
+                <p class="diagnostika-hero__lead">
+                    Vyplňte strukturovaný formulář, nebo si promluvte přímo s naším AI agentem.
+                    Obě cesty končí u stejného člověka, který vám zavolá do 24 hodin s konkrétním briefem — ne prezentací.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="diagnostika-main">
+        <div class="container">
+            <div class="diagnostika-grid">
+                <!-- Levá: formulář -->
+                <div class="diagnostika-col diagnostika-col--form" data-reveal>
+                    <div class="diagnostika-col__header">
+                        <span class="eyebrow" style="color:var(--signal-gold);">· 01 · Písemná diagnostika</span>
+                        <h2>Vyplňte, co vás trápí. Pošleme brief specialistovi.</h2>
+                        <p class="diagnostika-col__intro">
+                            Deset polí. Tři minuty. Informace, které specialista potřebuje,
+                            abychom na první hovor přišli už s konkrétním návrhem — ne s otázkami.
+                        </p>
+                    </div>
+
+                    <DiagnosticForm />
+                </div>
+
+                <!-- Pravá: widget -->
+                <div class="diagnostika-col diagnostika-col--agent" data-reveal>
+                    <div class="diagnostika-col__header">
+                        <span class="eyebrow" style="color:var(--velocity-orange);">· 02 · Hlasová diagnostika</span>
+                        <h2>Raději si popovídáte? Řekněte to agentovi.</h2>
+                        <p class="diagnostika-col__intro">
+                            Přirozený hlasový rozhovor s AI agentem Stelou.
+                            Pět až sedm minut, žádný formulář, žádný obchodní tlak.
+                        </p>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-card__badge">
+                            <span class="agent-card__dot"></span>
+                            <span>Agent online · odpovídá hned</span>
+                        </div>
+
+                        <div class="agent-card__pointer">
+                            <svg class="agent-card__arrow" width="96" height="96" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                                <path d="M16 16 C 16 60, 50 80, 82 82" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 6" fill="none"/>
+                                <path d="M76 74 L 84 84 L 74 86" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            </svg>
+                            <div class="agent-card__pointer-text">
+                                <strong>Klikněte na oranžovou kontrolku vpravo dole.</strong><br>
+                                Widget se rozbalí a Stela začne naslouchat.
+                            </div>
+                        </div>
+
+                        <ul class="agent-card__points">
+                            <li>Mluví česky, anglicky, německy + 10 dalších jazyků</li>
+                            <li>Hovor je zdarma, bez obchodního tlaku, bez prezentace</li>
+                            <li>Brief automaticky přeposlán specialistovi</li>
+                        </ul>
+
+                        <div class="agent-card__footnote">
+                            Specialista vám zavolá do 24 hodin. Stejně jako po odeslání formuláře vlevo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--editorial section--tight">
+        <div class="container container--narrow" data-reveal>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--space-8); text-align:center;">
+                <div>
+                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Do 24 hodin</span>
+                    <p style="margin:0; color:var(--black-60); font-size:0.95rem;">
+                        Odpovídáme v pracovní dny během 24 hodin. V obchodní době často rychleji.
+                    </p>
+                </div>
+                <div>
+                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Bez obchodníka</span>
+                    <p style="margin:0; color:var(--black-60); font-size:0.95rem;">
+                        První hovor jde přímo se zakladatelem nebo seniorním specialistou. Ne s obchodním asistentem.
+                    </p>
+                </div>
+                <div>
+                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Bez závazku</span>
+                    <p style="margin:0; color:var(--black-60); font-size:0.95rem;">
+                        Diagnostika je zdarma. Pokud VELYOS nebude pro vás, řekneme to rovnou.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .diagnostika-hero {
+        background: var(--ivory-silver);
+        padding: var(--space-20) 0 var(--space-12);
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--black-08);
+    }
+
+    .diagnostika-hero__grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(11, 15, 25, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(11, 15, 25, 0.06) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: radial-gradient(ellipse at 50% 0%, black 10%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .diagnostika-hero__glow {
+        position: absolute;
+        width: 800px;
+        height: 400px;
+        top: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: radial-gradient(circle, rgba(184, 147, 92, 0.2) 0%, transparent 65%);
+        pointer-events: none;
+        animation: glowBreathe 8s ease-in-out infinite;
+    }
+
+    .diagnostika-hero .container { position: relative; z-index: 1; }
+
+    .diagnostika-hero__inner {
+        text-align: center;
+        max-width: 60ch;
+        margin: 0 auto;
+    }
+
+    .diagnostika-hero__inner .eyebrow {
+        display: block;
+        margin-bottom: var(--space-4);
+    }
+
+    .diagnostika-hero__title {
+        font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+        letter-spacing: -0.03em;
+        line-height: 1.08;
+        margin: 0 0 var(--space-6);
+    }
+
+    .diagnostika-hero__title .accent {
+        color: var(--velocity-orange);
+    }
+
+    .diagnostika-hero__lead {
+        font-size: 1.15rem;
+        color: var(--black-60);
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    .diagnostika-main {
+        padding: var(--space-16) 0;
+        background: var(--alpine-white);
+    }
+
+    .diagnostika-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-12);
+        align-items: start;
+    }
+
+    .diagnostika-col {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .diagnostika-col__header h2 {
+        font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+        letter-spacing: -0.02em;
+        margin: var(--space-3) 0 var(--space-3);
+        line-height: 1.2;
+    }
+
+    .diagnostika-col__intro {
+        color: var(--black-60);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Pravý sloupec s agent-card zůstává statický — widget pluje v rohu viewportu */
+
+    /* Agent card */
+    .agent-card {
+        background: var(--velocity-black);
+        color: var(--ivory-silver);
+        padding: var(--space-8);
+        border-radius: var(--radius-lg);
+        position: relative;
+        overflow: hidden;
+        border-top: 3px solid var(--velocity-orange);
+        box-shadow: 0 30px 70px -30px rgba(11, 15, 25, 0.35);
+    }
+
+    .agent-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at 80% 20%, rgba(232, 93, 31, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 20% 80%, rgba(184, 147, 92, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .agent-card > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .agent-card__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.35rem 0.85rem;
+        background: rgba(232, 93, 31, 0.15);
+        border: 1px solid rgba(232, 93, 31, 0.35);
+        border-radius: 999px;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--velocity-orange);
+        margin-bottom: var(--space-6);
+    }
+
+    .agent-card__dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--velocity-orange);
+        animation: agentPulse 2s ease-in-out infinite;
+    }
+
+    .agent-card__pointer {
+        padding: var(--space-6) var(--space-6);
+        border: 1px solid rgba(232, 93, 31, 0.3);
+        border-radius: var(--radius);
+        background: linear-gradient(135deg, rgba(232, 93, 31, 0.08) 0%, rgba(184, 147, 92, 0.06) 100%);
+        text-align: left;
+        margin-bottom: var(--space-6);
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--space-5);
+        align-items: center;
+    }
+
+    .agent-card__arrow {
+        color: var(--velocity-orange);
+        flex-shrink: 0;
+        animation: agentArrowSway 3.2s ease-in-out infinite;
+    }
+
+    @keyframes agentArrowSway {
+        0%, 100% { transform: translate(0, 0); }
+        50%      { transform: translate(4px, 4px); }
+    }
+
+    .agent-card__pointer-text {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        color: var(--signal-gold);
+        line-height: 1.55;
+    }
+
+    .agent-card__pointer-text strong {
+        color: var(--ivory-silver);
+        letter-spacing: 0.04em;
+    }
+
+    .agent-card__points {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 var(--space-6);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .agent-card__points li {
+        padding-left: 1.2rem;
+        position: relative;
+        font-size: 0.92rem;
+        line-height: 1.5;
+        color: var(--ivory-70);
+    }
+
+    .agent-card__points li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--velocity-orange);
+        font-family: var(--font-mono);
+        font-weight: 500;
+    }
+
+    .agent-card__footnote {
+        padding-top: var(--space-4);
+        border-top: 1px solid rgba(245, 243, 238, 0.1);
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 0.88rem;
+        color: var(--mist-gray);
+        line-height: 1.55;
+    }
+
+    @media (max-width: 980px) {
+        .diagnostika-grid {
+            grid-template-columns: 1fr;
+            gap: var(--space-16);
+        }
+
+    }
+
+    @media (max-width: 720px) {
+        .diagnostika-hero {
+            padding: var(--space-16) 0 var(--space-10);
+        }
+    }
+</style>

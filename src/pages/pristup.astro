@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Features from '../components/Features.astro';
+import Feature from '../components/Feature.astro';
+import Steps from '../components/Steps.astro';
+import Step from '../components/Step.astro';
+import Callout from '../components/Callout.astro';
+import Duo from '../components/Duo.astro';
+import CtaBand from '../components/CtaBand.astro';
+---
+
+<Layout
+    title="VELYOS — Přístup | Jak pracujeme."
+    description="Metodika VELYOS: čtyři kroky od diagnostiky po provoz. Garance ROI ve smlouvě. Žádné pilotní fáze na půl roku. Pro firmy, které si vybírají."
+    active="pristup"
+    footerTagline="Disciplína. Ne marketing."
+    footerVariant="v0.2 preview · přístup"
+>
+    <Hero tagline="· Přístup · Definujeme náskok.">
+        <h1 class="hero__title">Jak pracujeme — <span class="accent">bez pilotních fází na půl roku.</span></h1>
+        <p class="hero__lead">
+            Naše metodika stojí na jednom principu: rychlost bez kompromisů v kvalitě.
+            Čtyři kroky. Čtyři týdny. Návratnost do šesti měsíců. Garance ve smlouvě.
+        </p>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Čtyři kroky"
+                title="Od diagnostiky po provoz. Žádné překvapení."
+                lead="Každý krok má jasný výstup, jasný časový rámec a jasnou odpovědnost. Vy víte, kde stojíte — my víme, co máme dodat."
+            />
+
+            <Steps cols={4}>
+                <Step
+                    num="01 · DIAGNOSTIKA"
+                    title="Projdeme váš provoz."
+                    body="Bezplatná vstupní konzultace s AI agentem a specialistou. Identifikujeme 3–4 procesy s největším potenciálem. Výstupem je strukturovaný brief — ne prezentace."
+                />
+                <Step
+                    num="02 · NÁVRH"
+                    title="Navrhneme řešení na míru."
+                    body="Konkrétní plán: co automatizujeme, na co napojíme, co to bude stát, kdy to poběží. Fix smlouva před startem prací."
+                />
+                <Step
+                    num="03 · INTEGRACE"
+                    title="Napojíme VELYOS na vaše systémy."
+                    body="Typicky v řádu dnů, bez narušení provozu. Váš tým mezitím dělá svou práci. Tréning AI na vašich datech probíhá paralelně."
+                />
+                <Step
+                    num="04 · PROVOZ"
+                    title="Vy se soustředíte na byznys."
+                    body="My dohlížíme, učíme, ladíme. Každý měsíc funguje systém lépe než ten předchozí. Krátká výpovědní lhůta — vázat vás nechceme."
+                />
+            </Steps>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 03 · Garance v odstavci 4.3"
+                title="Nevrátí se vám to? Vrátíme my."
+                lead="Jeden odstavec v naší smlouvě, který konkurence nemá. Není to marketing. Je to disciplína, která nás nutí dělat dobře i věci, které klient nevidí."
+            />
+
+            <Duo
+                leftEyebrow="← Co slibujeme"
+                leftTitle="Návratnost do 6 měsíců."
+                rightEyebrow="→ Co se stane, když ne"
+                rightTitle="Doděláme zdarma. Nebo vrátíme rozdíl."
+            >
+                <Fragment slot="left">
+                    <p>Do 6 měsíců od nasazení musí projekt vrátit víc, než stál — v uspořených hodinách, v nových zakázkách, nebo ve snížených nákladech.</p>
+                    <p>Metrika je pevně daná ve smlouvě. Bez výmluv, bez „to se nezapočítává".</p>
+                </Fragment>
+                <Fragment slot="right">
+                    <p>Pokud nedodáme návratnost, máte dvě volby: buď dopracujeme zdarma, dokud nebude, nebo vám vrátíme rozdíl mezi investicí a skutečnou návratností.</p>
+                    <p>Nemáte co ztratit. A my máme silnou motivaci mluvit s vámi jen tehdy, kdy si jsme jistí výsledkem.</p>
+                </Fragment>
+            </Duo>
+
+            <Callout>
+                <strong>Proč to děláme?</strong> Protože v našem oboru je příliš mnoho slibů a příliš málo závazků.
+                Garance je férový filtr — my se soustředíme jen na projekty, kde víme, že dodáme. A vy máte jistotu, že nic neriskujete.
+            </Callout>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · Co si myslíme o technologii"
+                title="Technologie je prostředek, ne cíl."
+                lead="AI je skvělý nástroj — ale ne na každý problém. Někdy je nejlepší automatizace prostý skript. Jindy reorganizace procesu bez technologie. Vedeme klienta tam, kde je řešení, ne tam, kde se dá prodat."
+            />
+
+            <Features cols={2}>
+                <Feature
+                    num="NEJSME"
+                    title="Poskytovatel AI."
+                    body="Nenabízíme „AI řešení“ jako produkt. AI nasazujeme tam, kde se vyplatí — a říkáme, kdy se nevyplatí. Naše hodnota je v rozhodnutí, ne v technologii."
+                />
+                <Feature
+                    num="JSME"
+                    title="Partner pro automatizaci provozu."
+                    body="Naše řemeslo je: najít, kde vám utíká čas, a postavit řešení, které ho vrátí. Někdy to bude AI, jindy integrace, jindy jednoduchý workflow. Podle toho, co má smysl."
+                />
+                <Feature
+                    num="NEPOUŽÍVÁME"
+                    title="Vaše data k učení cizích modelů."
+                    body="Vše, co nám dáte, zůstává vaše. Nikdy netrénujeme veřejné modely na vašich datech. Architektura v duchu ISO 27001, GDPR, AES-256 šifrování."
+                />
+                <Feature
+                    num="POUŽÍVÁME"
+                    title="Mix běžných i vlastních nástrojů."
+                    body="Stavíme na ověřených enterprise platformách, kde to dává smysl. Kde nestačí, vyvíjíme vlastní. Vždy s dokumentací a možností převodu na jiného dodavatele, kdyby se to stalo nutností."
+                />
+            </Features>
+        </div>
+    </section>
+
+    <section class="section--editorial">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 05 · Co si nemyslíme"
+                title="Věci, které na trhu slyšíme, a s kterými nesouhlasíme."
+            />
+
+            <div class="section-body" data-reveal>
+                <h3>„AI je budoucnost."</h3>
+                <p style="color:var(--black-60);">
+                    AI je přítomnost. Kdo na ni čeká, prohrává s tím, kdo ji už má.
+                    Ale nesouhlasíme s narativem, že AI je odpověď na všechno. Často je to obyčejná automatizace bez AI — a to také stavíme.
+                </p>
+
+                <h3>„Všichni už mají AI."</h3>
+                <p style="color:var(--black-60);">
+                    Nemají. Většina firem hraje na „ChatGPT na e-maily" a nikdo nevidí souvislost mezi tím a jejich EBITDA. Skutečná integrace je jinde — v procesech, které generují nebo šetří peníze.
+                </p>
+
+                <h3>„Zaplatí se to za dva měsíce."</h3>
+                <p style="color:var(--black-60);">
+                    Někdy ano, často ne. Poctivý rozsah je 3–6 měsíců pro dobře postavený projekt. Všechno pod je marketing, všechno nad je špatný design.
+                </p>
+
+                <h3>„Potřebujete vlastní tým pro AI."</h3>
+                <p style="color:var(--black-60);">
+                    Nepotřebujete. Potřebujete partnera, který za vás AI provozuje. Stavět vlastní tým dává smysl jen u těch největších firem.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <CtaBand
+        id="jak-zacit"
+        eyebrow="· 06 · Jak začít"
+        title="Nejkratší cesta — 5 minut s naším diagnostickým agentem."
+        lead="Za pár minut zjistíte, kolik času vám utíká, a jestli VELYOS dává smysl. Pokud ano, ozve se vám specialista. Pokud ne, řekneme vám to upřímně."
+        directPrefix="Raději po telefonu?"
+    >
+        <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku</a>
+        <a href="/kontakt" class="btn btn--ghost btn--lg">Všechny cesty na kontakt</a>
+    </CtaBand>
+</Layout>

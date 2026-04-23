@@ -1,0 +1,14 @@
+---
+interface Props {
+    time: string;
+}
+
+const { time } = Astro.props;
+---
+
+<div class="timeline__row">
+    <span class="timeline__time">{time}</span>
+    <div class="timeline__body">
+        <slot />
+    </div>
+</div>

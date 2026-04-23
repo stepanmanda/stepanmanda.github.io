@@ -1,0 +1,25 @@
+---
+import NavContact from './NavContact.astro';
+
+interface Props {
+    active?: 'firmy' | 'jednotlivci' | 'o-nas' | 'pristup' | 'pripadove-studie' | 'kontakt' | null;
+    primaryCta?: { label: string; href: string } | null | false;
+}
+
+const { active = null, primaryCta = { label: 'Zažádat o konzultaci', href: '/firmy' } } = Astro.props;
+---
+
+<header class="site-header">
+    <div class="site-header__inner">
+        <a href="/" class="brand">VELY<span class="os">OS</span></a>
+        <nav class="nav">
+            <a href="/firmy" class={active === 'firmy' ? 'active' : ''}>Pro firmy</a>
+            <a href="/jednotlivci" class={active === 'jednotlivci' ? 'active' : ''}>Pro jednotlivce</a>
+            <a href="#co-stavime">Co stavíme</a>
+            <NavContact />
+            {primaryCta && (
+                <a href={primaryCta.href} class="btn btn--primary btn--sm btn-arrow">{primaryCta.label}</a>
+            )}
+        </nav>
+    </div>
+</header>

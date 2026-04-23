@@ -1,0 +1,16 @@
+---
+interface Props {
+    num: string;
+    title: string;
+    body?: string;
+}
+
+const { num, title, body } = Astro.props;
+---
+
+<div class="feature">
+    <span class="feature__num">{num}</span>
+    <h4 set:html={title}></h4>
+    {body && <p set:html={body}></p>}
+    <slot />
+</div>

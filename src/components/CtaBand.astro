@@ -1,0 +1,39 @@
+---
+interface Props {
+    id?: string;
+    eyebrow?: string;
+    title: string;
+    lead?: string;
+    showDirect?: boolean;
+    directPrefix?: string;
+    email?: string;
+}
+
+const {
+    id,
+    eyebrow,
+    title,
+    lead,
+    showDirect = true,
+    directPrefix = 'Nechcete přes diagnostiku?',
+    email = 'stepan@velyos.ai',
+} = Astro.props;
+---
+
+<section class="cta-band" {...id ? { id } : {}}>
+    <div class="cta-band__glow"></div>
+    <div class="container container--narrow">
+        {eyebrow && <span class="eyebrow" style="display:block;margin-bottom:var(--space-4);" data-reveal>{eyebrow}</span>}
+        <h2 data-reveal set:html={title}></h2>
+        {lead && <p data-reveal set:html={lead}></p>}
+        <div class="cta-band__ctas" data-reveal>
+            <slot />
+        </div>
+        {showDirect && (
+            <div class="cta-band__direct" data-reveal>
+                <span>{directPrefix}</span>
+                <a href={`mailto:${email}`}>{email}</a>
+            </div>
+        )}
+    </div>
+</section>

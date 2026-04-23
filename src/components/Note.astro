@@ -1,0 +1,14 @@
+---
+interface Props {
+    reveal?: boolean;
+    maxWidth?: string;
+    style?: string;
+}
+
+const { reveal = true, maxWidth, style } = Astro.props;
+const inlineStyle = [maxWidth ? `max-width:${maxWidth};` : '', style || ''].filter(Boolean).join(' ');
+---
+
+<div class="note" {...reveal ? { 'data-reveal': '' } : {}} {...inlineStyle ? { style: inlineStyle } : {}}>
+    <slot />
+</div>

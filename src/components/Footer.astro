@@ -1,0 +1,69 @@
+---
+interface Props {
+    tagline?: string;
+    variant?: string;
+    email?: string;
+    phone?: string;
+    phoneDisplay?: string;
+}
+
+const {
+    tagline = 'The Velocity Operating System.',
+    variant = 'v0.2 preview',
+    email = 'stepan@velyos.ai',
+    phone = '+420000000000',
+    phoneDisplay = '+420 XXX XXX XXX',
+} = Astro.props;
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer" id="kontakt">
+    <div class="container">
+        <div class="site-footer__grid">
+            <div class="site-footer__brand">
+                <div class="brand">VELY<span class="os">OS</span></div>
+                <p>{tagline}</p>
+            </div>
+            <div>
+                <h4>Systém</h4>
+                <ul>
+                    <li><a href="/">Rozcestník</a></li>
+                    <li><a href="/firmy">Pro firmy</a></li>
+                    <li><a href="/jednotlivci">Pro jednotlivce</a></li>
+                    <li><a href="/firmy#co-stavime">Co stavíme</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Firma</h4>
+                <ul>
+                    <li><a href="/o-nas">O nás</a></li>
+                    <li><a href="/pristup">Přístup</a></li>
+                    <li><a href="/pripadove-studie">Vzory nasazení</a></li>
+                    <li><a href="/kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Přímý kontakt</h4>
+                <ul>
+                    <li><a href={`mailto:${email}`}>{email}</a></li>
+                    <li><span style="color:var(--mist-gray); font-style:italic;">Telefon po registraci</span></li>
+                    <li><span style="color:var(--mist-gray); font-style:italic;">LinkedIn po registraci</span></li>
+                    <li>Františkovy Lázně · EU</li>
+                </ul>
+            </div>
+        </div>
+        <div class="site-footer__legal">
+            <a href="/impresum">Impresum</a>
+            <span class="sep">·</span>
+            <a href="/ochrana-osobnich-udaju">Ochrana osobních údajů</a>
+            <span class="sep">·</span>
+            <a href="/kontakt">Kontakt</a>
+        </div>
+
+        <div class="site-footer__bottom">
+            <span>© {year} VELYOS. Přijímáme omezený počet klientů ročně.</span>
+            <span class="mono">{variant} · {email}</span>
+        </div>
+    </div>
+</footer>

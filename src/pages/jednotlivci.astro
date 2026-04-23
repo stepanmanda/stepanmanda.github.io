@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Audience from '../components/Audience.astro';
+import AudienceCard from '../components/AudienceCard.astro';
+import Features from '../components/Features.astro';
+import Feature from '../components/Feature.astro';
+import Callout from '../components/Callout.astro';
+import Timeline from '../components/Timeline.astro';
+import TimelineRow from '../components/TimelineRow.astro';
+import Pricing from '../components/Pricing.astro';
+import Price from '../components/Price.astro';
+import Steps from '../components/Steps.astro';
+import Step from '../components/Step.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Note from '../components/Note.astro';
+---
+
+<Layout
+    title="VELYOS — Pro jednotlivce | Definujeme náskok."
+    description="Osobní AI agent, který převezme komunikaci, kalendář, rešerše a telefon. Vrátíme vám desítky hodin měsíčně. Bez dlouhodobé vazby."
+    active="jednotlivci"
+    primaryCta={null}
+    footerTagline="Pro ty, kteří už nemají čas na ztrátu času."
+    footerVariant="v0.2 preview · pro jednotlivce"
+>
+    <Hero tagline="Pro jednotlivce · Definujeme náskok.">
+        <h1 class="hero__title">Váš den se nevejde do 24 hodin. <span class="accent">My vám část dne vrátíme.</span></h1>
+        <p class="hero__lead">
+            Ráno otevřete notebook a do oběda jste stihli všechno, kromě toho, proč jste vlastně začínali podnikat.
+            E-maily, telefony, přehazování schůzek, hledání podkladů. Kalendář se posunul. Káva vystydla.
+            VELYOS staví osobního AI agenta, který převezme rutinu a vrátí vám hodiny.
+        </p>
+        <div class="hero__ctas">
+            <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Zjistit, kolik času mi VELYOS vrátí</a>
+            <a href="#den" class="btn btn--ghost btn--lg">Den s agentem</a>
+        </div>
+        <Note maxWidth="60ch" style="margin-top:var(--space-10);">
+            Krátký rozhovor s naším agentem. Zjistíme, kde vám čas nejvíc uniká. Bez obchodníka, bez prezentace.
+        </Note>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Pro koho agent pracuje"
+                title="Služba, ne aplikace ke stažení."
+            />
+            <div class="section-body">
+                <p>
+                    Dodáváme hotového osobního agenta, kterého napojíme na vaše nástroje a naučíme váš styl.
+                    Vy nic nenastavujete — jen začnete mít den delší.
+                </p>
+                <p>
+                    Naši klienti mají společného jmenovatele:
+                    <strong>jejich hodina má vysokou cenu, ale značnou část dne tráví věcmi, které tuto cenu negenerují.</strong>
+                </p>
+            </div>
+
+            <Audience>
+                <AudienceCard
+                    title="Majitelé firem a jednatelé"
+                    body="Mají tým, ale operativní detail stále končí na jejich stole. E-maily, schvalování, koordinace — hodiny, které by měly patřit strategii a růstu."
+                />
+                <AudienceCard
+                    title="Konzultanti, poradci, advokáti"
+                    body="Fakturační sazba je vysoká, ale polovinu dne netráví u klienta. Tráví ji přípravou, rešeršemi, administrativou — prací, která s odborností nesouvisí."
+                />
+                <AudienceCard
+                    title="Obchodníci a realitní profesionálové"
+                    body="Ztrácejí příležitosti ne proto, že by neuměli prodávat, ale proto, že nestihli odpovědět první. V jejich oboru vyhrává rychlost, ne kvalifikace."
+                />
+            </Audience>
+
+            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-60); font-size:1.1rem; max-width:60ch;">
+                Pokud se v některém profilu poznáváte, čtěte dál. Pokud ne — řekneme vám to rovnou.
+            </p>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 03 · Proč teď, ne později"
+                title="Svět se zrychlil a tolerance k čekání klesla na nulu."
+            />
+            <div class="section-body">
+                <p>
+                    Klient, který nedostane odpověď do hodiny, odchází k někomu, kdo ji dá.
+                    Partner, který čeká na e-mail tři dny, si najde jiného.
+                    Příležitost, kterou nezachytíte první, se nevrátí — protože ji zachytil někdo jiný.
+                </p>
+                <p>
+                    A přitom drtivá většina denní zátěže špičkového profesionála <strong>není odborná práce.</strong>
+                    Je to komunikace, plánování, rešerše a administrativa. Přesně ty oblasti, kde AI dnes pracuje
+                    rychleji a spolehlivěji než lidský asistent — a na úrovni, kterou byste si dříve nemohli dovolit.
+                </p>
+                <p class="italic-serif" style="color:var(--signal-gold); font-size:1.2rem; margin-top:var(--space-6);">
+                    „Otázka není, jestli AI do vašeho dne vstoupí. Otázka je, jestli vám bude sloužit, nebo jestli s ní bude pracovat někdo jiný ve vašem oboru dřív."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · Co konkrétně váš agent dělá"
+                title="Systém, který pracuje autonomně ve vaší rutině. Vy zasahujete jen tam, kde chcete."
+            />
+
+            <Features cols={2}>
+                <Feature num="01 / KOMUNIKACE" title="Převezme komunikaci." body="Třídí e-maily podle priority, odpovídá na standardní dotazy ve vašem tónu, filtruje žádosti o schůzku, připravuje návrhy odpovědí na složitější zprávy. Vy schvalujete. On vykonává." />
+                <Feature num="02 / KALENDÁŘ" title="Řídí váš kalendář." body="Domlouvá schůzky, přesouvá je při konfliktu, chrání vaše soustředěné bloky, posílá připomínky a připravuje briefing před každým hovorem." />
+                <Feature num="03 / REŠERŠE" title="Dělá přípravu a rešerše." body="Shrnuje dlouhé dokumenty, hledá informace, připravuje podklady. Práce, na které byste strávili půl dne, je hotová, než dopijete ranní kávu." />
+                <Feature num="04 / TELEFON" title="Zvedne telefon, když nemůžete." body="Hlasový agent přijme hovor, zjistí důvod, nabídne termín nebo předá informaci. Váš klient dostane profesionální reakci — i když zrovna sedíte na jednání." />
+            </Features>
+
+            <Callout>
+                <strong style="color:var(--velocity-black);">Co agent nedělá:</strong>
+                Nerozhoduje za vás. Nedělá strategická rozhodnutí, nepodepisuje smlouvy, nevyjednává podmínky.
+                Je to extrémně schopný exekutor rutiny — ne náhrada vašeho úsudku.
+            </Callout>
+        </div>
+    </section>
+
+    <section class="section--editorial" id="co-stavime">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 05 · Co umíme navíc"
+                title="Osobní agent není vše. Postavíme vám i to ostatní."
+                lead="Nemáte ještě osobní web? Chybí vám LinkedIn strategie? Potřebujete značku, která funguje? Uděláme to. Jeden partner. Žádné hádání s pěti agenturami."
+            />
+
+            <Features cols={2}>
+                <Feature num="01 / OSOBNÍ ZNAČKA" title="Navrhneme, jak působíte." body="Logo. Barvy. Tón. Fotka. Profesionální identita, která vás předstihne dřív, než vejdete do dveří." />
+                <Feature num="02 / WEB & LINKEDIN" title="Postavíme vám prezentaci." body="Osobní web a LinkedIn profil, co otevírá dveře. Lidi si vás najdou — a už se neztratí." />
+            </Features>
+
+            <Callout>
+                <strong>A pokud řídíte firmu?</strong>
+                Uděláme to samé pro ni — web, AI agenty, CRM, propagaci. <a href="/firmy" style="color:var(--velocity-orange); border-bottom:1px solid var(--velocity-orange);">Podívejte se na řešení pro firmy →</a>
+            </Callout>
+        </div>
+    </section>
+
+    <section class="section--alt" id="den">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 06 · Jak to vypadá v praxi"
+                title="Ilustrační den u typického klienta."
+                lead="Následující scénář je ilustrativní — ukazuje, jak vypadá běžný pracovní den s osobním agentem. Konkrétní čísla u vás budou jiná; princip zůstává."
+            />
+
+            <Timeline>
+                <TimelineRow time="07:00">
+                    Agent za noc roztřídil <strong>34 e-mailů</strong>. 8 vyřídil sám (potvrzení schůzek, FAQ klientů).
+                    4 připravil k vaší odpovědi s navrženým textem. Zbytek archivoval.
+                </TimelineRow>
+                <TimelineRow time="08:30">
+                    Před první schůzkou máte v telefonu briefing: <strong>kdo volá, co řešíte, jaký je kontext</strong> z posledních e-mailů.
+                </TimelineRow>
+                <TimelineRow time="11:00">
+                    Klient zavolal, když jste byli na jednání. Hlasový agent zjistil, že jde o posunutí termínu,
+                    <strong>nabídl dva alternativní sloty</strong> z vašeho kalendáře, klient si vybral.
+                </TimelineRow>
+                <TimelineRow time="14:00">
+                    Potřebujete podklady ke schůzce zítra. Agent připravil <strong>shrnutí tří dokumentů</strong> a vytáhl klíčové body.
+                </TimelineRow>
+                <TimelineRow time="17:00">
+                    <strong>Bilance dne: 2,5 hodiny ušetřeného času.</strong> Tři schůzky, kde jste přišli připravení.
+                    Jeden zachráněný klient, který by jinak čekal na odpověď do zítřka.
+                </TimelineRow>
+            </Timeline>
+
+            <Note>
+                Případové studie poskytneme kdykoliv na požádání. Soukromí našich klientů je pro nás zásadní —
+                všechny reference proto máme anonymizované.
+            </Note>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 07 · Kolik to stojí a co to vrátí"
+                title="Jednoduchý model pro ty, jejichž hodina má vysokou cenu."
+            />
+
+            <Pricing>
+                <Price
+                    label="01 · Jednorázová implementace"
+                    value={`Jednotky – nižší <span class="orange">desítky tisíc Kč</span>`}
+                    body="Nastavení agenta, napojení na e-mail, kalendář, telefon a nástroje, trénink na vašem stylu komunikace. Platíte jednou — a máte agenta, který vás zná."
+                />
+                <Price
+                    label="02 · Měsíční provoz"
+                    value={`Jednotky <span class="orange">tisíc Kč / měsíc</span>`}
+                    body="Běh agenta, průběžné učení, technický dohled. Roste logicky podle objemu. Bez dlouhodobé vazby — krátká výpovědní lhůta."
+                />
+                <Price
+                    label="03 · Co to vrátí"
+                    value={`Desítky <span class="orange">hodin měsíčně</span>`}
+                    body="Cíl typického nasazení: desítky hodin měsíčně uspořené na rutině. Vraťte je zpět do práce, do klientů, nebo konečně do vlastního života."
+                />
+            </Pricing>
+
+            <p class="italic-serif" style="margin-top:var(--space-8); color:var(--black-90); font-size:1.2rem; max-width:60ch;">
+                Jestli vaše hodina stojí víc než pár tisíc korun, matematika udělá rozhodnutí za vás.
+            </p>
+        </div>
+    </section>
+
+    <section class="section--editorial">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 08 · Cesta k nasazení"
+                title="Čtyři kroky. Žádné překvapení."
+            />
+
+            <Steps cols={4}>
+                <Step num="01 · DIAGNOSTIKA" title="Projdeme váš den." body="Krátký rozhovor s agentem nebo formulář. Zjistíme, kam vám čas uniká a kde je návratnost nejrychlejší. Bez obchodníka." />
+                <Step num="02 · NÁVRH" title="Navrhneme, co agent bude dělat." body="Co převezme, na co ho napojíme, jaký to bude mít rozsah. Konkrétní plán, ne obecná prezentace." />
+                <Step num="03 · NASTAVENÍ" title="Napojíme agenta na vaše nástroje." body="Gmail, Outlook, kalendář, telefon. Naučíme ho váš styl. Typicky v řádu dnů — vy mezitím děláte, co umíte." />
+                <Step num="04 · ŽIVOT" title="Vy pracujete. Agent se stará." body="Agent se každý týden zlepšuje. Vy se soustředíte na to, co umíte jen vy. Krátká výpovědní lhůta — vázat vás nechceme." />
+            </Steps>
+        </div>
+    </section>
+
+    <CtaBand
+        id="rezervace"
+        eyebrow="· 09 · Rozhodnutí"
+        title="Každá hodina v rutině je hodina, kterou jste nevěnovali tomu, co vás živí."
+        lead="Agent VELYOS vám ty hodiny vrací — systematicky, každý den, bez výpadků. Začněte diagnostikou. Krátkou. Bez prezentace."
+        directPrefix="Nechcete přes agenta?"
+    >
+        <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku</a>
+    </CtaBand>
+</Layout>

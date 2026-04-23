@@ -1,0 +1,262 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Audience from '../components/Audience.astro';
+import AudienceCard from '../components/AudienceCard.astro';
+import Features from '../components/Features.astro';
+import Feature from '../components/Feature.astro';
+import Callout from '../components/Callout.astro';
+import Duo from '../components/Duo.astro';
+import Pricing from '../components/Pricing.astro';
+import Price from '../components/Price.astro';
+import GrantBlock from '../components/GrantBlock.astro';
+import Steps from '../components/Steps.astro';
+import Step from '../components/Step.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Note from '../components/Note.astro';
+import AgentDiagnostic from '../components/AgentDiagnostic.astro';
+---
+
+<Layout
+    title="VELYOS — Pro firmy | Definujeme náskok."
+    description="Automatizujeme procesy, kde firma ztrácí čas — administrativa, dokumentace, propočty, komunikace, reporting. Vracíme čas, peníze a klid napříč obory."
+    active="firmy"
+    primaryCta={{ label: 'Spustit diagnostiku', href: '/diagnostika' }}
+    footerTagline="Pro firmy, které si vybírají, s kým porostou."
+    footerVariant="v0.2 preview · pro firmy"
+>
+    <Hero tagline="Znáte to — přijdete s plánem, den skončí v e-mailech.">
+        <h1 class="hero__title">Vaši lidé umí mnohem víc, než jim rutina <span class="accent">dovolí ukázat.</span></h1>
+        <p class="hero__lead">
+            Každá firma má místa, kde jí utíkají peníze. Najdeme je, převezmeme je —
+            a vrátíme vaší firmě <strong>čas, peníze a klid</strong>, abyste se mohli soustředit na to,
+            co je opravdu důležité.
+        </p>
+        <div class="hero__ctas">
+            <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Chci vidět, kudy mi utíkají peníze</a>
+            <a href="#praxi" class="btn btn--ghost btn--lg">Kde to už funguje</a>
+        </div>
+
+        <div class="hero__meta">
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Nasazení</span>
+                <span class="hero__meta-value mono">4 <span class="gold">týdny</span></span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Návratnost</span>
+                <span class="hero__meta-value mono">6 <span class="gold">měsíců</span></span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Záruka</span>
+                <span class="hero__meta-value">Ve smlouvě</span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Klientela</span>
+                <span class="hero__meta-value">Omezený počet</span>
+            </div>
+        </div>
+
+        <Note maxWidth="60ch" style="margin-top:var(--space-8);">
+            Náš agent s vámi během pár minut projde vaši provozní realitu a ukáže, kde přicházíte o nejvíc času.
+            Bez prezentací. Bez obchodníka.
+        </Note>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Komu VELYOS dává smysl"
+                title="Hotové řešení. Napojené na váš provoz."
+            />
+            <div class="section-body">
+                <p>
+                    Dodáváme řešení, které napojíme na váš provoz a od prvního dne za vás pracuje.
+                    Vy nic nekódujete, nic neinstalujete, nic neudržujete — my stavíme, my provozujeme.
+                </p>
+                <p>Náš přístup funguje nejlépe ve firmách, kde se potkávají dvě věci:</p>
+            </div>
+
+            <Audience>
+                <AudienceCard
+                    title="Vysoký objem opakujících se interakcí"
+                    body="Zákaznická podpora, kvalifikace leadů, zpracování objednávek, interní reporting, odpovědi na standardní dotazy. Přesně ta práce, kterou AI zvládne rychleji a konzistentněji."
+                />
+                <AudienceCard
+                    title="Tým, který drží víc rolí najednou"
+                    body="Obchodník zároveň fakturuje, šéf odpovídá na support, asistentka reportuje. Administrativa ukrajuje hodiny, které by měly patřit klientům. VELYOS ji přebírá."
+                />
+                <AudienceCard
+                    title="Rozhodnutí nechat kompromisům konec"
+                    body="Pokud váš provoz profil nesplňuje, řekneme vám to rovnou při diagnostice — a ušetříme oběma stranám čas. Přijímáme omezený počet klientů ročně."
+                />
+            </Audience>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 03 · Co se změnilo a proč to řešit teď"
+                title="Tři věci se na trhu posunuly a už se nevrátí zpátky."
+            />
+
+            <Features cols={3}>
+                <Feature
+                    num="01 / RYCHLOST"
+                    title="Rychlost odpovědi rozhoduje o obchodu."
+                    body="Zákazník, který nedostane reakci do hodiny, odchází ke konkurenci. Ne proto, že by byl netrpělivý — proto, že konkurence mu odpověděla první."
+                />
+                <Feature
+                    num="02 / ADMINISTRATIVA"
+                    title="Administrativa roste rychleji než tým."
+                    body="S každým novým klientem, produktem a kanálem přibývá e-mailů, dotazů a reportů. Najmout dalšího člověka na rutinu je odsouvání problému."
+                />
+                <Feature
+                    num="03 / BEZPEČNOST"
+                    title="Bezpečnost je strategické rozhodnutí."
+                    body="Kyberútoky na české firmy rostou meziročně v desítkách procent. Náklady na obnovu často převyšují dvouletou investici do moderní infrastruktury."
+                />
+            </Features>
+
+            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-60); font-size:1.1rem; max-width:60ch;">
+                VELYOS řeší všechny tři posuny v jednom napojení, s jedním partnerem.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · Co konkrétně automatizujeme"
+                title="Rutina, která vaši firmu zdržuje. Najdeme ji. Převezmeme."
+                lead="Nejsme další software. Jsme tým, který vám to za vás postaví a provozuje. Procesů, kde firmy ztrácí čas, je šest typických. Ve vaší firmě najdeme ty vaše."
+            />
+
+            <Features cols={3}>
+                <Feature num="01 / ADMINISTRATIVA" title="Fakturace, výkazy, hlášení." body="Data se sbírají sama ze systémů, které už používáte. Žádné přepisování z e-mailu do tabulky. Žádné dvojí zadávání. Žádné chyby z únavy." />
+                <Feature num="02 / DOKUMENTACE" title="Zprávy, karty, smlouvy, podklady." body="Tým nadiktuje nebo zadá vstupy. Systém vygeneruje strukturovaný dokument podle šablony — připravený ke kontrole a podpisu." />
+                <Feature num="03 / PROPOČTY & NABÍDKY" title="Kalkulace na pár kliků." body="Systém sáhne do ceníků, zohlední sazby a subdodavatele, vygeneruje PDF. Obchodník jen odsouhlasí a odešle. Místo hodin minuty." />
+                <Feature num="04 / KOMUNIKACE S KLIENTEM" title="Rutinní dotazy převezme systém." body="Standardní otázky, objednávky, potvrzení, připomínky — odpověď v sekundách, 24/7. Složité případy jdou na člověka s připraveným kontextem." />
+                <Feature num="05 / REPORTING" title="Čísla, která se sestavují sama." body="Týdenní reporty, měsíční uzávěrky, strategická data. Vidíte výsledky, ne hodiny práce za nimi. Rozhodujete podle čerstvých dat." />
+                <Feature num="06 / KVALIFIKACE POPTÁVEK" title="Příchozí leady se třídí samy." body="Lead přijde e-mailem, formulářem, telefonem. Systém ohodnotí potenciál, doplní data, předá tam, kde má reálnou šanci." />
+            </Features>
+
+            <Callout>
+                <strong>A co neautomatizujeme?</strong> Rozhodnutí. Vyjednávání. Vztahy s klíčovými klienty. Kreativní práci.
+                Všechno, kde má cenu lidský úsudek, zůstává u vás. My jen osvobodíme kapacitu, aby se mu mohl věnovat.
+            </Callout>
+        </div>
+    </section>
+
+    <section class="section--alt" id="co-stavime">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 05 · Co stavíme"
+                title="Máte svůj systém? Napojíme se. Nemáte? Postavíme všechno."
+                lead="Nejste závislí na pěti různých agenturách. Jeden partner. Jedna smlouva. Od prvního logu po poslední tlačítko na webu."
+            />
+
+            <Duo
+                leftEyebrow="← Máte už něco"
+                leftTitle="Napojíme se na to, co funguje."
+                rightEyebrow="→ Nebo od nuly"
+                rightTitle="Postavíme vám všechno."
+            >
+                <Fragment slot="left">
+                    <p>Máte web? CRM? E-maily? Marketing?</p>
+                    <p>Nic nebouráme. Přidáme AI a propojíme to, co teď běží odděleně.</p>
+                </Fragment>
+                <Fragment slot="right">
+                    <p>Začínáte? Přecházíte? Chcete nový směr?</p>
+                    <p>Uděláme vám web, značku, AI agenty, propojení i propagaci. Od A do Z.</p>
+                </Fragment>
+            </Duo>
+
+            <Features cols={3}>
+                <Feature num="01 / PROCESY" title="Zautomatizujeme, co vás zdržuje." body="Propočty. Fakturace. Reporty. Schvalování. Cokoli se u vás opakuje a dá se to popsat pravidly — převezmeme to." />
+                <Feature num="02 / WEB & BRAND" title="Postavíme vám web a značku." body="Stránky, které prodávají. Logo, barvy a vizuál, který si lidi zapamatují." />
+                <Feature num="03 / CRM & INTEGRACE" title="Propojíme to s vaším systémem." body="HubSpot, Pipedrive, Salesforce, nebo vlastní. Data si sedí sama na místo." />
+                <Feature num="04 / AI AGENTI" title="Nasadíme AI, co mluví místo vás." body="Hlasový agent na telefonu. Chatbot na webu. E-mailový asistent. Tam, kde se vyplatí." />
+                <Feature num="05 / PROPAGACE" title="Postaráme se, aby o vás věděli." body="SEO. Google & Meta reklama. LinkedIn. Cold outreach. Ti správní klienti." />
+                <Feature num="06 / DATA" title="Ukážeme vám, kde utíká čas." body="Dashboard, co dává smysl. Vidíte, co funguje, co ne, a co dělat dál." />
+            </Features>
+        </div>
+    </section>
+
+    <section class="section--editorial" id="praxi">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 06 · Obory, kde VELYOS pomáhá"
+                title="Stejný přístup. Jiné firmy. Stejný výsledek."
+                lead="Principy se nemění — přizpůsobí se vašemu provozu. Níže uvedená čísla jsou <strong>cíle typických nasazení</strong> — to, co umíme dodat. Konkrétní výsledky pro vaši firmu probereme po diagnostice."
+            />
+
+            <Features cols={2}>
+                <Feature num="Zdravotnictví" title={`Dokumentace z <span style="color:var(--velocity-orange);">25&nbsp;min na 4&nbsp;min</span> na pacienta.`} body="Lékař nadiktuje shrnutí. Systém strukturuje zdravotní kartu, přiřadí kódy MKN-10, vyplní podklad pro pojišťovnu. Lékař schválí a odešle. Den má o dvě hodiny víc pro pacienty." />
+                <Feature num="Stavebnictví" title={`Propočet nabídky ze <span style="color:var(--velocity-orange);">4&nbsp;hodin na 20&nbsp;minut</span>.`} body="Obchodník zadá zakázku. Systém sáhne do ceníků, zohlední subdodavatele a sazby, vygeneruje PDF. Počet vyřízených poptávek denně se zdvojnásobí." />
+                <Feature num="Reality" title={`Lead <span style="color:var(--velocity-orange);">do hodiny</span>. I&nbsp;o víkendu.`} body="Poptávka přijde přes portál nebo telefon. Systém ji ohodnotí, doplní údaje z katastru, navrhne odpovídající nemovitosti. Makléř reaguje dřív, než konkurence zvedne telefon." />
+                <Feature num="Služby (advokáti, poradci, účetní)" title={`Příprava ke klientovi za <span style="color:var(--velocity-orange);">15&nbsp;minut</span>.`} body="Systém projde e-maily, dokumenty, historii klienta. Připraví briefing: co řešíte, kam pokračujete, co klient přinese na stůl. Přijdete připravení, ne zaskočení." />
+            </Features>
+
+            <Note>
+                Případové studie poskytneme kdykoliv na požádání. Soukromí našich klientů je pro nás zásadní —
+                všechny reference proto máme anonymizované.
+            </Note>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 07 · Kolik to stojí"
+                title="Transparentní struktura. Konkrétní cena po telefonu."
+                lead="Každý projekt je jiný — podle toho, kolik procesů stavíme, na co je napojujeme a kolik lidí se jich dotýká. Proto nemáme ceník. Konkrétní kalkulaci probereme po telefonu, ne v dotazníku."
+            />
+
+            <Pricing>
+                <Price
+                    label="01 · Jednorázová implementace"
+                    value={`Podle <span class="orange">rozsahu</span>`}
+                    body="Analýza vašich procesů, napojení na systémy, trénink systému na vašich datech a nasazení do provozu. Cena roste s tím, co stavíme — od dílčí automatizace po komplexní řešení."
+                />
+                <Price
+                    label="02 · Měsíční provoz"
+                    value={`Stabilní <span class="orange">měsíční rytmus</span>`}
+                    body="Běh systému, lidský dohled, průběžné učení a rozvoj. Roste předvídatelně s rozsahem nasazení — žádné skryté licence, žádné překvapení."
+                />
+                <Price
+                    label="03 · Návratnost"
+                    value={`3–6 <span class="orange">měsíců</span>`}
+                    body="U dosavadních nasazení vidíme návratnost investice čistě z uspořených hodin. Zvýšená konverze a lepší retence klientů jsou bonus navíc."
+                />
+            </Pricing>
+
+            <p style="margin-top:var(--space-8); color:var(--black-60); max-width:62ch;">
+                Diagnostika vám ukáže <strong>3–4 procesy</strong>, kde má automatizace pro vaši firmu největší smysl
+                — například administrativa, účetnictví, zákaznická komunikace nebo služba na míru.
+                Konkrétní kalkulaci a kompletní rozbor probereme osobně po telefonu, až bude jasné, co stavíme.
+            </p>
+
+            <GrantBlock />
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 08 · Cesta k nasazení"
+                title="Čtyři kroky. Žádné překvapení."
+            />
+
+            <Steps cols={4}>
+                <Step num="01 · DIAGNOSTIKA" title="Projdeme vaše procesy." body="Vyčíslíme, kde přicházíte o nejvíc času a peněz. Výstupem je konkrétní kalkulace, ne obecná prezentace." />
+                <Step num="02 · NÁVRH" title="Navrhneme řešení na míru." body="Co automatizujeme, jak to napojíme, co to bude stát. Konkrétní plán, ne deck." />
+                <Step num="03 · INTEGRACE" title="Napojíme VELYOS na vaše systémy." body="Typicky v řádu dnů, bez narušení provozu. Váš tým mezitím dělá, co umí." />
+                <Step num="04 · PROVOZ" title="Vy se soustředíte na byznys." body="My dohlížíme na to, aby systém každý měsíc fungoval lépe než ten předchozí." />
+            </Steps>
+        </div>
+    </section>
+
+    <AgentDiagnostic agentId="cu9gllbBtpZWU6CuJXky" />
+</Layout>
