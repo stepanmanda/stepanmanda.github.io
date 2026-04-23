@@ -184,29 +184,34 @@ import Note from '../components/Note.astro';
     <section>
         <div class="container">
             <SectionHead
-                eyebrow="· 07 · Kolik to stojí a co to vrátí"
-                title="Jednoduchý model pro ty, jejichž hodina má vysokou cenu."
+                eyebrow="· 07 · Investice"
+                title="Individuální, jako váš den."
+                lead="Nemáme veřejný ceník. Každý agent se staví jinak — podle vašich nástrojů, stylu, objemu a toho, co má převzít. Konkrétní investici probereme osobně, až budeme vědět, na čem stavíme."
             />
 
-            <Pricing>
-                <Price
-                    label="01 · Jednorázová implementace"
-                    value={`Jednotky – nižší <span class="orange">desítky tisíc Kč</span>`}
-                    body="Nastavení agenta, napojení na e-mail, kalendář, telefon a nástroje, trénink na vašem stylu komunikace. Platíte jednou — a máte agenta, který vás zná."
-                />
-                <Price
-                    label="02 · Měsíční provoz"
-                    value={`Jednotky <span class="orange">tisíc Kč / měsíc</span>`}
-                    body="Běh agenta, průběžné učení, technický dohled. Roste logicky podle objemu. Bez dlouhodobé vazby — krátká výpovědní lhůta."
-                />
-                <Price
-                    label="03 · Co to vrátí"
-                    value={`Desítky <span class="orange">hodin měsíčně</span>`}
-                    body="Cíl typického nasazení: desítky hodin měsíčně uspořené na rutině. Vraťte je zpět do práce, do klientů, nebo konečně do vlastního života."
-                />
-            </Pricing>
+            <div style="max-width:var(--container-narrow); margin-top:var(--space-8); display:grid; grid-template-columns:1fr 1fr; gap:var(--space-8);" data-stagger>
+                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--velocity-orange); border-radius:var(--radius);">
+                    <span class="eyebrow" style="color:var(--velocity-orange); display:block; margin-bottom:var(--space-3);">Co dostanete vždy</span>
+                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:var(--space-2); color:var(--black-90); line-height:1.5; font-size:0.98rem;">
+                        <li><strong>Fixní cena před startem</strong> — víte, za co platíte</li>
+                        <li><strong>Dvousložkový model</strong> — jednorázové nastavení + měsíční provoz</li>
+                        <li><strong>Bez dlouhodobé vazby</strong> — krátká výpovědní lhůta</li>
+                        <li><strong>Cíl desítek hodin měsíčně</strong> uspořených na rutině</li>
+                    </ul>
+                </div>
+                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--signal-gold); border-radius:var(--radius);">
+                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Jak cenu zjistíte</span>
+                    <p style="color:var(--black-90); line-height:1.6; font-size:0.98rem; margin:0 0 var(--space-4);">
+                        Spusťte <a href="/diagnostika" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30); font-weight:500;">diagnostiku</a>
+                        — 5 minut s agentem nebo formulářem. Do 24 hodin vám zavoláme a projdeme konkrétní rozsah.
+                    </p>
+                    <p style="color:var(--black-60); line-height:1.6; font-size:0.9rem; margin:0;">
+                        První hovor je zdarma a bez závazku.
+                    </p>
+                </div>
+            </div>
 
-            <p class="italic-serif" style="margin-top:var(--space-8); color:var(--black-90); font-size:1.2rem; max-width:60ch;">
+            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-90); font-size:1.2rem; max-width:60ch;">
                 Jestli vaše hodina stojí víc než pár tisíc korun, matematika udělá rozhodnutí za vás.
             </p>
         </div>
