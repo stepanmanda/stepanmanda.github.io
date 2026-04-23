@@ -199,11 +199,23 @@
             document.body.classList.remove("nav-open");
         };
 
-        navToggle.addEventListener("click", () => {
+        const toggleDrawer = (e) => {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
             const isOpen = mobileDrawer.classList.contains("is-open");
             if (isOpen) closeDrawer();
             else openDrawer();
-        });
+        };
+
+        navToggle.addEventListener("click", toggleDrawer);
+        // Backup pro staré iOS Safari kde click event někdy nedoskočí
+        navToggle.addEventListener("touchend", (e) => {
+            // Jen pokud prst nezačal přetahovat
+            e.preventDefault();
+            toggleDrawer(e);
+        }, { passive: false });
 
         // Klik na link v draweru → zavřít (pro interní anchor odkazy)
         mobileDrawer.querySelectorAll("a").forEach((link) => {
