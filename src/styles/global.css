@@ -1907,7 +1907,19 @@ elevenlabs-convai {
     .hero__meta { gap: var(--space-6); }
     .nav { display: none; }
     .nav--compact { display: flex; gap: var(--space-4); }
-    .nav-toggle { display: flex; }
+    .nav-toggle {
+        display: flex;
+        /* Fixed nad drawerem — vytáhne z header stacking context */
+        position: fixed;
+        top: 12px;
+        right: 16px;
+        z-index: 10000;
+        margin-right: 0;
+    }
+    /* Když je drawer otevřený, bars musí být bílé (mají tmavé pozadí za sebou) */
+    body.nav-open .nav-toggle__bar {
+        background: var(--ivory-silver);
+    }
     .timeline__row { grid-template-columns: 1fr; gap: var(--space-2); }
     .container { padding: 0 var(--space-6); }
     .hero { padding: var(--space-16) 0 var(--space-20); }
