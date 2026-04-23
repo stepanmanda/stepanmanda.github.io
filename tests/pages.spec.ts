@@ -104,6 +104,31 @@ test.describe('Navigace mezi stránkami', () => {
     });
 });
 
+test.describe('Mobile hamburger menu', () => {
+    test('Hamburger otevře drawer s 7 linky (mobile)', async ({ page }, testInfo) => {
+        test.skip(testInfo.project.name !== 'mobile-chrome', 'Jen mobile');
+        await page.goto('/');
+
+        const toggle = page.locator('#nav-toggle');
+        const drawer = page.locator('#mobile-drawer');
+
+        await expect(toggle).toBeVisible();
+        await expect(drawer).not.toHaveClass(/is-open/);
+
+        await toggle.click();
+        await expect(drawer).toHaveClass(/is-open/);
+        await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+
+        // 7 hlavních linků v draweru
+        const links = drawer.locator('.mobile-drawer__link');
+        await expect(links).toHaveCount(7);
+
+        // Klik na link zavře drawer (ale přejde na stránku)
+        await drawer.getByText('Pro firmy').click();
+        await expect(page).toHaveURL(/\/firmy/);
+    });
+});
+
 test.describe('Kontakt popover v nav', () => {
     test('Klik na Kontakt otevře popover s e-mailem a telefonem', async ({ page }, testInfo) => {
         // Nav je na mobilu schovaný (display:none pod 880px) — test jen na desktopu
