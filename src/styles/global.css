@@ -218,7 +218,7 @@ section {
     cursor: pointer;
     padding: 12px;
     margin-right: -12px;
-    z-index: 70;
+    z-index: 10000; /* Nad drawerem (9999) aby byl přístupný pro zavření */
     position: relative;
     /* Zabránit 300ms delay na iOS Safari a nechtěnému scrollu */
     touch-action: manipulation;
