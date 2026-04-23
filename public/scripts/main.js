@@ -177,4 +177,59 @@
             scrollClose = setTimeout(closePanel, 150);
         }, { passive: true });
     }
+
+    /* Mobile hamburger drawer ---------------------------- */
+    const navToggle = document.getElementById("nav-toggle");
+    const mobileDrawer = document.getElementById("mobile-drawer");
+
+    if (navToggle && mobileDrawer) {
+        const openDrawer = () => {
+            mobileDrawer.classList.add("is-open");
+            navToggle.setAttribute("aria-expanded", "true");
+            navToggle.setAttribute("aria-label", "Zavřít menu");
+            mobileDrawer.setAttribute("aria-hidden", "false");
+            document.body.classList.add("nav-open");
+        };
+
+        const closeDrawer = () => {
+            mobileDrawer.classList.remove("is-open");
+            navToggle.setAttribute("aria-expanded", "false");
+            navToggle.setAttribute("aria-label", "Otevřít menu");
+            mobileDrawer.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("nav-open");
+        };
+
+        navToggle.addEventListener("click", () => {
+            const isOpen = mobileDrawer.classList.contains("is-open");
+            if (isOpen) closeDrawer();
+            else openDrawer();
+        });
+
+        // Klik na link v draweru → zavřít (pro interní anchor odkazy)
+        mobileDrawer.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                // Při přechodu na jinou stránku se drawer zavře sám (nový page load).
+                // Tady jen pro navigaci v rámci stránky.
+                closeDrawer();
+            });
+        });
+
+        // ESC zavře drawer
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && mobileDrawer.classList.contains("is-open")) {
+                closeDrawer();
+            }
+        });
+
+        // Při resize nad breakpoint drawer zavřít (kdyby uživatel rotoval)
+        let resizeTimeout;
+        window.addEventListener("resize", () => {
+            if (resizeTimeout) clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (window.innerWidth > 880 && mobileDrawer.classList.contains("is-open")) {
+                    closeDrawer();
+                }
+            }, 100);
+        });
+    }
 })();
