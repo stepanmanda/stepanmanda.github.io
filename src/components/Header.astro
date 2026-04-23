@@ -12,6 +12,8 @@ const { active = null, primaryCta = { label: 'Zažádat o konzultaci', href: '/f
 <header class="site-header">
     <div class="site-header__inner">
         <a href="/" class="brand">VELY<span class="os">OS</span></a>
+
+        <!-- Desktop nav -->
         <nav class="nav">
             <a href="/firmy" class={active === 'firmy' ? 'active' : ''}>Pro firmy</a>
             <a href="/jednotlivci" class={active === 'jednotlivci' ? 'active' : ''}>Pro jednotlivce</a>
@@ -21,5 +23,57 @@ const { active = null, primaryCta = { label: 'Zažádat o konzultaci', href: '/f
                 <a href={primaryCta.href} class="btn btn--primary btn--sm btn-arrow">{primaryCta.label}</a>
             )}
         </nav>
+
+        <!-- Mobile hamburger trigger -->
+        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Otevřít menu" type="button">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+        </button>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-label="Hlavní menu" aria-hidden="true">
+        <div class="mobile-drawer__glow"></div>
+        <nav class="mobile-drawer__nav">
+            <a href="/firmy" class={`mobile-drawer__link ${active === 'firmy' ? 'is-active' : ''}`}>
+                <span class="mobile-drawer__link-num">01</span>
+                <span>Pro firmy</span>
+            </a>
+            <a href="/jednotlivci" class={`mobile-drawer__link ${active === 'jednotlivci' ? 'is-active' : ''}`}>
+                <span class="mobile-drawer__link-num">02</span>
+                <span>Pro jednotlivce</span>
+            </a>
+            <a href="/diagnostika" class={`mobile-drawer__link ${active === null && false ? 'is-active' : ''}`}>
+                <span class="mobile-drawer__link-num">03</span>
+                <span>Diagnostika</span>
+            </a>
+            <a href="/o-nas" class={`mobile-drawer__link ${active === 'o-nas' ? 'is-active' : ''}`}>
+                <span class="mobile-drawer__link-num">04</span>
+                <span>O nás</span>
+            </a>
+            <a href="/pristup" class={`mobile-drawer__link ${active === 'pristup' ? 'is-active' : ''}`}>
+                <span class="mobile-drawer__link-num">05</span>
+                <span>Přístup</span>
+            </a>
+            <a href="/pripadove-studie" class={`mobile-drawer__link ${active === 'pripadove-studie' ? 'is-active' : ''}`}>
+                <span class="mobile-drawer__link-num">06</span>
+                <span>Vzory nasazení</span>
+            </a>
+            <a href="/kontakt" class={`mobile-drawer__link ${active === 'kontakt' ? 'is-active' : ''}`}>
+                <span class="mobile-drawer__link-num">07</span>
+                <span>Kontakt</span>
+            </a>
+        </nav>
+
+        <div class="mobile-drawer__footer">
+            <span class="mobile-drawer__footer-label">Přímý kontakt</span>
+            <a href="mailto:stepan@velyos.ai" class="mobile-drawer__footer-link">stepan@velyos.ai</a>
+            <span class="mobile-drawer__footer-note">Telefon doplníme po registraci firmy.</span>
+
+            {primaryCta && (
+                <a href={primaryCta.href} class="btn btn--primary btn-arrow btn--lg" style="margin-top:1.5rem;">{primaryCta.label}</a>
+            )}
+        </div>
     </div>
 </header>
