@@ -2040,7 +2040,8 @@ elevenlabs-convai {
         transition-duration: 0.01ms !important;
     }
 
-    .hero__tagline, .hero__title, .hero__lead, .hero__ctas,
+    .hero__tagline, .hero__title, .hero__title .word,
+    .hero__lead, .hero__ctas,
     .hero__ctas-note, .hero__grant, .hero__meta, .hero .note,
     [data-reveal], [data-stagger] > * {
         opacity: 1 !important;
