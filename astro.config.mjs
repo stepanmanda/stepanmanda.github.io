@@ -14,11 +14,27 @@ export default defineConfig({
     devToolbar: {
         enabled: false, // bez Astro devbaru, má vlastní vizuál (preview ribbon)
     },
+    i18n: {
+        defaultLocale: 'cs',
+        locales: ['cs', 'en', 'de'],
+        routing: {
+            prefixDefaultLocale: false, // CZ v kořeni /, EN v /en, DE v /de
+            redirectToDefaultLocale: false,
+        },
+    },
     integrations: [
         sitemap({
             changefreq: 'monthly',
             priority: 0.7,
             lastmod: new Date(),
+            i18n: {
+                defaultLocale: 'cs',
+                locales: {
+                    cs: 'cs-CZ',
+                    en: 'en-US',
+                    de: 'de-DE',
+                },
+            },
         }),
     ],
 });
