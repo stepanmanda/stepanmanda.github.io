@@ -129,12 +129,16 @@ const locale = lang === 'cs' ? 'cs-CZ' : lang === 'en' ? 'en-US' : 'de-DE';
 
     .roi__glow {
         position: absolute;
-        inset: 0;
+        top: 10%;
+        left: 50%;
+        width: 720px;
+        height: 720px;
+        max-width: 90%;
+        transform: translateX(-50%);
         pointer-events: none;
         background:
             radial-gradient(ellipse 50% 40% at 20% 30%, rgba(232, 93, 31, 0.18) 0%, transparent 60%),
             radial-gradient(ellipse 60% 50% at 80% 80%, rgba(184, 147, 92, 0.12) 0%, transparent 60%);
-        animation: glowBreathe 9s ease-in-out infinite;
     }
 
     .roi .container { position: relative; z-index: 1; }
