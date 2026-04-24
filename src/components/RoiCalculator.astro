@@ -399,6 +399,19 @@ const locale = lang === 'cs' ? 'cs-CZ' : lang === 'en' ? 'en-US' : 'de-DE';
         }
         .roi__results { padding: var(--space-6); }
     }
+
+    @media (max-width: 560px) {
+        /* Na úzkých obrazovkách dám value box pod slider */
+        .roi__slider-wrap {
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+        .roi__value-box {
+            justify-self: stretch;
+            text-align: left;
+            justify-content: flex-start;
+        }
+    }
 </style>
 
 <script is:inline>
