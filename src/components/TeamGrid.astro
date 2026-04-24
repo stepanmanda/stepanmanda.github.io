@@ -58,10 +58,21 @@ const t = copy[lang];
             {members.map((m) => (
                 <article class={`member ${m.featured ? 'member--featured' : ''}`}>
                     <div class="member__photo" aria-label={m.name[lang]}>
-                        <div class="member__photo-placeholder">
-                            <span class="member__photo-initials">{m.initials}</span>
-                            <span class="member__photo-pending">{t.initialsLabel}</span>
-                        </div>
+                        {m.photo ? (
+                            <img
+                                class="member__photo-img"
+                                src={m.photo}
+                                alt={m.name[lang]}
+                                loading="lazy"
+                                width="600"
+                                height="600"
+                            />
+                        ) : (
+                            <div class="member__photo-placeholder">
+                                <span class="member__photo-initials">{m.initials}</span>
+                                <span class="member__photo-pending">{t.initialsLabel}</span>
+                            </div>
+                        )}
                     </div>
 
                     <div class="member__body">
