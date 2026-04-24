@@ -1,0 +1,187 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Note from '../../components/Note.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+
+<Layout
+    title="VELYOS — Anwendungsbeispiele | Was wir liefern können."
+    description="VELYOS-Einsatzmuster nach Branche — Gesundheitswesen, Bauwesen, Immobilien, professionelle Dienstleistungen. Zielwerte typischer Projekte, die wir für ähnliche Firmen bauen."
+    lang="de"
+    active="pripadove-studie"
+    footerTagline="Muster dessen, was wir liefern."
+    footerVariant="v0.3 preview · Anwendungsbeispiele"
+>
+    <Hero tagline="· Anwendungsbeispiele · Wir definieren den Vorsprung.">
+        <h1 class="hero__title">Was wir für Sie <span class="accent">liefern können.</span></h1>
+        <p class="hero__lead">
+            Muster typischer Einsätze nach Branche. Keine konkreten Fallstudien —
+            <strong>sondern Ergebnisse, die wir bei Kunden in ähnlichen Situationen erreichen.</strong>
+            Wenn wir uns treffen, besprechen wir, was für Ihre Firma realistisch ist.
+        </p>
+        <p class="hero__lead" style="font-size:0.95rem; margin-top:var(--space-4); max-width:60ch; color:var(--black-60); font-style:italic;">
+            Vollständig anonymisierte Fallstudien mit realen Zahlen und Firmen geben wir unter NDA an ernsthafte Interessenten weiter.
+        </p>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Gesundheitswesen"
+                title="Klinik oder Praxis: Dokumentation frisst den Ärzten täglich Stunden."
+                lead="Typisches Szenario bei kleineren und mittelgroßen Einrichtungen — Kliniken, Facharztpraxen, Reha-Zentren."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Ausgangssituation</h3>
+                <p>
+                    Der Arzt verbringt einen erheblichen Teil des Tages mit Dokumentation, Kassenabrechnungen und Notizen.
+                    Die Praxis schließt und die „zweite Papierschicht" beginnt. Verwaltung greift in die Patientenversorgung ein.
+                </p>
+
+                <h3>Was wir bauen</h3>
+                <p>
+                    Der Arzt diktiert eine Zusammenfassung des Besuchs. Das System strukturiert die Akte, bereitet ICD-10-Codes
+                    und die Kassenabrechnung vor. Der Arzt prüft und gibt frei. Alles innerhalb der klinischen Datenbank —
+                    keine Daten verlassen die Praxisumgebung.
+                </p>
+
+                <h3>Zielergebnis</h3>
+                <p>
+                    Dokumentationszeit sinkt von zweistelligen Minuten auf <strong style="color:var(--velocity-orange);">einstellige Minuten pro Patient</strong>.
+                    Jeder Arzt gewinnt <strong>Stunden pro Tag für Patienten — oder für einen pünktlichen Feierabend</strong>.
+                    Praxiskapazität wächst ohne zusätzliches Personal.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 03 · Bauwesen"
+                title="Baufirma: Angebotserstellung frisst den halben Vertriebstag."
+                lead="Typisches Szenario bei Firmen mit eigenen Kalkulatoren und verschiedenen Subunternehmern — Renovierungen, Tiefbau, technische Gewerke."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Ausgangssituation</h3>
+                <p>
+                    Der Vertrieb erstellt jedes Angebot von Hand — Preislisten, Subunternehmer-Sätze, Marge, Umfangsprüfung.
+                    Ein qualitatives Angebot frisst den halben Tag. Die Firma kommt nicht nach und einige Anfragen gehen verloren.
+                </p>
+
+                <h3>Was wir bauen</h3>
+                <p>
+                    Der Vertrieb gibt die Auftragsparameter ein. Das System greift auf interne Preislisten zu, berücksichtigt aktuelle Subunternehmer-Sätze,
+                    berechnet die Marge und erstellt ein PDF-Angebot im Firmen-CI. Der Vertrieb prüft und versendet.
+                </p>
+
+                <h3>Zielergebnis</h3>
+                <p>
+                    Zeit pro Angebot sinkt von <strong style="color:var(--velocity-orange);">Stunden auf einstellige Minuten</strong>.
+                    Die tägliche Anzahl bearbeiteter Anfragen vervielfacht sich. Der Vertrieb reagiert schneller als die Konkurrenz — mehr Abschlüsse.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · Immobilien"
+                title="Immobilienmakler: Wochenend-Leads gehen zur Konkurrenz."
+                lead="Typisches Szenario bei mittleren Maklerbüros mit mehreren Agenten und eingehenden Leads über Portale, Web und Telefon."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Ausgangssituation</h3>
+                <p>
+                    Anfragen über Web, Telefon und Immobilienportale kommen rund um die Uhr. Makler bearbeiten sie in der Arbeitszeit —
+                    spätestens am Montagmorgen. Bis dahin spricht der Kunde oft schon mit einem anderen Büro.
+                </p>
+
+                <h3>Was wir bauen</h3>
+                <p>
+                    Das System empfängt Anfragen aus allen Kanälen automatisch. Es bewertet den Lead, ergänzt öffentliche Daten,
+                    schlägt passende Objekte aus dem Portfolio vor. Ein qualifizierter Lead erreicht den Makler mit komplettem Kontext — bereit zum sofortigen Rückruf.
+                </p>
+
+                <h3>Zielergebnis</h3>
+                <p>
+                    Durchschnittliche Erstreaktion sinkt von <strong style="color:var(--velocity-orange);">Stunden auf Minuten</strong>.
+                    Konversion Lead → Termin steigt deutlich. Wochenend-Anfragen gehen nicht mehr verloren — das System fängt sie ab, bevor die Konkurrenz zum Hörer greift.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 05 · Professionelle Dienstleistungen"
+                title="Recht, Beratung, Buchhaltung: Kundentermin-Vorbereitung frisst fakturierbare Zeit."
+                lead="Typisches Szenario in Kanzleien, wo ein Senior vor jedem Termin Stunden mit dem Durchsehen der Kundenhistorie verbringt."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Ausgangssituation</h3>
+                <p>
+                    Vor jedem Kundengespräch durchsucht der Senior-Partner stundenlang E-Mails, Dokumente und frühere Sitzungen.
+                    Junior-Kollegen noch länger. Fakturierbare Zeit löst sich in Vorbereitung auf, die der Kunde nie sieht.
+                </p>
+
+                <h3>Was wir bauen</h3>
+                <p>
+                    Das System durchgeht die vollständige Kundendokumentation, alle früheren Interaktionen und den aktuellen rechtlichen oder fachlichen Rahmen.
+                    Erstellt ein Briefing: worum es geht, wohin es läuft, was der Kunde ansprechen will, aktueller Stand.
+                </p>
+
+                <h3>Zielergebnis</h3>
+                <p>
+                    Vorbereitungszeit sinkt von zweistelligen Minuten auf <strong style="color:var(--velocity-orange);">einstellige Minuten</strong>.
+                    Der Senior kommt besser vorbereitet zum Kunden. Fakturierbare Kapazität wächst ohne Einstellungen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--editorial">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· Hinweis"
+                title="Warum wir Muster teilen und keine konkreten Kunden."
+            />
+
+            <div class="section-body" data-reveal>
+                <p>
+                    Unsere Kunden arbeiten aus drei Gründen mit uns: <strong>Geschwindigkeit, Garantie und Diskretion</strong>.
+                    Diskretion heißt: Ihr konkreter Einsatz, ihre Daten und ihr Know-how wandern nicht durch Marketingmaterial.
+                </p>
+
+                <p>
+                    Die Muster oben beschreiben <strong>typische Aufgabenstellungen und Zielwerte</strong>, mit denen wir arbeiten.
+                    Konkrete Zahlen und Details für Ihr Unternehmen besprechen wir im ersten Gespräch — entsprechend Ihren Systemen, Prozessen und Prioritäten.
+                </p>
+
+                <p>
+                    Wenn Sie ernsthaft interessiert sind und eine anonymisierte Studie zu einem konkreten Projekt sehen möchten,
+                    schreiben Sie uns. In der zweiten Phase des Gesprächs gehen wir durch, was direkt in Ihrem Fall realistisch ist.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <CtaBand
+        id="chci-vic"
+        eyebrow="· 06 · Wollen Sie Ihren Fall besprechen?"
+        title="Sagen Sie uns, was Sie interessiert — wir gehen ein konkretes Szenario durch."
+        lead="Der schnellste Weg sind ein paar Minuten mit unserem Diagnose-Agenten oder ein kurzes Formular. Innerhalb von 24 Stunden meldet sich ein Spezialist mit einer konkreten Einschätzung für Ihre Branche."
+        directPrefix="Oder direkt an"
+    >
+        <a href="/de/diagnose" class="btn btn--primary btn-arrow btn--lg">Diagnose starten</a>
+        <a href="/de/kontakt" class="btn btn--ghost btn--lg">Alle Kontaktwege</a>
+    </CtaBand>
+</Layout>
