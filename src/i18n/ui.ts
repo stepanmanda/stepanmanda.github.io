@@ -141,6 +141,12 @@ export const ui = {
             legalImpresum: 'Imprint',
             legalGdpr: 'Privacy policy',
             copyright: 'We accept a limited number of clients per year.',
+            statusLabel: 'Q2 2026 · Limited intake',
+            manifesto: "We don't work for everyone. We work for those who understand why they're with us.",
+            trustDeploy: '4-week deployment',
+            trustContract: 'Guaranteed in contract',
+            trustIso: 'ISO 27001 principles',
+            trustEu: 'EU · Czech Republic',
         },
         de: {
             columnSystem: 'System',
