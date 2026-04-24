@@ -28,26 +28,157 @@
         revealTargets.forEach((el) => el.classList.add("is-visible"));
     }
 
-    /* Hero — glow follows cursor (subtilní parallax) ---- */
-    const hero = document.querySelector(".hero");
-    const glow = document.querySelector(".hero__glow");
+    /* ================================================
+       HERO — CINEMATIC MODE
+       Canvas mesh gradient + per-word reveal + multi-layer parallax
+       ================================================ */
+    const hero = document.querySelector("[data-hero-cinematic]");
 
-    if (hero && glow && !prefersReducedMotion) {
-        let rafId = null;
-        hero.addEventListener("mousemove", (e) => {
-            if (rafId) return;
-            rafId = requestAnimationFrame(() => {
-                const rect = hero.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / rect.width;
-                const y = (e.clientY - rect.top) / rect.height;
-                glow.style.transform = `translate3d(${(x - 0.5) * 60}px, ${(y - 0.5) * 60}px, 0)`;
-                rafId = null;
+    if (hero) {
+        // 1. Mouse parallax — nastavuje CSS custom properties pro všechny vrstvy
+        if (!prefersReducedMotion) {
+            let parallaxRaf = null;
+            hero.addEventListener("mousemove", (e) => {
+                if (parallaxRaf) return;
+                parallaxRaf = requestAnimationFrame(() => {
+                    const rect = hero.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    hero.style.setProperty("--mouse-x", x.toFixed(3));
+                    hero.style.setProperty("--mouse-y", y.toFixed(3));
+                    parallaxRaf = null;
+                });
             });
-        });
 
-        hero.addEventListener("mouseleave", () => {
-            glow.style.transform = "";
-        });
+            hero.addEventListener("mouseleave", () => {
+                hero.style.setProperty("--mouse-x", "0");
+                hero.style.setProperty("--mouse-y", "0");
+            });
+        }
+
+        // 2. Split H1 na jednotlivá slova pro reveal animaci
+        const title = hero.querySelector(".hero__title");
+        if (title && !title.dataset.split) {
+            title.dataset.split = "1";
+            // Najdeme všechny text nodes + preservujeme spans (.accent)
+            const walker = document.createTreeWalker(title, NodeFilter.SHOW_TEXT);
+            const textNodes = [];
+            let node;
+            while ((node = walker.nextNode())) textNodes.push(node);
+
+            let wordIndex = 0;
+            textNodes.forEach((textNode) => {
+                const words = textNode.textContent.split(/(\s+)/);
+                const frag = document.createDocumentFragment();
+                words.forEach((w) => {
+                    if (/^\s+$/.test(w)) {
+                        frag.appendChild(document.createTextNode(w));
+                    } else if (w.length) {
+                        const span = document.createElement("span");
+                        span.className = "word";
+                        span.style.setProperty("--word-index", wordIndex);
+                        span.textContent = w;
+                        frag.appendChild(span);
+                        wordIndex++;
+                    }
+                });
+                textNode.parentNode.replaceChild(frag, textNode);
+            });
+        }
+
+        // 3. Canvas mesh gradient — animovaný pozadí z „plujících" barevných sfér
+        const canvas = hero.querySelector(".hero__mesh");
+        if (canvas && !prefersReducedMotion) {
+            const ctx = canvas.getContext("2d", { alpha: true });
+            if (ctx) {
+                let width = 0, height = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+                let animId = null;
+
+                // 4 barevné sféry s vlastními trajektoriemi — „floating mesh"
+                // Barvy z brand palety: Velocity Orange + Signal Gold + Deep Velocity
+                const blobs = [
+                    { x: 0.25, y: 0.30, r: 0.45, color: "rgba(232, 93, 31, 0.28)",  vx: 0.00018, vy: 0.00012 },
+                    { x: 0.70, y: 0.25, r: 0.55, color: "rgba(184, 147, 92, 0.25)", vx: -0.00014, vy: 0.00020 },
+                    { x: 0.35, y: 0.80, r: 0.50, color: "rgba(184, 147, 92, 0.18)", vx: 0.00016, vy: -0.00016 },
+                    { x: 0.80, y: 0.70, r: 0.40, color: "rgba(232, 93, 31, 0.15)",  vx: -0.00012, vy: -0.00014 },
+                ];
+
+                const resize = () => {
+                    const rect = hero.getBoundingClientRect();
+                    width = rect.width;
+                    height = rect.height;
+                    canvas.width = width * dpr;
+                    canvas.height = height * dpr;
+                    ctx.scale(dpr, dpr);
+                };
+
+                const draw = (timestamp) => {
+                    ctx.clearRect(0, 0, width, height);
+
+                    blobs.forEach((b) => {
+                        // Floating — harmonický posun + bounds
+                        b.x += b.vx;
+                        b.y += b.vy;
+                        if (b.x < 0.1 || b.x > 0.9) b.vx *= -1;
+                        if (b.y < 0.1 || b.y > 0.9) b.vy *= -1;
+
+                        // Jemný „breathing" efekt na radius (sinusoida)
+                        const breath = 1 + Math.sin(timestamp * 0.0003 + b.x * 10) * 0.08;
+                        const r = Math.max(width, height) * b.r * breath;
+
+                        const grd = ctx.createRadialGradient(
+                            b.x * width, b.y * height, 0,
+                            b.x * width, b.y * height, r
+                        );
+                        grd.addColorStop(0, b.color);
+                        grd.addColorStop(1, "rgba(0, 0, 0, 0)");
+                        ctx.fillStyle = grd;
+                        ctx.fillRect(0, 0, width, height);
+                    });
+
+                    animId = requestAnimationFrame(draw);
+                };
+
+                // Spustíme až když je hero viditelný (IntersectionObserver — šetří CPU)
+                let running = false;
+                const startAnim = () => {
+                    if (running) return;
+                    running = true;
+                    resize();
+                    canvas.classList.add("is-ready");
+                    animId = requestAnimationFrame(draw);
+                };
+                const stopAnim = () => {
+                    running = false;
+                    if (animId) cancelAnimationFrame(animId);
+                };
+
+                if ("IntersectionObserver" in window) {
+                    const heroObs = new IntersectionObserver((entries) => {
+                        entries.forEach((e) => e.isIntersecting ? startAnim() : stopAnim());
+                    }, { threshold: 0.05 });
+                    heroObs.observe(hero);
+                } else {
+                    startAnim();
+                }
+
+                // Resize handler (debounced)
+                let resizeTimeout;
+                window.addEventListener("resize", () => {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(resize, 150);
+                }, { passive: true });
+
+                // Pauza když tab není focused (šetří CPU)
+                document.addEventListener("visibilitychange", () => {
+                    if (document.hidden) stopAnim();
+                    else if (hero.getBoundingClientRect().top < window.innerHeight) startAnim();
+                });
+            }
+        } else if (canvas) {
+            // Reduced motion — canvas skrýt (statický gradient jako background fallback)
+            canvas.style.display = "none";
+        }
     }
 
     /* Meta čísla — count-up ------------------------------ */
