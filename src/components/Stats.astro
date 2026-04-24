@@ -1,0 +1,164 @@
+---
+import { statsStrings, type Lang } from '../i18n/ui';
+
+interface Props {
+    lang?: Lang;
+}
+
+const { lang = 'cs' } = Astro.props;
+const t = statsStrings[lang];
+const items = [t.s1, t.s2, t.s3, t.s4];
+---
+
+<section class="stats" data-stats>
+    <div class="stats__ambient"></div>
+    <div class="container">
+        <div class="stats__head" data-reveal>
+            <span class="eyebrow stats__eyebrow">{t.eyebrow}</span>
+            <h2 class="stats__title" set:html={t.title}></h2>
+            <p class="stats__lead">{t.lead}</p>
+        </div>
+
+        <div class="stats__grid" data-stagger>
+            {items.map((item) => (
+                <div class="stats__item">
+                    <span class="stats__value">
+                        <span class="stats__number" data-count={item.value} data-suffix={item.suffix}>0{item.suffix}</span>
+                    </span>
+                    <span class="stats__label">{item.label}</span>
+                    <span class="stats__sub">{item.sub}</span>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .stats {
+        background: var(--velocity-black);
+        color: var(--ivory-silver);
+        padding: var(--space-24) 0;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid rgba(245, 243, 238, 0.08);
+        border-bottom: 1px solid rgba(245, 243, 238, 0.08);
+    }
+
+    .stats__ambient {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+            radial-gradient(ellipse 50% 60% at 15% 20%, rgba(232, 93, 31, 0.18) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 50% at 85% 80%, rgba(184, 147, 92, 0.14) 0%, transparent 60%);
+        animation: glowBreathe 11s ease-in-out infinite;
+    }
+
+    .stats .container { position: relative; z-index: 1; }
+
+    .stats__head {
+        max-width: 60ch;
+        margin: 0 auto var(--space-16);
+        text-align: center;
+    }
+
+    .stats__eyebrow {
+        color: var(--velocity-orange) !important;
+        display: block;
+        margin-bottom: var(--space-4);
+    }
+
+    .stats__title {
+        font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: var(--ivory-silver);
+        margin: 0 0 var(--space-4);
+    }
+
+    .stats__title .accent { color: var(--velocity-orange); }
+
+    .stats__lead {
+        color: var(--ivory-70);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .stats__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: rgba(245, 243, 238, 0.08);
+        border: 1px solid rgba(245, 243, 238, 0.1);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+    }
+
+    .stats__item {
+        background: rgba(11, 15, 25, 0.6);
+        padding: var(--space-10) var(--space-6);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        position: relative;
+        transition: background 0.3s ease;
+    }
+
+    .stats__item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(to right, transparent, var(--velocity-orange), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .stats__item:hover {
+        background: rgba(11, 15, 25, 0.3);
+    }
+
+    .stats__item:hover::before { opacity: 1; }
+
+    .stats__value {
+        display: block;
+        margin-bottom: var(--space-3);
+    }
+
+    .stats__number {
+        font-family: var(--font-mono);
+        font-variant-numeric: tabular-nums;
+        font-size: clamp(2.8rem, 5vw, 4rem);
+        font-weight: 500;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        color: var(--velocity-orange);
+        display: inline-block;
+    }
+
+    .stats__label {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--ivory-silver);
+        letter-spacing: -0.01em;
+    }
+
+    .stats__sub {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 0.9rem;
+        color: var(--mist-gray);
+        line-height: 1.45;
+    }
+
+    @media (max-width: 980px) {
+        .stats__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 560px) {
+        .stats__grid { grid-template-columns: 1fr; }
+    }
+</style>
