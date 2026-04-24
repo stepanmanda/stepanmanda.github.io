@@ -1,5 +1,8 @@
 ---
+import { t, route, type Lang } from '../i18n/ui';
+
 interface Props {
+    lang?: Lang;
     tagline?: string;
     variant?: string;
     email?: string;
@@ -8,13 +11,13 @@ interface Props {
 }
 
 const {
+    lang = 'cs',
     tagline = 'The Velocity Operating System.',
-    variant = 'v0.2 preview',
+    variant = 'v0.3 preview',
     email = 'stepan@velyos.ai',
-    phone = '+420000000000',
-    phoneDisplay = '+420 XXX XXX XXX',
 } = Astro.props;
 
+const f = t(lang, 'footer');
 const year = new Date().getFullYear();
 ---
 
@@ -26,43 +29,43 @@ const year = new Date().getFullYear();
                 <p>{tagline}</p>
             </div>
             <div>
-                <h4>Systém</h4>
+                <h4>{f.columnSystem}</h4>
                 <ul>
-                    <li><a href="/">Rozcestník</a></li>
-                    <li><a href="/firmy">Pro firmy</a></li>
-                    <li><a href="/jednotlivci">Pro jednotlivce</a></li>
-                    <li><a href="/firmy#co-stavime">Co stavíme</a></li>
+                    <li><a href={route('home', lang)}>{f.linkHome}</a></li>
+                    <li><a href={route('firmy', lang)}>{f.linkCompanies}</a></li>
+                    <li><a href={route('jednotlivci', lang)}>{f.linkIndividuals}</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Firma</h4>
+                <h4>{f.columnFirm}</h4>
                 <ul>
-                    <li><a href="/o-nas">O nás</a></li>
-                    <li><a href="/pristup">Přístup</a></li>
-                    <li><a href="/pripadove-studie">Vzory nasazení</a></li>
-                    <li><a href="/kontakt">Kontakt</a></li>
+                    <li><a href={route('o-nas', lang)}>{f.linkAbout}</a></li>
+                    <li><a href={route('pristup', lang)}>{f.linkApproach}</a></li>
+                    <li><a href={route('pripadove-studie', lang)}>{f.linkCases}</a></li>
+                    <li><a href={route('kontakt', lang)}>{f.linkContact}</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Přímý kontakt</h4>
+                <h4>{f.columnContact}</h4>
                 <ul>
                     <li><a href={`mailto:${email}`}>{email}</a></li>
-                    <li><span style="color:var(--mist-gray); font-style:italic;">Telefon po registraci</span></li>
-                    <li><span style="color:var(--mist-gray); font-style:italic;">LinkedIn po registraci</span></li>
-                    <li>Františkovy Lázně · EU</li>
+                    <li><span style="color:var(--mist-gray); font-style:italic;">{f.phoneAfterReg}</span></li>
+                    <li><span style="color:var(--mist-gray); font-style:italic;">{f.linkedInAfterReg}</span></li>
+                    <li>{f.location}</li>
                 </ul>
             </div>
         </div>
+
         <div class="site-footer__legal">
-            <a href="/impresum">Impresum</a>
+            <a href="/impresum">{f.legalImpresum}</a>
             <span class="sep">·</span>
-            <a href="/ochrana-osobnich-udaju">Ochrana osobních údajů</a>
+            <a href="/ochrana-osobnich-udaju">{f.legalGdpr}</a>
             <span class="sep">·</span>
-            <a href="/kontakt">Kontakt</a>
+            <a href={route('kontakt', lang)}>{f.linkContact}</a>
         </div>
 
         <div class="site-footer__bottom">
-            <span>© {year} VELYOS. Přijímáme omezený počet klientů ročně.</span>
+            <span>© {year} VELYOS. {f.copyright}</span>
             <span class="mono">{variant} · {email}</span>
         </div>
     </div>
