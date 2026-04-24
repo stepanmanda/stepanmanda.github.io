@@ -507,7 +507,7 @@ function initVelyos() {
 
     if (jump && jumpTrigger && jumpPanel) {
         jumpPanel.replaceChildren();
-        jump.classList.remove("is-visible", "is-open");
+        jump.classList.remove("is-open");
 
         const candidateSections = document.querySelectorAll("main section, body > section");
         const jumpSections = [];
