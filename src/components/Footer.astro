@@ -22,13 +22,32 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer" id="kontakt" transition:name="velyos-footer">
+    <!-- Top accent line — subtle gold gradient -->
+    <div class="site-footer__accent" aria-hidden="true"></div>
+
     <div class="container">
+        <!-- Status strip — capacity signal -->
+        <div class="site-footer__status">
+            <span class="site-footer__status-dot" aria-hidden="true"></span>
+            <span>{f.statusLabel}</span>
+        </div>
+
+        <!-- Main grid -->
         <div class="site-footer__grid">
             <div class="site-footer__brand">
                 <div class="brand">VELY<span class="os">OS</span></div>
-                <p>{tagline}</p>
+                <p class="site-footer__tagline">{tagline}</p>
+
+                <!-- Trust strip — small badges -->
+                <ul class="site-footer__trust">
+                    <li>{f.trustDeploy}</li>
+                    <li>{f.trustContract}</li>
+                    <li>{f.trustIso}</li>
+                    <li>{f.trustEu}</li>
+                </ul>
             </div>
-            <div>
+
+            <div class="site-footer__col">
                 <h4>{f.columnSystem}</h4>
                 <ul>
                     <li><a href={route('home', lang)}>{f.linkHome}</a></li>
@@ -36,7 +55,8 @@ const year = new Date().getFullYear();
                     <li><a href={route('jednotlivci', lang)}>{f.linkIndividuals}</a></li>
                 </ul>
             </div>
-            <div>
+
+            <div class="site-footer__col">
                 <h4>{f.columnFirm}</h4>
                 <ul>
                     <li><a href={route('o-nas', lang)}>{f.linkAbout}</a></li>
@@ -45,28 +65,38 @@ const year = new Date().getFullYear();
                     <li><a href={route('kontakt', lang)}>{f.linkContact}</a></li>
                 </ul>
             </div>
-            <div>
+
+            <div class="site-footer__col">
                 <h4>{f.columnContact}</h4>
                 <ul>
                     <li><a href={`mailto:${email}`}>{email}</a></li>
-                    <li><span style="color:var(--mist-gray); font-style:italic;">{f.phoneAfterReg}</span></li>
-                    <li><span style="color:var(--mist-gray); font-style:italic;">{f.linkedInAfterReg}</span></li>
+                    <li><span class="site-footer__muted">{f.phoneAfterReg}</span></li>
+                    <li><span class="site-footer__muted">{f.linkedInAfterReg}</span></li>
                     <li>{f.location}</li>
                 </ul>
             </div>
         </div>
 
-        <div class="site-footer__legal">
-            <a href="/impresum">{f.legalImpresum}</a>
-            <span class="sep">·</span>
-            <a href="/ochrana-osobnich-udaju">{f.legalGdpr}</a>
-            <span class="sep">·</span>
-            <a href={route('kontakt', lang)}>{f.linkContact}</a>
+        <!-- Editorial manifesto row -->
+        <div class="site-footer__manifesto">
+            <span class="site-footer__quote-mark" aria-hidden="true">„</span>
+            <p>{f.manifesto}</p>
         </div>
 
-        <div class="site-footer__bottom">
-            <span>© {year} VELYOS. {f.copyright}</span>
-            <span class="mono">{variant} · {email}</span>
+        <!-- Legal + bottom -->
+        <div class="site-footer__bottom-wrap">
+            <div class="site-footer__legal">
+                <a href="/impresum">{f.legalImpresum}</a>
+                <span class="sep">·</span>
+                <a href="/ochrana-osobnich-udaju">{f.legalGdpr}</a>
+                <span class="sep">·</span>
+                <a href={route('kontakt', lang)}>{f.linkContact}</a>
+            </div>
+
+            <div class="site-footer__bottom">
+                <span class="site-footer__copy">© {year} VELYOS. {f.copyright}</span>
+                <span class="site-footer__variant mono">{variant}</span>
+            </div>
         </div>
     </div>
 </footer>
