@@ -1847,6 +1847,21 @@ elevenlabs-convai {
 .hero__meta       { animation-delay: 1.2s; }
 .hero .note       { animation-delay: 1.1s; }
 
+/* Hero title — invisible until JS splits into words (prevents refresh flicker) */
+.hero__title {
+    visibility: hidden;
+}
+
+.hero__title.is-split {
+    visibility: visible;
+}
+
+/* If JS disabled, show title normally */
+.no-js .hero__title,
+html:not([data-js="1"]) .hero__title {
+    visibility: visible;
+}
+
 /* H1 text reveal — per-word staggered — cinematic entrance */
 .hero__title .word {
     display: inline-block;
