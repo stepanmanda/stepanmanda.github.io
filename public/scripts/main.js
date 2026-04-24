@@ -138,10 +138,8 @@ function initVelyos() {
                 // 4 barevné sféry s vlastními trajektoriemi — „floating mesh"
                 // Barvy z brand palety: Velocity Orange + Signal Gold + Deep Velocity
                 const blobs = [
-                    { x: 0.25, y: 0.30, r: 0.45, color: "rgba(232, 93, 31, 0.28)",  vx: 0.00018, vy: 0.00012 },
-                    { x: 0.70, y: 0.25, r: 0.55, color: "rgba(184, 147, 92, 0.25)", vx: -0.00014, vy: 0.00020 },
-                    { x: 0.35, y: 0.80, r: 0.50, color: "rgba(184, 147, 92, 0.18)", vx: 0.00016, vy: -0.00016 },
-                    { x: 0.80, y: 0.70, r: 0.40, color: "rgba(232, 93, 31, 0.15)",  vx: -0.00012, vy: -0.00014 },
+                    { x: 0.25, y: 0.30, r: 0.55, color: "rgba(232, 93, 31, 0.28)",  vx: 0.00018, vy: 0.00012 },
+                    { x: 0.75, y: 0.70, r: 0.60, color: "rgba(184, 147, 92, 0.22)", vx: -0.00014, vy: -0.00018 },
                 ];
 
                 const resize = () => {
