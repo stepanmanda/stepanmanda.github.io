@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Features from '../../components/Features.astro';
+import Feature from '../../components/Feature.astro';
+import Callout from '../../components/Callout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+
+<Layout
+    title="VELYOS — Über uns | Wir definieren den Vorsprung."
+    description="VELYOS ist ein Team, keine Software. Wir bauen Automatisierung, die Unternehmen Zeit, Geld und Ruhe zurückgibt. Begrenztes Jahreskontingent."
+    lang="de"
+    active="o-nas"
+    footerTagline="Ein Team. Keine Software."
+    footerVariant="v0.3 preview · über uns"
+>
+    <Hero tagline="· Über uns · Wir definieren den Vorsprung.">
+        <h1 class="hero__title">Wir sind keine Software. Wir sind das Team, <span class="accent">das sie für Sie baut.</span></h1>
+        <p class="hero__lead">
+            VELYOS entstand aus einem Satz, den unser Gründer zu oft hörte: <em>„Wir haben fünf Dinge am Laufen — und keines davon läuft wirklich."</em>
+            Wir haben beschlossen, eine Firma zu bauen, die es anders macht. Ein Partner. End-to-End. Garantie im Vertrag.
+        </p>
+    </Hero>
+
+    <section class="section--editorial">
+        <div class="container container--narrow">
+            <div data-reveal>
+                <span class="eyebrow">· Manifesto</span>
+                <h2 style="margin-top:var(--space-4); margin-bottom:var(--space-8);">Zeit ist das einzige Gut, das Sie nicht zurückkaufen können.</h2>
+                <div class="section-body">
+                    <p>Die meisten Unternehmen verbrennen sie in Prozessen, die längst automatisiert sein sollten. In Anrufen, die niemand hätte führen sollen. In Verwaltung, die nie hätte existieren sollen.</p>
+                    <p>VELYOS ist der Partner, der Ihren Betrieb baut, anschließt und am Laufen hält. Nicht eine weitere Software, die Sie selbst konfigurieren müssen. Für Unternehmen und Fachleute, die den Wert ihrer eigenen Zeit verstehen.</p>
+                    <p><strong>Wir implementieren in 4 Wochen. Amortisation innerhalb von 6 Monaten. Vertraglich garantiert.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Unsere Werte"
+                title="Fünf Prinzipien, nach denen wir arbeiten."
+                lead="Keine schönen Slogans an der Wand. Jedes Prinzip hat einen konkreten Einfluss darauf, was wir liefern."
+            />
+
+            <Features cols={3}>
+                <Feature
+                    num="01 / VELOCITY"
+                    title="Wir messen in Wochen, nicht Monaten."
+                    body={`Vollständiger Einsatz innerhalb von 4 Wochen. Keine „Pilotphasen über sechs Monate". Geschwindigkeit ist unsere Achse.`}
+                />
+                <Feature
+                    num="02 / PRECISION"
+                    title={`Kein „fast". Nur exakte Ergebnisse.`}
+                    body="Messbare Einsparungen, menschliche Aufsicht, Architektur nach ISO-27001-Prinzipien. Wir bauen nicht auf Vermutungen."
+                />
+                <Feature
+                    num="03 / DISCRETION"
+                    title="Ihre Daten. Ihre Ergebnisse. Ihr Geheimnis."
+                    body="Wir anonymisieren alles. Fallstudien nur mit Zustimmung. Was wir bearbeiten, bleibt bei uns."
+                />
+                <Feature
+                    num="04 / MASTERY"
+                    title="Implementierung ist Handwerk, kein Produkt."
+                    body="Wir bringen Ihnen keine Software-Kiste. Wir bauen eine Lösung, die auf Ihren Betrieb zugeschnitten ist. Vom Entwurf bis zur Wartung."
+                />
+                <Feature
+                    num="05 / SELECTIVE"
+                    title="Wir nehmen eine begrenzte Anzahl Kunden pro Jahr an."
+                    body="Passt Ihr Betrieb nicht, sagen wir es direkt — und empfehlen jemand anderen. Handwerk lässt sich nicht in Masse betreiben."
+                />
+            </Features>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 03 · Gründer"
+                title="Štěpán Švanda — Gründer & CEO"
+            />
+
+            <div class="section-body" data-reveal>
+                <p class="italic-serif" style="color:var(--signal-gold); font-size:1.2rem; margin-bottom:var(--space-8);">
+                    „Es begann, als ich sah, wie mitteleuropäische Firmen Jahre in Prozessen verlieren, die längst automatisiert sein sollten."
+                </p>
+
+                <p>
+                    Die meisten Berater reden über KI. Wir haben beschlossen, sie einzusetzen — so, dass sie sich in einem halben Jahr auszahlt.
+                    VELYOS ist keine Agentur. Es ist ein Partnerteam mit begrenztem Kundenportfolio. Nicht, um Hype zu erzeugen — sondern weil sich Handwerk nicht in Masse betreiben lässt.
+                </p>
+
+                <p>
+                    Unser Vertrag enthält einen Absatz, den die Konkurrenz nicht hat: <strong>ROI-Garantie</strong>. Liefern wir nicht, zahlen Sie nicht. Das ist kein Marketing. Das ist Disziplin.
+                </p>
+            </div>
+
+            <div style="margin-top:var(--space-10); padding-top:var(--space-8); border-top:1px solid var(--black-08); display:grid; grid-template-columns:1fr 1fr; gap:var(--space-8);" data-reveal>
+                <div>
+                    <span class="eyebrow" style="color:var(--signal-gold);">Ausbildung & Erfahrung</span>
+                    <p style="color:var(--black-60); font-size:0.95rem; margin-top:var(--space-3); line-height:1.6;">
+                        Fachoberschule für Informatik und Finanzdienstleistungen in Pilsen — Schwerpunkt Programmierung.
+                        Praxis: Systemadministrator bei <strong>DHL</strong>, anschließend selbstständige Beratung.
+                        Jetzt baut er <strong>VELYOS</strong> — eine Firma, die die Prozesse automatisiert, in denen anspruchsvolle Kunden die meiste Zeit verlieren.
+                    </p>
+                </div>
+                <div>
+                    <span class="eyebrow" style="color:var(--signal-gold);">Kontakt</span>
+                    <p style="margin-top:var(--space-3); line-height:1.6;">
+                        <a href="mailto:stepan@velyos.ai" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">stepan@velyos.ai</a><br>
+                        <span style="color:var(--mist-gray); font-size:0.9rem; font-style:italic;">LinkedIn nach Registrierung.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · Wie das Team aussieht"
+                title="Klein. Erfahren. Direkt verantwortlich."
+                lead="Wir sind keine Agentur mit 50 Juniors. Wir sind ein Team von Spezialisten, die für jedes Projekt persönlich unterschreiben. Jeder Kunde hat einen Hauptansprechpartner — der seinen Betrieb auswendig kennt."
+            />
+
+            <Features cols={3}>
+                <Feature
+                    num="STRATEGIE"
+                    title="Prozessanalyst."
+                    body="Zerlegt Ihren Betrieb bis ins Detail. Findet, wo am meisten Zeit und Geld verloren geht. Bringt Ordnung."
+                />
+                <Feature
+                    num="BAU"
+                    title="Integratoren und Entwickler."
+                    body="Verbinden Systeme, bauen Automatisierungen, trainieren KI. Kennen Ihr ERP, CRM und Ihre Buchhaltung."
+                />
+                <Feature
+                    num="AUFSICHT"
+                    title="Systemoperator."
+                    body="Überwacht täglich, was das System tut. Feinjustiert, lernt, repariert. KI läuft nicht unbeaufsichtigt."
+                />
+            </Features>
+
+            <Callout>
+                <strong>Partner:</strong> Wir arbeiten mit geprüften Partnern für Bereiche, die spezialisiertes Fachwissen brauchen — Recht und Compliance, Steuern, Sicherheit, Design. Alle unter NDA, alle mit direkter Verantwortung für Ihren Fall.
+            </Callout>
+        </div>
+    </section>
+
+    <CtaBand
+        id="chci-poznat"
+        eyebrow="· 05 · Lernen wir uns kennen"
+        title="Der beste Weg, VELYOS kennenzulernen, ist mit uns zu sprechen."
+        lead="Unser Diagnose-Agent gibt Ihnen in 5 Minuten Orientierung. Dann ruft ein Mensch an. Kein Verkaufsdruck. Keine Präsentation."
+        directPrefix="Lieber per E-Mail?"
+    >
+        <a href="/de/diagnose" class="btn btn--primary btn-arrow btn--lg">Diagnose starten</a>
+        <a href="/de/kontakt" class="btn btn--ghost btn--lg">Alle Kontaktwege</a>
+    </CtaBand>
+</Layout>
