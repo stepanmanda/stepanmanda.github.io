@@ -166,6 +166,12 @@ export const ui = {
             legalImpresum: 'Impressum',
             legalGdpr: 'Datenschutz',
             copyright: 'Wir nehmen nur eine begrenzte Anzahl von Kunden pro Jahr an.',
+            statusLabel: 'Q2 2026 · Begrenztes Kontingent',
+            manifesto: 'Wir arbeiten nicht für jeden. Wir arbeiten für diejenigen, die verstehen, warum sie bei uns sind.',
+            trustDeploy: 'Einsatz in 4 Wochen',
+            trustContract: 'Vertragsgarantie',
+            trustIso: 'ISO-27001-Prinzipien',
+            trustEu: 'EU · Tschechien',
         },
     },
 } as const;
