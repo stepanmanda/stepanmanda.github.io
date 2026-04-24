@@ -1,31 +1,45 @@
 ---
 import NavContact from './NavContact.astro';
+import LangSwitcher from './LangSwitcher.astro';
+import { t, route, type Lang, type RouteKey } from '../i18n/ui';
 
 interface Props {
-    active?: 'firmy' | 'jednotlivci' | 'o-nas' | 'pristup' | 'pripadove-studie' | 'kontakt' | null;
+    lang?: Lang;
+    active?: RouteKey | null;
     primaryCta?: { label: string; href: string } | null | false;
 }
 
-const { active = null, primaryCta = { label: 'Zažádat o konzultaci', href: '/firmy' } } = Astro.props;
+const {
+    lang = 'cs',
+    active = null,
+    primaryCta,
+} = Astro.props;
+
+const nav = t(lang, 'nav');
+
+// Default primary CTA (pokud není explicitně předán)
+const cta = primaryCta === undefined
+    ? { label: nav.primaryCta, href: route('firmy', lang) }
+    : primaryCta;
 ---
 
 <header class="site-header">
     <div class="site-header__inner">
-        <a href="/" class="brand">VELY<span class="os">OS</span></a>
+        <a href={route('home', lang)} class="brand">VELY<span class="os">OS</span></a>
 
         <!-- Desktop nav -->
         <nav class="nav">
-            <a href="/firmy" class={active === 'firmy' ? 'active' : ''}>Pro firmy</a>
-            <a href="/jednotlivci" class={active === 'jednotlivci' ? 'active' : ''}>Pro jednotlivce</a>
-            <a href="#co-stavime">Co stavíme</a>
-            <NavContact />
-            {primaryCta && (
-                <a href={primaryCta.href} class="btn btn--primary btn--sm btn-arrow">{primaryCta.label}</a>
+            <a href={route('firmy', lang)} class={active === 'firmy' ? 'active' : ''}>{nav.companies}</a>
+            <a href={route('jednotlivci', lang)} class={active === 'jednotlivci' ? 'active' : ''}>{nav.individuals}</a>
+            <NavContact lang={lang} />
+            <LangSwitcher lang={lang} active={active} />
+            {cta && (
+                <a href={cta.href} class="btn btn--primary btn--sm btn-arrow">{cta.label}</a>
             )}
         </nav>
 
         <!-- Mobile hamburger trigger -->
-        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Otevřít menu" type="button">
+        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label={nav.menuOpen} type="button">
             <span class="nav-toggle__bar"></span>
             <span class="nav-toggle__bar"></span>
             <span class="nav-toggle__bar"></span>
@@ -33,46 +47,47 @@ const { active = null, primaryCta = { label: 'Zažádat o konzultaci', href: '/f
     </div>
 
     <!-- Mobile drawer -->
-    <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-label="Hlavní menu" aria-hidden="true">
+    <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-label="Menu" aria-hidden="true">
         <div class="mobile-drawer__glow"></div>
         <nav class="mobile-drawer__nav">
-            <a href="/firmy" class={`mobile-drawer__link ${active === 'firmy' ? 'is-active' : ''}`}>
+            <a href={route('firmy', lang)} class={`mobile-drawer__link ${active === 'firmy' ? 'is-active' : ''}`}>
                 <span class="mobile-drawer__link-num">01</span>
-                <span>Pro firmy</span>
+                <span>{nav.companies}</span>
             </a>
-            <a href="/jednotlivci" class={`mobile-drawer__link ${active === 'jednotlivci' ? 'is-active' : ''}`}>
+            <a href={route('jednotlivci', lang)} class={`mobile-drawer__link ${active === 'jednotlivci' ? 'is-active' : ''}`}>
                 <span class="mobile-drawer__link-num">02</span>
-                <span>Pro jednotlivce</span>
+                <span>{nav.individuals}</span>
             </a>
-            <a href="/diagnostika" class={`mobile-drawer__link ${active === null && false ? 'is-active' : ''}`}>
+            <a href={route('diagnostika', lang)} class={`mobile-drawer__link ${active === 'diagnostika' ? 'is-active' : ''}`}>
                 <span class="mobile-drawer__link-num">03</span>
-                <span>Diagnostika</span>
+                <span>{nav.diagnosticCta.replace(/ ?[→]/, '')}</span>
             </a>
-            <a href="/o-nas" class={`mobile-drawer__link ${active === 'o-nas' ? 'is-active' : ''}`}>
+            <a href={route('o-nas', lang)} class={`mobile-drawer__link ${active === 'o-nas' ? 'is-active' : ''}`}>
                 <span class="mobile-drawer__link-num">04</span>
-                <span>O nás</span>
+                <span>{t(lang, 'footer').linkAbout}</span>
             </a>
-            <a href="/pristup" class={`mobile-drawer__link ${active === 'pristup' ? 'is-active' : ''}`}>
+            <a href={route('pristup', lang)} class={`mobile-drawer__link ${active === 'pristup' ? 'is-active' : ''}`}>
                 <span class="mobile-drawer__link-num">05</span>
-                <span>Přístup</span>
+                <span>{t(lang, 'footer').linkApproach}</span>
             </a>
-            <a href="/pripadove-studie" class={`mobile-drawer__link ${active === 'pripadove-studie' ? 'is-active' : ''}`}>
+            <a href={route('pripadove-studie', lang)} class={`mobile-drawer__link ${active === 'pripadove-studie' ? 'is-active' : ''}`}>
                 <span class="mobile-drawer__link-num">06</span>
-                <span>Vzory nasazení</span>
+                <span>{t(lang, 'footer').linkCases}</span>
             </a>
-            <a href="/kontakt" class={`mobile-drawer__link ${active === 'kontakt' ? 'is-active' : ''}`}>
+            <a href={route('kontakt', lang)} class={`mobile-drawer__link ${active === 'kontakt' ? 'is-active' : ''}`}>
                 <span class="mobile-drawer__link-num">07</span>
-                <span>Kontakt</span>
+                <span>{nav.contact}</span>
             </a>
         </nav>
 
         <div class="mobile-drawer__footer">
-            <span class="mobile-drawer__footer-label">Přímý kontakt</span>
+            <LangSwitcher lang={lang} active={active} variant="mobile" />
+            <span class="mobile-drawer__footer-label">{nav.contactDirect}</span>
             <a href="mailto:stepan@velyos.ai" class="mobile-drawer__footer-link">stepan@velyos.ai</a>
-            <span class="mobile-drawer__footer-note">Telefon doplníme po registraci firmy.</span>
+            <span class="mobile-drawer__footer-note">{nav.contactPhoneNote}.</span>
 
-            {primaryCta && (
-                <a href={primaryCta.href} class="btn btn--primary btn-arrow btn--lg" style="margin-top:1.5rem;">{primaryCta.label}</a>
+            {cta && (
+                <a href={cta.href} class="btn btn--primary btn-arrow btn--lg" style="margin-top:1.5rem;">{cta.label}</a>
             )}
         </div>
     </div>
