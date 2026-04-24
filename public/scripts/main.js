@@ -240,6 +240,36 @@ function initVelyos() {
         });
     }
 
+    /* Scroll parallax — elementy s data-parallax se posunou pomaleji */
+    if (!prefersReducedMotion) {
+        const parallaxEls = document.querySelectorAll("[data-parallax]");
+        if (parallaxEls.length) {
+            let parallaxScrollRaf = null;
+            const updateParallax = () => {
+                parallaxScrollRaf = null;
+                parallaxEls.forEach((el) => {
+                    const rect = el.getBoundingClientRect();
+                    const vh = window.innerHeight;
+                    // Jen pokud je element viditelný (nebo blízko)
+                    if (rect.bottom < -200 || rect.top > vh + 200) return;
+                    const speed = parseFloat(el.dataset.parallax) || 0.2;
+                    // Relativní pozice středu elementu vůči středu viewportu
+                    const centerOffset = rect.top + rect.height / 2 - vh / 2;
+                    const translateY = -centerOffset * speed;
+                    el.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
+                });
+            };
+            window.addEventListener("scroll", () => {
+                if (parallaxScrollRaf) return;
+                parallaxScrollRaf = requestAnimationFrame(updateParallax);
+            }, { passive: true });
+            updateParallax();
+        }
+    }
+
+    /* Ambient section glow — tvoří se při scroll na každé .section--editorial / hero-like */
+    // (jen vizuální — CSS už má breathing animaci)
+
     /* Sticky header — shadow po scrollu ------------------- */
     const header = document.querySelector(".site-header");
     if (header) {
