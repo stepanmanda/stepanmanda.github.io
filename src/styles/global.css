@@ -2081,7 +2081,7 @@ elevenlabs-convai {
 }
 
 @media (max-width: 520px) {
-    .steps { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr !important; }
     .site-footer__grid { grid-template-columns: 1fr; }
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.7rem; }
