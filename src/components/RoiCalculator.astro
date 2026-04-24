@@ -10,11 +10,14 @@ interface Props {
 const { lang = 'cs' } = Astro.props;
 const t = roiStrings[lang];
 
-// Defaulty pro slidery
+// Defaults — based on 2026 market data:
+// CS: avg gross wage ~50k Kč/mo × 33.8 % employer burden + overhead → ~500–800 Kč/h mid-market
+// DE: Destatis 2022 avg 39.5 €/h → 2026 estimate ~42–48 €/h for typical white-collar
+// EN (EU-English target): US ECEC Dec 2025 $46.15/h; EU mid-market ~40–55 €/h
 const defaults = {
-    cs: { hours: 10, people: 15, rate: 800 },
-    en: { hours: 10, people: 15, rate: 45 },
-    de: { hours: 10, people: 15, rate: 40 },
+    cs: { hours: 10, people: 15, rate: 650 },
+    en: { hours: 10, people: 15, rate: 50 },
+    de: { hours: 10, people: 15, rate: 48 },
 }[lang];
 
 const locale = lang === 'cs' ? 'cs-CZ' : lang === 'en' ? 'en-US' : 'de-DE';
