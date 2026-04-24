@@ -149,7 +149,7 @@ const t = copy[lang];
 
         <div class="team__grid" data-stagger>
             {members.map((m) => (
-                <article class="member">
+                <article class={`member ${m.featured ? 'member--featured' : ''}`}>
                     <div class="member__photo" aria-label={m.name[lang]}>
                         <div class="member__photo-placeholder">
                             <span class="member__photo-initials">{m.initials}</span>
@@ -166,6 +166,7 @@ const t = copy[lang];
                                 m.name[lang]
                             )}
                         </h3>
+                        {m.country && <span class="member__location">{m.country}</span>}
                         <p class="member__text">{m.body[lang]}</p>
                     </div>
                 </article>
