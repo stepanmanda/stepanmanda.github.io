@@ -1,57 +1,65 @@
 ---
 // DiagnosticForm — strukturovaný formulář pro sběr vstupů k diagnostice
 // Submit: JS handler sestaví mailto URL s formátovaným tělem e-mailu
+import { formStrings, type Lang } from '../i18n/ui';
+
+interface Props {
+    lang?: Lang;
+}
+
+const { lang = 'cs' } = Astro.props;
+const f = formStrings[lang];
 ---
 
-<form class="diag-form" id="diagnostikovat-form" novalidate>
+<form class="diag-form" id="diagnostikovat-form" data-lang={lang} novalidate>
     <div class="diag-form__group">
-        <label class="diag-form__label" for="diag-name">Jméno a příjmení</label>
-        <input type="text" id="diag-name" name="name" class="diag-form__input" required autocomplete="name" placeholder="Štěpán Novák" />
+        <label class="diag-form__label" for="diag-name">{f.name}</label>
+        <input type="text" id="diag-name" name="name" class="diag-form__input" required autocomplete="name" placeholder={f.namePh} />
     </div>
 
     <div class="diag-form__row">
         <div class="diag-form__group">
-            <label class="diag-form__label" for="diag-position">Pozice ve firmě</label>
+            <label class="diag-form__label" for="diag-position">{f.position}</label>
             <select id="diag-position" name="position" class="diag-form__input" required>
-                <option value="" disabled selected>— vyberte —</option>
-                <option value="Majitel">Majitel / jednatel</option>
-                <option value="Ředitel">Ředitel / CEO</option>
-                <option value="Manažer">Manažer / vedoucí</option>
-                <option value="IT / provoz">IT / provoz</option>
-                <option value="Jiné">Jiné</option>
+                <option value="" disabled selected>{f.select}</option>
+                <option value="Owner">{f.positionOwner}</option>
+                <option value="CEO">{f.positionCeo}</option>
+                <option value="Manager">{f.positionManager}</option>
+                <option value="IT">{f.positionIt}</option>
+                <option value="Other">{f.positionOther}</option>
             </select>
         </div>
 
         <div class="diag-form__group">
-            <label class="diag-form__label" for="diag-company">Firma</label>
-            <input type="text" id="diag-company" name="company" class="diag-form__input" required autocomplete="organization" placeholder="VELYOS s.r.o." />
+            <label class="diag-form__label" for="diag-company">{f.company}</label>
+            <input type="text" id="diag-company" name="company" class="diag-form__input" required autocomplete="organization" placeholder={f.companyPh} />
         </div>
     </div>
 
     <div class="diag-form__row">
         <div class="diag-form__group">
-            <label class="diag-form__label" for="diag-industry">Obor</label>
+            <label class="diag-form__label" for="diag-industry">{f.industry}</label>
             <select id="diag-industry" name="industry" class="diag-form__input" required>
-                <option value="" disabled selected>— vyberte —</option>
-                <option value="Zdravotnictví">Zdravotnictví</option>
-                <option value="Stavebnictví">Stavebnictví</option>
-                <option value="Reality">Reality</option>
-                <option value="Profesionální služby">Profesionální služby (právo, poradenství, účetnictví)</option>
-                <option value="E-commerce">E-commerce / retail</option>
-                <option value="Výroba">Výroba</option>
-                <option value="Služby">Služby (B2C)</option>
-                <option value="Jiné">Jiné</option>
+                <option value="" disabled selected>{f.select}</option>
+                <option value="Healthcare">{f.indHealth}</option>
+                <option value="Construction">{f.indConstr}</option>
+                <option value="RealEstate">{f.indReal}</option>
+                <option value="ProfessionalServices">{f.indProfServices}</option>
+                <option value="Ecommerce">{f.indEcom}</option>
+                <option value="Manufacturing">{f.indMfg}</option>
+                <option value="Services">{f.indServices}</option>
+                <option value="Other">{f.indOther}</option>
             </select>
         </div>
 
         <div class="diag-form__group">
-            <label class="diag-form__label" for="diag-size">Velikost týmu</label>
+            <label class="diag-form__label" for="diag-size">{f.size}</label>
             <select id="diag-size" name="size" class="diag-form__input" required>
-                <option value="" disabled selected>— vyberte —</option>
-                <option value="1–10">1–10 lidí</option>
-                <option value="11–50">11–50 lidí</option>
-                <option value="51–200">51–200 lidí</option>
-                <option value="200+">200+ lidí</option>
+                <option value="" disabled selected>{f.select}</option>
+                <option value="1-10">{f.size10}</option>
+                <option value="11-50">{f.size50}</option>
+                <option value="51-200">{f.size200}</option>
+                <option value="200+">{f.size200Plus}</option>
             </select>
         </div>
     </div>
@@ -60,32 +68,32 @@
 
     <div class="diag-form__group">
         <label class="diag-form__label" for="diag-pain">
-            Kde vám utíká nejvíc času?
-            <span class="diag-form__hint">Krátký popis — administrativa, dokumentace, propočty, komunikace…</span>
+            {f.pain}
+            <span class="diag-form__hint">{f.painHint}</span>
         </label>
-        <textarea id="diag-pain" name="pain" class="diag-form__input diag-form__input--area" rows="4" required placeholder="Např. Obchodníci tráví denně 3–4 hodiny přípravou nabídek, než se dostanou k novému klientovi."></textarea>
+        <textarea id="diag-pain" name="pain" class="diag-form__input diag-form__input--area" rows="4" required placeholder={f.painPh}></textarea>
     </div>
 
     <div class="diag-form__row">
         <div class="diag-form__group">
-            <label class="diag-form__label" for="diag-hours">Odhad ztraceného času týdně</label>
+            <label class="diag-form__label" for="diag-hours">{f.hours}</label>
             <select id="diag-hours" name="hours" class="diag-form__input">
-                <option value="" disabled selected>— nevím —</option>
-                <option value="do 10 h">Do 10 hodin týdně</option>
-                <option value="10–30 h">10–30 hodin týdně</option>
-                <option value="30–100 h">30–100 hodin týdně</option>
-                <option value="100+ h">Přes 100 hodin týdně</option>
+                <option value="" disabled selected>{f.hoursUnknown}</option>
+                <option value="<10h">{f.hours10}</option>
+                <option value="10-30h">{f.hours30}</option>
+                <option value="30-100h">{f.hours100}</option>
+                <option value="100+h">{f.hours100Plus}</option>
             </select>
         </div>
 
         <div class="diag-form__group">
-            <label class="diag-form__label" for="diag-priority">Priorita řešení</label>
+            <label class="diag-form__label" for="diag-priority">{f.priority}</label>
             <select id="diag-priority" name="priority" class="diag-form__input">
-                <option value="" disabled selected>— vyberte —</option>
-                <option value="Kritická">Kritická — potřebujeme teď</option>
-                <option value="Vysoká">Vysoká — do 3 měsíců</option>
-                <option value="Střední">Střední — letos</option>
-                <option value="Zjišťujeme">Zatím zjišťujeme</option>
+                <option value="" disabled selected>{f.select}</option>
+                <option value="Critical">{f.priorityCrit}</option>
+                <option value="High">{f.priorityHigh}</option>
+                <option value="Medium">{f.priorityMid}</option>
+                <option value="Exploring">{f.priorityExplore}</option>
             </select>
         </div>
     </div>
@@ -94,58 +102,37 @@
 
     <div class="diag-form__row">
         <div class="diag-form__group">
-            <label class="diag-form__label" for="diag-email">E-mail</label>
-            <input type="email" id="diag-email" name="email" class="diag-form__input" required autocomplete="email" placeholder="vy@firma.cz" />
+            <label class="diag-form__label" for="diag-email">{f.email}</label>
+            <input type="email" id="diag-email" name="email" class="diag-form__input" required autocomplete="email" placeholder={f.emailPh} />
         </div>
 
         <div class="diag-form__group">
-            <label class="diag-form__label" for="diag-phone">Telefon <span class="diag-form__optional">(nepovinné)</span></label>
-            <input type="tel" id="diag-phone" name="phone" class="diag-form__input" autocomplete="tel" placeholder="+420 777 777 777" />
+            <label class="diag-form__label" for="diag-phone">{f.phone} <span class="diag-form__optional">{f.optional}</span></label>
+            <input type="tel" id="diag-phone" name="phone" class="diag-form__input" autocomplete="tel" placeholder={f.phonePh} />
         </div>
     </div>
 
     <div class="diag-form__group">
-        <label class="diag-form__label" for="diag-when">Kdy vás máme zastihnout? <span class="diag-form__optional">(nepovinné)</span></label>
-        <input type="text" id="diag-when" name="when" class="diag-form__input" placeholder="Např. zítra dopoledne, nebo kdykoliv po 16:00" />
+        <label class="diag-form__label" for="diag-when">{f.when} <span class="diag-form__optional">{f.optional}</span></label>
+        <input type="text" id="diag-when" name="when" class="diag-form__input" placeholder={f.whenPh} />
     </div>
 
     <div class="diag-form__group diag-form__group--checkbox">
         <label class="diag-form__checkbox">
             <input type="checkbox" id="diag-gdpr" name="gdpr" required />
-            <span>
-                Souhlasím se zpracováním poskytnutých údajů pro účely diagnostiky a kontaktu ze strany VELYOS.
-                Data nikde nesdílíme, neprodáváme, ani nepoužíváme k tréninku cizích modelů.
-            </span>
+            <span>{f.gdpr}</span>
         </label>
     </div>
 
-    <button type="submit" class="btn btn--primary btn-arrow btn--lg diag-form__submit">Odeslat diagnostiku</button>
+    <button type="submit" class="btn btn--primary btn-arrow btn--lg diag-form__submit">{f.submit}</button>
 
-    <p class="diag-form__note">
-        Po odeslání dostanete do 24 hodin odpověď od specialisty.
-        Pokud chcete rychleji, rovnou si promluvte s agentem →
-    </p>
+    <p class="diag-form__note">{f.submitNote}</p>
 </form>
 
 <style>
-    .diag-form {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-5);
-    }
-
-    .diag-form__group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-    }
-
-    .diag-form__row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-4);
-    }
-
+    .diag-form { display: flex; flex-direction: column; gap: var(--space-5); }
+    .diag-form__group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .diag-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
     .diag-form__label {
         font-family: var(--font-mono);
         font-size: 0.72rem;
@@ -158,7 +145,6 @@
         align-items: baseline;
         gap: 0.5rem;
     }
-
     .diag-form__hint {
         font-family: var(--font-serif);
         font-style: italic;
@@ -168,13 +154,11 @@
         color: var(--mist-gray);
         font-weight: 400;
     }
-
     .diag-form__optional {
         color: var(--mist-gray);
         font-weight: 400;
         letter-spacing: 0.04em;
     }
-
     .diag-form__input {
         width: 100%;
         padding: 0.85rem 1rem;
@@ -188,29 +172,22 @@
         appearance: none;
         -webkit-appearance: none;
     }
-
-    .diag-form__input:hover {
-        border-color: var(--black-40);
-    }
-
+    .diag-form__input:hover { border-color: var(--black-40); }
     .diag-form__input:focus {
         outline: none;
         border-color: var(--velocity-orange);
         box-shadow: 0 0 0 3px rgba(232, 93, 31, 0.12);
     }
-
     .diag-form__input::placeholder {
         color: var(--mist-gray);
         font-style: italic;
     }
-
     .diag-form__input--area {
         min-height: 120px;
         resize: vertical;
         font-family: var(--font-sans);
         line-height: 1.5;
     }
-
     select.diag-form__input {
         background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%230B0F19' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
         background-repeat: no-repeat;
@@ -218,18 +195,13 @@
         padding-right: 2.5rem;
         cursor: pointer;
     }
-
     .diag-form__divider {
         border: 0;
         height: 1px;
         background: linear-gradient(to right, transparent, var(--gold-30) 20%, var(--gold-30) 80%, transparent);
         margin: var(--space-3) 0;
     }
-
-    .diag-form__group--checkbox {
-        margin-top: var(--space-2);
-    }
-
+    .diag-form__group--checkbox { margin-top: var(--space-2); }
     .diag-form__checkbox {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -240,7 +212,6 @@
         color: var(--black-60);
         line-height: 1.5;
     }
-
     .diag-form__checkbox input[type="checkbox"] {
         width: 18px;
         height: 18px;
@@ -248,12 +219,10 @@
         accent-color: var(--velocity-orange);
         cursor: pointer;
     }
-
     .diag-form__submit {
         margin-top: var(--space-3);
         align-self: flex-start;
     }
-
     .diag-form__note {
         font-family: var(--font-serif);
         font-style: italic;
@@ -262,21 +231,12 @@
         margin: 0;
         line-height: 1.55;
     }
-
-    /* Success / error states */
-    .diag-form.is-submitted {
-        opacity: 0.5;
-        pointer-events: none;
-    }
-
+    .diag-form.is-submitted { opacity: 0.5; pointer-events: none; }
     .diag-form__input:invalid:not(:placeholder-shown):not(:focus) {
         border-color: rgba(232, 93, 31, 0.5);
     }
-
     @media (max-width: 720px) {
-        .diag-form__row {
-            grid-template-columns: 1fr;
-        }
+        .diag-form__row { grid-template-columns: 1fr; }
     }
 </style>
 
@@ -285,6 +245,64 @@
         const form = document.getElementById('diagnostikovat-form');
         if (!form) return;
 
+        const lang = form.getAttribute('data-lang') || 'cs';
+
+        // Lokalizované labels pro e-mail body podle jazyka
+        const LABELS = {
+            cs: {
+                title: 'VELYOS — diagnostika přes web',
+                contact: 'KONTAKT',
+                name: 'Jméno', email: 'E-mail', phone: 'Telefon', when: 'Zastihnout',
+                firm: 'FIRMA',
+                company: 'Název', position: 'Pozice', industry: 'Obor', size: 'Velikost',
+                diag: 'DIAGNOSTIKA',
+                hours: 'Ztracený čas týdně', priority: 'Priorita',
+                says: 'CO ŘEŠÍ (vlastní slova)',
+                sentFrom: 'Odesláno z velyos.ai · ',
+                notSet: 'neuvedeno',
+                empty: '—',
+                alertGdpr: 'Prosím potvrďte souhlas se zpracováním údajů.',
+                subject: 'Diagnostika — ',
+                subjectFallback: 'nová poptávka',
+                locale: 'cs-CZ',
+            },
+            en: {
+                title: 'VELYOS — diagnostic from web',
+                contact: 'CONTACT',
+                name: 'Name', email: 'Email', phone: 'Phone', when: 'Reach at',
+                firm: 'COMPANY',
+                company: 'Name', position: 'Position', industry: 'Industry', size: 'Size',
+                diag: 'DIAGNOSTIC',
+                hours: 'Time lost per week', priority: 'Priority',
+                says: 'WHAT THEY FACE (own words)',
+                sentFrom: 'Sent from velyos.ai · ',
+                notSet: 'not provided',
+                empty: '—',
+                alertGdpr: 'Please confirm consent to data processing.',
+                subject: 'Diagnostic — ',
+                subjectFallback: 'new inquiry',
+                locale: 'en-US',
+            },
+            de: {
+                title: 'VELYOS — Diagnose übers Web',
+                contact: 'KONTAKT',
+                name: 'Name', email: 'E-Mail', phone: 'Telefon', when: 'Erreichbar',
+                firm: 'UNTERNEHMEN',
+                company: 'Name', position: 'Position', industry: 'Branche', size: 'Größe',
+                diag: 'DIAGNOSE',
+                hours: 'Zeitverlust pro Woche', priority: 'Priorität',
+                says: 'WAS SIE BESCHÄFTIGT (eigene Worte)',
+                sentFrom: 'Gesendet von velyos.ai · ',
+                notSet: 'nicht angegeben',
+                empty: '—',
+                alertGdpr: 'Bitte bestätigen Sie die Einwilligung zur Datenverarbeitung.',
+                subject: 'Diagnose — ',
+                subjectFallback: 'neue Anfrage',
+                locale: 'de-DE',
+            },
+        };
+        const L = LABELS[lang] || LABELS.cs;
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -292,52 +310,44 @@
             const pick = (k) => (data.get(k) || '').toString().trim();
 
             if (!pick('gdpr')) {
-                alert('Prosím potvrďte souhlas se zpracováním údajů.');
+                alert(L.alertGdpr);
                 return;
             }
 
             const lines = [
-                'VELYOS — diagnostika přes web',
+                L.title,
                 '═══════════════════════════',
                 '',
-                'KONTAKT',
-                '  Jméno:   ' + pick('name'),
-                '  E-mail:  ' + pick('email'),
-                '  Telefon: ' + (pick('phone') || '—'),
-                '  Zastihnout: ' + (pick('when') || '—'),
+                L.contact,
+                '  ' + L.name + ':    ' + pick('name'),
+                '  ' + L.email + ':   ' + pick('email'),
+                '  ' + L.phone + ':   ' + (pick('phone') || L.empty),
+                '  ' + L.when + ':    ' + (pick('when') || L.empty),
                 '',
-                'FIRMA',
-                '  Název:    ' + pick('company'),
-                '  Pozice:   ' + pick('position'),
-                '  Obor:     ' + pick('industry'),
-                '  Velikost: ' + pick('size'),
+                L.firm,
+                '  ' + L.company + ':  ' + pick('company'),
+                '  ' + L.position + ': ' + pick('position'),
+                '  ' + L.industry + ': ' + pick('industry'),
+                '  ' + L.size + ':     ' + pick('size'),
                 '',
-                'DIAGNOSTIKA',
-                '  Ztracený čas týdně: ' + (pick('hours') || 'neuvedeno'),
-                '  Priorita:           ' + (pick('priority') || 'neuvedeno'),
+                L.diag,
+                '  ' + L.hours + ': ' + (pick('hours') || L.notSet),
+                '  ' + L.priority + ':    ' + (pick('priority') || L.notSet),
                 '',
-                'CO ŘEŠÍ (vlastní slova)',
+                L.says,
                 '  ' + pick('pain').split('\n').join('\n  '),
                 '',
                 '───────────────────────────',
-                'Odesláno z velyos.ai · ' + new Date().toLocaleString('cs-CZ'),
+                L.sentFrom + new Date().toLocaleString(L.locale),
             ];
 
-            const subject = 'Diagnostika — ' + (pick('company') || pick('name') || 'nová poptávka');
+            const subject = L.subject + (pick('company') || pick('name') || L.subjectFallback);
             const body = lines.join('\n');
+            const mailto = 'mailto:stepan@velyos.ai?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
-            const mailto = 'mailto:stepan@velyos.ai'
-                + '?subject=' + encodeURIComponent(subject)
-                + '&body=' + encodeURIComponent(body);
-
-            // Otevře e-mailový klient uživatele s pre-filled body.
             window.location.href = mailto;
-
             form.classList.add('is-submitted');
-
-            setTimeout(() => {
-                form.classList.remove('is-submitted');
-            }, 4000);
+            setTimeout(() => form.classList.remove('is-submitted'), 4000);
         });
     })();
 </script>
