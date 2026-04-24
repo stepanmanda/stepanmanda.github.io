@@ -497,6 +497,65 @@ function initVelyos() {
         });
     }
 
+    /* Section indicator — vertical dots on right, active section glows.
+       Built from sections whose SectionHead eyebrow matches "· NN · Label" */
+    const indicator = document.querySelector("[data-section-indicator]");
+    if (indicator) {
+        // Clear any previous dots (on view-transition re-init)
+        indicator.replaceChildren();
+        indicator.classList.remove("is-ready");
+
+        const candidateSections = document.querySelectorAll("main section, body > section");
+        const sections = [];
+        candidateSections.forEach((section) => {
+            const eyebrow = section.querySelector(".section-head .eyebrow, .eyebrow");
+            if (!eyebrow) return;
+            const text = eyebrow.textContent.trim();
+            // Expect format "· 02 · Label text"
+            const match = text.match(/^·\s*(\d+)\s*·\s*(.+)$/);
+            if (!match) return;
+            sections.push({ el: section, num: match[1], label: match[2].trim() });
+        });
+
+        if (sections.length >= 3) {
+            const dots = [];
+            sections.forEach((s, i) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "section-indicator__dot";
+                btn.setAttribute("aria-label", s.label);
+                btn.setAttribute("data-section-num", s.num);
+
+                const label = document.createElement("span");
+                label.className = "section-indicator__label";
+                label.textContent = `${s.num} · ${s.label}`;
+                btn.appendChild(label);
+
+                btn.addEventListener("click", () => {
+                    s.el.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+
+                indicator.appendChild(btn);
+                dots.push({ btn, section: s.el });
+            });
+
+            indicator.classList.add("is-ready");
+
+            // Track active section
+            const sectionObs = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    const entry = dots.find((d) => d.section === e.target);
+                    if (!entry) return;
+                    if (e.isIntersecting) {
+                        dots.forEach((d) => d.btn.classList.remove("is-active"));
+                        entry.btn.classList.add("is-active");
+                    }
+                });
+            }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+            sections.forEach((s) => sectionObs.observe(s.el));
+        }
+    }
+
     /* Pause CSS animations out of viewport — velký scroll perf win.
        Najde všechny elementy s costly infinite animations a toggle
        class `.is-paused` podle IntersectionObserver. */
