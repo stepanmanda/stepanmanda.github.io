@@ -28,6 +28,47 @@ function initVelyos() {
         revealTargets.forEach((el) => el.classList.add("is-visible"));
     }
 
+    /* Logo boot animace — jen jednou za session ---------- */
+    const logoAlreadyBooted = sessionStorage.getItem("velyos-booted");
+    if (!logoAlreadyBooted && !prefersReducedMotion) {
+        const brandLogos = document.querySelectorAll(".brand");
+        brandLogos.forEach((brand) => {
+            if (brand.dataset.bootInit) return;
+            brand.dataset.bootInit = "1";
+
+            // Wrap VELY písmena a OS (jako dvě části)
+            const velyText = "VELY";
+            const beforeOs = brand.childNodes[0];
+            if (beforeOs && beforeOs.nodeType === Node.TEXT_NODE) {
+                const frag = document.createDocumentFragment();
+                velyText.split("").forEach((ch, i) => {
+                    const span = document.createElement("span");
+                    span.className = "brand-letter";
+                    span.style.setProperty("--letter-index", i);
+                    span.textContent = ch;
+                    frag.appendChild(span);
+                });
+                beforeOs.parentNode.replaceChild(frag, beforeOs);
+            }
+
+            // OS span
+            const osSpan = brand.querySelector(".os");
+            if (osSpan && !osSpan.dataset.bootInit) {
+                osSpan.dataset.bootInit = "1";
+                osSpan.classList.add("brand-letter", "brand-letter--os");
+                osSpan.style.setProperty("--letter-index", velyText.length);
+            }
+        });
+
+        document.documentElement.classList.add("velyos-boot");
+        sessionStorage.setItem("velyos-booted", "1");
+
+        // Po dokončení animace (~900ms) vypneme třídu — další navigace nemá boot
+        setTimeout(() => {
+            document.documentElement.classList.remove("velyos-boot");
+        }, 1200);
+    }
+
     /* ================================================
        HERO — CINEMATIC MODE
        Canvas mesh gradient + per-word reveal + multi-layer parallax
