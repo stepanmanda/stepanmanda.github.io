@@ -585,23 +585,21 @@ function initVelyos() {
             }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
             jumpSections.forEach((s) => sectionObs.observe(s.el));
 
-            // Show only when scrolled past hero
-            const hero = document.querySelector(".hero, [data-hero-cinematic]");
-            const updateVisibility = () => {
-                if (!hero) { jump.classList.add("is-visible"); return; }
-                const heroBottom = hero.getBoundingClientRect().bottom;
-                if (heroBottom < 120) jump.classList.add("is-visible");
-                else {
-                    jump.classList.remove("is-visible");
-                    closeJump();
-                }
-            };
-            updateVisibility();
-            let visRaf = null;
-            window.addEventListener("scroll", () => {
-                if (visRaf) return;
-                visRaf = requestAnimationFrame(() => { visRaf = null; updateVisibility(); });
-            }, { passive: true });
+            // Close dropdown on manual scroll (keeps UX clean as user navigates)
+            if (!jump.dataset.scrollBound) {
+                jump.dataset.scrollBound = "1";
+                let scrollCloseRaf = null;
+                window.addEventListener("scroll", () => {
+                    if (scrollCloseRaf) return;
+                    scrollCloseRaf = requestAnimationFrame(() => {
+                        scrollCloseRaf = null;
+                        if (jump.classList.contains("is-open")) closeJump();
+                    });
+                }, { passive: true });
+            }
+
+            // Mark as ready — CSS reveals the trigger
+            jump.classList.add("is-ready");
         }
     }
 
