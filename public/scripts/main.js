@@ -497,6 +497,109 @@ function initVelyos() {
         });
     }
 
+    /* Section Jump — dropdown navigator floating bottom-left.
+       Populated from sections with numbered eyebrows ("· 02 · Label").
+       Hidden until scrolled past hero, hides on mobile via CSS. */
+    const jump = document.querySelector("[data-section-jump]");
+    const jumpTrigger = document.querySelector("[data-section-jump-trigger]");
+    const jumpPanel = document.querySelector("[data-section-jump-panel]");
+    const jumpCurrent = document.querySelector("[data-section-jump-current]");
+
+    if (jump && jumpTrigger && jumpPanel) {
+        jumpPanel.replaceChildren();
+        jump.classList.remove("is-visible", "is-open");
+
+        const candidateSections = document.querySelectorAll("main section, body > section");
+        const jumpSections = [];
+        candidateSections.forEach((section) => {
+            const eyebrow = section.querySelector(".section-head .eyebrow, .eyebrow");
+            if (!eyebrow) return;
+            const text = eyebrow.textContent.trim();
+            const match = text.match(/^·\s*(\d+)\s*·\s*(.+)$/);
+            if (!match) return;
+            jumpSections.push({ el: section, num: match[1], label: match[2].trim() });
+        });
+
+        if (jumpSections.length >= 3) {
+            const items = [];
+
+            jumpSections.forEach((s) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "section-jump__item";
+                btn.setAttribute("role", "menuitem");
+
+                const num = document.createElement("span");
+                num.className = "section-jump__item-num";
+                num.textContent = s.num;
+
+                const label = document.createElement("span");
+                label.className = "section-jump__item-label";
+                label.textContent = s.label;
+
+                btn.append(num, label);
+                btn.addEventListener("click", () => {
+                    s.el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    closeJump();
+                });
+                jumpPanel.appendChild(btn);
+                items.push({ btn, num: s.num, section: s.el });
+            });
+
+            const openJump = () => {
+                jump.classList.add("is-open");
+                jumpTrigger.setAttribute("aria-expanded", "true");
+            };
+            const closeJump = () => {
+                jump.classList.remove("is-open");
+                jumpTrigger.setAttribute("aria-expanded", "false");
+            };
+
+            jumpTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                jump.classList.contains("is-open") ? closeJump() : openJump();
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!jump.contains(e.target)) closeJump();
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeJump();
+            });
+
+            // Track active section — updates both trigger number and panel highlight
+            const sectionObs = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    const entry = items.find((d) => d.section === e.target);
+                    if (!entry || !e.isIntersecting) return;
+                    items.forEach((d) => d.btn.classList.remove("is-active"));
+                    entry.btn.classList.add("is-active");
+                    if (jumpCurrent) jumpCurrent.textContent = entry.num;
+                });
+            }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+            jumpSections.forEach((s) => sectionObs.observe(s.el));
+
+            // Show only when scrolled past hero
+            const hero = document.querySelector(".hero, [data-hero-cinematic]");
+            const updateVisibility = () => {
+                if (!hero) { jump.classList.add("is-visible"); return; }
+                const heroBottom = hero.getBoundingClientRect().bottom;
+                if (heroBottom < 120) jump.classList.add("is-visible");
+                else {
+                    jump.classList.remove("is-visible");
+                    closeJump();
+                }
+            };
+            updateVisibility();
+            let visRaf = null;
+            window.addEventListener("scroll", () => {
+                if (visRaf) return;
+                visRaf = requestAnimationFrame(() => { visRaf = null; updateVisibility(); });
+            }, { passive: true });
+        }
+    }
+
     /* Pause CSS animations out of viewport — velký scroll perf win.
        Najde všechny elementy s costly infinite animations a toggle
        class `.is-paused` podle IntersectionObserver. */
