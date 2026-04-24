@@ -504,6 +504,9 @@ function initVelyos() {
     const jumpTrigger = document.querySelector("[data-section-jump-trigger]");
     const jumpPanel = document.querySelector("[data-section-jump-panel]");
     const jumpCurrent = document.querySelector("[data-section-jump-current]");
+    const jumpLabel = document.querySelector("[data-section-jump-label]");
+    const jumpDefaultLabel = jumpLabel ? (jumpLabel.dataset.defaultLabel || jumpLabel.textContent) : null;
+    const jumpDefaultNum = jumpCurrent ? jumpCurrent.textContent : "§";
 
     if (jump && jumpTrigger && jumpPanel) {
         jumpPanel.replaceChildren();
