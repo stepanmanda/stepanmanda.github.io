@@ -1638,6 +1638,51 @@ elevenlabs-convai {
     --el-accent-subtle: rgba(232, 93, 31, 0.1);    /* jemné orange pozadí */
 }
 
+/* Astro View Transitions — brand timing */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.42s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(root) {
+    animation-name: velyos-fade-out;
+}
+
+::view-transition-new(root) {
+    animation-name: velyos-fade-in;
+}
+
+@keyframes velyos-fade-out {
+    to { opacity: 0; transform: translateY(-6px) scale(0.995); }
+}
+
+@keyframes velyos-fade-in {
+    from { opacity: 0; transform: translateY(6px) scale(0.995); }
+}
+
+/* Persistent header — nepřejde, zůstane na místě */
+::view-transition-group(velyos-header) {
+    animation-duration: 0s;
+}
+
+/* Brand logo — morphuje (ne fade), jako Apple menu item */
+::view-transition-old(brand-logo),
+::view-transition-new(brand-logo) {
+    animation-duration: 0.42s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Respektuj reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root),
+    ::view-transition-old(brand-logo),
+    ::view-transition-new(brand-logo) {
+        animation: none !important;
+    }
+}
+
 /* Preview ribbon ------------------------------------- */
 .preview-ribbon {
     position: fixed;
