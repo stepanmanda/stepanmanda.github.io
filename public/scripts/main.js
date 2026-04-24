@@ -497,6 +497,102 @@ function initVelyos() {
         });
     }
 
+    /* Progress rail — Apple-tier vertical navigation.
+       Built from sections with numbered eyebrows ("· 02 · Label").
+       Invisible until scrolled past hero. Desktop only (>=1200px via CSS). */
+    const rail = document.querySelector("[data-progress-rail]");
+    if (rail) {
+        rail.replaceChildren();
+        rail.classList.remove("is-ready", "is-visible");
+
+        const candidateSections = document.querySelectorAll("main section, body > section");
+        const railSections = [];
+        candidateSections.forEach((section) => {
+            const eyebrow = section.querySelector(".section-head .eyebrow, .eyebrow");
+            if (!eyebrow) return;
+            const text = eyebrow.textContent.trim();
+            const match = text.match(/^·\s*(\d+)\s*·\s*(.+)$/);
+            if (!match) return;
+            railSections.push({ el: section, num: match[1], label: match[2].trim() });
+        });
+
+        if (railSections.length >= 3) {
+            const items = [];
+            railSections.forEach((s) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "progress-rail__item";
+                btn.setAttribute("aria-label", s.label);
+
+                const label = document.createElement("span");
+                label.className = "progress-rail__label";
+                label.textContent = s.label;
+
+                const tick = document.createElement("span");
+                tick.className = "progress-rail__tick";
+
+                const num = document.createElement("span");
+                num.className = "progress-rail__num";
+                num.textContent = s.num;
+
+                btn.append(label, tick, num);
+
+                btn.addEventListener("click", () => {
+                    s.el.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+
+                rail.appendChild(btn);
+                items.push({ btn, section: s.el });
+            });
+
+            rail.classList.add("is-ready");
+
+            // Track active section
+            const sectionObs = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    const entry = items.find((d) => d.section === e.target);
+                    if (!entry || !e.isIntersecting) return;
+                    items.forEach((d) => d.btn.classList.remove("is-active"));
+                    entry.btn.classList.add("is-active");
+                });
+            }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+            railSections.forEach((s) => sectionObs.observe(s.el));
+
+            // Show rail only when scrolled past hero
+            const hero = document.querySelector(".hero, [data-hero-cinematic]");
+            const updateVisibility = () => {
+                if (!hero) {
+                    rail.classList.add("is-visible");
+                    return;
+                }
+                const heroBottom = hero.getBoundingClientRect().bottom;
+                if (heroBottom < 120) rail.classList.add("is-visible");
+                else rail.classList.remove("is-visible");
+            };
+            updateVisibility();
+            let visRaf = null;
+            window.addEventListener("scroll", () => {
+                if (visRaf) return;
+                visRaf = requestAnimationFrame(() => { visRaf = null; updateVisibility(); });
+            }, { passive: true });
+
+            // Track dark-section overlap for color inversion
+            const darkSelectors = [".stats", ".notfound"];
+            const darkEls = document.querySelectorAll(darkSelectors.join(", "));
+            if (darkEls.length) {
+                const darkObs = new IntersectionObserver((entries) => {
+                    entries.forEach((e) => {
+                        const rect = e.target.getBoundingClientRect();
+                        const midY = window.innerHeight / 2;
+                        const isOverlapping = rect.top < midY && rect.bottom > midY;
+                        document.body.classList.toggle("is-on-dark", isOverlapping);
+                    });
+                }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+                darkEls.forEach((el) => darkObs.observe(el));
+            }
+        }
+    }
+
     /* Pause CSS animations out of viewport — velký scroll perf win.
        Najde všechny elementy s costly infinite animations a toggle
        class `.is-paused` podle IntersectionObserver. */
