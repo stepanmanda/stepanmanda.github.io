@@ -153,6 +153,9 @@ function initVelyos() {
                     if (animId) cancelAnimationFrame(animId);
                 };
 
+                // Expose pro astro:before-swap cleanup
+                canvas.__velyosStop = stopAnim;
+
                 if ("IntersectionObserver" in window) {
                     const heroObs = new IntersectionObserver((entries) => {
                         entries.forEach((e) => e.isIntersecting ? startAnim() : stopAnim());
