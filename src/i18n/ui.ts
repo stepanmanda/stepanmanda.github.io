@@ -329,6 +329,37 @@ export const formStrings = {
     },
 } as const;
 
+// ========== Stats sekce ==========
+export const statsStrings = {
+    cs: {
+        eyebrow: '· Co vracíme',
+        title: 'Čtyři čísla, která <span class="accent">rozhodují.</span>',
+        lead: 'Cíle typických nasazení napříč obory. Konkrétní výsledky pro vaši firmu probereme po diagnostice.',
+        s1: { value: 60, suffix: ' %', label: 'Rutinní zátěže', sub: 'kterou typicky převezmeme z týmu' },
+        s2: { value: 4, suffix: ' týdny', label: 'Plné nasazení', sub: 'od podpisu smlouvy do provozu' },
+        s3: { value: 6, suffix: ' měsíců', label: 'Návratnost', sub: 'vrácené v uspořených hodinách' },
+        s4: { value: 24, suffix: ' hodin', label: 'Odezva', sub: 'na každou poptávku nebo dotaz' },
+    },
+    en: {
+        eyebrow: '· What we return',
+        title: 'Four numbers that <span class="accent">decide.</span>',
+        lead: 'Targets of typical deployments across industries. Specific results for your firm we discuss after the diagnostic.',
+        s1: { value: 60, suffix: ' %', label: 'Of routine workload', sub: 'we typically take off your team' },
+        s2: { value: 4, suffix: ' weeks', label: 'Full deployment', sub: 'from signed contract to operation' },
+        s3: { value: 6, suffix: ' months', label: 'Return on investment', sub: 'paid back in saved hours' },
+        s4: { value: 24, suffix: ' hours', label: 'Response time', sub: 'on every inquiry or question' },
+    },
+    de: {
+        eyebrow: '· Was wir zurückgeben',
+        title: 'Vier Zahlen, die <span class="accent">entscheiden.</span>',
+        lead: 'Zielwerte typischer Einsätze quer durch die Branchen. Konkrete Ergebnisse für Ihre Firma besprechen wir nach der Diagnose.',
+        s1: { value: 60, suffix: ' %', label: 'Der Routine-Last', sub: 'die wir typischerweise übernehmen' },
+        s2: { value: 4, suffix: ' Wochen', label: 'Vollständiger Einsatz', sub: 'vom Vertrag bis zum Betrieb' },
+        s3: { value: 6, suffix: ' Monate', label: 'Amortisation', sub: 'durch eingesparte Stunden' },
+        s4: { value: 24, suffix: ' Stunden', label: 'Antwortzeit', sub: 'auf jede Anfrage' },
+    },
+} as const;
+
 // ========== ROI Kalkulačka ==========
 export const roiStrings = {
     cs: {
