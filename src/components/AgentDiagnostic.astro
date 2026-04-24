@@ -1,8 +1,14 @@
 ---
 // AgentDiagnostic — prezentační sekce pro agenta (widget sám je globálně v Layoutu)
+import { componentStrings, route, type Lang } from '../i18n/ui';
+
 interface Props {
     agentId?: string; // ponechané pro kompatibilitu, reálně widget je v Layout.astro
+    lang?: Lang;
 }
+
+const { lang = 'cs' } = Astro.props;
+const t = componentStrings[lang].agent;
 ---
 
 <section class="agent-diagnostic" id="diagnostikovat">
@@ -11,40 +17,33 @@ interface Props {
         <div class="agent-diagnostic__inner" data-reveal>
             <div class="agent-diagnostic__badge">
                 <span class="agent-diagnostic__dot"></span>
-                <span class="agent-diagnostic__badge-text">Diagnostika · dvě cesty · pár minut</span>
+                <span class="agent-diagnostic__badge-text">{t.badge}</span>
             </div>
 
             <h2 class="agent-diagnostic__title">
-                Pár minut. Bez obchodníka. <span class="accent">Vyberte si, jak to uděláme.</span>
+                {t.title1} <span class="accent">{t.title2}</span>
             </h2>
 
-            <p class="agent-diagnostic__lead">
-                Na stránce <strong>diagnostiky</strong> máte dvě rovnocenné cesty —
-                přirozený hlasový rozhovor s naší AI agentkou Stelou, nebo krátký strukturovaný formulář.
-                Obě cesty končí u stejného specialisty, který vám zavolá do 24 hodin.
-            </p>
+            <p class="agent-diagnostic__lead" set:html={t.lead}></p>
 
-            <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku</a>
+            <a href={route('diagnostika', lang)} class="btn btn--primary btn-arrow btn--lg">{t.cta}</a>
 
             <ul class="agent-diagnostic__points">
                 <li>
                     <span class="agent-diagnostic__check">✓</span>
-                    <span><strong>Hlasový hovor s agentem</strong> — mluvíte přirozeně, jako s kolegou. 5–7 minut.</span>
+                    <span set:html={t.point1}></span>
                 </li>
                 <li>
                     <span class="agent-diagnostic__check">✓</span>
-                    <span><strong>Písemný formulář</strong> — pokud raději píšete. 10 polí, 3 minuty.</span>
+                    <span set:html={t.point2}></span>
                 </li>
                 <li>
                     <span class="agent-diagnostic__check">✓</span>
-                    <span>Zdarma, bez obchodního tlaku. Agent mluví ve 13 jazycích.</span>
+                    <span set:html={t.point3}></span>
                 </li>
             </ul>
 
-            <p class="agent-diagnostic__footnote">
-                Spěcháte? Klikněte na kontrolku agenta <strong>vpravo dole</strong> — Stela začne poslouchat hned,
-                i bez přechodu na stránku diagnostiky.
-            </p>
+            <p class="agent-diagnostic__footnote" set:html={t.footnote}></p>
         </div>
     </div>
 </section>
