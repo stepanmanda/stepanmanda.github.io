@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Features from '../../components/Features.astro';
+import Feature from '../../components/Feature.astro';
+import Callout from '../../components/Callout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+
+<Layout
+    title="VELYOS — About us | Defining the lead."
+    description="VELYOS is a team, not software. We build automation that returns time, money, and peace of mind to companies. Limited annual intake."
+    lang="en"
+    active="o-nas"
+    footerTagline="A team. Not software."
+    footerVariant="v0.3 preview · about"
+>
+    <Hero tagline="· About us · Defining the lead.">
+        <h1 class="hero__title">We're not software. We're the team <span class="accent">that builds it for you.</span></h1>
+        <p class="hero__lead">
+            VELYOS started with a sentence our founder heard too often: <em>„We've got five things going — and not one of them is really working."</em>
+            We decided to build a firm that does it differently. One partner. End to end. Guarantee in contract.
+        </p>
+    </Hero>
+
+    <section class="section--editorial">
+        <div class="container container--narrow">
+            <div data-reveal>
+                <span class="eyebrow">· Manifesto</span>
+                <h2 style="margin-top:var(--space-4); margin-bottom:var(--space-8);">Time is the one asset you can never buy back.</h2>
+                <div class="section-body">
+                    <p>Most companies burn it in processes that should have been automated long ago. In calls no one should have taken. In administration that shouldn't have existed.</p>
+                    <p>VELYOS is the partner that builds, plugs in, and runs your operation. Not another piece of software you have to configure yourself. For companies and professionals who understand the value of their own time.</p>
+                    <p><strong>We implement in 4 weeks. Return on investment within 6 months. Guaranteed in contract.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Our values"
+                title="Five principles we work by."
+                lead="No nice slogans on a wall. Every principle maps to something concrete we deliver."
+            />
+
+            <Features cols={3}>
+                <Feature
+                    num="01 / VELOCITY"
+                    title="We measure in weeks, not months."
+                    body={`Full deployment within 4 weeks. No „6-month pilot phases". Speed is our axis.`}
+                />
+                <Feature
+                    num="02 / PRECISION"
+                    title="No „close enough". Only exact results."
+                    body="Measurable savings, human oversight, architecture aligned with ISO 27001 principles. We don't build on guesses."
+                />
+                <Feature
+                    num="03 / DISCRETION"
+                    title="Your data. Your results. Your secret."
+                    body="We anonymize everything. Case studies only with consent. What we work on stays with us."
+                />
+                <Feature
+                    num="04 / MASTERY"
+                    title="Implementation is craft, not product."
+                    body="We don't hand you a box with software. We build a solution tailored to your operation. From design to upkeep."
+                />
+                <Feature
+                    num="05 / SELECTIVE"
+                    title="We accept a limited number of clients per year."
+                    body="If your operation doesn't fit, we tell you straight — and refer you on. Craft can't be done in volume."
+                />
+            </Features>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 03 · Founder"
+                title="Štěpán Švanda — Founder & CEO"
+            />
+
+            <div class="section-body" data-reveal>
+                <p class="italic-serif" style="color:var(--signal-gold); font-size:1.2rem; margin-bottom:var(--space-8);">
+                    „It started when I saw how Czech companies lose years in processes that should have been automated long ago."
+                </p>
+
+                <p>
+                    Most consultants talk about AI. We decided to deploy it — in a way that pays back in half a year.
+                    VELYOS isn't an agency. It's a partner team with a limited client portfolio. Not to manufacture hype — but because craft can't be done in volume.
+                </p>
+
+                <p>
+                    Our contract has one clause the competition doesn't: <strong>ROI guarantee</strong>. If we don't deliver, you don't pay. That's not marketing. That's discipline.
+                </p>
+            </div>
+
+            <div style="margin-top:var(--space-10); padding-top:var(--space-8); border-top:1px solid var(--black-08); display:grid; grid-template-columns:1fr 1fr; gap:var(--space-8);" data-reveal>
+                <div>
+                    <span class="eyebrow" style="color:var(--signal-gold);">Education & experience</span>
+                    <p style="color:var(--black-60); font-size:0.95rem; margin-top:var(--space-3); line-height:1.6;">
+                        Secondary school for IT and financial services in Pilsen — programming track.
+                        Experience: systems administrator at <strong>DHL</strong>, then independent consulting.
+                        Now building <strong>VELYOS</strong> — a firm that automates the processes where discerning clients lose most of their time.
+                    </p>
+                </div>
+                <div>
+                    <span class="eyebrow" style="color:var(--signal-gold);">Contact</span>
+                    <p style="margin-top:var(--space-3); line-height:1.6;">
+                        <a href="mailto:stepan@velyos.ai" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30);">stepan@velyos.ai</a><br>
+                        <span style="color:var(--mist-gray); font-size:0.9rem; font-style:italic;">LinkedIn after registration.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · What the team looks like"
+                title="Small. Experienced. Directly accountable."
+                lead="We're not an agency with 50 juniors. We're a team of specialists who personally sign for every project. A client always has one primary contact — who knows their operation by heart."
+            />
+
+            <Features cols={3}>
+                <Feature
+                    num="STRATEGY"
+                    title="Process analyst."
+                    body="Dissects your operation in detail. Finds where time and money leak most. Proposes order."
+                />
+                <Feature
+                    num="BUILD"
+                    title="Integrators and developers."
+                    body="Connects systems, builds automation, trains AI. Knows your ERP, CRM, and accounting."
+                />
+                <Feature
+                    num="OVERSIGHT"
+                    title="System operator."
+                    body="Monitors daily what the system does. Tunes, teaches, repairs. AI doesn't run unsupervised."
+                />
+            </Features>
+
+            <Callout>
+                <strong>Partners:</strong> We work with vetted partners for areas that need specialized expertise — law and compliance, tax, security, design. All under NDA, all with direct accountability to your case.
+            </Callout>
+        </div>
+    </section>
+
+    <CtaBand
+        id="chci-poznat"
+        eyebrow="· 05 · Let's meet"
+        title="The best way to know VELYOS is to talk to it."
+        lead="Our diagnostic agent gives you orientation in 5 minutes. Then a human calls. No sales pressure. No presentation."
+        directPrefix="Prefer email?"
+    >
+        <a href="/en/diagnostic" class="btn btn--primary btn-arrow btn--lg">Start diagnostic</a>
+        <a href="/en/contact" class="btn btn--ghost btn--lg">All ways to reach us</a>
+    </CtaBand>
+</Layout>
