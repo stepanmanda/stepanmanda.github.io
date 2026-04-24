@@ -1777,13 +1777,86 @@ section:not(.section--alt):not(.section--editorial) .duo__divider::before {
 
 .site-footer li a:hover { color: var(--ivory-silver); }
 
-.site-footer__brand .brand { color: var(--ivory-silver); font-size: 1.8rem; }
-.site-footer__brand p {
-    color: var(--mist-gray);
-    margin: var(--space-3) 0 0;
-    max-width: 30ch;
+.site-footer__brand {
+    position: relative;
+}
+
+.site-footer__brand .brand {
+    color: var(--ivory-silver);
+    font-size: 2rem;
+    letter-spacing: -0.04em;
+}
+
+.site-footer__tagline {
+    color: var(--ivory-70);
+    margin: var(--space-3) 0 var(--space-6);
+    max-width: 32ch;
     font-family: var(--font-serif);
     font-style: italic;
+    font-size: 1rem;
+    line-height: 1.45;
+}
+
+/* Trust strip — small mono badges under brand */
+.site-footer__trust {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mist-gray);
+}
+
+.site-footer__trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.site-footer__trust li::before {
+    content: "·";
+    color: var(--signal-gold);
+    font-weight: 600;
+}
+
+.site-footer__muted {
+    color: var(--mist-gray);
+    font-style: italic;
+}
+
+/* Editorial manifesto row */
+.site-footer__manifesto {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-4);
+    align-items: start;
+    padding: var(--space-8) 0 var(--space-6);
+    border-bottom: 1px solid var(--ivory-10);
+    margin-bottom: var(--space-4);
+}
+
+.site-footer__quote-mark {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 3.5rem;
+    line-height: 0.8;
+    color: var(--signal-gold);
+    opacity: 0.7;
+}
+
+.site-footer__manifesto p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    color: var(--ivory-silver);
+    margin: 0.4rem 0 0;
+    max-width: 62ch;
 }
 
 .site-footer__legal {
