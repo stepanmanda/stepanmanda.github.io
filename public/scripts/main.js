@@ -576,15 +576,36 @@ function initVelyos() {
                 });
             }
 
-            // Track active section — updates both trigger number and panel highlight
+            // Track active section — updates trigger badge, trigger label, and panel highlight
+            const activeSections = new Set();
+            const resolveActive = () => {
+                // If we have an active section — use it. Otherwise restore default.
+                if (activeSections.size === 0) {
+                    items.forEach((d) => d.btn.classList.remove("is-active"));
+                    if (jumpCurrent) jumpCurrent.textContent = jumpDefaultNum;
+                    if (jumpLabel) jumpLabel.textContent = jumpDefaultLabel;
+                    return;
+                }
+                // Pick topmost (smallest num) active section
+                const active = [...activeSections].sort((a, b) =>
+                    parseInt(a.num, 10) - parseInt(b.num, 10)
+                )[0];
+                const entry = items.find((d) => d.section === active.el);
+                if (!entry) return;
+                items.forEach((d) => d.btn.classList.remove("is-active"));
+                entry.btn.classList.add("is-active");
+                if (jumpCurrent) jumpCurrent.textContent = active.num;
+                if (jumpLabel) jumpLabel.textContent = active.label;
+            };
+
             const sectionObs = new IntersectionObserver((entries) => {
                 entries.forEach((e) => {
-                    const entry = items.find((d) => d.section === e.target);
-                    if (!entry || !e.isIntersecting) return;
-                    items.forEach((d) => d.btn.classList.remove("is-active"));
-                    entry.btn.classList.add("is-active");
-                    if (jumpCurrent) jumpCurrent.textContent = entry.num;
+                    const sec = jumpSections.find((s) => s.el === e.target);
+                    if (!sec) return;
+                    if (e.isIntersecting) activeSections.add(sec);
+                    else activeSections.delete(sec);
                 });
+                resolveActive();
             }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
             jumpSections.forEach((s) => sectionObs.observe(s.el));
 
