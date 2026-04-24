@@ -237,12 +237,44 @@ const t = copy[lang];
         display: flex;
         flex-direction: column;
         transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        position: relative;
     }
 
     .member:hover {
         transform: translateY(-4px);
         box-shadow: 0 20px 50px -25px rgba(11, 15, 25, 0.22);
         border-color: rgba(232, 93, 31, 0.3);
+    }
+
+    /* Featured = Martin / CTO — gold border + gold top rail */
+    .member--featured {
+        border-color: rgba(184, 147, 92, 0.45);
+        box-shadow: 0 10px 30px -20px rgba(184, 147, 92, 0.35);
+    }
+
+    .member--featured::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--signal-gold), var(--velocity-orange));
+        z-index: 2;
+    }
+
+    .member--featured .member__photo {
+        background: linear-gradient(135deg, #1a1206 0%, #0B0F19 55%, #2a1c08 100%);
+    }
+
+    .member--featured .member__photo-initials {
+        color: var(--signal-gold);
+        font-family: var(--font-sans);
+        font-size: clamp(2.6rem, 5vw, 3.6rem);
+    }
+
+    .member--featured .member__role {
+        color: var(--velocity-orange);
     }
 
     .member__photo {
