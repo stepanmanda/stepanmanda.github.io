@@ -199,12 +199,12 @@ import BentoCard from '../../components/BentoCard.astro';
                 lead="The principles don't change — they adapt to your operation. The numbers below are <strong>targets of typical deployments</strong> — what we can deliver. Specific results for your firm we'll discuss after the diagnostic."
             />
 
-            <Features cols={2}>
-                <Feature num="Healthcare" title={`Documentation from <span style="color:var(--velocity-orange);">25&nbsp;min to 4&nbsp;min</span> per patient.`} body="The doctor dictates a summary. The system structures the medical record, assigns ICD-10 codes, prepares the insurance filing. The doctor approves and sends. Two extra hours a day for patients." />
-                <Feature num="Construction" title={`Quote from <span style="color:var(--velocity-orange);">4&nbsp;hours to 20&nbsp;minutes</span>.`} body="Sales enters the scope. The system pulls from price lists, accounts for subcontractors and rates, generates PDF. Daily throughput of processed inquiries doubles." />
-                <Feature num="Real Estate" title={`Lead <span style="color:var(--velocity-orange);">within the hour</span>. Weekends too.`} body="The inquiry comes via portal or phone. The system scores it, pulls public records, suggests matching properties. The broker responds before competitors pick up the phone." />
-                <Feature num="Professional Services (law, consulting, accounting)" title={`Client prep in <span style="color:var(--velocity-orange);">15&nbsp;minutes</span>.`} body="The system reviews emails, documents, and client history. Builds a briefing: what you're working on, where it's going, what the client will bring up. You walk in prepared, not caught off-guard." />
-            </Features>
+            <BentoGrid>
+                <BentoCard span={7} accent="orange" num="Healthcare" title={`Documentation from <span style="color:var(--velocity-orange);">25&nbsp;min to 4&nbsp;min</span> per patient.`} body="The doctor dictates a summary. The system structures the medical record, assigns ICD-10 codes, prepares the insurance filing. The doctor approves and sends. Two extra hours a day for patients." />
+                <BentoCard span={5} accent="gold" num="Construction" title={`Quote from <span style="color:var(--velocity-orange);">4&nbsp;hours to 20&nbsp;minutes</span>.`} body="Sales enters the scope. The system pulls from price lists, accounts for subcontractors and rates, generates PDF. Daily throughput of processed inquiries doubles." />
+                <BentoCard span={5} accent="gold" num="Real Estate" title={`Lead <span style="color:var(--velocity-orange);">within the hour</span>. Weekends too.`} body="The inquiry comes via portal or phone. The system scores it, pulls public records, suggests matching properties. The broker responds before competitors pick up the phone." />
+                <BentoCard span={7} accent="orange" num="Professional Services (law, consulting, accounting)" title={`Client prep in <span style="color:var(--velocity-orange);">15&nbsp;minutes</span>.`} body="The system reviews emails, documents, and client history. Builds a briefing: what you're working on, where it's going, what the client will bring up. You walk in prepared, not caught off-guard." />
+            </BentoGrid>
 
             <Note>
                 Case studies available on request. Our clients' privacy is paramount — all references we provide are fully anonymized.
