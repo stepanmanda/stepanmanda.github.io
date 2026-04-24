@@ -74,6 +74,6 @@ Sledovat průběh: [Actions tab](https://github.com/stepanmanda/stepanmanda.gith
 
 ## Autor
 
-**Štěpán Švanda** — [stepan@velyos.ai](mailto:stepan@velyos.ai)
+**Štěpán Manda** — [stepan@velyos.ai](mailto:stepan@velyos.ai)
 
 © VELYOS · Františkovy Lázně · CZ
