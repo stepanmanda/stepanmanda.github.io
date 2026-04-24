@@ -385,7 +385,7 @@ export const roiStrings = {
         savingsLabel: 'hodin uspořených ročně',
     },
     en: {
-        eyebrow: '· Calculator · Run the numbers',
+        eyebrow: '· 09 · Calculator',
         title: 'How much your firm loses on routine. <span class="accent">And how much you could get back.</span>',
         lead: 'Move the three sliders to match your reality. The calculation is indicative — it shows orders of magnitude, not exact predictions. Specifics after the diagnostic.',
         hoursLabel: 'Hours of admin per person per week',
