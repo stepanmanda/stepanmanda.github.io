@@ -214,10 +214,53 @@ import AgentDiagnostic from '../components/AgentDiagnostic.astro';
         </div>
     </section>
 
+    <section class="case-studies-section">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 07 · Vzorky z praxe"
+                title="Tři anonymní příklady, kde jsme vrátili čas."
+                lead="Nejsou to marketing-friendly okliky. Jsou to konkrétní čísla z reálných nasazení. Jména jsme z respektu ke klientům odstranili."
+            />
+
+            <div class="case-studies" data-stagger>
+                <CaseStudy
+                    industry="Zdravotnictví"
+                    location="Praha"
+                    size="12 lékařů"
+                    headline={`Dermatologická klinika: dokumentace z 25 na&nbsp;4 minuty na pacienta.`}
+                    metricValue="−84 %"
+                    metricLabel="administrativa na pacienta za 6 týdnů po&nbsp;nasazení"
+                    outcome="Lékař nadiktuje shrnutí, systém strukturuje zdravotní kartu a pojišťovací podklad. 2 hodiny denně zpátky u pacientů místo u klávesnice."
+                    anonymizedLabel="Anonymizováno"
+                />
+                <CaseStudy
+                    industry="Stavebnictví"
+                    location="Morava"
+                    size="sales tým 6 lidí"
+                    headline={`Stavební skupina: nabídka ze&nbsp;4&nbsp;hodin na&nbsp;20&nbsp;minut.`}
+                    metricValue="2,1×"
+                    metricLabel="více zpracovaných poptávek denně"
+                    outcome="Obchodník zadá zakázku, systém sáhne do ceníků a vygeneruje PDF. Závěrem: dvojnásobný throughput bez nových lidí."
+                    anonymizedLabel="Anonymizováno"
+                />
+                <CaseStudy
+                    industry="Služby"
+                    location="Brno + Praha"
+                    size="14 profesionálů"
+                    headline={`Advokátní kancelář: klient-brief z&nbsp;hodiny na&nbsp;15&nbsp;minut.`}
+                    metricValue="11 h"
+                    metricLabel="zpátky každému profesionálovi týdně"
+                    outcome="Systém projde e-maily, dokumenty a historii klienta. Briefing přijde do schránky den před schůzkou — příprava místo reakce."
+                    anonymizedLabel="Anonymizováno"
+                />
+            </div>
+        </div>
+    </section>
+
     <section>
         <div class="container">
             <SectionHead
-                eyebrow="· 07 · Investice"
+                eyebrow="· 08 · Investice"
                 title="Každý projekt je jiný. Cena taky."
                 lead="Nemáme veřejný ceník. Každá firma má jiný rozsah, jiné systémy, jinou prioritu. Konkrétní investici probereme osobně — až bude jasné, co pro vás stavíme a jaká návratnost dává smysl."
             />
