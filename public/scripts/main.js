@@ -266,7 +266,7 @@ function initVelyos() {
         });
     }
 
-    /* Magnetický efekt na primárních CTA tlačítkách ------ */
+    /* Magnetický efekt + ripple na primárních CTA tlačítkách ------ */
     if (!prefersReducedMotion) {
         document.querySelectorAll(".btn--primary.btn--lg, .btn--dark.btn--lg").forEach((btn) => {
             btn.addEventListener("mousemove", (e) => {
@@ -280,6 +280,21 @@ function initVelyos() {
             });
         });
     }
+
+    /* Ripple efekt na všech primárních CTA (funguje i s reduced motion — rychlý) */
+    document.querySelectorAll(".btn--primary, .btn--dark").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            const rect = btn.getBoundingClientRect();
+            const ripple = document.createElement("span");
+            ripple.className = "btn__ripple";
+            const size = Math.max(rect.width, rect.height) * 1.6;
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+            ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+            btn.appendChild(ripple);
+            ripple.addEventListener("animationend", () => ripple.remove(), { once: true });
+        });
+    });
 
     /* Scroll parallax — elementy s data-parallax se posunou pomaleji */
     if (!prefersReducedMotion) {
