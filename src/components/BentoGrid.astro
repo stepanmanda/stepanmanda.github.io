@@ -1,0 +1,22 @@
+---
+---
+
+<div class="bento" data-stagger>
+    <slot />
+</div>
+
+<style>
+    .bento {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--space-5);
+        margin-top: var(--space-10);
+    }
+
+    @media (max-width: 900px) {
+        .bento {
+            grid-template-columns: 1fr;
+            gap: var(--space-4);
+        }
+    }
+</style>
