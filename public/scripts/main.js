@@ -328,13 +328,31 @@ function initVelyos() {
 
     /* Sticky header — shadow po scrollu ------------------- */
     const header = document.querySelector(".site-header");
-    if (header) {
+    const scrollProgress = document.querySelector(".scroll-progress");
+    if (header || scrollProgress) {
+        let scrollRaf = null;
         const onScroll = () => {
-            if (window.scrollY > 8) header.classList.add("is-scrolled");
-            else header.classList.remove("is-scrolled");
+            scrollRaf = null;
+            if (header) {
+                if (window.scrollY > 8) header.classList.add("is-scrolled");
+                else header.classList.remove("is-scrolled");
+            }
+            if (scrollProgress) {
+                const doc = document.documentElement;
+                const max = doc.scrollHeight - doc.clientHeight;
+                const pct = max > 0 ? window.scrollY / max : 0;
+                scrollProgress.style.transform = `scaleX(${Math.min(1, Math.max(0, pct))})`;
+            }
         };
         onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("scroll", () => {
+            if (scrollRaf) return;
+            scrollRaf = requestAnimationFrame(onScroll);
+        }, { passive: true });
+        window.addEventListener("resize", () => {
+            if (scrollRaf) return;
+            scrollRaf = requestAnimationFrame(onScroll);
+        }, { passive: true });
     }
 
     /* ElevenLabs widget — vynutit collapsed default ------- */
