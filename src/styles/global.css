@@ -894,6 +894,39 @@ body.nav-open {
     transform: translateX(120%);
 }
 
+/* Dark btn — potřebuje stejný base pro ripple overlay */
+.btn--dark {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ripple — radiating circle on click */
+.btn__ripple {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.42);
+    transform: scale(0);
+    opacity: 0.7;
+    animation: btnRipple 620ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    z-index: 2;
+}
+
+.btn--dark .btn__ripple {
+    background: rgba(232, 93, 31, 0.55);
+}
+
+@keyframes btnRipple {
+    to {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn__ripple { display: none; }
+}
+
 /* Hero ----------------------------------------------- */
 .hero {
     background: var(--ivory-silver);
