@@ -178,6 +178,28 @@
         }, { passive: true });
     }
 
+    /* Language switcher dropdown (desktop) -------------- */
+    const langTrigger = document.querySelector(".lang-switcher__trigger");
+    if (langTrigger) {
+        const closeLang = () => langTrigger.setAttribute("aria-expanded", "false");
+        const openLang = () => langTrigger.setAttribute("aria-expanded", "true");
+
+        langTrigger.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = langTrigger.getAttribute("aria-expanded") === "true";
+            if (isOpen) closeLang(); else openLang();
+        });
+
+        document.addEventListener("click", (e) => {
+            const parent = langTrigger.closest(".lang-switcher");
+            if (parent && !parent.contains(e.target)) closeLang();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeLang();
+        });
+    }
+
     /* Mobile hamburger drawer ---------------------------- */
     const navToggle = document.getElementById("nav-toggle");
     const mobileDrawer = document.getElementById("mobile-drawer");
