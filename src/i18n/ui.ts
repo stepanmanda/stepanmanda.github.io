@@ -162,3 +162,37 @@ export const ui = {
 export function t<K extends keyof typeof ui>(lang: Lang, section: K) {
     return ui[section][lang];
 }
+
+// ========== URL routing per jazyk ==========
+// Každá page má v URL sémantický slug v daném jazyce.
+// Interní klíč (routeKey) je stálý — používá se pro aktivní stav, hreflang, atd.
+
+export type RouteKey =
+    | 'home'
+    | 'firmy'
+    | 'jednotlivci'
+    | 'diagnostika'
+    | 'o-nas'
+    | 'pristup'
+    | 'pripadove-studie'
+    | 'kontakt'
+    | 'impresum'
+    | 'ochrana-osobnich-udaju';
+
+export const ROUTES: Record<RouteKey, Record<Lang, string>> = {
+    'home': { cs: '/', en: '/en', de: '/de' },
+    'firmy': { cs: '/firmy', en: '/en/companies', de: '/de/unternehmen' },
+    'jednotlivci': { cs: '/jednotlivci', en: '/en/individuals', de: '/de/einzelpersonen' },
+    'diagnostika': { cs: '/diagnostika', en: '/en/diagnostic', de: '/de/diagnose' },
+    'o-nas': { cs: '/o-nas', en: '/en/about', de: '/de/ueber-uns' },
+    'pristup': { cs: '/pristup', en: '/en/approach', de: '/de/ansatz' },
+    'pripadove-studie': { cs: '/pripadove-studie', en: '/en/use-cases', de: '/de/anwendungsbeispiele' },
+    'kontakt': { cs: '/kontakt', en: '/en/contact', de: '/de/kontakt' },
+    'impresum': { cs: '/impresum', en: '/impresum', de: '/impresum' }, // právní — jen CZ
+    'ochrana-osobnich-udaju': { cs: '/ochrana-osobnich-udaju', en: '/ochrana-osobnich-udaju', de: '/ochrana-osobnich-udaju' }, // právní — jen CZ
+};
+
+/** Vrátí URL pro danou route v daném jazyce */
+export function route(key: RouteKey, lang: Lang): string {
+    return ROUTES[key][lang];
+}
