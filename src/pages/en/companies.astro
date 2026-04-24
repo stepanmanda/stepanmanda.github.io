@@ -213,10 +213,53 @@ import CaseStudy from '../../components/CaseStudy.astro';
         </div>
     </section>
 
+    <section class="case-studies-section">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 07 · Samples from practice"
+                title="Three anonymous examples where we returned time."
+                lead="Not marketing-friendly detours. Concrete numbers from real deployments. Names removed out of respect for our clients."
+            />
+
+            <div class="case-studies" data-stagger>
+                <CaseStudy
+                    industry="Healthcare"
+                    location="Prague"
+                    size="12 physicians"
+                    headline={`Dermatology clinic: documentation from 25 to&nbsp;4 minutes per patient.`}
+                    metricValue="−84 %"
+                    metricLabel="admin per patient, 6 weeks after deployment"
+                    outcome="Doctor dictates a summary, system structures the record and insurance filing. 2 hours a day back with patients instead of keyboard."
+                    anonymizedLabel="Anonymized"
+                />
+                <CaseStudy
+                    industry="Construction"
+                    location="Moravia"
+                    size="6-person sales team"
+                    headline={`Construction group: quote from&nbsp;4&nbsp;hours to&nbsp;20&nbsp;minutes.`}
+                    metricValue="2.1×"
+                    metricLabel="more inquiries processed per day"
+                    outcome="Sales enters the scope, system pulls price lists and generates PDF. Conclusion: double throughput without new hires."
+                    anonymizedLabel="Anonymized"
+                />
+                <CaseStudy
+                    industry="Professional Services"
+                    location="Brno + Prague"
+                    size="14 professionals"
+                    headline={`Law firm: client brief from one hour to&nbsp;15&nbsp;minutes.`}
+                    metricValue="11 h"
+                    metricLabel="back to each professional per week"
+                    outcome="System reviews emails, documents, and client history. Briefing arrives in inbox the day before — preparation instead of reaction."
+                    anonymizedLabel="Anonymized"
+                />
+            </div>
+        </div>
+    </section>
+
     <section>
         <div class="container">
             <SectionHead
-                eyebrow="· 07 · Investment"
+                eyebrow="· 08 · Investment"
                 title="Every project is different. So is the price."
                 lead="We don't publish a price list. Every company has different scope, different systems, different priorities. We discuss specific investment in person — once it's clear what we're building and what return makes sense."
             />
