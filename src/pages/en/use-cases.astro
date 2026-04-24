@@ -1,0 +1,187 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Note from '../../components/Note.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+
+<Layout
+    title="VELYOS — Use cases | What we can deliver."
+    description="VELYOS deployment patterns by industry — healthcare, construction, real estate, professional services. Targets of typical projects we build for similar firms."
+    lang="en"
+    active="pripadove-studie"
+    footerTagline="Patterns of what we deliver."
+    footerVariant="v0.3 preview · use cases"
+>
+    <Hero tagline="· Use cases · Defining the lead.">
+        <h1 class="hero__title">What we can <span class="accent">deliver for you.</span></h1>
+        <p class="hero__lead">
+            Patterns of typical deployments by industry. These are not specific case studies —
+            <strong>they are the outcomes we achieve for clients in similar situations.</strong>
+            When we meet, we'll discuss what's realistic for your firm.
+        </p>
+        <p class="hero__lead" style="font-size:0.95rem; margin-top:var(--space-4); max-width:60ch; color:var(--black-60); font-style:italic;">
+            Fully anonymized case studies with real numbers and firms are provided under NDA to serious prospects.
+        </p>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Healthcare"
+                title="Clinic or practice: documentation eats doctors' hours daily."
+                lead="Typical scenario for smaller and mid-sized healthcare operations — clinics, specialist practices, rehab centers."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Starting situation</h3>
+                <p>
+                    The doctor spends a significant part of the day on documentation, insurance filings, and notes.
+                    The practice closes and the „second paperwork shift" begins. Admin eats into patient care.
+                </p>
+
+                <h3>What we build</h3>
+                <p>
+                    The doctor dictates a visit summary. The system structures the medical record, prepares ICD-10 codes
+                    and the insurance filing. The doctor reviews and approves. All inside the clinical database —
+                    no data leaves the practice environment.
+                </p>
+
+                <h3>Target outcome</h3>
+                <p>
+                    Documentation time drops from tens of minutes to <strong style="color:var(--velocity-orange);">single-digit minutes per patient</strong>.
+                    Every doctor gains <strong>hours a day for patients — or for leaving on time</strong>.
+                    Practice capacity grows without adding staff.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 03 · Construction"
+                title="Construction firm: quote prep eats half the sales day."
+                lead="Typical scenario for firms with in-house estimators and varied subcontractors — renovations, civil works, technical installations."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Starting situation</h3>
+                <p>
+                    Sales prepares each quote by hand — price lists, subcontractor rates, margin, scope check.
+                    One quality quote eats half the day. The firm can't keep up with inbound inquiries and some leads are lost.
+                </p>
+
+                <h3>What we build</h3>
+                <p>
+                    Sales enters the scope parameters. The system pulls from internal price lists, accounts for current subcontractor rates,
+                    calculates margin, and generates a PDF quote in brand identity. Sales reviews and sends.
+                </p>
+
+                <h3>Target outcome</h3>
+                <p>
+                    Time per quote drops from <strong style="color:var(--velocity-orange);">hours to single-digit minutes</strong>.
+                    Daily throughput of processed inquiries multiplies. Sales responds before competitors — more closed deals.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · Real estate"
+                title="Real estate agency: weekend leads go to competitors."
+                lead="Typical scenario for mid-sized agencies with several agents and inbound leads via portals, web, and phone."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Starting situation</h3>
+                <p>
+                    Inquiries via web, phone, and property portals come in 24/7. Agents process them in working hours —
+                    at the latest Monday morning. By then the client is often talking to another agency.
+                </p>
+
+                <h3>What we build</h3>
+                <p>
+                    The system receives inquiries from all channels automatically. It scores lead value, enriches with public record data,
+                    and suggests matching properties from portfolio. A qualified lead reaches the agent with complete context — ready for immediate callback.
+                </p>
+
+                <h3>Target outcome</h3>
+                <p>
+                    Average first response drops from <strong style="color:var(--velocity-orange);">hours to minutes</strong>.
+                    Lead → meeting conversion rises significantly. Weekend inquiries no longer lost — the system catches them before competitors do.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 05 · Professional services"
+                title="Law, consulting, accounting: client prep eats billable time."
+                lead="Typical scenario for firms where a senior spends hours reviewing client history before each meeting."
+            />
+
+            <div class="section-body" style="max-width:var(--container-narrow);" data-reveal>
+                <h3>Starting situation</h3>
+                <p>
+                    Before each client call, the senior partner spends hours reviewing emails, documents, and prior meetings.
+                    Junior associates spend even more. Billable time dissolves in prep the client never sees.
+                </p>
+
+                <h3>What we build</h3>
+                <p>
+                    The system reviews the client's full documentation, all prior interactions, and current legal or substantive context.
+                    Prepares a briefing: what you're working on, where it's going, what the client plans to raise, current status.
+                </p>
+
+                <h3>Target outcome</h3>
+                <p>
+                    Prep time drops from tens of minutes to <strong style="color:var(--velocity-orange);">single-digit minutes</strong>.
+                    The senior arrives better prepared. Billable capacity grows without hiring.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--editorial">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· Note"
+                title="Why we share patterns, not specific clients."
+            />
+
+            <div class="section-body" data-reveal>
+                <p>
+                    Our clients work with us for three reasons: <strong>speed, guarantee, and discretion</strong>.
+                    Discretion means we don't let their specific deployments, data, and know-how travel through marketing materials.
+                </p>
+
+                <p>
+                    The patterns above describe <strong>typical briefs and targets</strong> we work with.
+                    Specific numbers and details for your firm we discuss at the first call — based on your systems, processes, and priorities.
+                </p>
+
+                <p>
+                    If you're a serious prospect and want to see an anonymized study of a specific project,
+                    write to us. In the second phase of the conversation we'll walk through what's realistic directly for your case.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <CtaBand
+        id="chci-vic"
+        eyebrow="· 06 · Want to discuss your case?"
+        title="Tell us what interests you — we'll walk through a specific scenario."
+        lead="The fastest path is a few minutes with our diagnostic agent or a short form. Within 24 hours a specialist calls with a concrete assessment for your industry."
+        directPrefix="Or directly at"
+    >
+        <a href="/en/diagnostic" class="btn btn--primary btn-arrow btn--lg">Start diagnostic</a>
+        <a href="/en/contact" class="btn btn--ghost btn--lg">All ways to reach us</a>
+    </CtaBand>
+</Layout>
