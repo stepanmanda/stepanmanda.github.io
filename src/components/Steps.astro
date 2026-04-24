@@ -1,10 +1,13 @@
 ---
 interface Props {
-    cols?: 3 | 4;
+    cols?: 3 | 4 | 5;
 }
 
 const { cols = 4 } = Astro.props;
-const style = cols === 3 ? 'grid-template-columns: repeat(3, 1fr);' : undefined;
+const style =
+    cols === 3 ? 'grid-template-columns: repeat(3, 1fr);' :
+    cols === 5 ? 'grid-template-columns: repeat(5, 1fr);' :
+    undefined;
 ---
 
 <div class="steps" data-stagger {...style ? { style } : {}}>
