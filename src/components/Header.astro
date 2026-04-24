@@ -23,9 +23,9 @@ const cta = primaryCta === undefined
     : primaryCta;
 ---
 
-<header class="site-header">
+<header class="site-header" transition:persist="velyos-header">
     <div class="site-header__inner">
-        <a href={route('home', lang)} class="brand">VELY<span class="os">OS</span></a>
+        <a href={route('home', lang)} class="brand" transition:name="brand-logo">VELY<span class="os">OS</span></a>
 
         <!-- Desktop nav -->
         <nav class="nav">
