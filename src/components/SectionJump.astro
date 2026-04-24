@@ -23,8 +23,8 @@ const t = labels[lang];
     >
         <span class="section-jump__trigger-badge" data-section-jump-current>§</span>
         <span class="section-jump__trigger-label">{t.trigger}</span>
-        <svg class="section-jump__caret" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-            <path d="M1 5L5 1L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg class="section-jump__caret" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </button>
 
@@ -44,97 +44,91 @@ const t = labels[lang];
 
 <style is:global>
     .section-jump {
-        position: fixed;
-        bottom: 1.5rem;
-        left: 1.5rem;
-        z-index: 35;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
-        pointer-events: none;
+        position: relative;
+        display: none; /* JS toggles .is-ready when 3+ sections exist */
     }
 
-    .section-jump.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
+    .section-jump.is-ready { display: inline-flex; }
+
+    @media (max-width: 880px) {
+        .section-jump.is-ready { display: none; }
     }
 
-    @media (max-width: 768px) {
-        .section-jump { display: none; }
-    }
-
-    /* ========== TRIGGER ========== */
+    /* ========== TRIGGER — sized for header ========== */
     .section-jump__trigger {
         display: inline-flex;
         align-items: center;
-        gap: 0.65rem;
-        background: var(--velocity-black);
-        color: var(--ivory-silver);
-        padding: 0.55rem 1.1rem 0.55rem 0.55rem;
+        gap: 0.5rem;
+        background: transparent;
+        color: var(--velocity-black);
+        padding: 0.4rem 0.75rem 0.4rem 0.4rem;
+        border: 1px solid rgba(11, 15, 25, 0.12);
         border-radius: 999px;
         font-family: var(--font-mono);
-        font-size: 0.74rem;
+        font-size: 0.72rem;
         letter-spacing: 0.14em;
         text-transform: uppercase;
         font-weight: 500;
-        box-shadow: 0 20px 42px -20px rgba(11, 15, 25, 0.55),
-                    0 0 0 1px rgba(245, 243, 238, 0.06);
         cursor: pointer;
-        transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-                    background 0.25s ease,
-                    box-shadow 0.3s ease;
+        transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
     }
 
     .section-jump__trigger:hover {
-        transform: translateY(-2px);
-        background: #13172a;
-        box-shadow: 0 26px 50px -20px rgba(11, 15, 25, 0.6),
-                    0 0 0 1px rgba(232, 93, 31, 0.35);
+        border-color: rgba(232, 93, 31, 0.5);
+        background: rgba(232, 93, 31, 0.04);
+    }
+
+    .section-jump.is-open .section-jump__trigger {
+        border-color: var(--velocity-orange);
+        background: rgba(232, 93, 31, 0.06);
     }
 
     .section-jump__trigger-badge {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-width: 1.75rem;
-        height: 1.75rem;
+        min-width: 1.55rem;
+        height: 1.55rem;
         background: var(--velocity-orange);
         color: var(--alpine-white);
         border-radius: 999px;
         font-family: var(--font-mono);
         font-variant-numeric: tabular-nums;
-        font-size: 0.78rem;
+        font-size: 0.74rem;
         letter-spacing: 0;
         font-weight: 600;
     }
 
-    .section-jump__trigger-label {
-        font-weight: 500;
-    }
+    .section-jump__trigger-label { font-weight: 500; }
 
     .section-jump__caret {
-        margin-left: 0.15rem;
-        color: rgba(245, 243, 238, 0.55);
-        transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease;
+        color: var(--mist-gray);
+        transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s ease;
     }
 
     .section-jump.is-open .section-jump__caret {
         transform: rotate(180deg);
+        color: var(--velocity-orange);
     }
 
-    .section-jump__trigger:hover .section-jump__caret {
+    /* Dark header variant */
+    .site-header--dark .section-jump__trigger {
         color: var(--ivory-silver);
+        border-color: rgba(245, 243, 238, 0.2);
+    }
+    .site-header--dark .section-jump__trigger:hover {
+        border-color: var(--velocity-orange);
+        background: rgba(232, 93, 31, 0.12);
     }
 
-    /* ========== PANEL ========== */
+    /* ========== PANEL — opens DOWNWARD from header ========== */
     .section-jump__panel {
         position: absolute;
-        bottom: calc(100% + 0.85rem);
+        top: calc(100% + 0.6rem);
         left: 0;
-        width: 340px;
+        width: 320px;
         max-width: calc(100vw - 3rem);
-        max-height: 64vh;
+        max-height: 70vh;
         display: flex;
         flex-direction: column;
         background: var(--alpine-white);
@@ -144,12 +138,13 @@ const t = labels[lang];
             0 4px 12px -4px rgba(11, 15, 25, 0.08),
             0 0 0 1px rgba(11, 15, 25, 0.05);
         opacity: 0;
-        transform: translateY(8px) scale(0.985);
-        transform-origin: bottom left;
-        transition: opacity 0.25s ease,
-                    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: translateY(-8px) scale(0.985);
+        transform-origin: top left;
+        transition: opacity 0.22s ease,
+                    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
         pointer-events: none;
         overflow: hidden;
+        z-index: 60;
     }
 
     .section-jump.is-open .section-jump__panel {
@@ -190,7 +185,6 @@ const t = labels[lang];
         font-weight: 500;
     }
 
-    /* Items container with scroll */
     .section-jump__items {
         overflow-y: auto;
         padding: 0.3rem 0;
@@ -203,7 +197,7 @@ const t = labels[lang];
         border-radius: 3px;
     }
 
-    /* ========== ITEM — consistent alignment ========== */
+    /* ========== ITEM ========== */
     .section-jump__item {
         display: flex;
         align-items: center;
@@ -215,12 +209,11 @@ const t = labels[lang];
         text-align: left;
         font-size: 0.94rem;
         line-height: 1.3;
-        color: var(--black-60);
+        color: var(--black-90);
         cursor: pointer;
         transition: background 0.18s ease, color 0.18s ease;
     }
 
-    /* Number badge — fixed visual element, not stray text */
     .section-jump__item-num {
         flex-shrink: 0;
         display: inline-flex;
@@ -247,7 +240,6 @@ const t = labels[lang];
         letter-spacing: -0.005em;
     }
 
-    /* Hover — neutral wash + strengthen label, badge darkens */
     .section-jump__item:hover {
         background: rgba(11, 15, 25, 0.03);
     }
@@ -257,7 +249,6 @@ const t = labels[lang];
         color: var(--velocity-black);
     }
 
-    /* Active — orange badge + gentle orange row tint */
     .section-jump__item.is-active {
         background: rgba(232, 93, 31, 0.06);
     }
@@ -272,7 +263,6 @@ const t = labels[lang];
     }
 
     @media (prefers-reduced-motion: reduce) {
-        .section-jump,
         .section-jump__trigger,
         .section-jump__panel,
         .section-jump__caret,
