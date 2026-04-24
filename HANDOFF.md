@@ -266,7 +266,7 @@ V `Layout.astro` je `<div class="preview-ribbon">PREVIEW</div>` — oranžový p
 ## 9. Kontakt na tvůrce
 
 **Obsah a copy:**
-Štěpán Švanda — [stepan@velyos.ai](mailto:stepan@velyos.ai)
+Štěpán Manda — [stepan@velyos.ai](mailto:stepan@velyos.ai)
 
 **Brand book:**
 Plný brand book v `../VELYOS_Brand/01_brand_book.md`
