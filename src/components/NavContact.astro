@@ -1,30 +1,32 @@
 ---
-// NavContact — dropdown panel s přímým kontaktem (mail + telefon)
-// Aktivace přes JS v /public/scripts/main.js (trigger/panel pair)
+import { t, route, type Lang } from '../i18n/ui';
+
 interface Props {
+    lang?: Lang;
     email?: string;
     phone?: string;
     phoneDisplay?: string;
-    footnote?: string;
 }
 
 const {
+    lang = 'cs',
     email = 'stepan@velyos.ai',
     phone = '+420000000000',
     phoneDisplay = '+420 XXX XXX XXX',
-    footnote = 'Bez obchodníka. Napište rovnou — odpovídáme rychle.',
 } = Astro.props;
+
+const nav = t(lang, 'nav');
 ---
 
 <div class="nav-contact">
     <button class="nav-contact__trigger" aria-expanded="false" aria-controls="nav-contact-panel" type="button">
         <span class="nav-contact__trigger-dot" aria-hidden="true"></span>
-        <span>Kontakt</span>
+        <span>{nav.contact}</span>
     </button>
-    <div class="nav-contact__panel" id="nav-contact-panel" role="dialog" aria-label="Přímý kontakt">
+    <div class="nav-contact__panel" id="nav-contact-panel" role="dialog" aria-label={nav.contactDirect}>
         <div class="nav-contact__header">
-            <span class="nav-contact__label">Přímý kontakt na obchod</span>
-            <span class="nav-contact__tagline">Bez obchodníka. Bez prezentace.</span>
+            <span class="nav-contact__label">{nav.contactDirect}</span>
+            <span class="nav-contact__tagline">{nav.contactTagline}</span>
         </div>
 
         <div class="nav-contact__items">
@@ -33,7 +35,7 @@ const {
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
                 </span>
                 <span class="nav-contact__item-body">
-                    <span class="nav-contact__item-kind">E-mail</span>
+                    <span class="nav-contact__item-kind">{nav.contactEmail}</span>
                     <span class="nav-contact__item-value">{email}</span>
                 </span>
                 <span class="nav-contact__item-arrow" aria-hidden="true">→</span>
@@ -44,18 +46,18 @@ const {
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
                 </span>
                 <span class="nav-contact__item-body">
-                    <span class="nav-contact__item-kind">Telefon</span>
-                    <span class="nav-contact__item-value" style="color:var(--mist-gray); font-style:italic; font-weight:400;">Po registraci firmy</span>
+                    <span class="nav-contact__item-kind">{nav.contactPhone}</span>
+                    <span class="nav-contact__item-value" style="color:var(--mist-gray); font-style:italic; font-weight:400;">{nav.contactPhoneNote}</span>
                 </span>
             </div>
 
-            <a href="/diagnostika" class="nav-contact__item nav-contact__item--accent">
+            <a href={route('diagnostika', lang)} class="nav-contact__item nav-contact__item--accent">
                 <span class="nav-contact__item-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v2m0 14v2M3 12h2m14 0h2m-2.5-7L17 6.5M6.5 17l-1.5 1.5m12 0L17 17.5M5 5l1.5 1.5"/></svg>
                 </span>
                 <span class="nav-contact__item-body">
-                    <span class="nav-contact__item-kind">Hlasový agent · 24/7</span>
-                    <span class="nav-contact__item-value">Spustit diagnostiku</span>
+                    <span class="nav-contact__item-kind">{nav.contactAgent}</span>
+                    <span class="nav-contact__item-value">{nav.contactAgentCta}</span>
                 </span>
                 <span class="nav-contact__item-arrow" aria-hidden="true">→</span>
             </a>
@@ -63,7 +65,7 @@ const {
 
         <div class="nav-contact__footnote">
             <span class="nav-contact__footnote-dot"></span>
-            {footnote}
+            {nav.contactFootnote}
         </div>
     </div>
 </div>
