@@ -1,0 +1,246 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Audience from '../../components/Audience.astro';
+import AudienceCard from '../../components/AudienceCard.astro';
+import Features from '../../components/Features.astro';
+import Feature from '../../components/Feature.astro';
+import Callout from '../../components/Callout.astro';
+import Timeline from '../../components/Timeline.astro';
+import TimelineRow from '../../components/TimelineRow.astro';
+import Steps from '../../components/Steps.astro';
+import Step from '../../components/Step.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Note from '../../components/Note.astro';
+---
+
+<Layout
+    title="VELYOS — For individuals | Defining the lead."
+    description="A personal AI agent that handles email, calendar, research, and calls. Hours returned every week. No long-term lock-in."
+    lang="en"
+    active="jednotlivci"
+    primaryCta={null}
+    footerTagline="For those who no longer have time to waste time."
+    footerVariant="v0.3 preview · for individuals"
+>
+    <Hero tagline="For individuals · Defining the lead.">
+        <h1 class="hero__title">Your day doesn't fit in 24 hours. <span class="accent">We give part of it back.</span></h1>
+        <p class="hero__lead">
+            You open your laptop in the morning and by noon you've done everything except the reason
+            you actually started this business. Emails, calls, moving meetings, chasing documents.
+            The calendar slips. The coffee goes cold.
+            VELYOS builds a personal AI agent that takes the routine — and hands back hours.
+        </p>
+        <div class="hero__ctas">
+            <a href="/en/diagnostic" class="btn btn--primary btn-arrow btn--lg">See how much time VELYOS returns</a>
+            <a href="#den" class="btn btn--ghost btn--lg">A day with the agent</a>
+        </div>
+        <Note maxWidth="60ch" style="margin-top:var(--space-10);">
+            A short conversation with our agent. We'll find where your time leaks most. No sales, no pitch.
+        </Note>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Who the agent works for"
+                title="A service, not an app you download."
+            />
+            <div class="section-body">
+                <p>
+                    We deliver a finished personal agent, plugged into your tools and trained on your style.
+                    You configure nothing — you just start having longer days.
+                </p>
+                <p>
+                    Our clients share a common thread:
+                    <strong>their hour has high value, but a large slice of the day goes to things that don't generate it.</strong>
+                </p>
+            </div>
+
+            <Audience>
+                <AudienceCard
+                    title="Founders and managing directors"
+                    body="You have a team, but operational detail still lands on your desk. Emails, approvals, coordination — hours that should belong to strategy and growth."
+                />
+                <AudienceCard
+                    title="Consultants, advisors, lawyers"
+                    body="Your billable rate is high, but half the day isn't spent with the client. It's spent in prep, research, and admin — work unrelated to your expertise."
+                />
+                <AudienceCard
+                    title="Sales and real estate professionals"
+                    body="Opportunities are lost not because you can't sell, but because you didn't answer first. In your field, speed wins over qualification."
+                />
+            </Audience>
+
+            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-60); font-size:1.1rem; max-width:60ch;">
+                If you see yourself in one of these profiles, keep reading. If not — we'll tell you straight.
+            </p>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 03 · Why now, not later"
+                title="The world sped up and tolerance for waiting fell to zero."
+            />
+            <div class="section-body">
+                <p>
+                    A client who doesn't get an answer within an hour leaves for someone who does.
+                    A partner waiting three days for an email finds another.
+                    An opportunity you don't catch first won't return — because someone else caught it.
+                </p>
+                <p>
+                    And yet most of a top professional's daily load <strong>isn't expert work.</strong>
+                    It's communication, scheduling, research, and admin. Exactly where AI today works
+                    faster and more reliably than a human assistant — at a level you couldn't afford before.
+                </p>
+                <p class="italic-serif" style="color:var(--signal-gold); font-size:1.2rem; margin-top:var(--space-6);">
+                    „The question isn't whether AI enters your day. The question is whether it serves you,
+                    or whether someone in your field is using it first."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · What your agent actually does"
+                title="A system that works autonomously in your routine. You step in only where you want."
+            />
+
+            <Features cols={2}>
+                <Feature num="01 / COMMUNICATION" title="It takes over your inbox." body="Sorts emails by priority, replies to standard questions in your tone, filters meeting requests, drafts replies for complex threads. You approve. It executes." />
+                <Feature num="02 / CALENDAR" title="It runs your schedule." body="Books meetings, reschedules conflicts, protects focus blocks, sends reminders, and prepares a briefing before every call." />
+                <Feature num="03 / RESEARCH" title="It does prep and research." body="Summarizes long documents, finds information, prepares materials. Half-day work done before you finish your morning coffee." />
+                <Feature num="04 / PHONE" title="It answers when you can't." body="The voice agent picks up, identifies the purpose, offers a time or relays the info. Your client gets a professional response — even while you're in a meeting." />
+            </Features>
+
+            <Callout>
+                <strong style="color:var(--velocity-black);">What the agent doesn't do:</strong>
+                Make decisions for you. Strategic calls, contract signatures, negotiations — those stay with you.
+                It's an extremely capable executor of routine — not a substitute for your judgment.
+            </Callout>
+        </div>
+    </section>
+
+    <section class="section--editorial" id="co-stavime">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 05 · What else we build for you"
+                title="The agent isn't everything. We build the rest too."
+                lead="Don't have a personal website yet? Missing a LinkedIn strategy? Need a brand that works? We do it. One partner. No haggling with five agencies."
+            />
+
+            <Features cols={2}>
+                <Feature num="01 / PERSONAL BRAND" title="We design how you come across." body="Logo. Colors. Tone. Photo. A professional identity that precedes you through the door." />
+                <Feature num="02 / WEB & LINKEDIN" title="We build your presence." body="A personal website and LinkedIn profile that open doors. People find you — and don't lose you." />
+            </Features>
+
+            <Callout>
+                <strong>And if you run a company?</strong>
+                We'll do the same for it — website, AI agents, CRM, marketing. <a href="/en/companies" style="color:var(--velocity-orange); border-bottom:1px solid var(--velocity-orange);">See the solution for companies →</a>
+            </Callout>
+        </div>
+    </section>
+
+    <section class="section--alt" id="den">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 06 · How it looks in practice"
+                title="An illustrative day with a typical client."
+                lead="The scenario below is illustrative — it shows what a normal workday with a personal agent looks like. Specific numbers will differ for you; the principle is the same."
+            />
+
+            <Timeline>
+                <TimelineRow time="07:00">
+                    Overnight, the agent sorted <strong>34 emails</strong>. It answered 8 on its own (meeting confirmations, client FAQs).
+                    4 are prepared for your reply with suggested text. The rest archived.
+                </TimelineRow>
+                <TimelineRow time="08:30">
+                    Before your first meeting you have a briefing on your phone: <strong>who's calling, what you're discussing, the context</strong> from recent emails.
+                </TimelineRow>
+                <TimelineRow time="11:00">
+                    A client called while you were in a meeting. The voice agent figured out it was about rescheduling,
+                    <strong>offered two alternative slots</strong> from your calendar, the client picked one.
+                </TimelineRow>
+                <TimelineRow time="14:00">
+                    You need materials for tomorrow's meeting. The agent prepared a <strong>summary of three documents</strong> with the key points pulled out.
+                </TimelineRow>
+                <TimelineRow time="17:00">
+                    <strong>Day balance: 2.5 hours saved.</strong> Three meetings where you arrived prepared.
+                    One client rescued who would otherwise have waited until tomorrow for a reply.
+                </TimelineRow>
+            </Timeline>
+
+            <Note>
+                Case studies available on request. Our clients' privacy is paramount —
+                all references we provide are fully anonymized.
+            </Note>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 07 · Investment"
+                title="Individual, like your day."
+                lead="No public price list. Every agent is built differently — based on your tools, style, volume, and what it should take on. We discuss the specific investment in person, once we know what we're building."
+            />
+
+            <div style="max-width:var(--container-narrow); margin-top:var(--space-8); display:grid; grid-template-columns:1fr 1fr; gap:var(--space-8);" data-stagger>
+                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--velocity-orange); border-radius:var(--radius);">
+                    <span class="eyebrow" style="color:var(--velocity-orange); display:block; margin-bottom:var(--space-3);">What you always get</span>
+                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:var(--space-2); color:var(--black-90); line-height:1.5; font-size:0.98rem;">
+                        <li><strong>Fixed price before kickoff</strong> — you know what you're paying for</li>
+                        <li><strong>Two-part model</strong> — one-time setup + monthly operation</li>
+                        <li><strong>No long-term lock-in</strong> — short notice period</li>
+                        <li><strong>Target: dozens of hours monthly</strong> saved on routine</li>
+                    </ul>
+                </div>
+                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--signal-gold); border-radius:var(--radius);">
+                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">How to get a number</span>
+                    <p style="color:var(--black-90); line-height:1.6; font-size:0.98rem; margin:0 0 var(--space-4);">
+                        Start the <a href="/en/diagnostic" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30); font-weight:500;">diagnostic</a>
+                        — 5 minutes with the agent or a form. Within 24 hours we'll call to walk through the scope.
+                    </p>
+                    <p style="color:var(--black-60); line-height:1.6; font-size:0.9rem; margin:0;">
+                        The first call is free and without obligation.
+                    </p>
+                </div>
+            </div>
+
+            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-90); font-size:1.2rem; max-width:60ch;">
+                If your hour is worth more than a few hundred dollars, the math decides for you.
+            </p>
+        </div>
+    </section>
+
+    <section class="section--editorial">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 08 · Path to deployment"
+                title="Four steps. No surprises."
+            />
+
+            <Steps cols={4}>
+                <Step num="01 · DIAGNOSTIC" title="We review your day." body="A short conversation with the agent, or a form. We find where your time leaks most and where the return is fastest. No sales." />
+                <Step num="02 · DESIGN" title="We map out what the agent does." body="What it takes over, what we plug into, how wide the scope. A concrete plan, not a generic presentation." />
+                <Step num="03 · SETUP" title="We connect the agent to your tools." body="Gmail, Outlook, calendar, phone. We train it on your style. Typically within days — your work doesn't stop meanwhile." />
+                <Step num="04 · LIFE" title="You work. The agent handles the rest." body="The agent improves every week. You focus on what only you can do. Short notice period — we don't want to lock you in." />
+            </Steps>
+        </div>
+    </section>
+
+    <CtaBand
+        id="rezervace"
+        eyebrow="· 09 · The decision"
+        title="Every hour in routine is an hour you didn't give to what actually pays you."
+        lead="The VELYOS agent gives those hours back — systematically, every day, without failures. Start with the diagnostic. Short. No pitch."
+        directPrefix="Not through the agent?"
+    >
+        <a href="/en/diagnostic" class="btn btn--primary btn-arrow btn--lg">Start diagnostic</a>
+    </CtaBand>
+</Layout>
