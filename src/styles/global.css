@@ -1421,6 +1421,18 @@ section:not(.section--alt):not(.section--editorial) .duo__divider::before {
     letter-spacing: 0.22em;
     color: var(--signal-gold);
     margin-bottom: var(--space-2);
+    display: inline-block;
+    transition: letter-spacing 0.7s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+}
+
+/* Card number expands letter-spacing when stagger container reveals */
+[data-stagger]:not(.is-visible) .feature__num {
+    letter-spacing: 0.35em;
+    opacity: 0.6;
+}
+
+.feature:hover .feature__num {
+    color: var(--velocity-orange);
 }
 
 .feature h4 {
