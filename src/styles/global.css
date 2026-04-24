@@ -73,6 +73,33 @@ img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: 0; background: none; }
 
+/* Brand selection — warm orange wash instead of default blue */
+::selection {
+    background: rgba(232, 93, 31, 0.22);
+    color: var(--velocity-black);
+}
+
+.site-header--dark ::selection,
+.stats ::selection,
+.notfound ::selection {
+    background: rgba(232, 93, 31, 0.35);
+    color: var(--ivory-silver);
+}
+
+/* Focus — remove browser default, brand-aligned focus-visible for keyboard nav */
+:focus { outline: none; }
+
+:focus-visible {
+    outline: 2px solid var(--velocity-orange);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* Buttons keep their tight silhouette on focus (no offset that breaks shape) */
+.btn:focus-visible {
+    outline-offset: 2px;
+}
+
 /* Typografie ----------------------------------------- */
 h1, h2, h3, h4 {
     font-family: var(--font-sans);
