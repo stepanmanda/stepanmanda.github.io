@@ -1233,6 +1233,36 @@ body.nav-open {
 .section-body p { margin-bottom: var(--space-6); }
 .section-body p:last-child { margin-bottom: 0; }
 
+/* Body links — animated underline, left to right on hover */
+.section-body a,
+.section-body a:visited {
+    color: var(--velocity-black);
+    background-image: linear-gradient(var(--velocity-orange), var(--velocity-orange));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    padding-bottom: 1px;
+    transition: background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s ease;
+}
+
+.section-body a:hover {
+    color: var(--velocity-orange);
+    background-size: 100% 2px;
+}
+
+/* Dropcap — first letter of Manifesto / editorial first paragraph */
+.section--editorial .section-body > p:first-child::first-letter {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 4.6rem;
+    line-height: 0.9;
+    float: left;
+    padding: 0.4rem 0.7rem 0 0;
+    color: var(--velocity-orange);
+    margin-top: 0.2rem;
+}
+
 .section-body h3 {
     margin-top: var(--space-10);
     margin-bottom: var(--space-3);
