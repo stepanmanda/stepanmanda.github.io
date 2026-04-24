@@ -1970,6 +1970,13 @@ elevenlabs-convai {
     animation: glowBreathe 7s ease-in-out infinite;
 }
 
+/* Pause animations when element is outside viewport (JS-driven).
+   Massive perf win — browser stops compositing/painting glow frames
+   for sections the user can't see. */
+.is-paused {
+    animation-play-state: paused !important;
+}
+
 /* OS — system indicator pulse ------------------------ */
 .brand .os {
     animation: osPulse 3.6s ease-in-out infinite;
