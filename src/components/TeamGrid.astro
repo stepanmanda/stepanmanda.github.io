@@ -189,7 +189,7 @@ const t = copy[lang];
 
     .member__photo {
         position: relative;
-        aspect-ratio: 3 / 4;
+        aspect-ratio: 3 / 5;
         background: var(--ivory-silver);
         overflow: hidden;
         display: flex;
@@ -202,10 +202,11 @@ const t = copy[lang];
 
     .member__photo-img {
         display: block;
-        width: 100%;
+        width: auto;
         height: 100%;
-        object-fit: cover;
-        object-position: center top;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: center bottom;
         position: relative;
         z-index: 1;
     }
