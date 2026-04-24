@@ -119,7 +119,7 @@ const f = formStrings[lang];
 
     <div class="diag-form__group diag-form__group--checkbox">
         <label class="diag-form__checkbox">
-            <input type="checkbox" id="diag-gdpr" name="gdpr" required />
+            <input type="checkbox" id="diag-gdpr" name="gdpr" required aria-label={f.gdpr} />
             <span>{f.gdpr}</span>
         </label>
     </div>
