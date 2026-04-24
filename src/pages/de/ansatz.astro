@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Features from '../../components/Features.astro';
+import Feature from '../../components/Feature.astro';
+import Steps from '../../components/Steps.astro';
+import Step from '../../components/Step.astro';
+import Callout from '../../components/Callout.astro';
+import Duo from '../../components/Duo.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+
+<Layout
+    title="VELYOS — Ansatz | Wie wir arbeiten."
+    description="VELYOS-Methodik: vier Schritte von der Diagnose bis zum Betrieb. ROI vertraglich garantiert. Keine sechsmonatigen Pilotphasen. Für Unternehmen, die ihre Partner sorgfältig wählen."
+    lang="de"
+    active="pristup"
+    footerTagline="Disziplin. Kein Marketing."
+    footerVariant="v0.3 preview · Ansatz"
+>
+    <Hero tagline="· Ansatz · Wir definieren den Vorsprung.">
+        <h1 class="hero__title">Wie wir arbeiten — <span class="accent">ohne sechsmonatige Pilotphasen.</span></h1>
+        <p class="hero__lead">
+            Unsere Methodik steht auf einem Prinzip: Geschwindigkeit ohne Kompromisse bei der Qualität.
+            Vier Schritte. Vier Wochen. Amortisation in sechs Monaten. Vertragliche Garantie.
+        </p>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Vier Schritte"
+                title="Von der Diagnose zum Betrieb. Keine Überraschungen."
+                lead="Jeder Schritt hat ein klares Ergebnis, einen klaren Zeitrahmen und klare Verantwortung. Sie wissen, wo Sie stehen — wir wissen, was wir liefern."
+            />
+
+            <Steps cols={4}>
+                <Step
+                    num="01 · DIAGNOSE"
+                    title="Wir prüfen Ihren Betrieb."
+                    body="Kostenloses Einstiegsgespräch mit unserem KI-Agenten und einem Spezialisten. Wir identifizieren 3–4 Prozesse mit dem größten Potenzial. Das Ergebnis ist ein strukturiertes Briefing — keine Präsentation."
+                />
+                <Step
+                    num="02 · ENTWURF"
+                    title="Wir entwerfen die maßgeschneiderte Lösung."
+                    body="Ein konkreter Plan: was wir automatisieren, was wir anbinden, was es kostet, wann es läuft. Festpreis-Vertrag vor Projektbeginn."
+                />
+                <Step
+                    num="03 · INTEGRATION"
+                    title="Wir schließen VELYOS an Ihre Systeme an."
+                    body="Typischerweise in Tagen, ohne Störung des Betriebs. Ihr Team macht währenddessen seine Arbeit. KI-Training auf Ihren Daten läuft parallel."
+                />
+                <Step
+                    num="04 · BETRIEB"
+                    title="Sie konzentrieren sich aufs Geschäft."
+                    body="Wir überwachen, trainieren, justieren. Jeden Monat läuft das System besser als den Monat davor. Kurze Kündigungsfrist — wir wollen Sie nicht binden."
+                />
+            </Steps>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 03 · Garantie in Klausel 4.3"
+                title="Rechnet sich nicht? Dann zahlen wir."
+                lead="Eine Klausel in unserem Vertrag, die die Konkurrenz nicht hat. Das ist kein Marketing. Das ist die Disziplin, die uns zwingt, auch die Dinge gut zu machen, die der Kunde nicht sieht."
+            />
+
+            <Duo
+                leftEyebrow="← Was wir versprechen"
+                leftTitle="Amortisation in 6 Monaten."
+                rightEyebrow="→ Was passiert, wenn nicht"
+                rightTitle="Wir arbeiten kostenlos weiter. Oder erstatten die Differenz."
+            >
+                <Fragment slot="left">
+                    <p>Innerhalb von 6 Monaten nach Einsatz muss das Projekt mehr zurückgeben, als es gekostet hat — in eingesparten Stunden, neuen Aufträgen oder reduzierten Kosten.</p>
+                    <p>Die Metrik ist im Vertrag fixiert. Keine Ausreden, kein „das zählt nicht".</p>
+                </Fragment>
+                <Fragment slot="right">
+                    <p>Liefern wir die Rendite nicht, haben Sie zwei Optionen: Wir arbeiten kostenlos weiter, bis sie erreicht ist — oder wir erstatten die Differenz zwischen Ihrer Investition und der tatsächlichen Rendite.</p>
+                    <p>Sie haben nichts zu verlieren. Und wir haben starke Motivation, nur mit Projekten zu arbeiten, bei denen wir uns des Ergebnisses sicher sind.</p>
+                </Fragment>
+            </Duo>
+
+            <Callout>
+                <strong>Warum tun wir das?</strong> Weil in unserer Branche zu viel versprochen und zu wenig zugesagt wird.
+                Die Garantie ist ein fairer Filter — wir konzentrieren uns nur auf Projekte, bei denen wir wissen, dass wir liefern. Und Sie haben die Gewissheit, dass Sie nichts riskieren.
+            </Callout>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · Was wir über Technologie denken"
+                title="Technologie ist Mittel, nicht Zweck."
+                lead="KI ist ein großartiges Werkzeug — aber nicht für jedes Problem. Manchmal ist die beste Automatisierung ein einfaches Skript. Manchmal eine Neuorganisation des Prozesses ohne Technologie. Wir führen den Kunden dorthin, wo die Lösung ist — nicht dorthin, wo sich verkaufen lässt."
+            />
+
+            <Features cols={2}>
+                <Feature
+                    num="WIR SIND NICHT"
+                    title="KI-Anbieter."
+                    body={`Wir bieten keine „KI-Lösungen" als Produkt an. Wir setzen KI dort ein, wo es sich lohnt — und sagen, wann nicht. Unser Wert liegt in der Entscheidung, nicht in der Technologie.`}
+                />
+                <Feature
+                    num="WIR SIND"
+                    title="Partner für operative Automatisierung."
+                    body="Unser Handwerk: finden, wo Zeit verloren geht, und eine Lösung bauen, die sie zurückgibt. Mal ist es KI, mal Integration, mal ein einfacher Workflow. Je nachdem, was Sinn ergibt."
+                />
+                <Feature
+                    num="WIR NUTZEN NICHT"
+                    title="Ihre Daten zum Training fremder Modelle."
+                    body="Alles, was Sie uns geben, bleibt Ihres. Wir trainieren niemals öffentliche Modelle mit Ihren Daten. Architektur nach ISO-27001-Prinzipien, DSGVO, AES-256-Verschlüsselung."
+                />
+                <Feature
+                    num="WIR NUTZEN"
+                    title="Mix aus Standard- und Eigenentwicklungen."
+                    body="Wir bauen auf bewährten Enterprise-Plattformen, wo es Sinn ergibt. Wo nicht, entwickeln wir eigene. Immer mit Dokumentation und der Option, an einen anderen Anbieter zu übergeben, falls das je nötig wird."
+                />
+            </Features>
+        </div>
+    </section>
+
+    <section class="section--editorial">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 05 · Was wir nicht glauben"
+                title="Dinge, die der Markt sagt — wir widersprechen."
+            />
+
+            <div class="section-body" data-reveal>
+                <h3>„KI ist die Zukunft."</h3>
+                <p style="color:var(--black-60);">
+                    KI ist Gegenwart. Wer auf sie wartet, verliert gegen den, der sie schon hat.
+                    Aber wir widersprechen dem Narrativ, KI sei die Antwort auf alles. Oft ist es schlichte Automatisierung ohne KI — und das bauen wir auch.
+                </p>
+
+                <h3>„Alle haben schon KI."</h3>
+                <p style="color:var(--black-60);">
+                    Haben sie nicht. Die meisten Firmen machen „ChatGPT für E-Mails" und niemand sieht den Zusammenhang zum EBITDA. Echte Integration liegt woanders — in Prozessen, die tatsächlich Geld generieren oder sparen.
+                </p>
+
+                <h3>„Das rechnet sich in zwei Monaten."</h3>
+                <p style="color:var(--black-60);">
+                    Manchmal ja, oft nicht. Ehrliche Spanne für ein gut gebautes Projekt sind 3–6 Monate. Alles darunter ist Marketing, alles darüber ist schlechtes Design.
+                </p>
+
+                <h3>„Sie brauchen ein eigenes KI-Team."</h3>
+                <p style="color:var(--black-60);">
+                    Brauchen Sie nicht. Sie brauchen einen Partner, der KI für Sie betreibt. Ein eigenes Team aufzubauen ergibt nur für die größten Firmen Sinn.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <CtaBand
+        id="jak-zacit"
+        eyebrow="· 06 · Wie anfangen"
+        title="Der kürzeste Weg — 5 Minuten mit unserem Diagnose-Agenten."
+        lead="In wenigen Minuten sehen Sie, wo Zeit verloren geht — und ob VELYOS zu Ihnen passt. Wenn ja, meldet sich ein Spezialist. Wenn nicht, sagen wir es direkt."
+        directPrefix="Lieber telefonisch?"
+    >
+        <a href="/de/diagnose" class="btn btn--primary btn-arrow btn--lg">Diagnose starten</a>
+        <a href="/de/kontakt" class="btn btn--ghost btn--lg">Alle Kontaktwege</a>
+    </CtaBand>
+</Layout>
