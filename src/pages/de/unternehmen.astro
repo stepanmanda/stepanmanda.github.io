@@ -214,10 +214,53 @@ import CaseStudy from '../../components/CaseStudy.astro';
         </div>
     </section>
 
+    <section class="case-studies-section">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 07 · Beispiele aus der Praxis"
+                title="Drei anonyme Beispiele, in denen wir Zeit zurückgegeben haben."
+                lead="Keine marketinggerechten Umwege. Konkrete Zahlen aus realen Einsätzen. Namen haben wir aus Respekt vor unseren Kunden entfernt."
+            />
+
+            <div class="case-studies" data-stagger>
+                <CaseStudy
+                    industry="Gesundheitswesen"
+                    location="Prag"
+                    size="12 Ärzte"
+                    headline={`Dermatologie-Klinik: Dokumentation von 25 auf&nbsp;4 Minuten pro Patient.`}
+                    metricValue="−84 %"
+                    metricLabel="Verwaltung pro Patient, 6 Wochen nach Einsatz"
+                    outcome="Arzt diktiert eine Zusammenfassung, das System strukturiert Akte und Versicherungsunterlagen. 2 Stunden pro Tag zurück bei Patienten statt an der Tastatur."
+                    anonymizedLabel="Anonymisiert"
+                />
+                <CaseStudy
+                    industry="Bauwesen"
+                    location="Mähren"
+                    size="6-Personen-Vertrieb"
+                    headline={`Baugruppe: Angebot von&nbsp;4&nbsp;Stunden auf&nbsp;20&nbsp;Minuten.`}
+                    metricValue="2,1×"
+                    metricLabel="mehr bearbeitete Anfragen pro Tag"
+                    outcome="Vertrieb gibt die Parameter ein, System greift auf Preislisten zu und erstellt PDF. Ergebnis: doppelter Durchsatz ohne neue Mitarbeiter."
+                    anonymizedLabel="Anonymisiert"
+                />
+                <CaseStudy
+                    industry="Professionelle Dienstleistungen"
+                    location="Brno + Prag"
+                    size="14 Fachkräfte"
+                    headline={`Anwaltskanzlei: Kundenbriefing von einer Stunde auf&nbsp;15&nbsp;Minuten.`}
+                    metricValue="11 h"
+                    metricLabel="zurück an jede Fachkraft pro Woche"
+                    outcome="System prüft E-Mails, Dokumente und Kundenhistorie. Briefing landet am Vorabend im Postfach — Vorbereitung statt Reaktion."
+                    anonymizedLabel="Anonymisiert"
+                />
+            </div>
+        </div>
+    </section>
+
     <section>
         <div class="container">
             <SectionHead
-                eyebrow="· 07 · Investition"
+                eyebrow="· 08 · Investition"
                 title="Jedes Projekt ist anders. Der Preis auch."
                 lead="Wir haben keine öffentliche Preisliste. Jedes Unternehmen hat anderen Umfang, andere Systeme, andere Prioritäten. Die konkrete Investition besprechen wir persönlich — sobald klar ist, was wir bauen und welche Rückkehr Sinn ergibt."
             />
