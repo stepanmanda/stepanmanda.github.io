@@ -5,9 +5,9 @@ interface Props {
 const { lang = 'cs' } = Astro.props;
 
 const labels = {
-    cs: { title: 'Přejít na sekci', trigger: 'Obsah' },
-    en: { title: 'Jump to section', trigger: 'Sections' },
-    de: { title: 'Zum Abschnitt', trigger: 'Inhalt' },
+    cs: { title: 'Přejít na sekci', trigger: 'Obsah', header: '· Navigace' },
+    en: { title: 'Jump to section', trigger: 'Sections', header: '· Contents' },
+    de: { title: 'Zum Abschnitt', trigger: 'Inhalt', header: '· Inhalt' },
 };
 
 const t = labels[lang];
@@ -21,7 +21,7 @@ const t = labels[lang];
         aria-controls="section-jump-panel"
         data-section-jump-trigger
     >
-        <span class="section-jump__current" data-section-jump-current>§</span>
+        <span class="section-jump__trigger-num" data-section-jump-current>§</span>
         <span class="section-jump__trigger-label">{t.trigger}</span>
         <span class="section-jump__caret" aria-hidden="true">↑</span>
     </button>
@@ -31,8 +31,10 @@ const t = labels[lang];
         class="section-jump__panel"
         role="menu"
         aria-label={t.title}
-        data-section-jump-panel
-    ></div>
+    >
+        <div class="section-jump__panel-head">{t.header}</div>
+        <div class="section-jump__items" data-section-jump-panel></div>
+    </div>
 </div>
 
 <style>
@@ -57,20 +59,21 @@ const t = labels[lang];
         .section-jump { display: none; }
     }
 
-    /* TRIGGER — black pill with orange hover */
+    /* TRIGGER — black pill */
     .section-jump__trigger {
         display: inline-flex;
         align-items: center;
-        gap: 0.55rem;
+        gap: 0.6rem;
         background: var(--velocity-black);
         color: var(--ivory-silver);
-        padding: 0.6rem 1.05rem;
+        padding: 0.6rem 1.1rem 0.6rem 0.55rem;
         border-radius: 999px;
         font-family: var(--font-mono);
-        font-size: 0.76rem;
-        letter-spacing: 0.12em;
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        box-shadow: 0 18px 40px -18px rgba(11, 15, 25, 0.55),
+        font-weight: 500;
+        box-shadow: 0 18px 42px -18px rgba(11, 15, 25, 0.55),
                     0 0 0 1px rgba(245, 243, 238, 0.06);
         cursor: pointer;
         transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
@@ -81,21 +84,29 @@ const t = labels[lang];
     .section-jump__trigger:hover {
         transform: translateY(-2px);
         background: var(--velocity-orange);
-        box-shadow: 0 24px 45px -18px rgba(232, 93, 31, 0.55),
+        box-shadow: 0 24px 48px -18px rgba(232, 93, 31, 0.55),
                     0 0 0 1px rgba(232, 93, 31, 0.4);
     }
 
-    .section-jump__current {
-        font-family: var(--font-mono);
-        font-variant-numeric: tabular-nums;
-        font-size: 0.88rem;
+    .section-jump__trigger-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 1.7em;
+        height: 1.6em;
+        background: rgba(232, 93, 31, 0.2);
         color: var(--velocity-orange);
-        min-width: 1.2em;
-        text-align: center;
-        transition: color 0.25s ease;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0;
+        transition: background 0.25s ease, color 0.25s ease;
     }
 
-    .section-jump__trigger:hover .section-jump__current { color: var(--ivory-silver); }
+    .section-jump__trigger:hover .section-jump__trigger-num {
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--ivory-silver);
+    }
 
     .section-jump__trigger-label { font-weight: 500; }
 
@@ -104,28 +115,28 @@ const t = labels[lang];
         font-size: 0.72rem;
         color: var(--signal-gold);
         transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease;
+        margin-left: 0.1rem;
     }
 
-    .section-jump.is-open .section-jump__caret {
-        transform: rotate(180deg);
-    }
-
+    .section-jump.is-open .section-jump__caret { transform: rotate(180deg); }
     .section-jump__trigger:hover .section-jump__caret { color: var(--ivory-silver); }
 
-    /* PANEL — elegant white dropdown opening upward */
+    /* PANEL */
     .section-jump__panel {
         position: absolute;
-        bottom: calc(100% + 0.75rem);
+        bottom: calc(100% + 0.85rem);
         left: 0;
-        min-width: 280px;
+        min-width: 320px;
+        max-width: 360px;
         max-height: 62vh;
-        overflow-y: auto;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
         background: var(--alpine-white);
         border: 1px solid var(--black-08);
         border-radius: var(--radius-lg);
-        box-shadow: 0 30px 70px -25px rgba(11, 15, 25, 0.3),
+        box-shadow: 0 32px 70px -25px rgba(11, 15, 25, 0.3),
                     0 0 0 1px rgba(11, 15, 25, 0.02);
-        padding: 0.4rem;
         opacity: 0;
         transform: translateY(8px) scale(0.98);
         transform-origin: bottom left;
@@ -139,48 +150,75 @@ const t = labels[lang];
         pointer-events: auto;
     }
 
-    /* ITEMS */
+    /* Panel header — small eyebrow */
+    .section-jump__panel-head {
+        padding: 0.85rem 1.1rem 0.75rem;
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--velocity-orange);
+        border-bottom: 1px solid var(--black-08);
+        flex-shrink: 0;
+    }
+
+    /* Items container with scroll */
+    .section-jump__items {
+        overflow-y: auto;
+        padding: 0.35rem 0;
+    }
+
+    /* ITEM — two-column grid, fixed num column */
     .section-jump__item {
-        display: flex;
+        display: grid;
+        grid-template-columns: 2.6rem 1fr;
         align-items: baseline;
-        gap: 0.85rem;
-        padding: 0.65rem 0.9rem;
-        border-radius: 4px;
+        gap: 0.2rem;
+        padding: 0.65rem 1.1rem 0.65rem 0.9rem;
         color: var(--black-90);
-        font-size: 0.94rem;
+        font-size: 0.93rem;
+        line-height: 1.4;
         cursor: pointer;
         background: transparent;
         border: 0;
+        border-left: 2px solid transparent;
         width: 100%;
         text-align: left;
-        line-height: 1.35;
-        transition: background 0.2s ease, color 0.2s ease, padding-left 0.25s ease;
+        transition: background 0.18s ease,
+                    color 0.18s ease,
+                    border-color 0.18s ease;
     }
 
     .section-jump__item:hover {
-        background: rgba(232, 93, 31, 0.07);
+        background: rgba(232, 93, 31, 0.045);
         color: var(--velocity-black);
-        padding-left: 1.1rem;
+        border-left-color: rgba(232, 93, 31, 0.4);
     }
 
     .section-jump__item.is-active {
-        background: linear-gradient(90deg, rgba(232, 93, 31, 0.1), rgba(184, 147, 92, 0.04));
+        background: rgba(232, 93, 31, 0.07);
         color: var(--velocity-orange);
+        border-left-color: var(--velocity-orange);
     }
 
     .section-jump__item-num {
         font-family: var(--font-mono);
         font-variant-numeric: tabular-nums;
-        font-size: 0.75rem;
-        letter-spacing: 0.06em;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
         color: var(--signal-gold);
-        min-width: 1.7em;
-        flex-shrink: 0;
+        opacity: 0.75;
     }
 
-    .section-jump__item.is-active .section-jump__item-num { color: var(--velocity-orange); }
+    .section-jump__item.is-active .section-jump__item-num {
+        color: var(--velocity-orange);
+        opacity: 1;
+    }
 
-    .section-jump__item-label { font-weight: 500; }
+    .section-jump__item-label {
+        font-weight: 500;
+        letter-spacing: -0.005em;
+    }
 
     @media (prefers-reduced-motion: reduce) {
         .section-jump,
