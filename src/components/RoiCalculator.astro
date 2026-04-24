@@ -215,7 +215,7 @@ const locale = lang === 'cs' ? 'cs-CZ' : lang === 'en' ? 'en-US' : 'de-DE';
 
     .roi__slider-wrap {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: var(--space-4);
         align-items: center;
     }
