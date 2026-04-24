@@ -230,6 +230,26 @@ section {
 .nav a {
     color: var(--black-60);
     transition: color 0.15s ease;
+    position: relative;
+}
+
+/* Animated underline — grows from left on hover, stays for .active */
+.nav a:not(.btn)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 1.5px;
+    width: 100%;
+    background: var(--velocity-orange);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav a:not(.btn):hover::after,
+.nav a:not(.btn).active::after {
+    transform: scaleX(1);
 }
 
 .nav a:hover { color: var(--velocity-black); }
