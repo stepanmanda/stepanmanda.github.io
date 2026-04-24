@@ -1,0 +1,192 @@
+---
+interface Props {
+    lang?: 'cs' | 'en' | 'de';
+}
+const { lang = 'cs' } = Astro.props;
+
+const labels = {
+    cs: { title: 'Přejít na sekci', trigger: 'Obsah' },
+    en: { title: 'Jump to section', trigger: 'Sections' },
+    de: { title: 'Zum Abschnitt', trigger: 'Inhalt' },
+};
+
+const t = labels[lang];
+---
+
+<div class="section-jump" data-section-jump aria-hidden="true">
+    <button
+        type="button"
+        class="section-jump__trigger"
+        aria-expanded="false"
+        aria-controls="section-jump-panel"
+        data-section-jump-trigger
+    >
+        <span class="section-jump__current" data-section-jump-current>§</span>
+        <span class="section-jump__trigger-label">{t.trigger}</span>
+        <span class="section-jump__caret" aria-hidden="true">↑</span>
+    </button>
+
+    <div
+        id="section-jump-panel"
+        class="section-jump__panel"
+        role="menu"
+        aria-label={t.title}
+        data-section-jump-panel
+    ></div>
+</div>
+
+<style>
+    .section-jump {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        z-index: 35;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        pointer-events: none;
+    }
+
+    .section-jump.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    @media (max-width: 768px) {
+        .section-jump { display: none; }
+    }
+
+    /* TRIGGER — black pill with orange hover */
+    .section-jump__trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: var(--velocity-black);
+        color: var(--ivory-silver);
+        padding: 0.6rem 1.05rem;
+        border-radius: 999px;
+        font-family: var(--font-mono);
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        box-shadow: 0 18px 40px -18px rgba(11, 15, 25, 0.55),
+                    0 0 0 1px rgba(245, 243, 238, 0.06);
+        cursor: pointer;
+        transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                    background 0.25s ease,
+                    box-shadow 0.3s ease;
+    }
+
+    .section-jump__trigger:hover {
+        transform: translateY(-2px);
+        background: var(--velocity-orange);
+        box-shadow: 0 24px 45px -18px rgba(232, 93, 31, 0.55),
+                    0 0 0 1px rgba(232, 93, 31, 0.4);
+    }
+
+    .section-jump__current {
+        font-family: var(--font-mono);
+        font-variant-numeric: tabular-nums;
+        font-size: 0.88rem;
+        color: var(--velocity-orange);
+        min-width: 1.2em;
+        text-align: center;
+        transition: color 0.25s ease;
+    }
+
+    .section-jump__trigger:hover .section-jump__current { color: var(--ivory-silver); }
+
+    .section-jump__trigger-label { font-weight: 500; }
+
+    .section-jump__caret {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--signal-gold);
+        transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease;
+    }
+
+    .section-jump.is-open .section-jump__caret {
+        transform: rotate(180deg);
+    }
+
+    .section-jump__trigger:hover .section-jump__caret { color: var(--ivory-silver); }
+
+    /* PANEL — elegant white dropdown opening upward */
+    .section-jump__panel {
+        position: absolute;
+        bottom: calc(100% + 0.75rem);
+        left: 0;
+        min-width: 280px;
+        max-height: 62vh;
+        overflow-y: auto;
+        background: var(--alpine-white);
+        border: 1px solid var(--black-08);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 30px 70px -25px rgba(11, 15, 25, 0.3),
+                    0 0 0 1px rgba(11, 15, 25, 0.02);
+        padding: 0.4rem;
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+        transform-origin: bottom left;
+        transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        pointer-events: none;
+    }
+
+    .section-jump.is-open .section-jump__panel {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+    }
+
+    /* ITEMS */
+    .section-jump__item {
+        display: flex;
+        align-items: baseline;
+        gap: 0.85rem;
+        padding: 0.65rem 0.9rem;
+        border-radius: 4px;
+        color: var(--black-90);
+        font-size: 0.94rem;
+        cursor: pointer;
+        background: transparent;
+        border: 0;
+        width: 100%;
+        text-align: left;
+        line-height: 1.35;
+        transition: background 0.2s ease, color 0.2s ease, padding-left 0.25s ease;
+    }
+
+    .section-jump__item:hover {
+        background: rgba(232, 93, 31, 0.07);
+        color: var(--velocity-black);
+        padding-left: 1.1rem;
+    }
+
+    .section-jump__item.is-active {
+        background: linear-gradient(90deg, rgba(232, 93, 31, 0.1), rgba(184, 147, 92, 0.04));
+        color: var(--velocity-orange);
+    }
+
+    .section-jump__item-num {
+        font-family: var(--font-mono);
+        font-variant-numeric: tabular-nums;
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        color: var(--signal-gold);
+        min-width: 1.7em;
+        flex-shrink: 0;
+    }
+
+    .section-jump__item.is-active .section-jump__item-num { color: var(--velocity-orange); }
+
+    .section-jump__item-label { font-weight: 500; }
+
+    @media (prefers-reduced-motion: reduce) {
+        .section-jump,
+        .section-jump__trigger,
+        .section-jump__panel,
+        .section-jump__caret,
+        .section-jump__item { transition: none; }
+    }
+</style>
