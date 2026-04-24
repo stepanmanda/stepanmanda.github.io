@@ -480,6 +480,31 @@ function initVelyos() {
             }, 100);
         });
     }
+
+    /* Pause CSS animations out of viewport — velký scroll perf win.
+       Najde všechny elementy s costly infinite animations a toggle
+       class `.is-paused` podle IntersectionObserver. */
+    if ("IntersectionObserver" in window) {
+        const PAUSE_SELECTORS = [
+            ".hero__glow",
+            ".hero__glow--primary",
+            ".hero__glow--secondary",
+            ".hero__grid",
+            ".cta-band__glow",
+            ".roi__glow",
+            ".agent-diagnostic__glow",
+        ];
+        const animated = document.querySelectorAll(PAUSE_SELECTORS.join(", "));
+        if (animated.length) {
+            const animObs = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) e.target.classList.remove("is-paused");
+                    else e.target.classList.add("is-paused");
+                });
+            }, { rootMargin: "100px" });
+            animated.forEach((el) => animObs.observe(el));
+        }
+    }
 }
 
 // Spusť při normálním načtení
