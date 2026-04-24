@@ -2056,7 +2056,7 @@ elevenlabs-convai {
 
     .split { grid-template-columns: 1fr; }
     .features, .features--3, .pricing { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr 1fr !important; }
     .audience { grid-template-columns: 1fr; }
     .site-footer__grid { grid-template-columns: 1fr 1fr; }
     .hero__meta { gap: var(--space-6); }
