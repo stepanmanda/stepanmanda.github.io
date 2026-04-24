@@ -1,0 +1,257 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Audience from '../../components/Audience.astro';
+import AudienceCard from '../../components/AudienceCard.astro';
+import Features from '../../components/Features.astro';
+import Feature from '../../components/Feature.astro';
+import Callout from '../../components/Callout.astro';
+import Duo from '../../components/Duo.astro';
+import GrantBlock from '../../components/GrantBlock.astro';
+import Steps from '../../components/Steps.astro';
+import Step from '../../components/Step.astro';
+import Note from '../../components/Note.astro';
+import AgentDiagnostic from '../../components/AgentDiagnostic.astro';
+---
+
+<Layout
+    title="VELYOS — For companies | Defining the lead."
+    description="We automate the processes where your company leaks time — admin, documentation, quotes, customer ops, reporting. Returning time, money, and peace of mind across industries."
+    lang="en"
+    active="firmy"
+    primaryCta={{ label: 'Start diagnostic', href: '/en/diagnostic' }}
+    footerTagline="For companies that choose who they grow with."
+    footerVariant="v0.3 preview · for companies"
+>
+    <Hero tagline="You know the drill — you come in with a plan, the day ends in emails.">
+        <h1 class="hero__title">Your people are capable of far more than <span class="accent">routine lets them show.</span></h1>
+        <p class="hero__lead">
+            Every company has places where money leaks out. We find them, take them off your plate —
+            and return <strong>time, money, and peace of mind</strong> to your firm, so you can focus
+            on what actually matters.
+        </p>
+        <div class="hero__ctas">
+            <a href="/en/diagnostic" class="btn btn--primary btn-arrow btn--lg">Show me where money is leaking</a>
+            <a href="#praxi" class="btn btn--ghost btn--lg">Where it already works</a>
+        </div>
+
+        <div class="hero__meta">
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Deployment</span>
+                <span class="hero__meta-value mono">4 <span class="gold">weeks</span></span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">ROI</span>
+                <span class="hero__meta-value mono">6 <span class="gold">months</span></span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Guarantee</span>
+                <span class="hero__meta-value">Contractual</span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Clientele</span>
+                <span class="hero__meta-value">Limited</span>
+            </div>
+        </div>
+
+        <Note maxWidth="60ch" style="margin-top:var(--space-8);">
+            In a few minutes, our agent walks you through your operations and points out where you're
+            leaking time the most. No presentation. No salesperson.
+        </Note>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Who VELYOS makes sense for"
+                title="A finished solution. Plugged into your operation."
+            />
+            <div class="section-body">
+                <p>
+                    We deliver a solution that we integrate into your operation and have working from day one.
+                    You don't code, install, or maintain anything — we build it, we run it.
+                </p>
+                <p>Our approach works best in companies where two things meet:</p>
+            </div>
+
+            <Audience>
+                <AudienceCard
+                    title="High volume of repeating interactions"
+                    body="Customer support, lead qualification, order processing, internal reporting, answers to standard questions. Exactly the work AI handles faster and more consistently."
+                />
+                <AudienceCard
+                    title="A team that wears multiple hats"
+                    body="The sales rep also invoices, the founder answers support, the assistant does reporting. Admin eats hours that should belong to clients. VELYOS takes it off."
+                />
+                <AudienceCard
+                    title="Ready to stop compromising"
+                    body="If your operation doesn't fit the profile, we'll tell you straight during the diagnostic — and save both sides the time. Limited annual intake."
+                />
+            </Audience>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 03 · What's changed and why it matters now"
+                title="Three shifts have hit the market, and they're not going back."
+            />
+
+            <Features cols={3}>
+                <Feature
+                    num="01 / SPEED"
+                    title="Response time now decides deals."
+                    body="A customer who doesn't get a reply within the hour moves on — not because they're impatient, but because your competitor replied first."
+                />
+                <Feature
+                    num="02 / ADMIN"
+                    title="Admin grows faster than your team."
+                    body="Every new client, product, and channel brings more emails, questions, and reports. Hiring another person to handle routine just delays the problem."
+                />
+                <Feature
+                    num="03 / SECURITY"
+                    title="Security is now a strategic decision."
+                    body="Cyberattacks on European mid-market companies climb by double digits year over year. Recovery often costs more than a two-year investment in proper infrastructure."
+                />
+            </Features>
+
+            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-60); font-size:1.1rem; max-width:60ch;">
+                VELYOS addresses all three shifts in one integration, with one partner.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · What we actually automate"
+                title="The routine slowing your firm down. We find it. We take it."
+                lead="We're not another SaaS. We're the team that builds it, runs it, and owns the outcome. There are six typical areas where companies leak time. We'll find yours."
+            />
+
+            <Features cols={3}>
+                <Feature num="01 / ADMIN" title="Invoicing, reports, filings." body="Data is collected automatically from the systems you already use. No retyping from email to spreadsheet. No double entry. No fatigue errors." />
+                <Feature num="02 / DOCUMENTATION" title="Reports, records, contracts, briefs." body="Your team dictates or inputs. The system generates a structured document from template — ready for review and signature." />
+                <Feature num="03 / QUOTES & PROPOSALS" title="Calculations in a few clicks." body="The system pulls from price lists, factors in rates and subcontractors, and generates PDF. Sales approves and sends. Hours become minutes." />
+                <Feature num="04 / CLIENT COMMUNICATION" title="Routine questions handled for you." body="Standard questions, orders, confirmations, reminders — replies in seconds, 24/7. Complex cases escalate to humans with context ready." />
+                <Feature num="05 / REPORTING" title="Numbers that assemble themselves." body="Weekly reports, monthly close, strategic data. You see outcomes, not the hours behind them. Decide on fresh data, not last quarter's." />
+                <Feature num="06 / LEAD QUALIFICATION" title="Inbound leads sort themselves." body="Leads come via email, form, or phone. The system scores potential, enriches with data, and routes only where there's real opportunity." />
+            </Features>
+
+            <Callout>
+                <strong>What we don't automate?</strong> Decisions. Negotiations. Relationships with key clients. Creative work.
+                Anything where human judgment matters stays with you. We just free up the capacity so it can happen.
+            </Callout>
+        </div>
+    </section>
+
+    <section class="section--alt" id="co-stavime">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 05 · What we build"
+                title="Got your own systems? We integrate. Don't? We build everything."
+                lead="You're not dependent on five different agencies. One partner. One contract. From the first logo to the last button on your website."
+            />
+
+            <Duo
+                leftEyebrow="← You have something"
+                leftTitle="We integrate with what works."
+                rightEyebrow="→ Or from scratch"
+                rightTitle="We build it all."
+            >
+                <Fragment slot="left">
+                    <p>You have a website? CRM? Email? Marketing?</p>
+                    <p>We don't tear anything down. We add AI and connect what now runs in isolation.</p>
+                </Fragment>
+                <Fragment slot="right">
+                    <p>Starting out? Pivoting? New direction?</p>
+                    <p>We build your website, brand, AI agents, integrations, and marketing. End to end.</p>
+                </Fragment>
+            </Duo>
+
+            <Features cols={3}>
+                <Feature num="01 / PROCESSES" title="We automate what slows you down." body="Quotes. Invoicing. Reports. Approvals. Anything that repeats and can be described by rules — we take it off." />
+                <Feature num="02 / WEB & BRAND" title="We build your website and brand." body="Pages that sell. Logo, colors, and visuals people remember." />
+                <Feature num="03 / CRM & INTEGRATION" title="We connect it to your systems." body="HubSpot, Pipedrive, Salesforce, or your own. Data flows where it belongs." />
+                <Feature num="04 / AI AGENTS" title="We deploy AI that speaks for you." body="Voice agent on the phone. Chatbot on the web. Email assistant. Where it pays off." />
+                <Feature num="05 / MARKETING" title="We make sure the right people know." body="SEO. Google & Meta ads. LinkedIn. Cold outreach. The right clients." />
+                <Feature num="06 / DATA" title="We show you where time leaks." body="A dashboard that makes sense. You see what works, what doesn't, and what to do next." />
+            </Features>
+        </div>
+    </section>
+
+    <section class="section--editorial" id="praxi">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 06 · Industries where VELYOS helps"
+                title="Same approach. Different companies. Same result."
+                lead="The principles don't change — they adapt to your operation. The numbers below are <strong>targets of typical deployments</strong> — what we can deliver. Specific results for your firm we'll discuss after the diagnostic."
+            />
+
+            <Features cols={2}>
+                <Feature num="Healthcare" title={`Documentation from <span style="color:var(--velocity-orange);">25&nbsp;min to 4&nbsp;min</span> per patient.`} body="The doctor dictates a summary. The system structures the medical record, assigns ICD-10 codes, prepares the insurance filing. The doctor approves and sends. Two extra hours a day for patients." />
+                <Feature num="Construction" title={`Quote from <span style="color:var(--velocity-orange);">4&nbsp;hours to 20&nbsp;minutes</span>.`} body="Sales enters the scope. The system pulls from price lists, accounts for subcontractors and rates, generates PDF. Daily throughput of processed inquiries doubles." />
+                <Feature num="Real Estate" title={`Lead <span style="color:var(--velocity-orange);">within the hour</span>. Weekends too.`} body="The inquiry comes via portal or phone. The system scores it, pulls public records, suggests matching properties. The broker responds before competitors pick up the phone." />
+                <Feature num="Professional Services (law, consulting, accounting)" title={`Client prep in <span style="color:var(--velocity-orange);">15&nbsp;minutes</span>.`} body="The system reviews emails, documents, and client history. Builds a briefing: what you're working on, where it's going, what the client will bring up. You walk in prepared, not caught off-guard." />
+            </Features>
+
+            <Note>
+                Case studies available on request. Our clients' privacy is paramount — all references we provide are fully anonymized.
+            </Note>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 07 · Investment"
+                title="Every project is different. So is the price."
+                lead="We don't publish a price list. Every company has different scope, different systems, different priorities. We discuss specific investment in person — once it's clear what we're building and what return makes sense."
+            />
+
+            <div style="max-width:var(--container-narrow); margin-top:var(--space-8); display:grid; grid-template-columns:1fr 1fr; gap:var(--space-8);" data-stagger>
+                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--velocity-orange); border-radius:var(--radius);">
+                    <span class="eyebrow" style="color:var(--velocity-orange); display:block; margin-bottom:var(--space-3);">What you always get</span>
+                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:var(--space-2); color:var(--black-90); line-height:1.5; font-size:0.98rem;">
+                        <li><strong>Fixed price before kickoff</strong> — no hidden licenses, no surprises</li>
+                        <li><strong>Two-part model</strong> — one-time build + monthly operation</li>
+                        <li><strong>Predictable growth</strong> — monthly costs scale with scope</li>
+                        <li><strong>Short notice period</strong> — we don't want to lock you in</li>
+                    </ul>
+                </div>
+                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--signal-gold); border-radius:var(--radius);">
+                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">How to get a number</span>
+                    <p style="color:var(--black-90); line-height:1.6; font-size:0.98rem; margin:0 0 var(--space-4);">
+                        Start the <a href="/en/diagnostic" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30); font-weight:500;">diagnostic</a>
+                        — via agent or form. Within 24 hours a specialist calls to walk through the specific scope.
+                    </p>
+                    <p style="color:var(--black-60); line-height:1.6; font-size:0.9rem; margin:0;">
+                        The first call is always free and without obligation.
+                    </p>
+                </div>
+            </div>
+
+            <GrantBlock />
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 08 · Path to deployment"
+                title="Four steps. No surprises."
+            />
+
+            <Steps cols={4}>
+                <Step num="01 · DIAGNOSTIC" title="We review your operation." body="We quantify where you lose the most time and money. The output is a specific calculation, not a generic presentation." />
+                <Step num="02 · DESIGN" title="We tailor the solution." body="What we automate, how we integrate, what it costs. A concrete plan, not a deck." />
+                <Step num="03 · INTEGRATION" title="We plug VELYOS into your systems." body="Typically within days, without disrupting operations. Your team keeps doing what they do best." />
+                <Step num="04 · OPERATION" title="You focus on the business." body="We make sure the system works better every month than it did the month before." />
+            </Steps>
+        </div>
+    </section>
+
+    <AgentDiagnostic agentId="cu9gllbBtpZWU6CuJXky" />
+</Layout>
