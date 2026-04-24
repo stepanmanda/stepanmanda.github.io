@@ -101,6 +101,7 @@ function initVelyos() {
         const title = hero.querySelector(".hero__title");
         if (title && !title.dataset.split) {
             title.dataset.split = "1";
+            title.classList.add("is-split");
             // Najdeme všechny text nodes + preservujeme spans (.accent)
             const walker = document.createTreeWalker(title, NodeFilter.SHOW_TEXT);
             const textNodes = [];
