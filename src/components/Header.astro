@@ -26,7 +26,10 @@ const cta = primaryCta === undefined
 
 <header class="site-header" transition:name="velyos-header">
     <div class="site-header__inner">
-        <a href={route('home', lang)} class="brand" transition:name="brand-logo">VELY<span class="os">OS</span></a>
+        <div class="site-header__left">
+            <a href={route('home', lang)} class="brand" transition:name="brand-logo">VELY<span class="os">OS</span></a>
+            <SectionJump lang={lang} />
+        </div>
 
         <!-- Desktop nav -->
         <nav class="nav">
