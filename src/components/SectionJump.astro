@@ -99,7 +99,14 @@ const t = labels[lang];
         font-weight: 600;
     }
 
-    .section-jump__trigger-label { font-weight: 500; }
+    .section-jump__trigger-label {
+        font-weight: 500;
+        max-width: 16ch;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: max-width 0.3s ease;
+    }
 
     .section-jump__caret {
         color: var(--mist-gray);
