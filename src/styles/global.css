@@ -1857,8 +1857,8 @@ html.js.first-load .hero__title.is-split {
     visibility: visible;
 }
 
-/* H1 text reveal — per-word staggered — cinematic entrance */
-.hero__title .word {
+/* H1 text reveal — per-word staggered — cinematic entrance (only on first load) */
+html.first-load .hero__title .word {
     display: inline-block;
     opacity: 0;
     transform: translate3d(0, 24px, 0) rotateX(-20deg);
@@ -1866,6 +1866,12 @@ html.js.first-load .hero__title.is-split {
     animation: wordReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: calc(0.3s + var(--word-index, 0) * 0.07s);
     will-change: opacity, transform;
+}
+
+/* After first load, words render normally — no per-word reveal on navigation */
+html:not(.first-load) .hero__title .word {
+    display: inline-block;
+    opacity: 1;
 }
 
 @keyframes wordReveal {
