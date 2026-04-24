@@ -183,6 +183,41 @@ section {
 }
 
 .brand .os { color: var(--velocity-orange); }
+
+/* Brand boot animace — logo se zapíná při prvním loadu
+   (persistent přes view transitions — jen na initial page load) */
+.brand {
+    /* Spočítat parent: hidden dokud není .is-booted */
+}
+
+@keyframes velyosBootLetter {
+    0%   { opacity: 0; transform: translate3d(0, -6px, 0) scale(0.94); filter: blur(6px); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+}
+
+@keyframes velyosBootOsPulse {
+    0%   { opacity: 0; transform: scale(0.5); }
+    60%  { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Pokud má rodič .velyos-boot — jednotlivá písmena naskočí sekvenčně */
+.velyos-boot .brand-letter {
+    display: inline-block;
+    opacity: 0;
+    animation: velyosBootLetter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--letter-index, 0) * 0.06s + 0.2s);
+}
+
+.velyos-boot .brand-letter--os {
+    display: inline-block;
+    animation: velyosBootOsPulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* OS = rozsvítí se se silnějším pulsem */
+.velyos-boot .brand .os .brand-letter--os {
+    animation-delay: calc(var(--letter-index, 0) * 0.06s + 0.25s);
+}
 .site-header--dark .brand { color: var(--ivory-silver); }
 
 .nav {
