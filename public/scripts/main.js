@@ -375,4 +375,22 @@ function initVelyos() {
             }, 100);
         });
     }
-})();
+}
+
+// Spusť při normálním načtení
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVelyos);
+} else {
+    initVelyos();
+}
+
+// Po View Transitions (Astro) — nové stránce znovu inicializovat vše
+document.addEventListener('astro:page-load', initVelyos);
+
+// Před odchodem ze stránky — cleanup běžících canvas animací (pokud existují)
+document.addEventListener('astro:before-swap', () => {
+    const canvas = document.querySelector('.hero__mesh');
+    if (canvas && canvas.__velyosStop) {
+        canvas.__velyosStop();
+    }
+});
