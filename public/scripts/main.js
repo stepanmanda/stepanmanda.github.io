@@ -12,6 +12,14 @@ function initVelyos() {
         });
     }, 500);
 
+    // Remove first-load gate AFTER initial hero animations finish — future navigations
+    // (via Astro View Transitions) won't replay the cinematic stagger.
+    if (document.documentElement.classList.contains("first-load")) {
+        setTimeout(() => {
+            document.documentElement.classList.remove("first-load");
+        }, 2200);
+    }
+
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     /* Scroll reveals ------------------------------------ */
