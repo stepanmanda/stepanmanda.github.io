@@ -1,0 +1,464 @@
+---
+// ROI Kalkulačka — interaktivní slidery, živý výstup úspor
+// Používá CZ Kč / EN € / DE € formát
+import { roiStrings, route, type Lang } from '../i18n/ui';
+
+interface Props {
+    lang?: Lang;
+}
+
+const { lang = 'cs' } = Astro.props;
+const t = roiStrings[lang];
+
+// Defaulty pro slidery
+const defaults = {
+    cs: { hours: 10, people: 15, rate: 800 },
+    en: { hours: 10, people: 15, rate: 45 },
+    de: { hours: 10, people: 15, rate: 40 },
+}[lang];
+
+const locale = lang === 'cs' ? 'cs-CZ' : lang === 'en' ? 'en-US' : 'de-DE';
+---
+
+<section class="roi" id="kalkulacka" data-lang={lang} data-locale={locale} data-unit={t.unit}>
+    <div class="roi__glow"></div>
+    <div class="container">
+        <div class="roi__inner" data-reveal>
+            <span class="eyebrow roi__eyebrow">{t.eyebrow}</span>
+            <h2 class="roi__title" set:html={t.title}></h2>
+            <p class="roi__lead">{t.lead}</p>
+        </div>
+
+        <div class="roi__grid" data-reveal>
+            <!-- Controls -->
+            <div class="roi__controls">
+                <div class="roi__field">
+                    <label class="roi__label" for="roi-hours">{t.hoursLabel}</label>
+                    <p class="roi__hint">{t.hoursHint}</p>
+                    <div class="roi__slider-wrap">
+                        <input type="range" id="roi-hours" class="roi__slider" min="1" max="40" step="1" value={defaults.hours} />
+                        <div class="roi__value-box">
+                            <span class="roi__value" data-field="hours">{defaults.hours}</span>
+                            <span class="roi__value-unit">{t.hoursUnit}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roi__field">
+                    <label class="roi__label" for="roi-people">{t.peopleLabel}</label>
+                    <p class="roi__hint">{t.peopleHint}</p>
+                    <div class="roi__slider-wrap">
+                        <input type="range" id="roi-people" class="roi__slider" min="1" max="200" step="1" value={defaults.people} />
+                        <div class="roi__value-box">
+                            <span class="roi__value" data-field="people">{defaults.people}</span>
+                            <span class="roi__value-unit">{t.peopleUnit}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roi__field">
+                    <label class="roi__label" for="roi-rate">{t.rateLabel}</label>
+                    <p class="roi__hint">{t.rateHint}</p>
+                    <div class="roi__slider-wrap">
+                        <input
+                            type="range"
+                            id="roi-rate"
+                            class="roi__slider"
+                            min={lang === 'cs' ? '200' : '15'}
+                            max={lang === 'cs' ? '3000' : '150'}
+                            step={lang === 'cs' ? '50' : '5'}
+                            value={defaults.rate}
+                        />
+                        <div class="roi__value-box">
+                            <span class="roi__value" data-field="rate">{defaults.rate}</span>
+                            <span class="roi__value-unit">{t.unit}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="roi__results">
+                <div class="roi__result roi__result--loss">
+                    <span class="roi__result-label">{t.resultYearly}</span>
+                    <span class="roi__result-amount">
+                        <span data-result="yearly-loss">—</span>
+                        <span class="roi__result-unit">{t.unit}</span>
+                    </span>
+                    <span class="roi__result-detail" data-result="yearly-detail"></span>
+                </div>
+
+                <div class="roi__divider">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <div class="roi__result roi__result--gain">
+                    <span class="roi__result-label">{t.resultVelyosLabel}</span>
+                    <p class="roi__result-sub">{t.resultVelyosDetail}</p>
+                    <span class="roi__result-amount roi__result-amount--gain">
+                        <span data-result="velyos-savings">—</span>
+                        <span class="roi__result-unit">{t.unit}</span>
+                    </span>
+                    <span class="roi__result-detail">
+                        <span data-result="velyos-hours">—</span> {t.savingsLabel}
+                    </span>
+                </div>
+
+                <p class="roi__result-return">{t.resultReturnYears}</p>
+
+                <a href={route('diagnostika', lang)} class="btn btn--primary btn-arrow btn--lg roi__cta">{t.cta}</a>
+            </div>
+        </div>
+
+        <p class="roi__disclaimer">{t.disclaimer}</p>
+    </div>
+</section>
+
+<style>
+    .roi {
+        background: var(--velocity-black);
+        color: var(--ivory-silver);
+        padding: var(--space-24) 0;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid rgba(245, 243, 238, 0.08);
+        border-bottom: 1px solid rgba(245, 243, 238, 0.08);
+    }
+
+    .roi__glow {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+            radial-gradient(ellipse 50% 40% at 20% 30%, rgba(232, 93, 31, 0.18) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 50% at 80% 80%, rgba(184, 147, 92, 0.12) 0%, transparent 60%);
+        animation: glowBreathe 9s ease-in-out infinite;
+    }
+
+    .roi .container { position: relative; z-index: 1; }
+
+    .roi__inner {
+        max-width: 62ch;
+        margin: 0 auto var(--space-12);
+        text-align: center;
+    }
+
+    .roi__eyebrow {
+        color: var(--velocity-orange) !important;
+        display: block;
+        margin-bottom: var(--space-4);
+    }
+
+    .roi__title {
+        font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: var(--ivory-silver);
+        margin: 0 0 var(--space-4);
+    }
+
+    .roi__title .accent { color: var(--velocity-orange); }
+
+    .roi__lead {
+        color: var(--ivory-70);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .roi__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-10);
+        align-items: start;
+    }
+
+    /* Controls */
+    .roi__controls {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .roi__field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .roi__label {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ivory-silver);
+        font-weight: 500;
+    }
+
+    .roi__hint {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 0.88rem;
+        color: var(--mist-gray);
+        margin: 0 0 0.75rem;
+        line-height: 1.45;
+    }
+
+    .roi__slider-wrap {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--space-4);
+        align-items: center;
+    }
+
+    /* Range slider — custom brand styling */
+    .roi__slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 4px;
+        background: rgba(245, 243, 238, 0.1);
+        border-radius: 2px;
+        outline: none;
+        transition: background 0.2s ease;
+    }
+
+    .roi__slider:hover { background: rgba(245, 243, 238, 0.15); }
+
+    .roi__slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        background: var(--velocity-orange);
+        border-radius: 50%;
+        cursor: grab;
+        box-shadow: 0 0 0 4px rgba(232, 93, 31, 0.18), 0 4px 12px rgba(232, 93, 31, 0.3);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .roi__slider::-webkit-slider-thumb:active {
+        cursor: grabbing;
+        transform: scale(1.15);
+        box-shadow: 0 0 0 6px rgba(232, 93, 31, 0.25), 0 6px 18px rgba(232, 93, 31, 0.45);
+    }
+
+    .roi__slider::-moz-range-thumb {
+        width: 22px;
+        height: 22px;
+        background: var(--velocity-orange);
+        border: 0;
+        border-radius: 50%;
+        cursor: grab;
+        box-shadow: 0 0 0 4px rgba(232, 93, 31, 0.18);
+    }
+
+    .roi__value-box {
+        min-width: 90px;
+        padding: 0.5rem 0.85rem;
+        background: rgba(245, 243, 238, 0.05);
+        border: 1px solid rgba(245, 243, 238, 0.12);
+        border-radius: var(--radius);
+        text-align: right;
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-end;
+        gap: 0.3rem;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .roi__value {
+        font-family: var(--font-mono);
+        font-size: 1.15rem;
+        font-weight: 500;
+        color: var(--velocity-orange);
+        transition: color 0.15s ease;
+    }
+
+    .roi__value-unit {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--mist-gray);
+    }
+
+    /* Results panel */
+    .roi__results {
+        background: rgba(245, 243, 238, 0.04);
+        border: 1px solid rgba(245, 243, 238, 0.1);
+        border-top: 3px solid var(--velocity-orange);
+        border-radius: var(--radius-lg);
+        padding: var(--space-8);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+        position: relative;
+        box-shadow: 0 30px 70px -30px rgba(11, 15, 25, 0.4);
+    }
+
+    .roi__result {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .roi__result-label {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--mist-gray);
+    }
+
+    .roi__result-sub {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 0.9rem;
+        color: var(--mist-gray);
+        margin: 0.2rem 0 0.5rem;
+        line-height: 1.4;
+    }
+
+    .roi__result-amount {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.4rem;
+        font-family: var(--font-mono);
+        font-variant-numeric: tabular-nums;
+        font-size: clamp(2rem, 4vw, 2.6rem);
+        font-weight: 500;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: var(--ivory-silver);
+        transition: color 0.2s ease;
+    }
+
+    .roi__result-amount--gain {
+        color: var(--velocity-orange);
+    }
+
+    .roi__result-unit {
+        font-size: 0.8em;
+        color: var(--signal-gold);
+        font-weight: 500;
+    }
+
+    .roi__result-amount--gain .roi__result-unit {
+        color: var(--velocity-orange);
+    }
+
+    .roi__result-detail {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        color: var(--mist-gray);
+    }
+
+    .roi__divider {
+        display: flex;
+        justify-content: center;
+        color: var(--signal-gold);
+        opacity: 0.5;
+        margin: 0.25rem 0;
+    }
+
+    .roi__result-return {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 0.95rem;
+        color: var(--signal-gold);
+        margin: 0;
+        padding-top: var(--space-4);
+        border-top: 1px solid rgba(245, 243, 238, 0.08);
+        line-height: 1.5;
+    }
+
+    .roi__cta {
+        align-self: flex-start;
+        margin-top: var(--space-3);
+    }
+
+    .roi__disclaimer {
+        max-width: 56ch;
+        margin: var(--space-12) auto 0;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 0.88rem;
+        color: var(--mist-gray);
+        text-align: center;
+        line-height: 1.55;
+    }
+
+    @media (max-width: 880px) {
+        .roi__grid {
+            grid-template-columns: 1fr;
+            gap: var(--space-10);
+        }
+        .roi__results { padding: var(--space-6); }
+    }
+</style>
+
+<script is:inline>
+    (function () {
+        const section = document.getElementById('kalkulacka');
+        if (!section) return;
+
+        const locale = section.dataset.locale || 'cs-CZ';
+        const lang = section.dataset.lang || 'cs';
+
+        const hoursEl = section.querySelector('#roi-hours');
+        const peopleEl = section.querySelector('#roi-people');
+        const rateEl = section.querySelector('#roi-rate');
+
+        const hoursVal = section.querySelector('[data-field="hours"]');
+        const peopleVal = section.querySelector('[data-field="people"]');
+        const rateVal = section.querySelector('[data-field="rate"]');
+
+        const yearlyLossEl = section.querySelector('[data-result="yearly-loss"]');
+        const yearlyDetailEl = section.querySelector('[data-result="yearly-detail"]');
+        const velyosSavingsEl = section.querySelector('[data-result="velyos-savings"]');
+        const velyosHoursEl = section.querySelector('[data-result="velyos-hours"]');
+
+        const fmt = (n) => {
+            if (lang === 'cs') {
+                return new Intl.NumberFormat('cs-CZ', { maximumFractionDigits: 0 }).format(n);
+            }
+            return new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(n);
+        };
+
+        const DETAIL_TEMPLATES = {
+            cs: 'hodin × sazba × {count} lidí × 48 týdnů',
+            en: 'hours × rate × {count} people × 48 weeks',
+            de: 'Stunden × Satz × {count} Personen × 48 Wochen',
+        };
+
+        function compute() {
+            const h = parseFloat(hoursEl.value);
+            const p = parseFloat(peopleEl.value);
+            const r = parseFloat(rateEl.value);
+
+            hoursVal.textContent = h;
+            peopleVal.textContent = p;
+            rateVal.textContent = fmt(r);
+
+            // Roční: hodin/týden × sazba × lidí × 48 týdnů (4 týdny dovolená)
+            const yearlyLoss = h * r * p * 48;
+            const velyosSavings = yearlyLoss * 0.6; // 60 % — konzervativní
+            const savedHours = h * p * 48 * 0.6;
+
+            yearlyLossEl.textContent = fmt(yearlyLoss);
+            yearlyDetailEl.textContent = (DETAIL_TEMPLATES[lang] || DETAIL_TEMPLATES.cs).replace('{count}', p);
+            velyosSavingsEl.textContent = fmt(velyosSavings);
+            velyosHoursEl.textContent = fmt(savedHours);
+        }
+
+        [hoursEl, peopleEl, rateEl].forEach((el) => {
+            el.addEventListener('input', compute);
+        });
+
+        compute();
+    })();
+</script>
