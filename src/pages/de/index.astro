@@ -1,0 +1,156 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Split from '../../components/Split.astro';
+import SplitCard from '../../components/SplitCard.astro';
+import Duo from '../../components/Duo.astro';
+import Features from '../../components/Features.astro';
+import Feature from '../../components/Feature.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+
+<Layout
+    title="VELYOS — The Velocity Operating System."
+    description="VELYOS baut Automatisierung, die Unternehmen und Fachleuten Zeit, Geld und Ruhe zurückgibt. Wählen Sie Ihren Weg — für Ihr Unternehmen oder für Sie persönlich."
+    lang="de"
+    active="home"
+    primaryCta={{ label: 'Beratung anfordern', href: '/de/unternehmen' }}
+>
+    <Hero tagline={`„The Velocity Operating System."`} variant="split">
+        <h1 class="hero__title">Wir geben Zeit dorthin zurück, wo sie den <span class="accent">höchsten Wert hat.</span></h1>
+        <p class="hero__lead">
+            Wir bauen Automatisierung, die Unternehmen und Fachleuten <strong>Zeit, Geld und Ruhe</strong> zurückgibt.
+            Damit Sie sich auf das konzentrieren können, was wirklich wichtig ist.
+            Wir sind keine Software — wir sind das Team, das sie für Sie baut.
+        </p>
+
+        <div class="hero__ctas">
+            <a href="/de/unternehmen" class="btn btn--primary btn-arrow btn--lg">Ich möchte eine Lösung fürs Unternehmen</a>
+            <a href="/de/einzelpersonen" class="btn btn--ghost btn-arrow btn--lg">Ich möchte eine persönliche Lösung</a>
+        </div>
+
+        <div class="hero__meta">
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Einsatz</span>
+                <span class="hero__meta-value mono">4 <span class="gold">Wochen</span></span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Amortisation</span>
+                <span class="hero__meta-value mono">6 <span class="gold">Monate</span></span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Garantie</span>
+                <span class="hero__meta-value">Vertraglich</span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Kundenkreis</span>
+                <span class="hero__meta-value">Begrenzt</span>
+            </div>
+        </div>
+    </Hero>
+
+    <section class="split-section" id="vyberte">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 01 · Wählen Sie, was passt"
+                title="Wir arbeiten mit zwei Arten von Kunden. Jeder bekommt einen anderen Ansatz."
+            />
+
+            <Split>
+                <SplitCard
+                    href="/de/unternehmen"
+                    accent="orange"
+                    eyebrow="Für Unternehmen"
+                    title="Wir bauen KI-Agenten, die die Routine Ihres Teams übernehmen."
+                    body="Verbringt Ihr Team Stunden mit Verwaltung, Kundensupport oder internem Reporting? Wir geben sie der Arbeit zurück, für die sie tatsächlich bezahlt werden. Diagnose, Design, Integration, Betrieb — alles aus einer Hand."
+                    ctaLabel="Ich möchte eine Lösung fürs Unternehmen"
+                    ctaClass="btn--primary"
+                />
+                <SplitCard
+                    href="/de/einzelpersonen"
+                    accent="gold"
+                    eyebrow="Für Einzelpersonen"
+                    title="Wir bauen Ihren persönlichen KI-Agenten — für Ihren Tag."
+                    body="Gründer, Berater, Anwalt? Ihr Tag wird von E-Mail und Kalender aufgefressen. Der Agent übernimmt Kommunikation, Terminplanung und Verwaltung — und gibt Ihnen jede Woche Stunden zurück."
+                    ctaLabel="Ich möchte eine persönliche Lösung"
+                    ctaClass="btn--dark"
+                />
+            </Split>
+        </div>
+    </section>
+
+    <section class="section--alt" id="co-stavime">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Was wir bauen"
+                title="Sie haben eigene Systeme? Wir integrieren. Fangen Sie neu an? Wir bauen alles."
+                lead="Sie sind nicht von fünf verschiedenen Agenturen abhängig. Ein Partner. Ein Vertrag. Vom ersten Logo bis zum letzten Button auf Ihrer Website."
+            />
+
+            <Duo
+                leftEyebrow="← Sie haben schon etwas"
+                leftTitle="Wir verbinden uns mit dem, was funktioniert."
+                rightEyebrow="→ Oder ganz neu"
+                rightTitle="Wir bauen alles."
+            >
+                <Fragment slot="left">
+                    <p>Website? CRM? E-Mail? Marketing?</p>
+                    <p>Wir reißen nichts ab. Wir fügen KI hinzu und verbinden, was heute isoliert läuft.</p>
+                </Fragment>
+                <Fragment slot="right">
+                    <p>Am Anfang? Neuausrichtung? Neue Richtung?</p>
+                    <p>Wir bauen Ihre Website, Marke, KI-Agenten, Integrationen und Marketing. End-to-End.</p>
+                </Fragment>
+            </Duo>
+
+            <Features cols={3}>
+                <Feature num="01 / WEB & BRAND" title="Wir bauen Ihre Website und Marke." body="Seiten, die verkaufen. Logo, Farben und Visuals, an die sich Menschen erinnern." />
+                <Feature num="02 / KI-AGENTEN" title="Wir setzen KI ein, die für Sie spricht." body="Sprachagent am Telefon. Chatbot auf der Website. E-Mail-Assistent. 24/7." />
+                <Feature num="03 / CRM & INTEGRATION" title="Wir verbinden alles mit Ihren Systemen." body="HubSpot, Pipedrive, Salesforce oder eigenes System. Daten fließen dorthin, wo sie hingehören." />
+                <Feature num="04 / MARKETING" title="Wir sorgen dafür, dass die richtigen Leute Sie finden." body="SEO. Google & Meta Ads. LinkedIn. Cold Outreach. Die richtigen Kunden." />
+                <Feature num="05 / AUTOMATISIERUNG" title="Wir verbinden die Tools, die Sie bereits nutzen." body="Slack, Notion, Google, Rechnungsstellung. Was Sie heute manuell tun, läuft von selbst." />
+                <Feature num="06 / DATEN" title="Wir zeigen Ihnen, wo Zeit verloren geht." body="Ein Dashboard, das Sinn ergibt. Sie sehen, was funktioniert, was nicht, und was als Nächstes zu tun ist." />
+            </Features>
+        </div>
+    </section>
+
+    <CtaBand
+        id="agent"
+        eyebrow="· Nicht sicher, wohin Sie gehören? ·"
+        title="Unser Agent hilft Ihnen in wenigen Minuten, die Antwort zu finden."
+        lead="Kein Vertrieb. Keine Präsentation. Ein kurzes Gespräch mit KI, die beide Wege kennt — und Ihnen ehrlich sagt, welchen Sie zuerst betrachten sollten."
+        directPrefix="Kein Agent?"
+    >
+        <a href="/de/diagnose" class="btn btn--primary btn-arrow btn--lg">Mit dem Agenten sprechen</a>
+        <a href="mailto:stepan@velyos.ai?subject=VELYOS%20Anfrage" class="btn btn--ghost btn--lg">Direkt schreiben</a>
+    </CtaBand>
+
+    <section class="section--tight">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 03 · Wofür wir stehen"
+                title="Drei Prinzipien. Ein Vertrag."
+            />
+
+            <Features cols={3}>
+                <Feature num="01 / VELOCITY" title="Wir messen in Wochen, nicht Monaten." body={`Integration typischerweise in Tagen. Vollständiger Einsatz innerhalb von 4 Wochen. Keine „Pilotphasen über sechs Monate".`} />
+                <Feature num="02 / PRECISION" title={`Kein „fast". Nur exakte Ergebnisse.`} body="Messbare Einsparungen, menschliche Aufsicht und Architektur nach ISO 27001 Prinzipien. KI, die nicht mit der Realität streitet." />
+                <Feature num="03 / SELECTIVE" title="Wir nehmen eine begrenzte Anzahl von Kunden pro Jahr an." body="Wenn Ihr Profil nicht passt, sagen wir es direkt — und empfehlen jemand anderen." />
+            </Features>
+        </div>
+    </section>
+
+    <section class="section--editorial">
+        <div class="container container--narrow" data-reveal>
+            <span class="eyebrow">· Manifesto</span>
+            <h2 style="margin-top:var(--space-4);margin-bottom:var(--space-8);">Zeit ist das einzige Gut, das Sie nicht zurückkaufen können.</h2>
+            <div class="section-body">
+                <p>Die meisten Unternehmen verbrennen sie in Prozessen, die längst automatisiert sein sollten. In Anrufen, die niemand hätte führen sollen. In Verwaltung, die nie hätte existieren sollen.</p>
+                <p>VELYOS ist der Partner, der die Automatisierung Ihres Unternehmens baut, verbindet und am Laufen hält. Nicht eine weitere Software, die Sie selbst konfigurieren müssen. Für Unternehmen und Fachleute, die den Wert ihrer eigenen Zeit verstehen.</p>
+                <p><strong>Wir implementieren in 4 Wochen. Amortisation innerhalb von 6 Monaten. Vertraglich garantiert.</strong></p>
+                <p class="italic-serif" style="color:var(--signal-gold);margin-top:var(--space-6);font-size:1.2rem;">„Wir arbeiten nicht für jeden. Wir arbeiten für diejenigen, die verstehen, warum sie bei uns sind."</p>
+            </div>
+        </div>
+    </section>
+</Layout>
