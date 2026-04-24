@@ -5,6 +5,13 @@
 function initVelyos() {
     "use strict";
 
+    // Safety: ensure hero titles always become visible even if split fails downstream.
+    setTimeout(() => {
+        document.querySelectorAll(".hero__title:not(.is-split)").forEach((t) => {
+            t.classList.add("is-split");
+        });
+    }, 500);
+
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     /* Scroll reveals ------------------------------------ */
