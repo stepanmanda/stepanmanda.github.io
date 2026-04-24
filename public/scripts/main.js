@@ -1,8 +1,8 @@
-/* VELYOS — preview interactivity
-   Scroll reveals + hero parallax glow + count-up + magnetic brand link
+/* VELYOS — interactivity
+   Cinematic hero + scroll reveals + ROI calculator + view transitions
    ------------------------------------------------------------------ */
 
-(function () {
+function initVelyos() {
     "use strict";
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
