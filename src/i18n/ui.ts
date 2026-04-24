@@ -363,7 +363,7 @@ export const statsStrings = {
 // ========== ROI Kalkulačka ==========
 export const roiStrings = {
     cs: {
-        eyebrow: '· Kalkulačka · Spočítejte si to',
+        eyebrow: '· 09 · Kalkulačka',
         title: 'Kolik vaše firma ztrácí na rutině. <span class="accent">A kolik by mohla získat zpátky.</span>',
         lead: 'Posuňte tři jezdce podle vaší reality. Kalkulace je orientační — ukazuje řády, ne přesnou predikci. Konkrétní rozbor probereme po diagnostice.',
         hoursLabel: 'Hodin administrativy na jednoho člověka týdně',
