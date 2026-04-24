@@ -1701,7 +1701,6 @@ elevenlabs-convai {
 
 /* Hero stagger entrance ------------------------------ */
 .hero__tagline,
-.hero__title,
 .hero__lead,
 .hero__ctas,
 .hero__ctas-note,
@@ -1712,14 +1711,42 @@ elevenlabs-convai {
     animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.hero__tagline    { animation-delay: 0.05s; }
-.hero__title      { animation-delay: 0.18s; }
-.hero__lead       { animation-delay: 0.36s; }
-.hero__ctas       { animation-delay: 0.50s; }
-.hero__ctas-note  { animation-delay: 0.62s; }
-.hero__grant      { animation-delay: 0.65s; }
-.hero__meta       { animation-delay: 0.72s; }
-.hero .note       { animation-delay: 0.60s; }
+.hero__tagline    { animation-delay: 0.15s; }
+.hero__lead       { animation-delay: 0.85s; }
+.hero__ctas       { animation-delay: 1.0s; }
+.hero__ctas-note  { animation-delay: 1.1s; }
+.hero__grant      { animation-delay: 1.15s; }
+.hero__meta       { animation-delay: 1.2s; }
+.hero .note       { animation-delay: 1.1s; }
+
+/* H1 text reveal — per-word staggered — cinematic entrance */
+.hero__title .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) rotateX(-20deg);
+    transform-origin: bottom center;
+    animation: wordReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(0.3s + var(--word-index, 0) * 0.07s);
+    will-change: opacity, transform;
+}
+
+@keyframes wordReveal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 24px, 0) rotateX(-20deg);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) rotateX(0);
+    }
+}
+
+/* Pokud JS není dostupný, text je viditelný default */
+.no-js .hero__title .word {
+    opacity: 1;
+    transform: none;
+    animation: none;
+}
 
 /* Dotační strip v hero ------------------------------- */
 .hero__grant {
