@@ -193,9 +193,24 @@ const t = copy[lang];
 
     .member__photo {
         position: relative;
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 3 / 4;
         background: linear-gradient(135deg, #3a2510 0%, #0B0F19 60%, #1E3A5F 100%);
         overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .member__photo-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .member--featured .member__photo {
+        background: linear-gradient(135deg, #1a1206 0%, #0B0F19 55%, #2a1c08 100%);
     }
 
     .member__photo-placeholder {
