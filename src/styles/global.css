@@ -1752,6 +1752,27 @@ elevenlabs-convai {
 }
 
 /* Preview ribbon ------------------------------------- */
+/* Scroll progress bar — slim orange line at top tracking page scroll */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    background: linear-gradient(90deg, var(--velocity-orange) 0%, var(--signal-gold) 100%);
+    box-shadow: 0 0 12px rgba(232, 93, 31, 0.5);
+    z-index: 9998;
+    pointer-events: none;
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-progress { transition: none; }
+}
+
 .preview-ribbon {
     position: fixed;
     top: 1rem;
