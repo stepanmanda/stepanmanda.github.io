@@ -44,8 +44,12 @@ const xDefault = active
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Mark document as JS-enabled before CSS loads — prevents hero flicker on refresh -->
-    <script is:inline>document.documentElement.classList.add('js');</script>
+    <!-- Mark document as JS-enabled + first-load before CSS parses — prevents hero flicker on refresh.
+         `.first-load` is removed by main.js after initial init, so view-transition navs skip the stagger. -->
+    <script is:inline>
+        document.documentElement.classList.add('js');
+        document.documentElement.classList.add('first-load');
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
 
