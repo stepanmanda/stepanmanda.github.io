@@ -329,6 +329,70 @@ export const formStrings = {
     },
 } as const;
 
+// ========== Sdílené komponenty (AgentDiagnostic, GrantBlock) ==========
+export const componentStrings = {
+    cs: {
+        agent: {
+            badge: 'Diagnostika · dvě cesty · pár minut',
+            title1: 'Pár minut. Bez obchodníka.',
+            title2: 'Vyberte si, jak to uděláme.',
+            lead: 'Na stránce <strong>diagnostiky</strong> máte dvě rovnocenné cesty — přirozený hlasový rozhovor s naší AI agentkou Stelou, nebo krátký strukturovaný formulář. Obě cesty končí u stejného specialisty, který vám zavolá do 24 hodin.',
+            cta: 'Spustit diagnostiku',
+            point1: '<strong>Hlasový hovor s agentem</strong> — mluvíte přirozeně, jako s kolegou. 5–7 minut.',
+            point2: '<strong>Písemný formulář</strong> — pokud raději píšete. 10 polí, 3 minuty.',
+            point3: 'Zdarma, bez obchodního tlaku. Agent mluví ve 13 jazycích.',
+            footnote: 'Spěcháte? Klikněte na kontrolku agenta <strong>vpravo dole</strong> — Stela začne poslouchat hned, i bez přechodu na stránku diagnostiky.',
+        },
+        grant: {
+            label: 'Dotace · snížíme vám vstupní investici',
+            title: 'Část investice může pokrýt dotace na digitalizaci.',
+            body: 'České i evropské programy pro digitalizaci malých a středních firem (Technologie 4.0, Digitální podnik, OP&nbsp;TAK a další). Pomůžeme vám s&nbsp;výběrem vhodného programu a s&nbsp;přípravou žádosti. První konzultace je v&nbsp;rámci diagnostiky zdarma.',
+            cta: 'Chci vědět o dotacích',
+            subject: 'Zájem o dotace na digitalizaci',
+        },
+    },
+    en: {
+        agent: {
+            badge: 'Diagnostic · two paths · just minutes',
+            title1: 'A few minutes. No sales.',
+            title2: 'Pick how we do it.',
+            lead: 'On the <strong>diagnostic page</strong> you have two equal paths — a natural voice conversation with our AI agent Stela, or a short structured form. Both paths end with the same specialist, who calls you within 24 hours.',
+            cta: 'Start diagnostic',
+            point1: '<strong>Voice call with the agent</strong> — speak naturally, like with a colleague. 5–7 minutes.',
+            point2: '<strong>Written form</strong> — if you prefer writing. 10 fields, 3 minutes.',
+            point3: 'Free, no sales pressure. Agent speaks in 13 languages.',
+            footnote: 'In a hurry? Click the agent pill <strong>in the lower right</strong> — Stela starts listening right away, no need to open the diagnostic page.',
+        },
+        grant: {
+            label: 'Grants · we reduce your upfront investment',
+            title: 'Part of the investment can be covered by digitalization grants.',
+            body: 'Czech and EU programs for digitalization of small and mid-sized firms (Technology 4.0, Digital Enterprise, OP&nbsp;TAK and others). We help pick the right program and prepare the application. The first consultation is free as part of the diagnostic.',
+            cta: 'Tell me about grants',
+            subject: 'Interest in digitalization grants',
+        },
+    },
+    de: {
+        agent: {
+            badge: 'Diagnose · zwei Wege · wenige Minuten',
+            title1: 'Wenige Minuten. Kein Vertrieb.',
+            title2: 'Wählen Sie, wie wir es machen.',
+            lead: 'Auf der <strong>Diagnose-Seite</strong> haben Sie zwei gleichwertige Wege — ein natürliches Sprachgespräch mit unserer KI-Agentin Stela oder ein kurzes strukturiertes Formular. Beide Wege enden beim selben Spezialisten, der Sie innerhalb von 24 Stunden anruft.',
+            cta: 'Diagnose starten',
+            point1: '<strong>Sprachgespräch mit dem Agenten</strong> — ganz natürlich, wie mit einem Kollegen. 5–7 Minuten.',
+            point2: '<strong>Schriftliches Formular</strong> — wenn Sie lieber schreiben. 10 Felder, 3 Minuten.',
+            point3: 'Kostenlos, kein Verkaufsdruck. Der Agent spricht 13 Sprachen.',
+            footnote: 'Eilig? Klicken Sie <strong>unten rechts</strong> auf die Agent-Pille — Stela beginnt sofort zuzuhören, ohne Umweg über die Diagnose-Seite.',
+        },
+        grant: {
+            label: 'Förderung · wir senken Ihre Anfangsinvestition',
+            title: 'Ein Teil der Investition kann durch Digitalisierungsförderung abgedeckt werden.',
+            body: 'Tschechische und europäische Programme für die Digitalisierung kleiner und mittelständischer Unternehmen (Technologie 4.0, Digitale Wirtschaft, OP&nbsp;TAK u.a.). Wir helfen bei der Auswahl des passenden Programms und bei der Antragstellung. Das erste Beratungsgespräch ist im Rahmen der Diagnose kostenlos.',
+            cta: 'Mehr über Förderung',
+            subject: 'Interesse an Digitalisierungsförderung',
+        },
+    },
+} as const;
+
 // ========== URL routing per jazyk ==========
 // Každá page má v URL sémantický slug v daném jazyce.
 // Interní klíč (routeKey) je stálý — používá se pro aktivní stav, hreflang, atd.
