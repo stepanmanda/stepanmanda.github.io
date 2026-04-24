@@ -1,0 +1,159 @@
+---
+interface Props {
+    industry: string;
+    location: string;
+    size: string;
+    headline: string;
+    metricValue: string;
+    metricLabel: string;
+    outcome: string;
+    anonymizedLabel?: string;
+}
+
+const {
+    industry,
+    location,
+    size,
+    headline,
+    metricValue,
+    metricLabel,
+    outcome,
+    anonymizedLabel = 'Anonymizováno',
+} = Astro.props;
+---
+
+<article class="case-study">
+    <div class="case-study__badge">{anonymizedLabel}</div>
+
+    <div class="case-study__meta">
+        <span class="case-study__industry">{industry}</span>
+        <span class="case-study__dot">·</span>
+        <span>{location}</span>
+        <span class="case-study__dot">·</span>
+        <span>{size}</span>
+    </div>
+
+    <h3 class="case-study__headline" set:html={headline}></h3>
+
+    <div class="case-study__metric">
+        <span class="case-study__metric-value">{metricValue}</span>
+        <span class="case-study__metric-label">{metricLabel}</span>
+    </div>
+
+    <p class="case-study__outcome" set:html={outcome}></p>
+</article>
+
+<style>
+    .case-study {
+        position: relative;
+        background: var(--alpine-white);
+        border: 1px solid rgba(11, 15, 25, 0.08);
+        border-radius: var(--radius-lg);
+        padding: var(--space-8);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+        overflow: hidden;
+    }
+
+    .case-study::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--velocity-orange), var(--signal-gold));
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .case-study:hover {
+        transform: translateY(-4px);
+        border-color: rgba(232, 93, 31, 0.3);
+        box-shadow: 0 24px 60px -30px rgba(11, 15, 25, 0.2), 0 4px 12px -4px rgba(232, 93, 31, 0.1);
+    }
+
+    .case-study:hover::before { opacity: 1; }
+
+    .case-study__badge {
+        position: absolute;
+        top: var(--space-4);
+        right: var(--space-4);
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--mist-gray);
+        padding: 0.2rem 0.55rem;
+        border: 1px solid rgba(136, 145, 163, 0.25);
+        border-radius: 999px;
+        background: rgba(245, 243, 238, 0.6);
+    }
+
+    .case-study__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        color: var(--black-60);
+        text-transform: uppercase;
+    }
+
+    .case-study__industry {
+        color: var(--velocity-orange);
+        font-weight: 600;
+    }
+
+    .case-study__dot { opacity: 0.4; }
+
+    .case-study__headline {
+        font-size: 1.25rem;
+        line-height: 1.3;
+        letter-spacing: -0.015em;
+        color: var(--velocity-black);
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .case-study__metric {
+        display: flex;
+        align-items: baseline;
+        gap: var(--space-3);
+        padding: var(--space-4) 0;
+        border-top: 1px solid rgba(11, 15, 25, 0.06);
+        border-bottom: 1px solid rgba(11, 15, 25, 0.06);
+        margin: var(--space-2) 0;
+    }
+
+    .case-study__metric-value {
+        font-family: var(--font-mono);
+        font-variant-numeric: tabular-nums;
+        font-size: clamp(2rem, 3vw, 2.6rem);
+        font-weight: 500;
+        letter-spacing: -0.03em;
+        color: var(--velocity-orange);
+        line-height: 1;
+    }
+
+    .case-study__metric-label {
+        font-size: 0.88rem;
+        color: var(--black-60);
+        line-height: 1.35;
+    }
+
+    .case-study__outcome {
+        margin: 0;
+        color: var(--black-60);
+        font-size: 0.96rem;
+        line-height: 1.55;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .case-study { transition: none; }
+        .case-study:hover { transform: none; }
+    }
+</style>
