@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Features from '../../components/Features.astro';
+import Feature from '../../components/Feature.astro';
+import Steps from '../../components/Steps.astro';
+import Step from '../../components/Step.astro';
+import Callout from '../../components/Callout.astro';
+import Duo from '../../components/Duo.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+
+<Layout
+    title="VELYOS — Approach | How we work."
+    description="VELYOS methodology: four steps from diagnostic to operation. ROI guaranteed in contract. No 6-month pilots. For companies that choose their partners carefully."
+    lang="en"
+    active="pristup"
+    footerTagline="Discipline. Not marketing."
+    footerVariant="v0.3 preview · approach"
+>
+    <Hero tagline="· Approach · Defining the lead.">
+        <h1 class="hero__title">How we work — <span class="accent">no 6-month pilot phases.</span></h1>
+        <p class="hero__lead">
+            Our methodology rests on one principle: speed without compromises on quality.
+            Four steps. Four weeks. ROI within six months. Guarantee in contract.
+        </p>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Four steps"
+                title="From diagnostic to operation. No surprises."
+                lead="Every step has a clear output, a clear timeline, and clear accountability. You know where you stand — we know what we owe you."
+            />
+
+            <Steps cols={4}>
+                <Step
+                    num="01 · DIAGNOSTIC"
+                    title="We review your operation."
+                    body="Free intake conversation with our AI agent and a specialist. We identify 3–4 processes with the highest potential. The output is a structured brief — not a presentation."
+                />
+                <Step
+                    num="02 · DESIGN"
+                    title="We tailor the solution."
+                    body="A concrete plan: what we automate, what we plug into, what it costs, when it runs. Fixed contract before work starts."
+                />
+                <Step
+                    num="03 · INTEGRATION"
+                    title="We plug VELYOS into your systems."
+                    body="Typically within days, without disrupting operations. Your team keeps doing their work. AI training on your data runs in parallel."
+                />
+                <Step
+                    num="04 · OPERATION"
+                    title="You focus on the business."
+                    body="We oversee, train, and tune. Every month the system works better than the one before. Short notice period — we don't want to lock you in."
+                />
+            </Steps>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 03 · The guarantee in clause 4.3"
+                title="It doesn't pay back? Then we do."
+                lead="One clause in our contract the competition doesn't have. It's not marketing. It's the discipline that forces us to do things right — even things the client doesn't see."
+            />
+
+            <Duo
+                leftEyebrow="← What we promise"
+                leftTitle="ROI within 6 months."
+                rightEyebrow="→ What happens if we don't deliver"
+                rightTitle="We finish at no cost. Or we refund the gap."
+            >
+                <Fragment slot="left">
+                    <p>Within 6 months of deployment, the project must return more than it cost — in saved hours, new revenue, or reduced costs.</p>
+                    <p>The metric is locked in contract. No excuses, no „that doesn't count".</p>
+                </Fragment>
+                <Fragment slot="right">
+                    <p>If we don't deliver the return, you have two options: we keep working at no additional cost until we do, or we refund the gap between your investment and actual return.</p>
+                    <p>You have nothing to lose. And we have strong motivation to only engage with projects where we're certain of the outcome.</p>
+                </Fragment>
+            </Duo>
+
+            <Callout>
+                <strong>Why we do this?</strong> Because in our industry there are too many promises and too few commitments.
+                The guarantee is a fair filter — we focus only on projects where we know we'll deliver. And you have certainty that you're not risking anything.
+            </Callout>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · What we believe about technology"
+                title="Technology is a means, not an end."
+                lead="AI is a great tool — but not for every problem. Sometimes the best automation is a simple script. Sometimes it's a process reorganization without any technology. We lead the client where the solution is, not where we can sell."
+            />
+
+            <Features cols={2}>
+                <Feature
+                    num="WE'RE NOT"
+                    title="An AI provider."
+                    body={`We don't sell „AI solutions" as a product. We deploy AI where it pays off — and say when it doesn't. Our value is in the decision, not the technology.`}
+                />
+                <Feature
+                    num="WE ARE"
+                    title="A partner for operational automation."
+                    body="Our craft is: find where your time leaks, and build a solution that returns it. Sometimes AI, sometimes integration, sometimes a simple workflow. Whatever actually makes sense."
+                />
+                <Feature
+                    num="WE DON'T USE"
+                    title="Your data to train third-party models."
+                    body="Everything you give us stays yours. We never train public models on your data. Architecture aligned with ISO 27001, GDPR, AES-256 encryption."
+                />
+                <Feature
+                    num="WE USE"
+                    title="A mix of standard and custom tools."
+                    body="We build on proven enterprise platforms where it makes sense. Where it doesn't, we develop our own. Always with documentation and the option to hand off to another vendor if that ever becomes necessary."
+                />
+            </Features>
+        </div>
+    </section>
+
+    <section class="section--editorial">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 05 · What we don't believe"
+                title="Things the market says — we disagree."
+            />
+
+            <div class="section-body" data-reveal>
+                <h3>„AI is the future."</h3>
+                <p style="color:var(--black-60);">
+                    AI is the present. Whoever waits for it loses to whoever already has it.
+                    But we disagree with the narrative that AI is the answer to everything. Often it's plain automation without AI — and we build that too.
+                </p>
+
+                <h3>„Everyone already has AI."</h3>
+                <p style="color:var(--black-60);">
+                    They don't. Most firms are doing „ChatGPT on emails" and no one sees the connection to their EBITDA. Real integration is elsewhere — in processes that actually generate or save money.
+                </p>
+
+                <h3>„It'll pay back in two months."</h3>
+                <p style="color:var(--black-60);">
+                    Sometimes yes, often no. Honest range is 3–6 months for a well-built project. Anything below is marketing, anything above is poor design.
+                </p>
+
+                <h3>„You need your own AI team."</h3>
+                <p style="color:var(--black-60);">
+                    You don't. You need a partner who runs AI for you. Building an internal team only makes sense for the biggest firms.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <CtaBand
+        id="jak-zacit"
+        eyebrow="· 06 · How to start"
+        title="The shortest path — 5 minutes with our diagnostic agent."
+        lead="In a few minutes you'll see where time is leaking, and whether VELYOS makes sense. If yes, a specialist will call. If no, we'll tell you straight."
+        directPrefix="Rather by phone?"
+    >
+        <a href="/en/diagnostic" class="btn btn--primary btn-arrow btn--lg">Start diagnostic</a>
+        <a href="/en/contact" class="btn btn--ghost btn--lg">All ways to reach us</a>
+    </CtaBand>
+</Layout>
