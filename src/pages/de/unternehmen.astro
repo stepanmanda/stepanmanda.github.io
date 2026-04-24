@@ -199,12 +199,12 @@ import BentoCard from '../../components/BentoCard.astro';
                 lead="Die Prinzipien ändern sich nicht — sie passen sich Ihrem Betrieb an. Die folgenden Zahlen sind <strong>Zielwerte typischer Einsätze</strong> — das, was wir liefern können. Konkrete Ergebnisse für Ihr Unternehmen besprechen wir nach der Diagnose."
             />
 
-            <Features cols={2}>
-                <Feature num="Gesundheitswesen" title={`Dokumentation von <span style="color:var(--velocity-orange);">25&nbsp;Min auf 4&nbsp;Min</span> pro Patient.`} body="Der Arzt diktiert eine Zusammenfassung. Das System strukturiert die Akte, ordnet ICD-10-Codes zu, füllt Unterlagen für die Kasse aus. Der Arzt prüft und schickt. Zwei Stunden mehr pro Tag für Patienten." />
-                <Feature num="Bauwesen" title={`Angebot von <span style="color:var(--velocity-orange);">4&nbsp;Stunden auf 20&nbsp;Minuten</span>.`} body="Der Vertrieb gibt die Parameter ein. Das System greift auf Preislisten zu, berücksichtigt Subunternehmer und Sätze, erstellt ein PDF. Die Anzahl bearbeiteter Anfragen pro Tag verdoppelt sich." />
-                <Feature num="Immobilien" title={`Lead <span style="color:var(--velocity-orange);">innerhalb einer Stunde</span>. Auch am Wochenende.`} body="Die Anfrage kommt über Portal oder Telefon. Das System bewertet sie, ergänzt öffentliche Daten, schlägt passende Objekte vor. Der Makler reagiert, bevor die Konkurrenz das Telefon abnimmt." />
-                <Feature num="Professionelle Dienstleistungen (Anwälte, Berater, Buchhalter)" title={`Kundentermin-Vorbereitung in <span style="color:var(--velocity-orange);">15&nbsp;Minuten</span>.`} body="Das System durchgeht E-Mails, Dokumente und Kundenhistorie. Erstellt ein Briefing: worum es geht, wohin es läuft, was der Kunde mitbringt. Sie kommen vorbereitet, nicht überrascht." />
-            </Features>
+            <BentoGrid>
+                <BentoCard span={7} accent="orange" num="Gesundheitswesen" title={`Dokumentation von <span style="color:var(--velocity-orange);">25&nbsp;Min auf 4&nbsp;Min</span> pro Patient.`} body="Der Arzt diktiert eine Zusammenfassung. Das System strukturiert die Akte, ordnet ICD-10-Codes zu, füllt Unterlagen für die Kasse aus. Der Arzt prüft und schickt. Zwei Stunden mehr pro Tag für Patienten." />
+                <BentoCard span={5} accent="gold" num="Bauwesen" title={`Angebot von <span style="color:var(--velocity-orange);">4&nbsp;Stunden auf 20&nbsp;Minuten</span>.`} body="Der Vertrieb gibt die Parameter ein. Das System greift auf Preislisten zu, berücksichtigt Subunternehmer und Sätze, erstellt ein PDF. Die Anzahl bearbeiteter Anfragen pro Tag verdoppelt sich." />
+                <BentoCard span={5} accent="gold" num="Immobilien" title={`Lead <span style="color:var(--velocity-orange);">innerhalb einer Stunde</span>. Auch am Wochenende.`} body="Die Anfrage kommt über Portal oder Telefon. Das System bewertet sie, ergänzt öffentliche Daten, schlägt passende Objekte vor. Der Makler reagiert, bevor die Konkurrenz das Telefon abnimmt." />
+                <BentoCard span={7} accent="orange" num="Professionelle Dienstleistungen (Anwälte, Berater, Buchhalter)" title={`Kundentermin-Vorbereitung in <span style="color:var(--velocity-orange);">15&nbsp;Minuten</span>.`} body="Das System durchgeht E-Mails, Dokumente und Kundenhistorie. Erstellt ein Briefing: worum es geht, wohin es läuft, was der Kunde mitbringt. Sie kommen vorbereitet, nicht überrascht." />
+            </BentoGrid>
 
             <Note>
                 Fallstudien auf Anfrage verfügbar. Der Schutz unserer Kunden hat für uns absolute Priorität —
