@@ -1,0 +1,258 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Audience from '../../components/Audience.astro';
+import AudienceCard from '../../components/AudienceCard.astro';
+import Features from '../../components/Features.astro';
+import Feature from '../../components/Feature.astro';
+import Callout from '../../components/Callout.astro';
+import Duo from '../../components/Duo.astro';
+import GrantBlock from '../../components/GrantBlock.astro';
+import Steps from '../../components/Steps.astro';
+import Step from '../../components/Step.astro';
+import Note from '../../components/Note.astro';
+import AgentDiagnostic from '../../components/AgentDiagnostic.astro';
+---
+
+<Layout
+    title="VELYOS — Für Unternehmen | Wir definieren den Vorsprung."
+    description="Wir automatisieren die Prozesse, in denen Ihr Unternehmen Zeit verliert — Verwaltung, Dokumentation, Angebote, Kundenbetreuung, Reporting. Zeit, Geld und Ruhe — branchenübergreifend."
+    lang="de"
+    active="firmy"
+    primaryCta={{ label: 'Diagnose starten', href: '/de/diagnose' }}
+    footerTagline="Für Unternehmen, die ihre Partner sorgfältig wählen."
+    footerVariant="v0.3 preview · für Unternehmen"
+>
+    <Hero tagline="Sie kennen es — Sie kommen mit einem Plan, der Tag endet in E-Mails.">
+        <h1 class="hero__title">Ihre Leute können weit mehr, als die Routine <span class="accent">sie zeigen lässt.</span></h1>
+        <p class="hero__lead">
+            In jedem Unternehmen gibt es Stellen, an denen Geld verloren geht. Wir finden sie, übernehmen sie —
+            und geben Ihrem Unternehmen <strong>Zeit, Geld und Ruhe</strong> zurück, damit Sie sich auf das konzentrieren können,
+            was wirklich zählt.
+        </p>
+        <div class="hero__ctas">
+            <a href="/de/diagnose" class="btn btn--primary btn-arrow btn--lg">Zeigen Sie mir, wo Geld verloren geht</a>
+            <a href="#praxi" class="btn btn--ghost btn--lg">Wo es bereits funktioniert</a>
+        </div>
+
+        <div class="hero__meta">
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Einsatz</span>
+                <span class="hero__meta-value mono">4 <span class="gold">Wochen</span></span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Amortisation</span>
+                <span class="hero__meta-value mono">6 <span class="gold">Monate</span></span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Garantie</span>
+                <span class="hero__meta-value">Vertraglich</span>
+            </div>
+            <div class="hero__meta-item">
+                <span class="hero__meta-label">Kundenkreis</span>
+                <span class="hero__meta-value">Begrenzt</span>
+            </div>
+        </div>
+
+        <Note maxWidth="60ch" style="margin-top:var(--space-8);">
+            In wenigen Minuten geht unser Agent Ihren Betrieb mit Ihnen durch und zeigt, wo am meisten
+            Zeit verloren geht. Ohne Präsentation. Ohne Vertrieb.
+        </Note>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Für wen VELYOS passt"
+                title="Fertige Lösung. An Ihren Betrieb angeschlossen."
+            />
+            <div class="section-body">
+                <p>
+                    Wir liefern eine Lösung, die wir an Ihren Betrieb anschließen und die ab dem ersten Tag für Sie arbeitet.
+                    Sie coden nichts, installieren nichts, warten nichts — wir bauen, wir betreiben.
+                </p>
+                <p>Unser Ansatz funktioniert am besten in Unternehmen, in denen zwei Dinge zusammenkommen:</p>
+            </div>
+
+            <Audience>
+                <AudienceCard
+                    title="Hohe Anzahl wiederkehrender Interaktionen"
+                    body="Kundensupport, Lead-Qualifizierung, Auftragsbearbeitung, internes Reporting, Antworten auf Standardfragen. Genau die Arbeit, die KI schneller und konsistenter erledigt."
+                />
+                <AudienceCard
+                    title="Team, das mehrere Hüte trägt"
+                    body="Der Vertriebler rechnet auch ab, der Chef beantwortet Support, die Assistentin macht Reporting. Verwaltung frisst Stunden, die den Kunden gehören sollten. VELYOS nimmt das ab."
+                />
+                <AudienceCard
+                    title="Bereit, Kompromisse zu beenden"
+                    body="Wenn Ihr Betrieb nicht ins Profil passt, sagen wir es Ihnen gleich bei der Diagnose — und sparen beiden Seiten die Zeit. Begrenztes Jahreskontingent."
+                />
+            </Audience>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 03 · Was sich verändert hat und warum jetzt"
+                title="Drei Verschiebungen im Markt. Keine davon geht zurück."
+            />
+
+            <Features cols={3}>
+                <Feature
+                    num="01 / GESCHWINDIGKEIT"
+                    title="Antwortzeit entscheidet über das Geschäft."
+                    body="Der Kunde, der innerhalb einer Stunde keine Antwort bekommt, geht zur Konkurrenz. Nicht aus Ungeduld — weil die Konkurrenz zuerst geantwortet hat."
+                />
+                <Feature
+                    num="02 / VERWALTUNG"
+                    title="Verwaltung wächst schneller als das Team."
+                    body="Mit jedem neuen Kunden, Produkt und Kanal kommen mehr E-Mails, Anfragen und Berichte. Einen weiteren Mitarbeiter für Routine einzustellen verschiebt das Problem nur."
+                />
+                <Feature
+                    num="03 / SICHERHEIT"
+                    title="Sicherheit ist strategische Entscheidung."
+                    body="Cyberangriffe auf europäische Mittelständler steigen jährlich zweistellig. Die Kosten für Wiederherstellung übersteigen oft eine zweijährige Investition in solide Infrastruktur."
+                />
+            </Features>
+
+            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-60); font-size:1.1rem; max-width:60ch;">
+                VELYOS löst alle drei Verschiebungen in einer Integration, mit einem Partner.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · Was wir konkret automatisieren"
+                title="Die Routine, die Sie ausbremst. Wir finden sie. Wir übernehmen sie."
+                lead="Wir sind keine weitere Software. Wir sind das Team, das es für Sie baut und betreibt. Sechs typische Bereiche, in denen Firmen Zeit verlieren. Wir finden Ihre."
+            />
+
+            <Features cols={3}>
+                <Feature num="01 / VERWALTUNG" title="Rechnungen, Berichte, Meldungen." body="Daten werden automatisch aus Ihren bestehenden Systemen erfasst. Kein Übertragen aus E-Mail in die Tabelle. Keine Doppelerfassung. Keine Ermüdungsfehler." />
+                <Feature num="02 / DOKUMENTATION" title="Berichte, Karten, Verträge, Unterlagen." body="Das Team diktiert oder gibt Stichpunkte ein. Das System erstellt ein strukturiertes Dokument nach Vorlage — bereit zur Prüfung und Unterschrift." />
+                <Feature num="03 / ANGEBOTE & KALKULATIONEN" title="Kalkulationen in wenigen Klicks." body="Das System greift auf Preislisten zu, berücksichtigt Sätze und Subunternehmer, erstellt ein PDF. Der Vertrieb prüft und schickt. Aus Stunden werden Minuten." />
+                <Feature num="04 / KUNDENKOMMUNIKATION" title="Routineanfragen laufen automatisch." body="Standardfragen, Bestellungen, Bestätigungen, Erinnerungen — Antwort in Sekunden, 24/7. Komplexe Fälle gehen an Menschen, mit vollständigem Kontext." />
+                <Feature num="05 / REPORTING" title="Zahlen, die sich selbst zusammenstellen." body="Wochenberichte, Monatsabschlüsse, strategische Daten. Sie sehen Ergebnisse, nicht die Stunden dahinter. Sie entscheiden mit frischen Daten." />
+                <Feature num="06 / LEAD-QUALIFIZIERUNG" title="Eingehende Leads sortieren sich selbst." body="Der Lead kommt per E-Mail, Formular oder Telefon. Das System bewertet das Potenzial, ergänzt Daten, leitet nur dort weiter, wo echte Chancen bestehen." />
+            </Features>
+
+            <Callout>
+                <strong>Was automatisieren wir nicht?</strong> Entscheidungen. Verhandlungen. Beziehungen zu Schlüsselkunden. Kreativarbeit.
+                Alles, wo menschliches Urteil zählt, bleibt bei Ihnen. Wir schaffen nur die Kapazität, damit es passieren kann.
+            </Callout>
+        </div>
+    </section>
+
+    <section class="section--alt" id="co-stavime">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 05 · Was wir bauen"
+                title="Sie haben Systeme? Wir integrieren. Nicht? Wir bauen alles."
+                lead="Sie sind nicht von fünf Agenturen abhängig. Ein Partner. Ein Vertrag. Vom ersten Logo bis zum letzten Button auf Ihrer Website."
+            />
+
+            <Duo
+                leftEyebrow="← Sie haben schon etwas"
+                leftTitle="Wir verbinden uns mit dem, was funktioniert."
+                rightEyebrow="→ Oder von Grund auf"
+                rightTitle="Wir bauen alles."
+            >
+                <Fragment slot="left">
+                    <p>Website? CRM? E-Mail? Marketing?</p>
+                    <p>Wir reißen nichts ab. Wir fügen KI hinzu und verbinden, was heute isoliert läuft.</p>
+                </Fragment>
+                <Fragment slot="right">
+                    <p>Am Anfang? Neuausrichtung? Neue Richtung?</p>
+                    <p>Website, Marke, KI-Agenten, Integrationen und Marketing. Alles aus einer Hand.</p>
+                </Fragment>
+            </Duo>
+
+            <Features cols={3}>
+                <Feature num="01 / PROZESSE" title="Wir automatisieren, was Sie ausbremst." body="Kalkulationen. Rechnungen. Berichte. Freigaben. Alles, was sich wiederholt und sich nach Regeln beschreiben lässt — wir nehmen es ab." />
+                <Feature num="02 / WEB & BRAND" title="Wir bauen Ihre Website und Marke." body="Seiten, die verkaufen. Logo, Farben, Visuals, die man sich merkt." />
+                <Feature num="03 / CRM & INTEGRATION" title="Wir verbinden alles mit Ihren Systemen." body="HubSpot, Pipedrive, Salesforce oder eigenes System. Daten laufen, wohin sie gehören." />
+                <Feature num="04 / KI-AGENTEN" title="KI, die für Sie spricht." body="Sprachagent am Telefon. Chatbot auf der Website. E-Mail-Assistent. Dort, wo es sich lohnt." />
+                <Feature num="05 / MARKETING" title="Wir sorgen dafür, dass die richtigen Leute Sie finden." body="SEO. Google & Meta Ads. LinkedIn. Cold Outreach. Die richtigen Kunden." />
+                <Feature num="06 / DATEN" title="Wir zeigen Ihnen, wo Zeit verloren geht." body="Ein Dashboard, das Sinn ergibt. Sie sehen, was läuft, was nicht, und was als Nächstes kommt." />
+            </Features>
+        </div>
+    </section>
+
+    <section class="section--editorial" id="praxi">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 06 · Branchen, in denen VELYOS hilft"
+                title="Gleicher Ansatz. Andere Firmen. Gleiches Ergebnis."
+                lead="Die Prinzipien ändern sich nicht — sie passen sich Ihrem Betrieb an. Die folgenden Zahlen sind <strong>Zielwerte typischer Einsätze</strong> — das, was wir liefern können. Konkrete Ergebnisse für Ihr Unternehmen besprechen wir nach der Diagnose."
+            />
+
+            <Features cols={2}>
+                <Feature num="Gesundheitswesen" title={`Dokumentation von <span style="color:var(--velocity-orange);">25&nbsp;Min auf 4&nbsp;Min</span> pro Patient.`} body="Der Arzt diktiert eine Zusammenfassung. Das System strukturiert die Akte, ordnet ICD-10-Codes zu, füllt Unterlagen für die Kasse aus. Der Arzt prüft und schickt. Zwei Stunden mehr pro Tag für Patienten." />
+                <Feature num="Bauwesen" title={`Angebot von <span style="color:var(--velocity-orange);">4&nbsp;Stunden auf 20&nbsp;Minuten</span>.`} body="Der Vertrieb gibt die Parameter ein. Das System greift auf Preislisten zu, berücksichtigt Subunternehmer und Sätze, erstellt ein PDF. Die Anzahl bearbeiteter Anfragen pro Tag verdoppelt sich." />
+                <Feature num="Immobilien" title={`Lead <span style="color:var(--velocity-orange);">innerhalb einer Stunde</span>. Auch am Wochenende.`} body="Die Anfrage kommt über Portal oder Telefon. Das System bewertet sie, ergänzt öffentliche Daten, schlägt passende Objekte vor. Der Makler reagiert, bevor die Konkurrenz das Telefon abnimmt." />
+                <Feature num="Professionelle Dienstleistungen (Anwälte, Berater, Buchhalter)" title={`Kundentermin-Vorbereitung in <span style="color:var(--velocity-orange);">15&nbsp;Minuten</span>.`} body="Das System durchgeht E-Mails, Dokumente und Kundenhistorie. Erstellt ein Briefing: worum es geht, wohin es läuft, was der Kunde mitbringt. Sie kommen vorbereitet, nicht überrascht." />
+            </Features>
+
+            <Note>
+                Fallstudien auf Anfrage verfügbar. Der Schutz unserer Kunden hat für uns absolute Priorität —
+                alle Referenzen, die wir teilen, sind vollständig anonymisiert.
+            </Note>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 07 · Investition"
+                title="Jedes Projekt ist anders. Der Preis auch."
+                lead="Wir haben keine öffentliche Preisliste. Jedes Unternehmen hat anderen Umfang, andere Systeme, andere Prioritäten. Die konkrete Investition besprechen wir persönlich — sobald klar ist, was wir bauen und welche Rückkehr Sinn ergibt."
+            />
+
+            <div style="max-width:var(--container-narrow); margin-top:var(--space-8); display:grid; grid-template-columns:1fr 1fr; gap:var(--space-8);" data-stagger>
+                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--velocity-orange); border-radius:var(--radius);">
+                    <span class="eyebrow" style="color:var(--velocity-orange); display:block; margin-bottom:var(--space-3);">Was Sie immer bekommen</span>
+                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:var(--space-2); color:var(--black-90); line-height:1.5; font-size:0.98rem;">
+                        <li><strong>Festpreis vor dem Start</strong> — keine versteckten Lizenzen, keine Aufschläge</li>
+                        <li><strong>Zwei-Komponenten-Modell</strong> — einmalige Einrichtung + monatlicher Betrieb</li>
+                        <li><strong>Vorhersehbare Skalierung</strong> — monatliche Kosten wachsen mit Umfang</li>
+                        <li><strong>Kurze Kündigungsfrist</strong> — wir wollen Sie nicht binden</li>
+                    </ul>
+                </div>
+                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--signal-gold); border-radius:var(--radius);">
+                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Wie Sie einen Preis bekommen</span>
+                    <p style="color:var(--black-90); line-height:1.6; font-size:0.98rem; margin:0 0 var(--space-4);">
+                        Starten Sie die <a href="/de/diagnose" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30); font-weight:500;">Diagnose</a>
+                        — per Agent oder Formular. Innerhalb von 24 Stunden meldet sich ein Spezialist und bespricht den konkreten Umfang.
+                    </p>
+                    <p style="color:var(--black-60); line-height:1.6; font-size:0.9rem; margin:0;">
+                        Das erste Gespräch ist immer kostenlos und unverbindlich.
+                    </p>
+                </div>
+            </div>
+
+            <GrantBlock />
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 08 · Weg zum Einsatz"
+                title="Vier Schritte. Keine Überraschungen."
+            />
+
+            <Steps cols={4}>
+                <Step num="01 · DIAGNOSE" title="Wir prüfen Ihren Betrieb." body="Wir beziffern, wo Sie am meisten Zeit und Geld verlieren. Das Ergebnis ist eine konkrete Kalkulation, keine allgemeine Präsentation." />
+                <Step num="02 · ENTWURF" title="Wir entwerfen die maßgeschneiderte Lösung." body="Was wir automatisieren, wie wir es anbinden, was es kostet. Ein konkreter Plan, kein Pitch-Deck." />
+                <Step num="03 · INTEGRATION" title="Wir schließen VELYOS an Ihre Systeme an." body="Typischerweise in Tagen, ohne Störung des Betriebs. Ihr Team macht währenddessen seine Arbeit." />
+                <Step num="04 · BETRIEB" title="Sie konzentrieren sich aufs Geschäft." body="Wir sorgen dafür, dass das System jeden Monat besser läuft als den Monat davor." />
+            </Steps>
+        </div>
+    </section>
+
+    <AgentDiagnostic agentId="cu9gllbBtpZWU6CuJXky" />
+</Layout>
