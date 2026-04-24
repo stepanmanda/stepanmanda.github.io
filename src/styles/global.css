@@ -882,23 +882,76 @@ body.nav-open {
     background: linear-gradient(to right, transparent, var(--gold-30) 40%, var(--gold-30) 60%, transparent);
 }
 
+/* Cinematic mesh canvas — GPU akcelerovaný animovaný gradient */
+.hero__mesh {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.2s ease-out;
+    z-index: 0;
+    mix-blend-mode: normal;
+}
+
+.hero__mesh.is-ready {
+    opacity: 0.85;
+}
+
 .hero__grid {
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(11, 15, 25, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(11, 15, 25, 0.06) 1px, transparent 1px);
+        linear-gradient(rgba(11, 15, 25, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(11, 15, 25, 0.05) 1px, transparent 1px);
     background-size: 72px 72px;
     mask-image: radial-gradient(ellipse at 70% 20%, black 10%, transparent 70%);
     pointer-events: none;
+    z-index: 1;
+    /* Parallax — posune se s mouse (přes --mouse-x/y vars) */
+    transform: translate3d(calc(var(--mouse-x, 0) * -12px), calc(var(--mouse-y, 0) * -12px), 0);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
 }
 
-.hero__glow {
+/* Primární glow — reaguje na mouse, velký, teplý zlatý */
+.hero__glow--primary {
     position: absolute;
     width: 720px; height: 720px;
     background: radial-gradient(circle, rgba(184, 147, 92, 0.22) 0%, transparent 65%);
     top: -20%; right: -15%;
     pointer-events: none;
+    z-index: 2;
+    transform: translate3d(calc(var(--mouse-x, 0) * 40px), calc(var(--mouse-y, 0) * 40px), 0);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+    animation: glowBreathe 7s ease-in-out infinite;
+}
+
+/* Sekundární glow — oranžový akcent, v druhém rohu, pohyb proti */
+.hero__glow--secondary {
+    position: absolute;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(232, 93, 31, 0.13) 0%, transparent 60%);
+    bottom: -10%; left: -10%;
+    pointer-events: none;
+    z-index: 2;
+    transform: translate3d(calc(var(--mouse-x, 0) * -30px), calc(var(--mouse-y, 0) * -30px), 0);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+    animation: glowBreathe 9s ease-in-out infinite reverse;
+}
+
+/* Zpětná kompatibilita — staré selektory na glow */
+.hero__glow:not(.hero__glow--primary):not(.hero__glow--secondary) {
+    position: absolute;
+    width: 720px; height: 720px;
+    background: radial-gradient(circle, rgba(184, 147, 92, 0.22) 0%, transparent 65%);
+    top: -20%; right: -15%;
+    pointer-events: none;
+    z-index: 2;
+    animation: glowBreathe 7s ease-in-out infinite;
 }
 
 .hero__accent-line {
@@ -907,9 +960,21 @@ body.nav-open {
     height: 1px;
     background: linear-gradient(to right, transparent, rgba(11, 15, 25, 0.08) 30%, rgba(11, 15, 25, 0.08) 70%, transparent);
     pointer-events: none;
+    z-index: 2;
 }
 
-.hero .container { position: relative; z-index: 1; }
+/* Filmový noise overlay — dodá „fyzickou" texturu */
+.hero__noise {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    z-index: 3;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.04 0 0 0 0 0.04 0 0 0 0 0.10 0 0 0 0.9 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+
+.hero .container { position: relative; z-index: 4; }
 
 .hero__tagline {
     font-family: var(--font-serif);
