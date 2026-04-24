@@ -1,0 +1,51 @@
+---
+import { LANGS, LANG_FLAGS, LANG_NAMES, route, type Lang, type RouteKey } from '../i18n/ui';
+
+interface Props {
+    lang: Lang;
+    active: RouteKey | null;
+    variant?: 'desktop' | 'mobile';
+}
+
+const { lang, active, variant = 'desktop' } = Astro.props;
+
+// Pokud je active null, fallback na 'home'
+const routeKey: RouteKey = active || 'home';
+---
+
+{variant === 'desktop' ? (
+    <div class="lang-switcher">
+        <button class="lang-switcher__trigger" aria-expanded="false" aria-haspopup="true" type="button">
+            <span class="lang-switcher__flag">{LANG_FLAGS[lang]}</span>
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-switcher__menu" role="menu">
+            {LANGS.map((l) => (
+                <a
+                    href={route(routeKey, l)}
+                    class={`lang-switcher__item ${l === lang ? 'is-active' : ''}`}
+                    role="menuitem"
+                    hreflang={l}
+                    lang={l}
+                >
+                    <span class="lang-switcher__item-flag">{LANG_FLAGS[l]}</span>
+                    <span class="lang-switcher__item-name">{LANG_NAMES[l]}</span>
+                </a>
+            ))}
+        </div>
+    </div>
+) : (
+    <div class="lang-switcher lang-switcher--mobile">
+        {LANGS.map((l) => (
+            <a
+                href={route(routeKey, l)}
+                class={`lang-switcher__pill ${l === lang ? 'is-active' : ''}`}
+                hreflang={l}
+                lang={l}
+                aria-label={LANG_NAMES[l]}
+            >
+                {LANG_FLAGS[l]}
+            </a>
+        ))}
+    </div>
+)}
