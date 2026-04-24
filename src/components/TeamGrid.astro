@@ -190,21 +190,14 @@ const t = copy[lang];
     .member__photo {
         position: relative;
         aspect-ratio: 3 / 4;
-        background: linear-gradient(160deg, #f3ede0 0%, #e6dcc7 60%, #d9cdaf 100%);
+        background: var(--ivory-silver);
         overflow: hidden;
         display: flex;
         align-items: flex-end;
         justify-content: center;
-    }
-
-    .member__photo::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background:
-            radial-gradient(ellipse 70% 40% at 50% 100%, rgba(232, 93, 31, 0.08) 0%, transparent 60%),
-            radial-gradient(ellipse 50% 30% at 15% 20%, rgba(184, 147, 92, 0.14) 0%, transparent 60%);
-        pointer-events: none;
+        margin: var(--space-4);
+        border: 1px solid rgba(11, 15, 25, 0.08);
+        border-radius: calc(var(--radius-lg) - 4px);
     }
 
     .member__photo-img {
@@ -218,7 +211,7 @@ const t = copy[lang];
     }
 
     .member--featured .member__photo {
-        background: linear-gradient(160deg, #faf5e8 0%, #f0e6cd 55%, #e6dcc0 100%);
+        border-color: rgba(184, 147, 92, 0.35);
     }
 
     .member__photo-placeholder {
