@@ -199,12 +199,12 @@ import AgentDiagnostic from '../components/AgentDiagnostic.astro';
                 lead="Principy se nemění — přizpůsobí se vašemu provozu. Níže uvedená čísla jsou <strong>cíle typických nasazení</strong> — to, co umíme dodat. Konkrétní výsledky pro vaši firmu probereme po diagnostice."
             />
 
-            <Features cols={2}>
-                <Feature num="Zdravotnictví" title={`Dokumentace z <span style="color:var(--velocity-orange);">25&nbsp;min na 4&nbsp;min</span> na pacienta.`} body="Lékař nadiktuje shrnutí. Systém strukturuje zdravotní kartu, přiřadí kódy MKN-10, vyplní podklad pro pojišťovnu. Lékař schválí a odešle. Den má o dvě hodiny víc pro pacienty." />
-                <Feature num="Stavebnictví" title={`Propočet nabídky ze <span style="color:var(--velocity-orange);">4&nbsp;hodin na 20&nbsp;minut</span>.`} body="Obchodník zadá zakázku. Systém sáhne do ceníků, zohlední subdodavatele a sazby, vygeneruje PDF. Počet vyřízených poptávek denně se zdvojnásobí." />
-                <Feature num="Reality" title={`Lead <span style="color:var(--velocity-orange);">do hodiny</span>. I&nbsp;o víkendu.`} body="Poptávka přijde přes portál nebo telefon. Systém ji ohodnotí, doplní údaje z katastru, navrhne odpovídající nemovitosti. Makléř reaguje dřív, než konkurence zvedne telefon." />
-                <Feature num="Služby (advokáti, poradci, účetní)" title={`Příprava ke klientovi za <span style="color:var(--velocity-orange);">15&nbsp;minut</span>.`} body="Systém projde e-maily, dokumenty, historii klienta. Připraví briefing: co řešíte, kam pokračujete, co klient přinese na stůl. Přijdete připravení, ne zaskočení." />
-            </Features>
+            <BentoGrid>
+                <BentoCard span={7} accent="orange" num="Zdravotnictví" title={`Dokumentace z <span style="color:var(--velocity-orange);">25&nbsp;min na 4&nbsp;min</span> na pacienta.`} body="Lékař nadiktuje shrnutí. Systém strukturuje zdravotní kartu, přiřadí kódy MKN-10, vyplní podklad pro pojišťovnu. Lékař schválí a odešle. Den má o dvě hodiny víc pro pacienty." />
+                <BentoCard span={5} accent="gold" num="Stavebnictví" title={`Propočet nabídky ze <span style="color:var(--velocity-orange);">4&nbsp;hodin na 20&nbsp;minut</span>.`} body="Obchodník zadá zakázku. Systém sáhne do ceníků, zohlední subdodavatele a sazby, vygeneruje PDF. Počet vyřízených poptávek denně se zdvojnásobí." />
+                <BentoCard span={5} accent="gold" num="Reality" title={`Lead <span style="color:var(--velocity-orange);">do hodiny</span>. I&nbsp;o víkendu.`} body="Poptávka přijde přes portál nebo telefon. Systém ji ohodnotí, doplní údaje z katastru, navrhne odpovídající nemovitosti. Makléř reaguje dřív, než konkurence zvedne telefon." />
+                <BentoCard span={7} accent="orange" num="Služby (advokáti, poradci, účetní)" title={`Příprava ke klientovi za <span style="color:var(--velocity-orange);">15&nbsp;minut</span>.`} body="Systém projde e-maily, dokumenty, historii klienta. Připraví briefing: co řešíte, kam pokračujete, co klient přinese na stůl. Přijdete připravení, ne zaskočení." />
+            </BentoGrid>
 
             <Note>
                 Případové studie poskytneme kdykoliv na požádání. Soukromí našich klientů je pro nás zásadní —
