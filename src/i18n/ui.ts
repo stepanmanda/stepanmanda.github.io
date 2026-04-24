@@ -116,6 +116,12 @@ export const ui = {
             legalImpresum: 'Impresum',
             legalGdpr: 'Ochrana osobních údajů',
             copyright: 'Přijímáme omezený počet klientů ročně.',
+            statusLabel: 'Q2 2026 · Omezená kapacita',
+            manifesto: 'Nepracujeme pro každého. Pracujeme pro ty, kteří chápou, proč jsou u nás.',
+            trustDeploy: 'Nasazení 4 týdny',
+            trustContract: 'Garance ve smlouvě',
+            trustIso: 'ISO 27001 principy',
+            trustEu: 'EU · Česká republika',
         },
         en: {
             columnSystem: 'System',
