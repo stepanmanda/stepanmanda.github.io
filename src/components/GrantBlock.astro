@@ -1,20 +1,22 @@
 ---
 // GrantBlock — dotační blok pod pricing (jen Firmy stránka)
+import { componentStrings, type Lang } from '../i18n/ui';
+
 interface Props {
     email?: string;
+    lang?: Lang;
 }
 
-const { email = 'stepan@velyos.ai' } = Astro.props;
-const subject = encodeURIComponent('Zájem o dotace na digitalizaci');
+const { email = 'stepan@velyos.ai', lang = 'cs' } = Astro.props;
+const t = componentStrings[lang].grant;
+const subject = encodeURIComponent(t.subject);
 ---
 
 <div id="dotace" class="hero__grant" data-reveal style="max-width:none; margin-top:var(--space-10); padding:var(--space-8) var(--space-10); display:grid; grid-template-columns:1fr auto; gap:var(--space-6); align-items:center; border-left-width:4px;">
     <div style="display:flex; flex-direction:column; gap:var(--space-3);">
-        <span class="hero__grant__label">Dotace · snížíme vám vstupní investici</span>
-        <h3 style="margin:0; font-size:1.4rem;">Část investice může pokrýt dotace na digitalizaci.</h3>
-        <p style="margin:0; color:var(--black-60); font-size:1rem; line-height:1.6; max-width:62ch;">
-            České i evropské programy pro digitalizaci malých a středních firem (Technologie 4.0, Digitální podnik, OP&nbsp;TAK a další). Pomůžeme vám s&nbsp;výběrem vhodného programu a s&nbsp;přípravou žádosti. První konzultace je v&nbsp;rámci diagnostiky zdarma.
-        </p>
+        <span class="hero__grant__label">{t.label}</span>
+        <h3 style="margin:0; font-size:1.4rem;">{t.title}</h3>
+        <p style="margin:0; color:var(--black-60); font-size:1rem; line-height:1.6; max-width:62ch;" set:html={t.body}></p>
     </div>
-    <a href={`mailto:${email}?subject=${subject}`} class="btn btn--primary btn-arrow" style="align-self:center; justify-self:end;">Chci vědět o&nbsp;dotacích</a>
+    <a href={`mailto:${email}?subject=${subject}`} class="btn btn--primary btn-arrow" style="align-self:center; justify-self:end;">{t.cta}</a>
 </div>
