@@ -1,0 +1,247 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Audience from '../../components/Audience.astro';
+import AudienceCard from '../../components/AudienceCard.astro';
+import Features from '../../components/Features.astro';
+import Feature from '../../components/Feature.astro';
+import Callout from '../../components/Callout.astro';
+import Timeline from '../../components/Timeline.astro';
+import TimelineRow from '../../components/TimelineRow.astro';
+import Steps from '../../components/Steps.astro';
+import Step from '../../components/Step.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Note from '../../components/Note.astro';
+---
+
+<Layout
+    title="VELYOS — Für Einzelpersonen | Wir definieren den Vorsprung."
+    description="Persönlicher KI-Agent, der E-Mail, Kalender, Recherche und Telefon übernimmt. Stunden zurück, jede Woche. Ohne langfristige Bindung."
+    lang="de"
+    active="jednotlivci"
+    primaryCta={null}
+    footerTagline="Für diejenigen, die keine Zeit mehr zu verlieren haben."
+    footerVariant="v0.3 preview · für Einzelpersonen"
+>
+    <Hero tagline="Für Einzelpersonen · Wir definieren den Vorsprung.">
+        <h1 class="hero__title">Ihr Tag passt nicht in 24 Stunden. <span class="accent">Wir geben einen Teil zurück.</span></h1>
+        <p class="hero__lead">
+            Morgens öffnen Sie den Laptop und mittags haben Sie alles erledigt, außer dem Grund,
+            warum Sie überhaupt angefangen haben. E-Mails, Telefonate, Termine verschieben, Unterlagen suchen.
+            Der Kalender verrutscht. Der Kaffee wird kalt.
+            VELYOS baut einen persönlichen KI-Agenten, der die Routine übernimmt — und Stunden zurückgibt.
+        </p>
+        <div class="hero__ctas">
+            <a href="/de/diagnose" class="btn btn--primary btn-arrow btn--lg">Zeigen Sie mir, wie viel Zeit ich zurückbekomme</a>
+            <a href="#den" class="btn btn--ghost btn--lg">Ein Tag mit dem Agenten</a>
+        </div>
+        <Note maxWidth="60ch" style="margin-top:var(--space-10);">
+            Ein kurzes Gespräch mit unserem Agenten. Wir finden, wo Sie die meiste Zeit verlieren. Kein Vertrieb, kein Pitch.
+        </Note>
+    </Hero>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · Für wen der Agent arbeitet"
+                title="Ein Dienst, keine App zum Herunterladen."
+            />
+            <div class="section-body">
+                <p>
+                    Wir liefern einen fertigen persönlichen Agenten, den wir an Ihre Tools anschließen und Ihrem Stil beibringen.
+                    Sie konfigurieren nichts — Sie haben einfach längere Tage.
+                </p>
+                <p>
+                    Unsere Kunden haben einen gemeinsamen Nenner:
+                    <strong>Ihre Stunde ist teuer, aber ein großer Teil des Tages geht für Dinge drauf, die diesen Wert nicht erzeugen.</strong>
+                </p>
+            </div>
+
+            <Audience>
+                <AudienceCard
+                    title="Geschäftsführer und Unternehmer"
+                    body="Sie haben ein Team, aber operative Details landen immer noch auf Ihrem Schreibtisch. E-Mails, Freigaben, Koordination — Stunden, die Strategie und Wachstum gehören sollten."
+                />
+                <AudienceCard
+                    title="Berater, Anwälte, Coaches"
+                    body="Ihr Stundensatz ist hoch, aber die halbe Zeit sind Sie nicht beim Kunden. Sie sitzen an Vorbereitung, Recherche, Verwaltung — Arbeit, die nichts mit Ihrer Expertise zu tun hat."
+                />
+                <AudienceCard
+                    title="Vertrieb und Immobilienprofis"
+                    body="Chancen gehen verloren, nicht weil Sie nicht verkaufen können, sondern weil Sie nicht als Erste geantwortet haben. In Ihrem Feld gewinnt Geschwindigkeit, nicht Qualifikation."
+                />
+            </Audience>
+
+            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-60); font-size:1.1rem; max-width:60ch;">
+                Erkennen Sie sich in einem dieser Profile? Lesen Sie weiter. Wenn nicht — sagen wir es Ihnen direkt.
+            </p>
+        </div>
+    </section>
+
+    <section class="section--alt">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 03 · Warum jetzt, nicht später"
+                title="Die Welt wurde schneller. Die Toleranz fürs Warten ist null."
+            />
+            <div class="section-body">
+                <p>
+                    Der Kunde, der innerhalb einer Stunde keine Antwort bekommt, geht zu jemandem, der antwortet.
+                    Der Partner, der drei Tage auf eine E-Mail wartet, sucht sich einen anderen.
+                    Die Chance, die Sie nicht als Erster ergreifen, kommt nicht zurück — weil jemand anderes sie ergriffen hat.
+                </p>
+                <p>
+                    Dabei ist der überwiegende Teil der täglichen Last eines Top-Profis <strong>keine Fachebenearbeit.</strong>
+                    Es ist Kommunikation, Planung, Recherche und Verwaltung. Genau dort, wo KI heute
+                    schneller und verlässlicher arbeitet als ein menschlicher Assistent — auf einem Level,
+                    das Sie sich früher nicht leisten konnten.
+                </p>
+                <p class="italic-serif" style="color:var(--signal-gold); font-size:1.2rem; margin-top:var(--space-6);">
+                    „Die Frage ist nicht, ob KI in Ihren Tag kommt. Die Frage ist, ob sie für Sie arbeitet,
+                    oder ob jemand in Ihrer Branche sie zuerst einsetzt."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 04 · Was Ihr Agent konkret tut"
+                title="Ein System, das autonom in Ihrer Routine arbeitet. Sie greifen nur ein, wo Sie wollen."
+            />
+
+            <Features cols={2}>
+                <Feature num="01 / KOMMUNIKATION" title="Er übernimmt Ihr Postfach." body="Sortiert E-Mails nach Priorität, antwortet auf Standardanfragen in Ihrem Ton, filtert Terminanfragen, entwirft Antworten für komplexere Nachrichten. Sie genehmigen. Er führt aus." />
+                <Feature num="02 / KALENDER" title="Er steuert Ihren Kalender." body="Vereinbart Termine, verschiebt bei Konflikten, schützt Fokuszeiten, versendet Erinnerungen und bereitet vor jedem Gespräch ein Briefing vor." />
+                <Feature num="03 / RECHERCHE" title="Er bereitet vor und recherchiert." body="Fasst lange Dokumente zusammen, sucht Informationen, bereitet Unterlagen vor. Halbtägige Arbeit erledigt, bevor der Morgenkaffee kalt ist." />
+                <Feature num="04 / TELEFON" title="Er nimmt ab, wenn Sie nicht können." body="Der Sprachagent geht ran, klärt den Grund, bietet einen Termin an oder leitet Infos weiter. Ihr Kunde bekommt eine professionelle Antwort — auch wenn Sie im Meeting sitzen." />
+            </Features>
+
+            <Callout>
+                <strong style="color:var(--velocity-black);">Was der Agent nicht tut:</strong>
+                Er entscheidet nicht für Sie. Keine strategischen Entscheidungen, keine Vertragsunterschriften, keine Verhandlungen.
+                Er ist ein extrem fähiger Ausführer von Routine — kein Ersatz für Ihr Urteil.
+            </Callout>
+        </div>
+    </section>
+
+    <section class="section--editorial" id="co-stavime">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 05 · Was wir sonst für Sie bauen"
+                title="Der Agent ist nicht alles. Wir bauen auch den Rest."
+                lead="Noch keine persönliche Website? Fehlende LinkedIn-Strategie? Brauchen Sie eine Marke, die funktioniert? Wir machen es. Ein Partner. Kein Abstimmen mit fünf Agenturen."
+            />
+
+            <Features cols={2}>
+                <Feature num="01 / PERSÖNLICHE MARKE" title="Wir gestalten, wie Sie auftreten." body="Logo. Farben. Ton. Foto. Eine professionelle Identität, die Ihnen vorauseilt, bevor Sie durch die Tür kommen." />
+                <Feature num="02 / WEB & LINKEDIN" title="Wir bauen Ihre Präsenz." body="Persönliche Website und LinkedIn-Profil, die Türen öffnen. Menschen finden Sie — und verlieren Sie nicht." />
+            </Features>
+
+            <Callout>
+                <strong>Und wenn Sie ein Unternehmen führen?</strong>
+                Wir machen dasselbe dafür — Website, KI-Agenten, CRM, Marketing. <a href="/de/unternehmen" style="color:var(--velocity-orange); border-bottom:1px solid var(--velocity-orange);">Lösung für Unternehmen →</a>
+            </Callout>
+        </div>
+    </section>
+
+    <section class="section--alt" id="den">
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 06 · Wie es in der Praxis aussieht"
+                title="Ein typischer Tag mit dem Agenten."
+                lead="Das folgende Szenario ist illustrativ — es zeigt, wie ein normaler Arbeitstag mit einem persönlichen Agenten aussieht. Konkrete Zahlen sind bei Ihnen anders; das Prinzip bleibt."
+            />
+
+            <Timeline>
+                <TimelineRow time="07:00">
+                    Über Nacht hat der Agent <strong>34 E-Mails</strong> sortiert. 8 selbst beantwortet (Terminbestätigungen, FAQs).
+                    4 zur Antwort vorbereitet, mit Vorschlagstext. Der Rest archiviert.
+                </TimelineRow>
+                <TimelineRow time="08:30">
+                    Vor dem ersten Termin haben Sie ein Briefing auf dem Handy: <strong>wer anruft, worüber Sie sprechen, welcher Kontext</strong> aus letzten E-Mails.
+                </TimelineRow>
+                <TimelineRow time="11:00">
+                    Ein Kunde rief an, während Sie im Meeting waren. Der Sprachagent fand heraus, dass es um eine Verschiebung geht,
+                    <strong>bot zwei Alternativtermine</strong> aus Ihrem Kalender an, der Kunde wählte einen.
+                </TimelineRow>
+                <TimelineRow time="14:00">
+                    Sie brauchen Unterlagen für den morgigen Termin. Der Agent bereitete eine <strong>Zusammenfassung dreier Dokumente</strong> vor und extrahierte die Kernpunkte.
+                </TimelineRow>
+                <TimelineRow time="17:00">
+                    <strong>Tagesbilanz: 2,5 Stunden gespart.</strong> Drei Termine, zu denen Sie vorbereitet kamen.
+                    Ein gerettete Kundenkontakt, der sonst bis morgen gewartet hätte.
+                </TimelineRow>
+            </Timeline>
+
+            <Note>
+                Fallstudien auf Anfrage verfügbar. Der Schutz unserer Kunden hat absolute Priorität —
+                alle Referenzen sind vollständig anonymisiert.
+            </Note>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 07 · Investition"
+                title="Individuell, wie Ihr Tag."
+                lead="Keine öffentliche Preisliste. Jeder Agent wird anders gebaut — nach Ihren Tools, Ihrem Stil, Ihrem Volumen und dem, was er übernehmen soll. Die konkrete Investition besprechen wir persönlich, sobald klar ist, was wir bauen."
+            />
+
+            <div style="max-width:var(--container-narrow); margin-top:var(--space-8); display:grid; grid-template-columns:1fr 1fr; gap:var(--space-8);" data-stagger>
+                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--velocity-orange); border-radius:var(--radius);">
+                    <span class="eyebrow" style="color:var(--velocity-orange); display:block; margin-bottom:var(--space-3);">Was Sie immer bekommen</span>
+                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:var(--space-2); color:var(--black-90); line-height:1.5; font-size:0.98rem;">
+                        <li><strong>Festpreis vor dem Start</strong> — Sie wissen, wofür Sie bezahlen</li>
+                        <li><strong>Zwei-Komponenten-Modell</strong> — einmalige Einrichtung + monatlicher Betrieb</li>
+                        <li><strong>Keine langfristige Bindung</strong> — kurze Kündigungsfrist</li>
+                        <li><strong>Ziel: zweistellige Stundenersparnis monatlich</strong> in Routine</li>
+                    </ul>
+                </div>
+                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--signal-gold); border-radius:var(--radius);">
+                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Wie Sie einen Preis bekommen</span>
+                    <p style="color:var(--black-90); line-height:1.6; font-size:0.98rem; margin:0 0 var(--space-4);">
+                        Starten Sie die <a href="/de/diagnose" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30); font-weight:500;">Diagnose</a>
+                        — 5 Minuten mit dem Agenten oder per Formular. Innerhalb von 24 Stunden rufen wir an und besprechen den konkreten Umfang.
+                    </p>
+                    <p style="color:var(--black-60); line-height:1.6; font-size:0.9rem; margin:0;">
+                        Das erste Gespräch ist kostenlos und unverbindlich.
+                    </p>
+                </div>
+            </div>
+
+            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-90); font-size:1.2rem; max-width:60ch;">
+                Wenn Ihre Stunde mehr als ein paar hundert Euro wert ist, entscheidet die Mathematik für Sie.
+            </p>
+        </div>
+    </section>
+
+    <section class="section--editorial">
+        <div class="container">
+            <SectionHead
+                eyebrow="· 08 · Weg zum Einsatz"
+                title="Vier Schritte. Keine Überraschungen."
+            />
+
+            <Steps cols={4}>
+                <Step num="01 · DIAGNOSE" title="Wir prüfen Ihren Tag." body="Ein kurzes Gespräch mit dem Agenten oder ein Formular. Wir finden, wo Ihre Zeit verloren geht und wo die Rückkehr am schnellsten kommt. Kein Vertrieb." />
+                <Step num="02 · ENTWURF" title="Wir legen fest, was der Agent macht." body="Was er übernimmt, was wir anbinden, welcher Umfang. Ein konkreter Plan, keine allgemeine Präsentation." />
+                <Step num="03 · EINRICHTUNG" title="Wir schließen den Agenten an Ihre Tools." body="Gmail, Outlook, Kalender, Telefon. Wir trainieren ihn auf Ihren Stil. Typischerweise in Tagen — Ihre Arbeit läuft weiter." />
+                <Step num="04 · LEBEN" title="Sie arbeiten. Der Agent kümmert sich." body="Der Agent verbessert sich jede Woche. Sie konzentrieren sich auf das, was nur Sie tun können. Kurze Kündigungsfrist — wir wollen Sie nicht binden." />
+            </Steps>
+        </div>
+    </section>
+
+    <CtaBand
+        id="rezervace"
+        eyebrow="· 09 · Die Entscheidung"
+        title="Jede Stunde in Routine ist eine Stunde, die Sie nicht dem gegeben haben, was Sie ernährt."
+        lead="Der VELYOS-Agent gibt diese Stunden zurück — systematisch, jeden Tag, ohne Ausfälle. Beginnen Sie mit der Diagnose. Kurz. Kein Pitch."
+        directPrefix="Nicht über den Agenten?"
+    >
+        <a href="/de/diagnose" class="btn btn--primary btn-arrow btn--lg">Diagnose starten</a>
+    </CtaBand>
+</Layout>
