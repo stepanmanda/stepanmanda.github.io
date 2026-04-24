@@ -407,7 +407,7 @@ export const roiStrings = {
         savingsLabel: 'hours saved per year',
     },
     de: {
-        eyebrow: '· Rechner · Rechnen Sie nach',
+        eyebrow: '· 09 · Rechner',
         title: 'Wie viel Ihr Unternehmen an Routine verliert. <span class="accent">Und wie viel Sie zurückholen können.</span>',
         lead: 'Schieben Sie die drei Regler auf Ihre Realität. Die Berechnung ist orientierend — sie zeigt Größenordnungen, nicht exakte Prognosen. Details nach der Diagnose.',
         hoursLabel: 'Stunden Verwaltung pro Person und Woche',
