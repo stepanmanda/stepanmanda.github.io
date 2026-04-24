@@ -1827,25 +1827,25 @@ elevenlabs-convai {
     to   { transform: translateY(0); opacity: 1; }
 }
 
-/* Hero stagger entrance ------------------------------ */
-.hero__tagline,
-.hero__lead,
-.hero__ctas,
-.hero__ctas-note,
-.hero__grant,
-.hero__meta,
-.hero .note {
+/* Hero stagger entrance — only on first page load, not on view-transition navs */
+html.first-load .hero__tagline,
+html.first-load .hero__lead,
+html.first-load .hero__ctas,
+html.first-load .hero__ctas-note,
+html.first-load .hero__grant,
+html.first-load .hero__meta,
+html.first-load .hero .note {
     opacity: 0;
     animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.hero__tagline    { animation-delay: 0.15s; }
-.hero__lead       { animation-delay: 0.85s; }
-.hero__ctas       { animation-delay: 1.0s; }
-.hero__ctas-note  { animation-delay: 1.1s; }
-.hero__grant      { animation-delay: 1.15s; }
-.hero__meta       { animation-delay: 1.2s; }
-.hero .note       { animation-delay: 1.1s; }
+html.first-load .hero__tagline    { animation-delay: 0.15s; }
+html.first-load .hero__lead       { animation-delay: 0.85s; }
+html.first-load .hero__ctas       { animation-delay: 1.0s; }
+html.first-load .hero__ctas-note  { animation-delay: 1.1s; }
+html.first-load .hero__grant      { animation-delay: 1.15s; }
+html.first-load .hero__meta       { animation-delay: 1.2s; }
+html.first-load .hero .note       { animation-delay: 1.1s; }
 
 /* Hero title — hidden until split done ONLY on first page load.
    On view-transition navigations, title appears immediately (no flicker). */
