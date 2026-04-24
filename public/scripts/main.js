@@ -523,6 +523,15 @@ function initVelyos() {
         if (jumpSections.length >= 3) {
             const items = [];
 
+            const openJump = () => {
+                jump.classList.add("is-open");
+                jumpTrigger.setAttribute("aria-expanded", "true");
+            };
+            const closeJump = () => {
+                jump.classList.remove("is-open");
+                jumpTrigger.setAttribute("aria-expanded", "false");
+            };
+
             jumpSections.forEach((s) => {
                 const btn = document.createElement("button");
                 btn.type = "button";
@@ -546,27 +555,23 @@ function initVelyos() {
                 items.push({ btn, num: s.num, section: s.el });
             });
 
-            const openJump = () => {
-                jump.classList.add("is-open");
-                jumpTrigger.setAttribute("aria-expanded", "true");
-            };
-            const closeJump = () => {
-                jump.classList.remove("is-open");
-                jumpTrigger.setAttribute("aria-expanded", "false");
-            };
+            // Attach trigger/document listeners only once — prevents double-toggle
+            // when initVelyos runs again on astro:page-load.
+            if (!jumpTrigger.dataset.bound) {
+                jumpTrigger.dataset.bound = "1";
+                jumpTrigger.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    jump.classList.contains("is-open") ? closeJump() : openJump();
+                });
 
-            jumpTrigger.addEventListener("click", (e) => {
-                e.stopPropagation();
-                jump.classList.contains("is-open") ? closeJump() : openJump();
-            });
+                document.addEventListener("click", (e) => {
+                    if (!jump.contains(e.target)) closeJump();
+                });
 
-            document.addEventListener("click", (e) => {
-                if (!jump.contains(e.target)) closeJump();
-            });
-
-            document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape") closeJump();
-            });
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === "Escape") closeJump();
+                });
+            }
 
             // Track active section — updates both trigger number and panel highlight
             const sectionObs = new IntersectionObserver((entries) => {
