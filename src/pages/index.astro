@@ -1,162 +1,302 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import HeroSticky from '../components/HeroSticky.astro';
 import SectionHead from '../components/SectionHead.astro';
-import Split from '../components/Split.astro';
-import SplitCard from '../components/SplitCard.astro';
-import Duo from '../components/Duo.astro';
 import Features from '../components/Features.astro';
-import Feature from '../components/Feature.astro';
-import CtaBand from '../components/CtaBand.astro';
-import Stats from '../components/Stats.astro';
+import RevealCard from '../components/RevealCard.astro';
+import Steps from '../components/Steps.astro';
+import Step from '../components/Step.astro';
 import FounderStrip from '../components/FounderStrip.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const heroMeta = [
+    { label: 'Nasazení', value: '4 týdny' },
+    { label: 'Návratnost', value: '6 měsíců' },
+    { label: 'Záruka', value: 'Ve smlouvě' },
+    { label: 'Klientela', value: 'Omezený počet' },
+];
+
+const services = [
+    { num: '01', title: 'WEB & ZNAČKA',         body: 'Stránky, které prodávají.' },
+    { num: '02', title: 'AGENTI & ASISTENTI',   body: 'Hlas, chat, e-mail. 24/7.' },
+    { num: '03', title: 'CRM & INTEGRACE',      body: 'HubSpot, Pipedrive, vlastní.' },
+    { num: '04', title: 'PROPAGACE',            body: 'SEO, Google a LinkedIn.' },
+    { num: '05', title: 'AUTOMATIZACE',         body: 'Slack, Notion, fakturace.' },
+    { num: '06', title: 'DATA',                 body: 'Dashboard, co dává smysl.' },
+];
 ---
 
 <Layout
     title="VELYOS — The Velocity Partner."
-    description="VELYOS staví automatizaci, která firmám i profesionálům vrací čas, peníze a klid. Vyberte cestu — pro firmu nebo pro vás osobně."
+    description="Stavíme automatizaci, která vrací firmám i profesionálům čas, peníze a klid. Nejsme software. Jsme tým, který to za vás postaví."
     lang="cs"
     active="home"
-    primaryCta={{ label: 'Zažádat o konzultaci', href: '/firmy' }}
+    primaryCta={{ label: 'Spustit diagnostiku', href: '/diagnostika' }}
 >
-    <Hero tagline={`„The Velocity Partner."`} variant="split">
-        <h1 class="hero__title">Vracíme čas tam, kde má <span class="accent">nejvyšší hodnotu.</span></h1>
-        <p class="hero__lead">
-            Stavíme automatizaci, která vrací firmám i profesionálům
-            <strong>čas, peníze a klid</strong>. Abyste se mohli soustředit na to, co je opravdu důležité.
-            Nejsme software — jsme tým, který to za vás postaví.
+
+    <!-- Sekce 1 — Hero -->
+    <HeroSticky tagline={`„The Velocity Partner."`} meta={heroMeta}>
+        <h1 slot="heading">Vracíme čas tam, kde má <em>nejvyšší hodnotu</em>.</h1>
+
+        <p slot="lead">
+            Stavíme automatizaci, která vrací firmám i profesionálům <strong>čas, peníze a klid</strong>.
+            Nejsme software. Jsme tým, který to za vás postaví.
         </p>
 
-        <div class="hero__ctas">
-            <a href="/firmy" class="btn btn--primary btn-arrow btn--lg">Chci řešení pro firmu</a>
-            <a href="/jednotlivci" class="btn btn--ghost btn-arrow btn--lg">Chci řešení pro jednotlivce</a>
-        </div>
+        <Fragment slot="ctas">
+            <a href="/firmy" class="btn btn--primary btn-arrow btn--lg">Chci řešení pro firmu →</a>
+            <a href="/jednotlivci" class="btn btn--ghost btn-arrow btn--lg">Chci řešení pro jednotlivce →</a>
+        </Fragment>
+    </HeroSticky>
 
-        <div class="hero__meta">
-            <div class="hero__meta-item">
-                <span class="hero__meta-label">Nasazení</span>
-                <span class="hero__meta-value mono">4 <span class="gold">týdny</span></span>
-            </div>
-            <div class="hero__meta-item">
-                <span class="hero__meta-label">Návratnost</span>
-                <span class="hero__meta-value mono">6 <span class="gold">měsíců</span></span>
-            </div>
-            <div class="hero__meta-item">
-                <span class="hero__meta-label">Záruka</span>
-                <span class="hero__meta-value">Ve smlouvě</span>
-            </div>
-            <div class="hero__meta-item">
-                <span class="hero__meta-label">Klientela</span>
-                <span class="hero__meta-value">Omezený počet</span>
-            </div>
-        </div>
-    </Hero>
-
-    <section class="split-section" id="vyberte">
+    <!-- Sekce 2 — Komu (3 reveal cards) -->
+    <section>
         <div class="container">
             <SectionHead
-                eyebrow="· 01 · Vyberte si, co vám sedí"
-                title="Pracujeme se dvěma typy klientů. Každému nabízíme jiný přístup."
+                eyebrow="· 01 · KOMU"
+                title="Pracujeme se dvěma typy klientů. Třetího nepotřebujete."
+                lead="Jasné kritérium, na první pohled. Pokud se nepoznáte, dáme vám vědět."
             />
-
-            <Split>
-                <SplitCard
-                    href="/firmy"
-                    accent="orange"
-                    eyebrow="Pro firmy"
-                    title="Stavíme AI agenty, kteří přeberou rutinu týmu."
-                    body="Máte tým, který tráví hodiny administrativou, zákaznickou podporou nebo interním reportingem? Vrátíme ho k práci, za kterou ho platíte. Diagnostika, návrh, integrace, provoz — jedna ruka."
-                    ctaLabel="Chci řešení pro firmu"
-                    ctaClass="btn--primary"
-                />
-                <SplitCard
-                    href="/jednotlivci"
-                    accent="gold"
-                    eyebrow="Pro jednotlivce"
-                    title="Stavíme osobního AI agenta pro váš den."
-                    body="Majitel firmy, konzultant, advokát? Den vám žere e-mail a kalendář. Agent převezme komunikaci, plánování a administrativu — vrátíme vám hodiny týdně."
-                    ctaLabel="Chci řešení pro jednotlivce"
-                    ctaClass="btn--dark"
-                />
-            </Split>
-        </div>
-    </section>
-
-    <section class="section--alt" id="co-stavime">
-        <div class="container">
-            <SectionHead
-                eyebrow="· 02 · Co stavíme"
-                title="Máte svůj systém? Napojíme se. Nemáte? Postavíme všechno."
-                lead="Nejste závislí na pěti různých agenturách. Jeden partner. Jedna smlouva. Od prvního logu po poslední tlačítko na webu."
-            />
-
-            <Duo
-                leftEyebrow="← Máte už něco"
-                leftTitle="Napojíme se na to, co funguje."
-                rightEyebrow="→ Nebo od nuly"
-                rightTitle="Postavíme vám všechno."
-            >
-                <Fragment slot="left">
-                    <p>Máte web? CRM? E-maily? Marketing?</p>
-                    <p>Nic nebouráme. Přidáme AI a propojíme to, co teď běží odděleně.</p>
-                </Fragment>
-                <Fragment slot="right">
-                    <p>Začínáte? Přecházíte? Chcete nový směr?</p>
-                    <p>Uděláme vám web, značku, AI agenty, propojení i propagaci. Od A do Z.</p>
-                </Fragment>
-            </Duo>
-
             <Features cols={3}>
-                <Feature num="01 / WEB & BRAND" title="Postavíme vám web a značku." body="Stránky, které prodávají. Logo, barvy a vizuál, který si lidi zapamatují." />
-                <Feature num="02 / AI AGENTI" title="Nasadíme AI, co mluví místo vás." body="Hlasový agent na telefonu. Chatbot na webu. E-mailový asistent. 24/7." />
-                <Feature num="03 / CRM & INTEGRACE" title="Propojíme to s vaším systémem." body="HubSpot, Pipedrive, Salesforce, nebo vlastní. Data si sedí sama na místo." />
-                <Feature num="04 / PROPAGACE" title="Postaráme se, aby o vás věděli." body="SEO. Google & Meta reklama. LinkedIn. Cold outreach. Ti správní klienti." />
-                <Feature num="05 / AUTOMATIZACE" title="Propojíme nástroje, co už používáte." body="Slack, Notion, Google, fakturace. Věci, co dneska děláte ručně, pojedou samy." />
-                <Feature num="06 / DATA" title="Ukážeme vám, kde utíká čas." body="Dashboard, co dává smysl. Vidíte, co funguje, co ne, a co dělat dál." />
+                <RevealCard
+                    num="01"
+                    title="Firmy s týmem"
+                    body="5–30 lidí, kdy administrativa pohlcuje obchodní čas. Zdravotnictví, účetní, řemeslo, růstově orientované služby."
+                />
+                <RevealCard
+                    num="02"
+                    title="Profesionálové"
+                    body="Advokáti, doktoři, konzultanti, realitky. Jeden mozek a chaos kalendáře, e-mailů a klientských požadavků."
+                />
+                <RevealCard
+                    num="03"
+                    title="Ne pro každého"
+                    body="Pokud potřebujete jednorázové řešení nebo hledáte freelancera za hodinovku, nejsme to my. Doporučíme dál."
+                />
             </Features>
         </div>
     </section>
 
-    <CtaBand
-        id="agent"
-        eyebrow="· Nevíte, kam patříte? ·"
-        title="Náš agent vám během pár minut pomůže najít odpověď."
-        lead="Žádný obchodník. Žádná prezentace. Krátký rozhovor s AI, která zná obě cesty — a upřímně vám řekne, kam byste se měli podívat dřív."
-        directPrefix="Nechcete přes agenta?"
-    >
-        <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Promluvit si s agentem</a>
-        <a href="mailto:stepan@velyos.ai?subject=Dotaz%20VELYOS" class="btn btn--ghost btn--lg">Napsat obchodu</a>
-    </CtaBand>
-
-    <section class="section--tight">
+    <!-- Sekce 3 — Co děláme (řádky, žádné karty) -->
+    <section class="home-services-section">
         <div class="container">
             <SectionHead
-                eyebrow="· 03 · Čemu věnujeme disciplínu"
-                title="Tři principy. Jedna smlouva."
+                eyebrow="· 02 · CO DĚLÁME"
+                title="Stavíme za vás. Od prvního logu po poslední tlačítko."
+                lead="Web. Značka. Agenti. Integrace. Reklama. Data. Jeden partner. Jedna smlouva. Žádných pět agentur, které si přehazují odpovědnost."
             />
 
-            <Features cols={3}>
-                <Feature num="01 / VELOCITY" title="Měříme v týdnech, ne měsících." body={`Integrace typicky v řádu dnů. Plné nasazení v rozmezí 4 týdnů. Žádné „pilotní fáze na půl roku".`} />
-                <Feature num="02 / PRECISION" title={`Žádné „skoro". Jen exaktní výsledky.`} body="Měřitelné úspory, lidský dohled a architektura navržená v duchu ISO 27001. AI, která se nehádá s realitou." />
-                <Feature num="03 / SELECTIVE" title="Přijímáme omezený počet klientů ročně." body="Pokud se do profilu netrefíme, řekneme vám to rovnou — a doporučíme dál." />
-            </Features>
+            <dl class="home-services">
+                {services.map((s) => (
+                    <div class="home-services__row">
+                        <dt>
+                            <span class="home-services__num">{s.num}</span>
+                            <span class="home-services__label">{s.title}</span>
+                        </dt>
+                        <dd>{s.body}</dd>
+                    </div>
+                ))}
+            </dl>
+
+            <p class="home-services__more">
+                <a href="/pristup">Více o našem přístupu →</a>
+            </p>
         </div>
     </section>
 
-    <Stats lang="cs" />
+    <!-- Sekce 4 — Jak to děláme (3 kroky, sjednocená metodika) -->
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 03 · JAK TO DĚLÁME"
+                title="Tři kroky. Žádné pilotní fáze."
+                lead="Začínáme tím, že posloucháme. Končíme tím, že to běží."
+            />
+            <Steps cols={3}>
+                <Step num="01" title="POSLOUCHÁME"  body="Diagnostika. Pochopíme, co vás brzdí." />
+                <Step num="02" title="STAVÍME"      body="Návrh, integrace, nasazení. Do 4 týdnů." />
+                <Step num="03" title="STARÁME SE"   body="Provoz, dohled, ladění. Dokud to dává smysl." />
+            </Steps>
+        </div>
+    </section>
 
-    <FounderStrip lang="cs" variant="strip" href="/o-nas" />
+    <!-- Sekce 5 — Kdo jsme -->
+    <div class="home-who" data-reveal>
+        <div class="container">
+            <span class="eyebrow home-who__eyebrow">· 04 · KDO JSME</span>
+        </div>
+        <FounderStrip lang="cs" variant="strip" href="/o-nas" />
+    </div>
 
+    <!-- Sekce 6 — Manifesto -->
     <section class="section--editorial">
         <div class="container container--narrow" data-reveal>
             <span class="eyebrow">· Manifesto</span>
-            <h2 style="margin-top:var(--space-4);margin-bottom:var(--space-8);">Čas je jediné aktivum, které se nedá koupit zpátky.</h2>
-            <div class="section-body">
+            <h2>Čas je jediné aktivum, které se nedá koupit zpátky.</h2>
+            <div class="home-manifesto__body">
                 <p>Většina firem ho spaluje v procesech, které měly být dávno automatizované. V hovorech, které nikdo neměl vést. V administrativě, která neměla existovat.</p>
-                <p>VELYOS je partner, který vám firmu postaví, zapojí a udrží v chodu. Ne další software, který si musíte nastavit sami. Pro firmy a profesionály, kteří rozumí hodnotě vlastního času.</p>
-                <p><strong>Implementujeme za 4 týdny. Návratnost do 6 měsíců. Garantováno smlouvou.</strong></p>
-                <p class="italic-serif" style="color:var(--signal-gold);margin-top:var(--space-6);font-size:1.2rem;">„Nepracujeme pro každého. Pracujeme pro ty, kteří chápou, proč jsou u nás."</p>
+                <p>VELYOS je partner, který vám firmu postaví, zapojí a udrží v chodu. Ne další software, který si musíte nastavit sami.</p>
             </div>
+            <blockquote class="home-manifesto__quote italic-serif">
+                „Nepracujeme pro každého. Pracujeme pro ty, kteří chápou, proč jsou u nás."
+            </blockquote>
         </div>
     </section>
+
+    <!-- Sekce 7 — Final CTA -->
+    <CtaBand
+        id="zacit"
+        eyebrow="· Začněme"
+        title="Nevíte, kam patříte? Náš agent vám během pár minut pomůže."
+        lead="Žádný obchodník. Žádná prezentace. Krátká diagnostika a víte, kam dál."
+        directPrefix="Nebo napište přímo:"
+    >
+        <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku →</a>
+    </CtaBand>
+
 </Layout>
+
+<style>
+    /* ============================================================
+       Home — Fáze 3 redesign
+       ============================================================ */
+
+    /* Sekce 3 — Service list (řádky, ne karty) */
+    .home-services-section {
+        padding-bottom: var(--space-24);
+    }
+
+    .home-services {
+        margin: var(--space-12) 0 0;
+        padding: 0;
+    }
+
+    .home-services__row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+        gap: var(--space-6);
+        align-items: baseline;
+        padding: var(--space-5) 0;
+        border-bottom: 1px solid var(--border-soft);
+        transition: color 0.2s ease;
+    }
+
+    .home-services__row:first-of-type {
+        border-top: 1px solid var(--border-soft);
+    }
+
+    .home-services__row dt {
+        display: flex;
+        gap: var(--space-3);
+        align-items: baseline;
+        margin: 0;
+    }
+
+    .home-services__num {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        color: var(--text-muted);
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    .home-services__label {
+        font-family: var(--font-mono);
+        font-size: 0.92rem;
+        letter-spacing: 0.06em;
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    .home-services__row dd {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+
+    @media (hover: hover) {
+        .home-services__row:hover .home-services__num {
+            color: var(--accent);
+        }
+    }
+
+    @media (max-width: 720px) {
+        .home-services__row {
+            grid-template-columns: 1fr;
+            gap: var(--space-2);
+            padding: var(--space-4) 0;
+        }
+    }
+
+    .home-services__more {
+        margin: var(--space-10) 0 0;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+    }
+
+    .home-services__more a {
+        color: var(--accent);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s ease;
+    }
+
+    .home-services__more a:hover {
+        border-bottom-color: var(--accent);
+    }
+
+    /* Sekce 5 — Kdo jsme: brief eyebrow nad FounderStrip */
+    .home-who {
+        position: relative;
+        padding-top: var(--space-16);
+    }
+
+    .home-who__eyebrow {
+        display: block;
+        margin-bottom: 0;
+        color: var(--signal-gold);
+    }
+
+    /* Sekce 6 — Manifesto editorial */
+    .section--editorial {
+        text-align: center;
+        padding: var(--space-24) 0;
+    }
+
+    .section--editorial .eyebrow {
+        display: block;
+        margin-bottom: var(--space-4);
+        color: var(--signal-gold);
+    }
+
+    .section--editorial h2 {
+        font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+        max-width: 30ch;
+        margin: 0 auto var(--space-8);
+        line-height: 1.2;
+        letter-spacing: -0.03em;
+        color: var(--text-primary);
+    }
+
+    .home-manifesto__body p {
+        font-size: 1.05rem;
+        line-height: 1.65;
+        color: var(--text-secondary);
+        max-width: 56ch;
+        margin: 0 auto var(--space-4);
+    }
+
+    .home-manifesto__quote {
+        margin: var(--space-12) auto 0;
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+        max-width: 48ch;
+        color: var(--signal-gold);
+        line-height: 1.5;
+        font-weight: 400;
+        font-style: italic;
+        border: 0;
+        padding: 0;
+    }
+</style>
