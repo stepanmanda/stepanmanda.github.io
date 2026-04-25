@@ -1,0 +1,345 @@
+---
+interface MetaItem {
+    label: string;
+    value: string;
+}
+interface Props {
+    tagline?: string;
+    meta?: MetaItem[];
+    showTime?: boolean;
+}
+
+const { tagline, meta = [], showTime = true } = Astro.props;
+---
+
+<section class="hero-sticky" data-hero-sticky>
+    <div class="hero-sticky__wrapper">
+        <div class="hero-sticky__frame">
+            <div class="hero-sticky__glow hero-sticky__glow--gold" aria-hidden="true"></div>
+            <div class="hero-sticky__glow hero-sticky__glow--orange" aria-hidden="true"></div>
+            <div class="hero-sticky__glow hero-sticky__glow--core" aria-hidden="true"></div>
+
+            <div class="hero-sticky__inner container">
+                <div class="hero-sticky__content">
+                    {tagline && <div class="hero-sticky__tagline italic-serif">{tagline}</div>}
+
+                    <div class="hero-sticky__heading">
+                        <slot name="heading" />
+                    </div>
+
+                    <div class="hero-sticky__lead">
+                        <slot name="lead" />
+                    </div>
+
+                    <div class="hero-sticky__ctas">
+                        <slot name="ctas" />
+                    </div>
+                </div>
+
+                {showTime && (
+                    <div class="hero-sticky__time" aria-hidden="true" data-hero-time>00:00</div>
+                )}
+            </div>
+
+            {meta.length > 0 && (
+                <div class="hero-sticky__meta-wrap container">
+                    <div class="hero-sticky__meta">
+                        {meta.map((item) => (
+                            <div class="hero-sticky__meta-item">
+                                <span class="hero-sticky__meta-label">{item.label}</span>
+                                <span class="hero-sticky__meta-value">{item.value}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-sticky {
+        position: relative;
+        height: 200vh;
+    }
+
+    .hero-sticky__wrapper {
+        position: relative;
+        height: 100%;
+    }
+
+    .hero-sticky__frame {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: clamp(var(--space-12), 12vh, var(--space-20)) 0 var(--space-10);
+        overflow: hidden;
+        background: var(--bg);
+    }
+
+    .hero-sticky__inner {
+        flex: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+        gap: var(--space-8);
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-sticky__content {
+        max-width: 60ch;
+    }
+
+    .hero-sticky__tagline {
+        font-size: clamp(1rem, 1.4vw, 1.2rem);
+        color: var(--signal-gold);
+        margin-bottom: var(--space-6);
+        letter-spacing: -0.01em;
+        font-weight: 400;
+    }
+
+    .hero-sticky__heading :global(h1) {
+        font-size: clamp(2.6rem, 5.4vw, 4.6rem);
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 var(--space-6);
+    }
+
+    .hero-sticky__heading :global(em) {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--accent);
+    }
+
+    .hero-sticky__lead :global(p) {
+        font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+        line-height: 1.55;
+        color: var(--text-secondary);
+        margin: 0 0 var(--space-8);
+        max-width: 56ch;
+    }
+
+    .hero-sticky__ctas {
+        display: flex;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+    }
+
+    .hero-sticky__time {
+        font-family: var(--font-mono);
+        font-size: clamp(8rem, 18vw, 14rem);
+        font-weight: 500;
+        color: var(--text-primary);
+        opacity: 0.10;
+        letter-spacing: -0.06em;
+        line-height: 0.9;
+        text-align: right;
+        align-self: center;
+        font-feature-settings: "tnum";
+        pointer-events: none;
+        user-select: none;
+    }
+
+    @media (max-width: 880px) {
+        .hero-sticky { height: auto; }
+        .hero-sticky__frame {
+            position: relative;
+            height: auto;
+            min-height: 90vh;
+        }
+        .hero-sticky__inner {
+            grid-template-columns: 1fr;
+        }
+        .hero-sticky__time { display: none; }
+    }
+
+    .hero-sticky__meta-wrap {
+        position: relative;
+        z-index: 2;
+        padding-top: var(--space-6);
+    }
+
+    .hero-sticky__meta {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-8);
+        padding-top: var(--space-6);
+        border-top: 1px solid var(--border-soft);
+    }
+
+    .hero-sticky__meta-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .hero-sticky__meta-label {
+        font-family: var(--font-mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+    }
+
+    .hero-sticky__meta-value {
+        font-family: var(--font-mono);
+        font-size: 0.95rem;
+        letter-spacing: -0.01em;
+        font-weight: 500;
+        color: var(--text-primary);
+    }
+
+    @media (max-width: 720px) {
+        .hero-sticky__meta {
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-4);
+        }
+    }
+
+    /* Glow layers — řízené přes --hero-progress (0 → 1) */
+    .hero-sticky__glow {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        will-change: transform, opacity;
+        filter: blur(80px);
+    }
+
+    .hero-sticky__glow--gold {
+        top: -10%;
+        left: -10%;
+        width: 60%;
+        aspect-ratio: 1;
+        background: radial-gradient(circle, rgba(184, 147, 92, 0.32), transparent 70%);
+        opacity: calc(0.4 + 0.6 * var(--hero-progress, 0));
+        transform: translate3d(
+            calc(var(--hero-progress, 0) * 8%),
+            calc(var(--hero-progress, 0) * -4%),
+            0
+        ) scale(calc(1 + var(--hero-progress, 0) * 0.4));
+    }
+
+    .hero-sticky__glow--orange {
+        bottom: -25%;
+        right: -10%;
+        width: 70%;
+        aspect-ratio: 1;
+        background: radial-gradient(circle, rgba(232, 93, 31, 0.20), transparent 70%);
+        opacity: calc(0.3 + 0.7 * var(--hero-progress, 0));
+        transform: translate3d(
+            calc(var(--hero-progress, 0) * -6%),
+            calc(var(--hero-progress, 0) * 6%),
+            0
+        ) scale(calc(1 + var(--hero-progress, 0) * 0.6));
+    }
+
+    .hero-sticky__glow--core {
+        top: 45%;
+        left: 35%;
+        width: 28%;
+        aspect-ratio: 1;
+        background: radial-gradient(circle, rgba(232, 93, 31, 0.40), transparent 60%);
+        opacity: calc(var(--hero-progress, 0) * 0.55);
+        transform: translate(-50%, -50%) scale(calc(0.6 + var(--hero-progress, 0) * 1.4));
+        filter: blur(60px);
+    }
+
+    [data-theme="dark"] .hero-sticky__glow--gold {
+        background: radial-gradient(circle, rgba(184, 147, 92, 0.45), transparent 70%);
+    }
+
+    [data-theme="dark"] .hero-sticky__glow--orange {
+        background: radial-gradient(circle, rgba(232, 93, 31, 0.32), transparent 70%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-sticky__glow {
+            opacity: 0.3 !important;
+            transform: none !important;
+        }
+        .hero-sticky { height: auto; }
+        .hero-sticky__frame {
+            position: relative;
+            height: auto;
+            min-height: 80vh;
+        }
+    }
+</style>
+
+<script>
+    function initHeroSticky() {
+        const heroes = document.querySelectorAll('[data-hero-sticky]');
+        if (!heroes.length) return;
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        heroes.forEach((hero) => {
+            if (!(hero instanceof HTMLElement)) return;
+            if (hero.dataset.heroInit === '1') return;
+            hero.dataset.heroInit = '1';
+
+            const frame = hero.querySelector('.hero-sticky__frame');
+            if (!(frame instanceof HTMLElement)) return;
+
+            const timeEl = hero.querySelector('[data-hero-time]');
+            if (timeEl instanceof HTMLElement) {
+                const updateTime = () => {
+                    const now = new Date();
+                    const hh = String(now.getHours()).padStart(2, '0');
+                    const mm = String(now.getMinutes()).padStart(2, '0');
+                    timeEl.textContent = `${hh}:${mm}`;
+                };
+                updateTime();
+                setInterval(updateTime, 30 * 1000);
+            }
+
+            if (reduced || window.matchMedia('(max-width: 880px)').matches) {
+                frame.style.setProperty('--hero-progress', '0.5');
+                return;
+            }
+
+            let target = 0;
+            let current = 0;
+            let raf = null;
+            const lerpRate = 0.07;
+
+            const tick = () => {
+                current += (target - current) * lerpRate;
+                if (Math.abs(target - current) < 0.001) {
+                    current = target;
+                    raf = null;
+                } else {
+                    raf = requestAnimationFrame(tick);
+                }
+                frame.style.setProperty('--hero-progress', current.toFixed(3));
+            };
+
+            const onScroll = () => {
+                const rect = hero.getBoundingClientRect();
+                const total = hero.offsetHeight - window.innerHeight;
+                const scrolled = -rect.top;
+                target = Math.max(0, Math.min(1, scrolled / Math.max(1, total)));
+                if (raf == null) {
+                    raf = requestAnimationFrame(tick);
+                }
+            };
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll, { passive: true });
+            onScroll();
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initHeroSticky);
+    } else {
+        initHeroSticky();
+    }
+    document.addEventListener('astro:page-load', initHeroSticky);
+</script>
