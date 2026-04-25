@@ -2,14 +2,14 @@ import { test, expect } from '@playwright/test';
 
 // Všechny stránky webu + jejich očekávaná klíčová slova v title
 const pages = [
-    { path: '/', title: /VELYOS.*Velocity Operating System/i, h1: /Vracíme čas|nejvyšší hodnotu/i },
-    { path: '/firmy', title: /VELYOS.*Pro firmy/i, h1: /rutina/i },
+    { path: '/', title: /VELYOS.*Velocity Partner/i, h1: /Vracíme čas|nejvyšší hodnotu/i },
+    { path: '/firmy', title: /VELYOS.*Pro firmy/i, h1: /umí mnohem víc|Když jim to dovolíte/i },
     { path: '/jednotlivci', title: /VELYOS.*Pro jednotlivce/i, h1: /24 hodin/i },
     { path: '/o-nas', title: /VELYOS.*O nás/i, h1: /Nejsme software/i },
     { path: '/pristup', title: /VELYOS.*Přístup/i, h1: /Jak pracujeme/i },
     { path: '/pripadove-studie', title: /VELYOS.*Vzory nasazení/i, h1: /umíme dodat|pro vás/i },
-    { path: '/kontakt', title: /VELYOS.*Kontakt/i, h1: /způsoby|hodin/i },
-    { path: '/diagnostika', title: /VELYOS.*Diagnostika/i, h1: /Dvě cesty/i },
+    { path: '/kontakt', title: /VELYOS.*Kontakt/i, h1: /způsoby|zastihnout/i },
+    { path: '/diagnostika', title: /VELYOS.*Diagnostika/i, h1: /Spustíme diagnostiku|dohodneme spolu/i },
 ];
 
 test.describe('Funkční testy — všechny stránky', () => {
@@ -45,7 +45,7 @@ test.describe('Navigace mezi stránkami', () => {
         await page.goto('/');
         await page.getByRole('link', { name: 'Pro firmy', exact: true }).first().click();
         await expect(page).toHaveURL(/\/firmy/);
-        await expect(page.locator('h1')).toContainText(/rutina/i);
+        await expect(page.locator('h1')).toContainText(/Když jim to dovolíte|umí mnohem víc/i);
     });
 
     test('nav: proklik rozcestník → Pro jednotlivce', async ({ page }) => {
@@ -57,8 +57,7 @@ test.describe('Navigace mezi stránkami', () => {
 
     test('primary CTA na rozcestníku vede na Firmy', async ({ page }) => {
         await page.goto('/');
-        // Klik v hero sekci (ne v split kartě) — omezit na .hero kontext
-        const heroCta = page.locator('.hero').getByRole('link', { name: /Chci řešení pro firmu/i });
+        const heroCta = page.locator('.hero-sticky').getByRole('link', { name: /Chci řešení pro firmu/i });
         await heroCta.scrollIntoViewIfNeeded();
         await heroCta.click();
         await expect(page).toHaveURL(/\/firmy/);
@@ -66,7 +65,7 @@ test.describe('Navigace mezi stránkami', () => {
 
     test('CTA na Firmy hero vede na /diagnostika', async ({ page }) => {
         await page.goto('/firmy');
-        const heroCta = page.locator('.hero').getByRole('link', { name: /Chci vidět, kudy mi utíkají peníze/i });
+        const heroCta = page.locator('.hero-sticky').getByRole('link', { name: /Spustit diagnostiku/i });
         await heroCta.scrollIntoViewIfNeeded();
         await heroCta.click();
         await expect(page).toHaveURL(/\/diagnostika/);
@@ -158,8 +157,11 @@ test.describe('Kontakt popover v nav', () => {
 });
 
 test.describe('Diagnostika stránka', () => {
-    test('Formulář má všechna povinná pole', async ({ page }) => {
+    test('Formulář má všechna povinná pole (po výběru "Vyplnit")', async ({ page }) => {
         await page.goto('/diagnostika');
+
+        // Form je v state-machine — nejdřív přepnout na written stav
+        await page.locator('[data-diag-pick="written"]').click();
 
         // Form existuje
         const form = page.locator('#diagnostikovat-form');
@@ -182,7 +184,7 @@ test.describe('Diagnostika stránka', () => {
     test('ElevenLabs widget je na stránce', async ({ page }) => {
         await page.goto('/diagnostika');
 
-        // Custom element existuje v DOM
+        // Custom element existuje v DOM (globálně v Layoutu)
         const widget = page.locator('elevenlabs-convai');
         await expect(widget).toBeAttached();
         await expect(widget).toHaveAttribute('agent-id', 'cu9gllbBtpZWU6CuJXky');
@@ -191,10 +193,29 @@ test.describe('Diagnostika stránka', () => {
     test('Prázdný form neodešle — vyžádá GDPR souhlas', async ({ page }) => {
         await page.goto('/diagnostika');
 
-        // Bez vyplnění — browser validation zabrání odeslání, nezavřelo to stránku
+        // Přepnout na "Vyplnit" — form je v state-machine
+        await page.locator('[data-diag-pick="written"]').click();
+
+        // Bez vyplnění — browser validation zabrání odeslání
         await page.locator('.diag-form__submit').click();
-        // URL zůstává stejné (nespustilo mailto redirect)
+        // URL zůstává stejné
         await expect(page).toHaveURL(/\/diagnostika/);
+    });
+
+    test('State switcher — Zpět k výběru funguje', async ({ page }) => {
+        await page.goto('/diagnostika');
+        const switcher = page.locator('[data-diag-switcher]');
+
+        // Default state = select
+        await expect(switcher).toHaveAttribute('data-state', 'select');
+
+        // Klik Vyplnit → state written
+        await page.locator('[data-diag-pick="written"]').click();
+        await expect(switcher).toHaveAttribute('data-state', 'written');
+
+        // Zpět k výběru → state select
+        await page.locator('[data-diag-back]').first().click();
+        await expect(switcher).toHaveAttribute('data-state', 'select');
     });
 });
 
