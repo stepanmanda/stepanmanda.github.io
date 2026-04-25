@@ -46,9 +46,24 @@ const xDefault = active
 
     <!-- Mark document as JS-enabled + first-load before CSS parses — prevents hero flicker on refresh.
          `.first-load` is removed by main.js after initial init, so view-transition navs skip the stagger. -->
+    <!-- Theme bootstrap — musí běžet PŘED parsováním CSS, aby nedošlo k flash dark→light. -->
     <script is:inline>
         document.documentElement.classList.add('js');
         document.documentElement.classList.add('first-load');
+        (function () {
+            try {
+                var stored = localStorage.getItem('velyos-theme');
+                var theme;
+                if (stored === 'dark' || stored === 'light') {
+                    theme = stored;
+                } else {
+                    theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
     </script>
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -95,6 +110,29 @@ const xDefault = active
     <Footer lang={lang} tagline={footerTagline} variant={footerVariant} />
 
     <script is:inline src="/scripts/main.js" defer></script>
+
+    <!-- Theme toggle — delegovaný klik handler na document, přežije ClientRouter swap. -->
+    <script is:inline>
+        (function () {
+            function syncPressed() {
+                var btn = document.getElementById('theme-toggle');
+                if (!btn) return;
+                var current = document.documentElement.getAttribute('data-theme') || 'light';
+                btn.setAttribute('aria-pressed', current === 'dark' ? 'true' : 'false');
+            }
+            document.addEventListener('click', function (e) {
+                var btn = e.target && e.target.closest && e.target.closest('#theme-toggle');
+                if (!btn) return;
+                var current = document.documentElement.getAttribute('data-theme') || 'light';
+                var next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                try { localStorage.setItem('velyos-theme', next); } catch (err) {}
+                btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+            });
+            document.addEventListener('astro:page-load', syncPressed);
+            syncPressed();
+        })();
+    </script>
 
     <!-- ElevenLabs ConvAI — globálně plující widget (floating v rohu) -->
     <elevenlabs-convai agent-id="cu9gllbBtpZWU6CuJXky" transition:persist></elevenlabs-convai>
