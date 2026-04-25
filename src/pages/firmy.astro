@@ -1,314 +1,443 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import HeroSticky from '../components/HeroSticky.astro';
 import SectionHead from '../components/SectionHead.astro';
-import Audience from '../components/Audience.astro';
-import AudienceCard from '../components/AudienceCard.astro';
 import Features from '../components/Features.astro';
-import Feature from '../components/Feature.astro';
-import Callout from '../components/Callout.astro';
-import Duo from '../components/Duo.astro';
-import GrantBlock from '../components/GrantBlock.astro';
-import RoiCalculator from '../components/RoiCalculator.astro';
+import RevealCard from '../components/RevealCard.astro';
 import Steps from '../components/Steps.astro';
 import Step from '../components/Step.astro';
 import CtaBand from '../components/CtaBand.astro';
-import Note from '../components/Note.astro';
-import BentoGrid from '../components/BentoGrid.astro';
-import BentoCard from '../components/BentoCard.astro';
-import CaseStudy from '../components/CaseStudy.astro';
-import AgentDiagnostic from '../components/AgentDiagnostic.astro';
+
+const heroMeta = [
+    { label: 'Nasazení', value: '4 týdny' },
+    { label: 'Návratnost', value: '6 měsíců' },
+    { label: 'Záruka', value: 'Ve smlouvě' },
+    { label: 'Klientela', value: 'Omezený počet' },
+];
+
+const troubles = [
+    { num: '01', label: 'ADMINISTRATIVA', body: '12 hodin týdně. Faktury, reporty, lustrace.' },
+    { num: '02', label: 'KOMUNIKACE',     body: '200 e-mailů denně. 80 % stejných odpovědí.' },
+    { num: '03', label: 'KALENDÁŘ',       body: 'Půl dne v úterý jen na plánování.' },
+];
 ---
 
 <Layout
-    title="VELYOS — Pro firmy | Definujeme náskok."
-    description="Automatizujeme procesy, kde firma ztrácí čas — administrativa, dokumentace, propočty, komunikace, reporting. Vracíme čas, peníze a klid napříč obory."
+    title="VELYOS — Pro firmy"
+    description="Tým 5–30 lidí, kde administrativa pohlcuje obchodní čas. Postavíme řešení, které převezme rutinu — komunikaci, fakturaci, reporting. Vy se vrátíte ke klientům."
     active="firmy"
     primaryCta={{ label: 'Spustit diagnostiku', href: '/diagnostika' }}
     footerTagline="Pro firmy, které si vybírají, s kým porostou."
-    footerVariant="v0.2 preview · pro firmy"
 >
-    <Hero tagline="Znáte to — přijdete s plánem, den skončí v e-mailech.">
-        <h1 class="hero__title">Vaši lidé umí mnohem víc. <span class="accent">Rutina jim jen stojí v cestě.</span></h1>
-        <p class="hero__lead">
-            Každá firma má místa, kde jí utíkají peníze. Najdeme je, převezmeme je —
-            a vrátíme vaší firmě <strong>čas, peníze a klid</strong>, abyste se mohli soustředit na to,
-            co je opravdu důležité.
+
+    <!-- Sekce 1 — Hero -->
+    <HeroSticky tagline={`„Pro firmy, které rostou."`} meta={heroMeta}>
+        <h1 slot="heading">Vaši lidé umí mnohem víc. <em>Když jim to dovolíte.</em></h1>
+
+        <p slot="lead">
+            Tým 5–30 lidí. Hodiny týdně v administrativě. Naši agenti převezmou rutinu —
+            telefony, e-maily, fakturaci, reporting. Vy se vrátíte ke klientům.
         </p>
-        <div class="hero__ctas">
-            <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Chci vidět, kudy mi utíkají peníze</a>
-            <a href="#praxi" class="btn btn--ghost btn--lg">Kde to už funguje</a>
-        </div>
 
-        <div class="hero__meta">
-            <div class="hero__meta-item">
-                <span class="hero__meta-label">Nasazení</span>
-                <span class="hero__meta-value mono">4 <span class="gold">týdny</span></span>
-            </div>
-            <div class="hero__meta-item">
-                <span class="hero__meta-label">Návratnost</span>
-                <span class="hero__meta-value mono">6 <span class="gold">měsíců</span></span>
-            </div>
-            <div class="hero__meta-item">
-                <span class="hero__meta-label">Záruka</span>
-                <span class="hero__meta-value">Ve smlouvě</span>
-            </div>
-            <div class="hero__meta-item">
-                <span class="hero__meta-label">Klientela</span>
-                <span class="hero__meta-value">Omezený počet</span>
-            </div>
-        </div>
+        <Fragment slot="ctas">
+            <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku →</a>
+            <a href="/jednotlivci" class="btn btn--ghost btn-arrow btn--lg">Pro jednotlivce</a>
+        </Fragment>
+    </HeroSticky>
 
-        <Note maxWidth="60ch" style="margin-top:var(--space-8);">
-            Náš agent s vámi během pár minut projde vaši provozní realitu a ukáže, kde přicházíte o nejvíc času.
-            Bez prezentací. Bez obchodníka.
-        </Note>
-    </Hero>
-
+    <!-- Sekce 2 — Komu (3 reveal cards) -->
     <section>
         <div class="container">
             <SectionHead
-                eyebrow="· 02 · Komu VELYOS dává smysl"
-                title="Hotové řešení. Napojené na váš provoz."
+                eyebrow="· 01 · KOMU"
+                title="Tři situace, kdy vám pomůžeme."
             />
-            <div class="section-body">
-                <p>
-                    Dodáváme řešení, které napojíme na váš provoz a od prvního dne za vás pracuje.
-                    Vy nic nekódujete, nic neinstalujete, nic neudržujete — my stavíme, my provozujeme.
-                </p>
-                <p>Náš přístup funguje nejlépe ve firmách, kde se potkávají dvě věci:</p>
-            </div>
-
-            <Audience>
-                <AudienceCard
-                    title="Vysoký objem opakujících se interakcí"
-                    body="Zákaznická podpora, kvalifikace leadů, zpracování objednávek, interní reporting, odpovědi na standardní dotazy. Přesně ta práce, kterou AI zvládne rychleji a konzistentněji."
-                />
-                <AudienceCard
-                    title="Tým, který drží víc rolí najednou"
-                    body="Obchodník zároveň fakturuje, šéf odpovídá na support, asistentka reportuje. Administrativa ukrajuje hodiny, které by měly patřit klientům. VELYOS ji přebírá."
-                />
-                <AudienceCard
-                    title="Rozhodnutí nechat kompromisům konec"
-                    body="Pokud váš provoz profil nesplňuje, řekneme vám to rovnou při diagnostice — a ušetříme oběma stranám čas. Přijímáme omezený počet klientů ročně."
-                />
-            </Audience>
-        </div>
-    </section>
-
-    <section class="section--alt">
-        <div class="container">
-            <SectionHead
-                eyebrow="· 03 · Co se změnilo a proč to řešit teď"
-                title="Tři věci se na trhu posunuly a už se nevrátí zpátky."
-            />
-
             <Features cols={3}>
-                <Feature
-                    num="01 / RYCHLOST"
-                    title="Rychlost odpovědi rozhoduje o obchodu."
-                    body="Zákazník, který nedostane reakci do hodiny, odchází ke konkurenci. Ne proto, že by byl netrpělivý — proto, že konkurence mu odpověděla první."
+                <RevealCard
+                    num="01"
+                    title="Vysoký objem komunikace"
+                    body="Stovky e-mailů týdně, telefon, který nezvedáte. Agent zvládne 80 % bez vás. Složité případy předá člověku s připraveným kontextem."
                 />
-                <Feature
-                    num="02 / ADMINISTRATIVA"
-                    title="Administrativa roste rychleji než tým."
-                    body="S každým novým klientem, produktem a kanálem přibývá e-mailů, dotazů a reportů. Najmout dalšího člověka na rutinu je odsouvání problému."
+                <RevealCard
+                    num="02"
+                    title="Tým, který se topí v adminu"
+                    body="Faktury, reporting, kalendáře. Dvanáct hodin týdně mimo skutečnou práci. Auto-pilot to vrátí byznysu."
                 />
-                <Feature
-                    num="03 / BEZPEČNOST"
-                    title="Bezpečnost je strategické rozhodnutí."
-                    body="Kyberútoky na české firmy rostou meziročně v desítkách procent. Náklady na obnovu často převyšují dvouletou investici do moderní infrastruktury."
+                <RevealCard
+                    num="03"
+                    title="Růst, který naráží na strop"
+                    body="Nemůžete najímat dál, protože onboarding trvá měsíce. Agenti jsou zítra. Stejně rychle, stejně konzistentně, bez výpadků."
                 />
             </Features>
-
-            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-60); font-size:1.1rem; max-width:60ch;">
-                VELYOS řeší všechny tři posuny v jednom napojení, s jedním partnerem.
-            </p>
         </div>
     </section>
 
+    <!-- Sekce 3 — Co trápí (3 řádky, žádné karty) -->
     <section>
         <div class="container">
             <SectionHead
-                eyebrow="· 04 · Co konkrétně automatizujeme"
-                title="Rutina, která vaši firmu zdržuje. Najdeme ji. Převezmeme."
-                lead="Nejsme další software. Jsme tým, který vám to za vás postaví a provozuje. Procesů, kde firmy ztrácí čas, je šest typických. Ve vaší firmě najdeme ty vaše."
+                eyebrow="· 02 · CO TRÁPÍ"
+                title="Tři věci, které vám denně berou čas."
             />
-
-            <Features cols={3}>
-                <Feature num="01 / ADMINISTRATIVA" title="Fakturace, výkazy, hlášení." body="Data se sbírají sama ze systémů, které už používáte. Žádné přepisování z e-mailu do tabulky. Žádné dvojí zadávání. Žádné chyby z únavy." />
-                <Feature num="02 / DOKUMENTACE" title="Zprávy, karty, smlouvy, podklady." body="Tým nadiktuje nebo zadá vstupy. Systém vygeneruje strukturovaný dokument podle šablony — připravený ke kontrole a podpisu." />
-                <Feature num="03 / PROPOČTY & NABÍDKY" title="Kalkulace na pár kliků." body="Systém sáhne do ceníků, zohlední sazby a subdodavatele, vygeneruje PDF. Obchodník jen odsouhlasí a odešle. Místo hodin minuty." />
-                <Feature num="04 / KOMUNIKACE S KLIENTEM" title="Rutinní dotazy převezme systém." body="Standardní otázky, objednávky, potvrzení, připomínky — odpověď v sekundách, 24/7. Složité případy jdou na člověka s připraveným kontextem." />
-                <Feature num="05 / REPORTING" title="Čísla, která se sestavují sama." body="Týdenní reporty, měsíční uzávěrky, strategická data. Vidíte výsledky, ne hodiny práce za nimi. Rozhodujete podle čerstvých dat." />
-                <Feature num="06 / KVALIFIKACE POPTÁVEK" title="Příchozí leady se třídí samy." body="Lead přijde e-mailem, formulářem, telefonem. Systém ohodnotí potenciál, doplní data, předá tam, kde má reálnou šanci." />
-            </Features>
-
-            <Callout>
-                <strong>A co neautomatizujeme?</strong> Rozhodnutí. Vyjednávání. Vztahy s klíčovými klienty. Kreativní práci.
-                Všechno, kde má cenu lidský úsudek, zůstává u vás. My jen osvobodíme kapacitu, aby se mu mohl věnovat.
-            </Callout>
+            <dl class="line-list">
+                {troubles.map((t) => (
+                    <div class="line-list__row">
+                        <dt>
+                            <span class="line-list__num">{t.num}</span>
+                            <span class="line-list__label">{t.label}</span>
+                        </dt>
+                        <dd>{t.body}</dd>
+                    </div>
+                ))}
+            </dl>
         </div>
     </section>
 
-    <section class="section--alt" id="co-stavime">
-        <div class="container">
-            <SectionHead
-                eyebrow="· 05 · Co stavíme"
-                title="Máte svůj systém? Napojíme se. Nemáte? Postavíme všechno."
-                lead="Nejste závislí na pěti různých agenturách. Jeden partner. Jedna smlouva. Od prvního logu po poslední tlačítko na webu."
-            />
-
-            <Duo
-                leftEyebrow="← Máte už něco"
-                leftTitle="Napojíme se na to, co funguje."
-                rightEyebrow="→ Nebo od nuly"
-                rightTitle="Postavíme vám všechno."
-            >
-                <Fragment slot="left">
-                    <p>Máte web? CRM? E-maily? Marketing?</p>
-                    <p>Nic nebouráme. Přidáme AI a propojíme to, co teď běží odděleně.</p>
-                </Fragment>
-                <Fragment slot="right">
-                    <p>Začínáte? Přecházíte? Chcete nový směr?</p>
-                    <p>Uděláme vám web, značku, AI agenty, propojení i propagaci. Od A do Z.</p>
-                </Fragment>
-            </Duo>
-
-            <Features cols={3}>
-                <Feature num="01 / PROCESY" title="Zautomatizujeme, co vás zdržuje." body="Propočty. Fakturace. Reporty. Schvalování. Cokoli se u vás opakuje a dá se to popsat pravidly — převezmeme to." />
-                <Feature num="02 / WEB & BRAND" title="Postavíme vám web a značku." body="Stránky, které prodávají. Logo, barvy a vizuál, který si lidi zapamatují." />
-                <Feature num="03 / CRM & INTEGRACE" title="Propojíme to s vaším systémem." body="HubSpot, Pipedrive, Salesforce, nebo vlastní. Data si sedí sama na místo." />
-                <Feature num="04 / AI AGENTI" title="Nasadíme AI, co mluví místo vás." body="Hlasový agent na telefonu. Chatbot na webu. E-mailový asistent. Tam, kde se vyplatí." />
-                <Feature num="05 / PROPAGACE" title="Postaráme se, aby o vás věděli." body="SEO. Google & Meta reklama. LinkedIn. Cold outreach. Ti správní klienti." />
-                <Feature num="06 / DATA" title="Ukážeme vám, kde utíká čas." body="Dashboard, co dává smysl. Vidíte, co funguje, co ne, a co dělat dál." />
-            </Features>
-
-            <Callout>
-                <strong>A co po nasazení?</strong>
-                Neodejdeme s hotovou složkou a tím nekončíme. <strong>Proškolíme váš tým</strong>, jak s nasazenými nástroji pracovat — AI asistenty, automatizace, reporting.
-                Dokud si nebudete jistí, že to zvládnete sami, jsme s vámi. Pak zůstaneme v dohledu, ne v cestě.
-            </Callout>
-        </div>
-    </section>
-
-    <section class="section--editorial" id="praxi">
-        <div class="container">
-            <SectionHead
-                eyebrow="· 06 · Obory, kde VELYOS pomáhá"
-                title="Stejný přístup. Jiné firmy. Stejný výsledek."
-                lead="Principy se nemění — přizpůsobí se vašemu provozu. Níže uvedená čísla jsou <strong>cíle typických nasazení</strong> — to, co umíme dodat. Konkrétní výsledky pro vaši firmu probereme po diagnostice."
-            />
-
-            <BentoGrid>
-                <BentoCard span={7} accent="orange" num="Zdravotnictví" title={`Dokumentace z <span style="color:var(--velocity-orange);">25&nbsp;min na 4&nbsp;min</span> na pacienta.`} body="Lékař nadiktuje shrnutí. Systém strukturuje zdravotní kartu, přiřadí kódy MKN-10, vyplní podklad pro pojišťovnu. Lékař schválí a odešle. Den má o dvě hodiny víc pro pacienty." />
-                <BentoCard span={5} accent="gold" num="Stavebnictví" title={`Propočet nabídky ze <span style="color:var(--velocity-orange);">4&nbsp;hodin na 20&nbsp;minut</span>.`} body="Obchodník zadá zakázku. Systém sáhne do ceníků, zohlední subdodavatele a sazby, vygeneruje PDF. Počet vyřízených poptávek denně se zdvojnásobí." />
-                <BentoCard span={5} accent="gold" num="Reality" title={`Lead <span style="color:var(--velocity-orange);">do hodiny</span>. I&nbsp;o víkendu.`} body="Poptávka přijde přes portál nebo telefon. Systém ji ohodnotí, doplní údaje z katastru, navrhne odpovídající nemovitosti. Makléř reaguje dřív, než konkurence zvedne telefon." />
-                <BentoCard span={7} accent="orange" num="Služby (advokáti, poradci, účetní)" title={`Příprava ke klientovi za <span style="color:var(--velocity-orange);">15&nbsp;minut</span>.`} body="Systém projde e-maily, dokumenty, historii klienta. Připraví briefing: co řešíte, kam pokračujete, co klient přinese na stůl. Přijdete připravení, ne zaskočení." />
-            </BentoGrid>
-
-            <Note>
-                Případové studie poskytneme kdykoliv na požádání. Soukromí našich klientů je pro nás zásadní —
-                všechny reference proto máme anonymizované.
-            </Note>
-        </div>
-    </section>
-
-    <section class="case-studies-section">
-        <div class="container">
-            <SectionHead
-                eyebrow="· 07 · Vzorky z praxe"
-                title="Tři anonymní příklady, kde jsme vrátili čas."
-                lead="Jelikož si velice vážíme soukromí našich zákazníků, máme vše anonymizované."
-            />
-
-            <div class="case-studies" data-stagger>
-                <CaseStudy
-                    industry="Zdravotnictví"
-                    location="Praha"
-                    size="12 lékařů"
-                    headline={`Dermatologická klinika: dokumentace z 25 na&nbsp;4 minuty na pacienta.`}
-                    metricValue="−84 %"
-                    metricLabel="administrativa na pacienta za 6 týdnů po&nbsp;nasazení"
-                    outcome="Lékař nadiktuje shrnutí, systém strukturuje zdravotní kartu a pojišťovací podklad. 2 hodiny denně zpátky u pacientů místo u klávesnice."
-                    anonymizedLabel="Anonymizováno"
-                />
-                <CaseStudy
-                    industry="Stavebnictví"
-                    location="Morava"
-                    size="sales tým 6 lidí"
-                    headline={`Stavební skupina: nabídka ze&nbsp;4&nbsp;hodin na&nbsp;20&nbsp;minut.`}
-                    metricValue="2,1×"
-                    metricLabel="více zpracovaných poptávek denně"
-                    outcome="Obchodník zadá zakázku, systém sáhne do ceníků a vygeneruje PDF. Závěrem: dvojnásobný throughput bez nových lidí."
-                    anonymizedLabel="Anonymizováno"
-                />
-                <CaseStudy
-                    industry="Služby"
-                    location="Brno + Praha"
-                    size="14 profesionálů"
-                    headline={`Advokátní kancelář: klient-brief z&nbsp;hodiny na&nbsp;15&nbsp;minut.`}
-                    metricValue="11 h"
-                    metricLabel="zpátky každému profesionálovi týdně"
-                    outcome="Systém projde e-maily, dokumenty a historii klienta. Briefing přijde do schránky den před schůzkou — příprava místo reakce."
-                    anonymizedLabel="Anonymizováno"
-                />
-            </div>
-        </div>
-    </section>
-
+    <!-- Sekce 4 — Co stavíme (4 reveal cards) -->
     <section>
         <div class="container">
             <SectionHead
-                eyebrow="· 08 · Investice"
-                title="Každý projekt je jiný. Cena taky."
-                lead="Nemáme veřejný ceník. Každá firma má jiný rozsah, jiné systémy, jinou prioritu. Konkrétní investici probereme osobně — až bude jasné, co pro vás stavíme a jaká návratnost dává smysl."
+                eyebrow="· 03 · CO STAVÍME"
+                title="Čtyři oblasti. Žádný 360° servis."
+                lead="Děláme jen to, co umíme dotáhnout. Pokud potřebujete něco mimo, řekneme dopředu — a doporučíme dál."
             />
-
-            <div style="max-width:var(--container-narrow); margin-top:var(--space-8); display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:var(--space-8);" data-stagger>
-                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--velocity-orange); border-radius:var(--radius);">
-                    <span class="eyebrow" style="color:var(--velocity-orange); display:block; margin-bottom:var(--space-3);">Co dostanete vždy</span>
-                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:var(--space-2); color:var(--black-90); line-height:1.5; font-size:0.98rem;">
-                        <li><strong>Fixní cena před startem</strong> — žádné skryté licence, žádné příplatky</li>
-                        <li><strong>Dvousložkový model</strong> — jednorázová implementace + měsíční provoz</li>
-                        <li><strong>Předvídatelný růst</strong> — měsíční náklady rostou s rozsahem</li>
-                        <li><strong>Krátká výpovědní lhůta</strong> — vázat vás nechceme</li>
-                    </ul>
-                </div>
-                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--signal-gold); border-radius:var(--radius);">
-                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Jak cenu zjistíte</span>
-                    <p style="color:var(--black-90); line-height:1.6; font-size:0.98rem; margin:0 0 var(--space-4);">
-                        Spusťte <a href="/diagnostika" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30); font-weight:500;">diagnostiku</a>
-                        — agentem nebo formulářem. Do 24 hodin vám specialista zavolá a projdete konkrétní rozsah.
-                    </p>
-                    <p style="color:var(--black-60); line-height:1.6; font-size:0.9rem; margin:0;">
-                        První hovor je vždy zdarma a bez závazku.
-                    </p>
-                </div>
-            </div>
-
-            <GrantBlock />
+            <Features cols={2}>
+                <RevealCard
+                    num="01"
+                    title="KOMUNIKACE"
+                    body="E-mail asistent, telefonní agent, chat na webu. 24/7. Standardní dotazy bez vás, složité s plně připraveným kontextem."
+                />
+                <RevealCard
+                    num="02"
+                    title="ADMINISTRATIVA"
+                    body="Fakturace, reporting, dokumenty, hlášení. Auto-pilot. Žádné dvojí zadávání, žádné chyby z únavy."
+                />
+                <RevealCard
+                    num="03"
+                    title="CRM & DATA"
+                    body="HubSpot, Pipedrive, Salesforce nebo vlastní systém. Vše na jednom místě, dashboard, který dává smysl."
+                />
+                <RevealCard
+                    num="04"
+                    title="INTEGRACE"
+                    body="Slack, Notion, Google Workspace, Microsoft 365. Co máte, propojíme. Nic nebouráme, nic neměníme zadarmo."
+                />
+            </Features>
         </div>
     </section>
 
-    <RoiCalculator lang="cs" />
-
-    <section class="section--alt">
+    <!-- Sekce 5 — Jak to děláme (3 kroky, sjednoceno) -->
+    <section>
         <div class="container">
             <SectionHead
-                eyebrow="· 10 · Cesta k nasazení"
-                title="Pět kroků. Žádné překvapení."
+                eyebrow="· 04 · JAK TO DĚLÁME"
+                title="Tři kroky. Žádné pilotní fáze."
+                lead="Začínáme tím, že posloucháme. Končíme tím, že to běží."
             />
-
-            <Steps cols={5}>
-                <Step num="01 · DIAGNOSTIKA" title="Projdeme vaše procesy." body="Vyčíslíme, kde přicházíte o nejvíc času a peněz. Výstupem je konkrétní kalkulace." />
-                <Step num="02 · NÁVRH" title="Navrhneme řešení na míru." body="Co automatizujeme, jak to napojíme, co to bude stát. Konkrétní plán, ne deck." />
-                <Step num="03 · INTEGRACE" title="Napojíme VELYOS na vaše systémy." body="Typicky v řádu dnů, bez narušení provozu. Váš tým mezitím dělá, co umí." />
-                <Step num="04 · ŠKOLENÍ" title="Proškolíme váš tým." body="Ukážeme, jak s AI a automatizacemi pracovat. Dokud si nebudete jistí, jsme u toho." />
-                <Step num="05 · PROVOZ" title="Vy se soustředíte na byznys." body="My dohlížíme na to, aby systém každý měsíc fungoval lépe než ten předchozí." />
+            <Steps cols={3}>
+                <Step num="01" title="POSLOUCHÁME" body="Diagnostika. Pochopíme, co vás brzdí." />
+                <Step num="02" title="STAVÍME"     body="Návrh, integrace, nasazení. Do 4 týdnů." />
+                <Step num="03" title="STARÁME SE"  body="Provoz, dohled, ladění. Dokud to dává smysl." />
             </Steps>
         </div>
     </section>
 
-    <AgentDiagnostic agentId="cu9gllbBtpZWU6CuJXky" />
+    <!-- Sekce 6 — Investice (kompaktní) -->
+    <section>
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 05 · INVESTICE"
+                title="Fixní cena. Smluvně. Bez překvapení."
+            />
+            <div class="invest-block">
+                <p>
+                    Cena se odvíjí od rozsahu. Fixní balíček plus měsíční provoz.
+                    Nasazení 4 týdny, garance ROI 6 měsíců — pokud ne, vrátíme.
+                </p>
+                <p>Granty a dotace prozkoumáme za vás. Z přípravy až po čerpání.</p>
+                <p class="invest-block__cta">
+                    <a href="/diagnostika">Konkrétní cenu zjistíte v diagnostice →</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekce 7 — Příběh klienta (1 reveal full-width) -->
+    <section>
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 06 · PŘÍKLAD Z PRAXE"
+                title="Jak to vypadá, když to běží."
+            />
+
+            <article class="case-reveal">
+                <button class="case-reveal__btn" type="button" aria-expanded="false">
+                    <span class="case-reveal__eyebrow">· Anonymizováno · zdravotnictví</span>
+                    <h3 class="case-reveal__title">Síť 4 dermatologických ordinací. <span class="case-reveal__metric">−84 %</span> administrativy na pacienta.</h3>
+                    <p class="case-reveal__teaser">
+                        Před nasazením: 3,5 osoby na recepci. Po: agent vyřídí 84 % komunikace, lékař diktuje, systém strukturuje zdravotní kartu.
+                    </p>
+                    <span class="case-reveal__more">Více o případu →</span>
+                    <div class="case-reveal__detail">
+                        <p>
+                            <strong>Před nasazením.</strong> Recepce zvedala telefon, objednávala, posílala
+                            připomínky, vyřizovala výsledky. Lékař diktoval do mikrofonu a sestra to v pauzách
+                            přepisovala do karty. Den končil tím, že někdo seděl o hodinu déle.
+                        </p>
+                        <p>
+                            <strong>Co jsme postavili.</strong> Hlasový agent na recepci pro standardní dotazy
+                            a objednávání. E-mailový asistent pro výsledky a připomínky. Diktovací pipeline,
+                            která z nahrávky lékaře vygeneruje strukturovanou kartu, kódy MKN-10 a podklad pro
+                            pojišťovnu — připravené ke kontrole a podpisu.
+                        </p>
+                        <p>
+                            <strong>Stav po šesti týdnech.</strong> Recepce uvolněna na klientskou péči, ne na
+                            administrativu. Lékař má dvě hodiny denně zpátky u pacientů. Doba dokumentace na
+                            jednoho pacienta klesla z 25 minut na 4. ROI první kvartál.
+                        </p>
+                    </div>
+                </button>
+            </article>
+        </div>
+    </section>
+
+    <!-- Sekce 8 — Final CTA -->
+    <CtaBand
+        id="zacit"
+        eyebrow="· Začněme"
+        title="Přijímáme omezený počet firem ročně. Diagnostika rozhodne."
+        lead="Žádný obchodník. Žádná prezentace. Krátký rozhovor — a víte, jestli vám pomůžeme."
+        directPrefix="Nebo napište přímo:"
+    >
+        <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku →</a>
+    </CtaBand>
+
 </Layout>
+
+<style>
+    /* Sekce 3 — line-list (3 řádky bez karet) */
+    .line-list {
+        margin: var(--space-12) 0 0;
+        padding: 0;
+    }
+
+    .line-list__row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+        gap: var(--space-6);
+        align-items: baseline;
+        padding: var(--space-5) 0;
+        border-bottom: 1px solid var(--border-soft);
+    }
+
+    .line-list__row:first-of-type {
+        border-top: 1px solid var(--border-soft);
+    }
+
+    .line-list__row dt {
+        display: flex;
+        gap: var(--space-3);
+        align-items: baseline;
+        margin: 0;
+    }
+
+    .line-list__num {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    .line-list__label {
+        font-family: var(--font-mono);
+        font-size: 0.92rem;
+        letter-spacing: 0.06em;
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    .line-list__row dd {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+
+    @media (hover: hover) {
+        .line-list__row:hover .line-list__num { color: var(--accent); }
+    }
+
+    @media (max-width: 720px) {
+        .line-list__row { grid-template-columns: 1fr; gap: var(--space-2); padding: var(--space-4) 0; }
+    }
+
+    /* Sekce 6 — Investice */
+    .invest-block {
+        margin-top: var(--space-8);
+    }
+
+    .invest-block p {
+        font-size: 1.05rem;
+        line-height: 1.65;
+        color: var(--text-secondary);
+        margin: 0 0 var(--space-4);
+        max-width: 60ch;
+    }
+
+    .invest-block__cta {
+        margin-top: var(--space-6) !important;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+    }
+
+    .invest-block__cta a {
+        color: var(--accent);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s ease;
+    }
+
+    .invest-block__cta a:hover {
+        border-bottom-color: var(--accent);
+    }
+
+    /* Sekce 7 — Case reveal (full-width) */
+    .case-reveal {
+        margin-top: var(--space-10);
+    }
+
+    .case-reveal__btn {
+        width: 100%;
+        text-align: left;
+        background: var(--surface-card);
+        border: 1px solid var(--border-soft);
+        border-radius: var(--radius-lg);
+        padding: var(--space-10) var(--space-10);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        font-family: inherit;
+        color: inherit;
+        cursor: pointer;
+        transition: border-color 0.25s ease,
+                    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.25s ease;
+    }
+
+    .case-reveal__btn:hover {
+        border-color: var(--border-emphasis);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 40px rgba(11, 15, 25, 0.05);
+    }
+
+    .case-reveal__eyebrow {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+    }
+
+    .case-reveal__title {
+        font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--text-primary);
+        margin: 0;
+        line-height: 1.25;
+    }
+
+    .case-reveal__metric {
+        color: var(--accent);
+        font-weight: 700;
+    }
+
+    .case-reveal__teaser {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        margin: 0;
+        max-width: 64ch;
+    }
+
+    .case-reveal__more {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        color: var(--accent);
+        margin-top: var(--space-2);
+    }
+
+    .case-reveal__detail {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.4s ease,
+                    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .case-reveal__detail p {
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--text-secondary);
+        margin: 0 0 var(--space-3);
+    }
+
+    .case-reveal__detail p:last-child { margin-bottom: 0; }
+
+    @media (hover: hover) {
+        .case-reveal__btn:hover .case-reveal__detail,
+        .case-reveal__btn[aria-expanded="true"] .case-reveal__detail {
+            max-height: 800px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: var(--space-4);
+        }
+        .case-reveal__btn:hover .case-reveal__more,
+        .case-reveal__btn[aria-expanded="true"] .case-reveal__more {
+            opacity: 0;
+        }
+    }
+
+    @media (hover: none) {
+        .case-reveal__btn[aria-expanded="true"] .case-reveal__detail {
+            max-height: 800px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: var(--space-4);
+        }
+        .case-reveal__btn[aria-expanded="true"] .case-reveal__more {
+            display: none;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .case-reveal__btn,
+        .case-reveal__detail { transition: none !important; }
+        .case-reveal__btn:hover { transform: none !important; }
+        .case-reveal__detail {
+            max-height: none;
+            opacity: 1;
+            transform: none;
+            margin-top: var(--space-4);
+        }
+        .case-reveal__more { display: none; }
+    }
+</style>
+
+<script>
+    // Tap-to-expand pro case-reveal na non-hover zařízeních
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (!target || !(target instanceof Element)) return;
+        const btn = target.closest('.case-reveal__btn');
+        if (!btn) return;
+        const hoverable = window.matchMedia('(hover: hover)').matches;
+        if (hoverable) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    });
+</script>
