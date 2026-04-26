@@ -1,243 +1,389 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import HeroSticky from '../components/HeroSticky.astro';
 import SectionHead from '../components/SectionHead.astro';
-import Audience from '../components/Audience.astro';
-import AudienceCard from '../components/AudienceCard.astro';
 import Features from '../components/Features.astro';
-import Feature from '../components/Feature.astro';
-import Callout from '../components/Callout.astro';
-import Timeline from '../components/Timeline.astro';
-import TimelineRow from '../components/TimelineRow.astro';
+import RevealCard from '../components/RevealCard.astro';
 import Steps from '../components/Steps.astro';
 import Step from '../components/Step.astro';
 import CtaBand from '../components/CtaBand.astro';
-import Note from '../components/Note.astro';
+
+const heroMeta = [
+    { label: 'Nasazení', value: '4 týdny' },
+    { label: 'Návratnost', value: '6 měsíců' },
+    { label: 'Záruka', value: 'Ve smlouvě' },
+    { label: 'Klientela', value: 'Omezený počet' },
+];
+
+const day = [
+    {
+        time: '07:00',
+        label: 'RÁNO',
+        teaser: 'Agent prošel přes noc 47 e-mailů. Pět vyžaduje vás.',
+        body: 'Standardní potvrzení a faq vyřídil bez vás. Čtyři návrhy odpovědí leží v draftu — schválíte v MHD. Jeden e-mail označil jako urgentní a poslal SMS upozornění.',
+    },
+    {
+        time: '12:00',
+        label: 'OBĚD',
+        teaser: 'Tři klientské hovory naplánované, brief připraven.',
+        body: 'Agent přesunul jednu schůzku, která narážela na konflikt. Před každým hovorem máte v telefonu krátký brief: kdo volá, co řešíte, jaký je kontext z posledních e-mailů.',
+    },
+    {
+        time: '15:00',
+        label: 'ODPOLEDNE',
+        teaser: 'Faktury vystavené, follow-upy odeslané.',
+        body: 'Týdenní fakturace proběhla autonomně. Follow-up e-maily klientům, kteří se ozvali minulý týden, odešly s personalizovaným textem ve vašem stylu. Nezbylo nic na večer.',
+    },
+    {
+        time: '19:00',
+        label: 'VEČER',
+        teaser: 'Telefon ticho. Agent pořád pracuje.',
+        body: 'Hlasový agent přijímá hovory, třídí je, nabízí termíny. Klient dostane profesionální reakci, vy jste u večeře. Naléhavé případy jdou na váš mobil — zbytek čeká do rána.',
+    },
+];
 ---
 
 <Layout
-    title="VELYOS — Pro jednotlivce | Definujeme náskok."
-    description="Osobní AI agent, který převezme komunikaci, kalendář, rešerše a telefon. Vrátíme vám desítky hodin měsíčně. Bez dlouhodobé vazby."
+    title="VELYOS — Pro jednotlivce"
+    description="Osobní agent pro advokáty, doktory, konzultanty a realitní makléře. Převezme komunikaci, kalendář a rešerše. Den se najednou vejde."
     active="jednotlivci"
     primaryCta={{ label: 'Spustit diagnostiku', href: '/diagnostika' }}
     footerTagline="Pro ty, kteří už nemají čas na ztrátu času."
-    footerVariant="v0.2 preview · pro jednotlivce"
 >
-    <Hero tagline="Pro jednotlivce · Definujeme náskok.">
-        <h1 class="hero__title">Váš den se nevejde do 24 hodin. <span class="accent">My vám část dne vrátíme.</span></h1>
-        <p class="hero__lead">
-            Ráno otevřete notebook a do oběda jste stihli všechno, kromě toho, proč jste vlastně začínali podnikat.
-            E-maily, telefony, přehazování schůzek, hledání podkladů. Kalendář se posunul. Káva vystydla.
-            VELYOS staví osobního AI agenta, který převezme rutinu a vrátí vám hodiny.
+
+    <!-- Sekce 1 — Hero -->
+    <HeroSticky tagline={`„Pro lidi, kteří dělají všechno sami."`} meta={heroMeta}>
+        <h1 slot="heading">Váš den se nevejde do <em>24 hodin</em>. Zatím.</h1>
+
+        <p slot="lead">
+            Jeden mozek. E-mail, kalendář, telefon, klienti, daně. Agent převezme to,
+            co se opakuje. Den se najednou vejde.
         </p>
-        <div class="hero__ctas">
-            <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Zjistit, kolik času mi VELYOS vrátí</a>
-            <a href="#den" class="btn btn--ghost btn--lg">Den s agentem</a>
-        </div>
-        <Note maxWidth="60ch" style="margin-top:var(--space-10);">
-            Krátký rozhovor s naším agentem. Zjistíme, kde vám čas nejvíc uniká. Bez obchodníka, bez prezentace.
-        </Note>
-    </Hero>
 
+        <Fragment slot="ctas">
+            <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku →</a>
+            <a href="/firmy" class="btn btn--ghost btn-arrow btn--lg">Pro firmy</a>
+        </Fragment>
+    </HeroSticky>
+
+    <!-- Sekce 2 — Pro koho je agent (3 reveal cards) -->
     <section>
         <div class="container">
             <SectionHead
-                eyebrow="· 02 · Pro koho agent pracuje"
-                title="Služba, ne aplikace ke stažení."
+                eyebrow="· 01 · PRO KOHO"
+                title="Tři typy lidí, kterým to dává největší smysl."
             />
-            <div class="section-body">
-                <p>
-                    Dodáváme hotového osobního agenta, kterého napojíme na vaše nástroje a naučíme váš styl.
-                    Vy nic nenastavujete — jen začnete mít den delší.
-                </p>
-                <p>
-                    Naši klienti mají společného jmenovatele:
-                    <strong>jejich hodina má vysokou cenu, ale značnou část dne tráví věcmi, které tuto cenu negenerují.</strong>
-                </p>
-            </div>
-
-            <Audience>
-                <AudienceCard
-                    title="Majitelé firem a jednatelé"
-                    body="Mají tým, ale operativní detail stále končí na jejich stole. E-maily, schvalování, koordinace — hodiny, které by měly patřit strategii a růstu."
+            <Features cols={3}>
+                <RevealCard
+                    num="01"
+                    title="Advokát · Doktor · Konzultant"
+                    body="Fakturační sazba je vysoká, ale polovinu dne netráví u klienta. Příprava, rešerše, administrativa — práce, která s odborností nesouvisí. Agent to převezme."
                 />
-                <AudienceCard
-                    title="Konzultanti, poradci, advokáti"
-                    body="Fakturační sazba je vysoká, ale polovinu dne netráví u klienta. Tráví ji přípravou, rešeršemi, administrativou — prací, která s odborností nesouvisí."
+                <RevealCard
+                    num="02"
+                    title="Realitní makléř"
+                    body="V realitách vyhrává rychlost, ne kvalifikace. Lead přijde o víkendu, vy jste s rodinou — agent ho ohodnotí, doplní data z katastru a odpoví dřív, než konkurence zvedne telefon."
                 />
-                <AudienceCard
-                    title="Obchodníci a realitní profesionálové"
-                    body="Ztrácejí příležitosti ne proto, že by neuměli prodávat, ale proto, že nestihli odpovědět první. V jejich oboru vyhrává rychlost, ne kvalifikace."
+                <RevealCard
+                    num="03"
+                    title="Majitel malé firmy bez týmu"
+                    body="Dělali jste obchod, marketing, fakturaci, podporu. Najmout někoho je nákladné a dlouhé. Agent je zítra, stejně rychle, stejně konzistentně."
                 />
-            </Audience>
-
-            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-60); font-size:1.1rem; max-width:60ch;">
-                Pokud se v některém profilu poznáváte, čtěte dál. Pokud ne — řekneme vám to rovnou.
-            </p>
+            </Features>
         </div>
     </section>
 
-    <section class="section--alt">
+    <!-- Sekce 3 — Co dělá agent (3 reveal cards) -->
+    <section>
+        <div class="container">
+            <SectionHead
+                eyebrow="· 02 · CO DĚLÁ"
+                title="Vrátí vám tři věci."
+            />
+            <Features cols={3}>
+                <RevealCard
+                    num="01"
+                    title="KOMUNIKACE"
+                    body="E-maily, chat, telefon. Agent odpovídá ve vašem stylu, třídí podle priority, filtruje žádosti o schůzku, navrhuje odpovědi na složitější zprávy. Vy schvalujete."
+                />
+                <RevealCard
+                    num="02"
+                    title="KALENDÁŘ"
+                    body="Plánování, přesouvání, follow-up, briefing před schůzkou. Agent chrání vaše soustředěné bloky a posílá připomínky — bez vás, ale s vámi v centru."
+                />
+                <RevealCard
+                    num="03"
+                    title="REŠERŠE & ADMIN"
+                    body="Hledá, shrnuje, fakturuje, vyřizuje rutinní administrativu. Půldenní práce je hotová, než dopijete ranní kávu."
+                />
+            </Features>
+        </div>
+    </section>
+
+    <!-- Sekce 4 — Den s agentem (Timeline reveal) -->
+    <section id="den">
         <div class="container container--narrow">
             <SectionHead
-                eyebrow="· 03 · Proč teď, ne později"
-                title="Svět se zrychlil a tolerance k čekání klesla na nulu."
+                eyebrow="· 03 · DEN"
+                title="Jak vypadá běžný den, když agent pracuje s vámi."
+                lead="Ilustrativní scénář. Konkrétní čísla u vás budou jiná, princip zůstává."
             />
-            <div class="section-body">
-                <p>
-                    Klient, který nedostane odpověď do hodiny, odchází k někomu, kdo ji dá.
-                    Partner, který čeká na e-mail tři dny, si najde jiného.
-                    Příležitost, kterou nezachytíte první, se nevrátí — protože ji zachytil někdo jiný.
-                </p>
-                <p>
-                    A přitom drtivá většina denní zátěže špičkového profesionála <strong>není odborná práce.</strong>
-                    Je to komunikace, plánování, rešerše a administrativa. Přesně ty oblasti, kde AI dnes pracuje
-                    rychleji a spolehlivěji než lidský asistent — a na úrovni, kterou byste si dříve nemohli dovolit.
-                </p>
-                <p class="italic-serif" style="color:var(--signal-gold); font-size:1.2rem; margin-top:var(--space-6);">
-                    „Otázka není, jestli AI do vašeho dne vstoupí. Otázka je, jestli vám bude sloužit, nebo jestli s ní bude pracovat někdo jiný ve vašem oboru dřív."
-                </p>
-            </div>
+
+            <ol class="day-timeline">
+                {day.map((d, i) => (
+                    <li class="day-timeline__item">
+                        <button class="day-timeline__btn" type="button" aria-expanded="false">
+                            <span class="day-timeline__time">{d.time}</span>
+                            <div class="day-timeline__content">
+                                <span class="day-timeline__label">· {d.label}</span>
+                                <span class="day-timeline__teaser">{d.teaser}</span>
+                                <p class="day-timeline__body">{d.body}</p>
+                            </div>
+                            <span class="day-timeline__dot" aria-hidden="true"></span>
+                            {i < day.length - 1 && <span class="day-timeline__line" aria-hidden="true"></span>}
+                        </button>
+                    </li>
+                ))}
+            </ol>
         </div>
     </section>
 
+    <!-- Sekce 5 — Jak to děláme (3 kroky, sjednoceno) -->
     <section>
         <div class="container">
             <SectionHead
-                eyebrow="· 04 · Co konkrétně váš agent dělá"
-                title="Systém, který pracuje autonomně ve vaší rutině. Vy zasahujete jen tam, kde chcete."
+                eyebrow="· 04 · JAK TO DĚLÁME"
+                title="Tři kroky. Žádné pilotní fáze."
+                lead="Začínáme tím, že posloucháme. Končíme tím, že to běží."
             />
-
-            <Features cols={2}>
-                <Feature num="01 / KOMUNIKACE" title="Převezme komunikaci." body="Třídí e-maily podle priority, odpovídá na standardní dotazy ve vašem tónu, filtruje žádosti o schůzku, připravuje návrhy odpovědí na složitější zprávy. Vy schvalujete. On vykonává." />
-                <Feature num="02 / KALENDÁŘ" title="Řídí váš kalendář." body="Domlouvá schůzky, přesouvá je při konfliktu, chrání vaše soustředěné bloky, posílá připomínky a připravuje briefing před každým hovorem." />
-                <Feature num="03 / REŠERŠE" title="Dělá přípravu a rešerše." body="Shrnuje dlouhé dokumenty, hledá informace, připravuje podklady. Práce, na které byste strávili půl dne, je hotová, než dopijete ranní kávu." />
-                <Feature num="04 / TELEFON" title="Zvedne telefon, když nemůžete." body="Hlasový agent přijme hovor, zjistí důvod, nabídne termín nebo předá informaci. Váš klient dostane profesionální reakci — i když zrovna sedíte na jednání." />
-            </Features>
-
-            <Callout>
-                <strong style="color:var(--velocity-black);">Co agent nedělá:</strong>
-                Nerozhoduje za vás. Nedělá strategická rozhodnutí, nepodepisuje smlouvy, nevyjednává podmínky.
-                Je to extrémně schopný exekutor rutiny — ne náhrada vašeho úsudku.
-            </Callout>
-        </div>
-    </section>
-
-    <section class="section--editorial" id="co-stavime">
-        <div class="container">
-            <SectionHead
-                eyebrow="· 05 · Co umíme navíc"
-                title="Osobní agent není vše. Postavíme vám i to ostatní."
-                lead="Nemáte ještě osobní web? Chybí vám LinkedIn strategie? Potřebujete značku, která funguje? Uděláme to. Jeden partner. Žádné hádání s pěti agenturami."
-            />
-
-            <Features cols={2}>
-                <Feature num="01 / OSOBNÍ ZNAČKA" title="Navrhneme, jak působíte." body="Logo. Barvy. Tón. Fotka. Profesionální identita, která vás předstihne dřív, než vejdete do dveří." />
-                <Feature num="02 / WEB & LINKEDIN" title="Postavíme vám prezentaci." body="Osobní web a LinkedIn profil, co otevírá dveře. Lidi si vás najdou — a už se neztratí." />
-            </Features>
-
-            <Callout>
-                <strong>A pokud řídíte firmu?</strong>
-                Uděláme to samé pro ni — web, AI agenty, CRM, propagaci. <a href="/firmy" style="color:var(--velocity-orange); border-bottom:1px solid var(--velocity-orange);">Podívejte se na řešení pro firmy →</a>
-            </Callout>
-        </div>
-    </section>
-
-    <section class="section--alt" id="den">
-        <div class="container container--narrow">
-            <SectionHead
-                eyebrow="· 06 · Jak to vypadá v praxi"
-                title="Ilustrační den u typického klienta."
-                lead="Následující scénář je ilustrativní — ukazuje, jak vypadá běžný pracovní den s osobním agentem. Konkrétní čísla u vás budou jiná; princip zůstává."
-            />
-
-            <Timeline>
-                <TimelineRow time="07:00">
-                    Agent za noc roztřídil <strong>34 e-mailů</strong>. 8 vyřídil sám (potvrzení schůzek, FAQ klientů).
-                    4 připravil k vaší odpovědi s navrženým textem. Zbytek archivoval.
-                </TimelineRow>
-                <TimelineRow time="08:30">
-                    Před první schůzkou máte v telefonu briefing: <strong>kdo volá, co řešíte, jaký je kontext</strong> z posledních e-mailů.
-                </TimelineRow>
-                <TimelineRow time="11:00">
-                    Klient zavolal, když jste byli na jednání. Hlasový agent zjistil, že jde o posunutí termínu,
-                    <strong>nabídl dva alternativní sloty</strong> z vašeho kalendáře, klient si vybral.
-                </TimelineRow>
-                <TimelineRow time="14:00">
-                    Potřebujete podklady ke schůzce zítra. Agent připravil <strong>shrnutí tří dokumentů</strong> a vytáhl klíčové body.
-                </TimelineRow>
-                <TimelineRow time="17:00">
-                    <strong>Bilance dne: 2,5 hodiny ušetřeného času.</strong> Tři schůzky, kde jste přišli připravení.
-                    Jeden zachráněný klient, který by jinak čekal na odpověď do zítřka.
-                </TimelineRow>
-            </Timeline>
-
-            <Note>
-                Případové studie poskytneme kdykoliv na požádání. Soukromí našich klientů je pro nás zásadní —
-                všechny reference proto máme anonymizované.
-            </Note>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <SectionHead
-                eyebrow="· 07 · Investice"
-                title="Individuální, jako váš den."
-                lead="Nemáme veřejný ceník. Každý agent se staví jinak — podle vašich nástrojů, stylu, objemu a toho, co má převzít. Konkrétní investici probereme osobně, až budeme vědět, na čem stavíme."
-            />
-
-            <div style="max-width:var(--container-narrow); margin-top:var(--space-8); display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:var(--space-8);" data-stagger>
-                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--velocity-orange); border-radius:var(--radius);">
-                    <span class="eyebrow" style="color:var(--velocity-orange); display:block; margin-bottom:var(--space-3);">Co dostanete vždy</span>
-                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:var(--space-2); color:var(--black-90); line-height:1.5; font-size:0.98rem;">
-                        <li><strong>Fixní cena před startem</strong> — víte, za co platíte</li>
-                        <li><strong>Dvousložkový model</strong> — jednorázové nastavení + měsíční provoz</li>
-                        <li><strong>Bez dlouhodobé vazby</strong> — krátká výpovědní lhůta</li>
-                        <li><strong>Cíl desítek hodin měsíčně</strong> uspořených na rutině</li>
-                    </ul>
-                </div>
-                <div style="padding:var(--space-6) var(--space-6) var(--space-6) var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-left:3px solid var(--signal-gold); border-radius:var(--radius);">
-                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Jak cenu zjistíte</span>
-                    <p style="color:var(--black-90); line-height:1.6; font-size:0.98rem; margin:0 0 var(--space-4);">
-                        Spusťte <a href="/diagnostika" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30); font-weight:500;">diagnostiku</a>
-                        — 5 minut s agentem nebo formulářem. Do 24 hodin vám zavoláme a projdeme konkrétní rozsah.
-                    </p>
-                    <p style="color:var(--black-60); line-height:1.6; font-size:0.9rem; margin:0;">
-                        První hovor je zdarma a bez závazku.
-                    </p>
-                </div>
-            </div>
-
-            <p class="italic-serif" style="margin-top:var(--space-10); color:var(--black-90); font-size:1.2rem; max-width:60ch;">
-                Jestli vaše hodina stojí víc než pár tisíc korun, matematika udělá rozhodnutí za vás.
-            </p>
-        </div>
-    </section>
-
-    <section class="section--editorial">
-        <div class="container">
-            <SectionHead
-                eyebrow="· 08 · Cesta k nasazení"
-                title="Čtyři kroky. Žádné překvapení."
-            />
-
-            <Steps cols={4}>
-                <Step num="01 · DIAGNOSTIKA" title="Projdeme váš den." body="Krátký rozhovor s agentem nebo formulář. Zjistíme, kam vám čas uniká a kde je návratnost nejrychlejší. Bez obchodníka." />
-                <Step num="02 · NÁVRH" title="Navrhneme, co agent bude dělat." body="Co převezme, na co ho napojíme, jaký to bude mít rozsah. Konkrétní plán, ne obecná prezentace." />
-                <Step num="03 · NASTAVENÍ" title="Napojíme agenta na vaše nástroje." body="Gmail, Outlook, kalendář, telefon. Naučíme ho váš styl. Typicky v řádu dnů — vy mezitím děláte, co umíte." />
-                <Step num="04 · ŽIVOT" title="Vy pracujete. Agent se stará." body="Agent se každý týden zlepšuje. Vy se soustředíte na to, co umíte jen vy. Krátká výpovědní lhůta — vázat vás nechceme." />
+            <Steps cols={3}>
+                <Step num="01" title="POSLOUCHÁME" body="Diagnostika. Pochopíme, co vás brzdí." />
+                <Step num="02" title="STAVÍME"     body="Návrh, integrace, nasazení. Do 4 týdnů." />
+                <Step num="03" title="STARÁME SE"  body="Provoz, dohled, ladění. Dokud to dává smysl." />
             </Steps>
         </div>
     </section>
 
+    <!-- Sekce 6 — Investice -->
+    <section>
+        <div class="container container--narrow">
+            <SectionHead
+                eyebrow="· 05 · INVESTICE"
+                title="Fixní cena. Smluvně. Začneme do 4 týdnů."
+            />
+            <div class="invest-block">
+                <p>
+                    Pro jednotlivce balíček vychází nižší než pro firmy. Pokud chcete navíc web, značku
+                    nebo LinkedIn strategii, řekneme rovnou. Co konkrétně potřebujete, zjistíme v diagnostice.
+                </p>
+                <p class="invest-block__cta">
+                    <a href="/diagnostika">Spustit diagnostiku →</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekce 7 — Final CTA -->
     <CtaBand
-        id="rezervace"
-        eyebrow="· 09 · Rozhodnutí"
-        title="Každá hodina v rutině je hodina, kterou jste nevěnovali tomu, co vás živí."
-        lead="Agent VELYOS vám ty hodiny vrací — systematicky, každý den, bez výpadků. Začněte diagnostikou. Krátkou. Bez prezentace."
-        directPrefix="Nechcete přes agenta?"
+        id="zacit"
+        eyebrow="· Začněme"
+        title="Vystupte z kolečka. Tento týden."
+        lead="Krátká diagnostika. Žádný obchodník. Žádná prezentace. Do 24 hodin víte, co vám agent vrátí."
+        directPrefix="Nebo napište přímo:"
     >
-        <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku</a>
+        <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Spustit diagnostiku →</a>
     </CtaBand>
+
 </Layout>
+
+<style>
+    /* Sekce 6 — Investice */
+    .invest-block { margin-top: var(--space-8); }
+
+    .invest-block p {
+        font-size: 1.05rem;
+        line-height: 1.65;
+        color: var(--text-secondary);
+        margin: 0 0 var(--space-4);
+        max-width: 60ch;
+    }
+
+    .invest-block__cta {
+        margin-top: var(--space-6) !important;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+    }
+
+    .invest-block__cta a {
+        color: var(--accent);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s ease;
+    }
+
+    .invest-block__cta a:hover { border-bottom-color: var(--accent); }
+
+    /* Sekce 4 — Day timeline (4 body s reveal) */
+    .day-timeline {
+        list-style: none;
+        margin: var(--space-12) 0 0;
+        padding: 0;
+    }
+
+    .day-timeline__item {
+        position: relative;
+    }
+
+    .day-timeline__btn {
+        position: relative;
+        width: 100%;
+        text-align: left;
+        background: transparent;
+        border: 0;
+        padding: var(--space-6) 0 var(--space-6) var(--space-16);
+        display: block;
+        font-family: inherit;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    .day-timeline__time {
+        position: absolute;
+        left: 0;
+        top: var(--space-6);
+        font-family: var(--font-mono);
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+        font-feature-settings: "tnum";
+    }
+
+    .day-timeline__dot {
+        position: absolute;
+        left: 5.6rem;
+        top: calc(var(--space-6) + 0.55rem);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 4px var(--bg);
+        z-index: 2;
+        transition: transform 0.25s ease;
+    }
+
+    .day-timeline__line {
+        position: absolute;
+        left: calc(5.6rem + 4.5px);
+        top: calc(var(--space-6) + 1.2rem);
+        bottom: calc(-1 * var(--space-6));
+        width: 1px;
+        background: var(--border-soft);
+    }
+
+    .day-timeline__content {
+        padding-left: var(--space-8);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .day-timeline__label {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+    }
+
+    .day-timeline__teaser {
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--text-primary);
+        line-height: 1.4;
+    }
+
+    .day-timeline__body {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-6px);
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.3s ease,
+                    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @media (hover: hover) {
+        .day-timeline__btn:hover .day-timeline__dot,
+        .day-timeline__btn[aria-expanded="true"] .day-timeline__dot {
+            transform: scale(1.4);
+        }
+        .day-timeline__btn:hover .day-timeline__body,
+        .day-timeline__btn[aria-expanded="true"] .day-timeline__body {
+            max-height: 200px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: var(--space-2);
+        }
+    }
+
+    @media (hover: none) {
+        .day-timeline__btn[aria-expanded="true"] .day-timeline__dot {
+            transform: scale(1.4);
+        }
+        .day-timeline__btn[aria-expanded="true"] .day-timeline__body {
+            max-height: 200px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: var(--space-2);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .day-timeline__btn {
+            padding-left: 0;
+            padding-top: var(--space-3);
+            padding-bottom: var(--space-3);
+        }
+        .day-timeline__time {
+            position: relative;
+            top: 0;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-bottom: var(--space-2);
+        }
+        .day-timeline__dot,
+        .day-timeline__line { display: none; }
+        .day-timeline__content { padding-left: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .day-timeline__body,
+        .day-timeline__dot { transition: none !important; }
+        .day-timeline__body {
+            max-height: none;
+            opacity: 1;
+            transform: none;
+            margin-top: var(--space-2);
+        }
+    }
+</style>
+
+<script>
+    // Tap-to-expand pro day-timeline na non-hover zařízeních
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (!target || !(target instanceof Element)) return;
+        const btn = target.closest('.day-timeline__btn');
+        if (!btn) return;
+        const hoverable = window.matchMedia('(hover: hover)').matches;
+        if (hoverable) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    });
+</script>

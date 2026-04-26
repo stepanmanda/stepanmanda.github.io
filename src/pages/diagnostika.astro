@@ -1,352 +1,327 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import DiagnosticSwitcher from '../components/DiagnosticSwitcher.astro';
 import DiagnosticForm from '../components/DiagnosticForm.astro';
 ---
 
 <Layout
-    title="VELYOS — Diagnostika | Zjistíme, kde vám utíká čas."
-    description="Spusťte diagnostiku: strukturovaný formulář nebo živý hovor s AI agentem. Do 24 hodin dostanete odpověď od specialisty. Bez obchodního tlaku."
+    title="VELYOS — Diagnostika"
+    description="Spusťte diagnostiku — písemně nebo hlasem. Do 24 hodin se ozveme s konkrétním návrhem. Bez obchodníka, bez závazku."
     active="diagnostika"
     primaryCta={null}
     footerTagline="Brief. Ne prezentace."
-    footerVariant="v0.3 preview · diagnostika"
 >
-    <section class="diagnostika-hero">
-        <div class="diagnostika-hero__grid"></div>
-        <div class="diagnostika-hero__glow"></div>
+
+    <!-- Sekce 1 — Hero (lightweight, ne sticky, ne time element) -->
+    <section class="diag-hero">
+        <div class="diag-hero__glow" aria-hidden="true"></div>
         <div class="container">
-            <div class="diagnostika-hero__inner" data-reveal>
-                <span class="eyebrow">· Diagnostika · Definujeme náskok.</span>
-                <h1 class="diagnostika-hero__title">
-                    Dvě cesty. <span class="accent">Stejný specialista na druhé straně.</span>
-                </h1>
-                <p class="diagnostika-hero__lead">
-                    Vyplňte strukturovaný formulář, nebo si promluvte přímo s naším AI agentem.
-                    Obě cesty končí u stejného člověka, který vám zavolá do 24 hodin s konkrétním briefem — ne prezentací.
+            <div class="diag-hero__inner">
+                <div class="diag-hero__tagline italic-serif">„Tady se to začíná dít."</div>
+                <h1 class="diag-hero__title">Spustíme diagnostiku. Zbytek dohodneme spolu.</h1>
+                <p class="diag-hero__lead">
+                    Žádný obchodník. Žádná prezentace. Vyberte cestu, která vám sedí.
+                    Do 24 hodin se ozveme s konkrétním návrhem.
                 </p>
             </div>
         </div>
     </section>
 
-    <section class="diagnostika-main">
-        <div class="container">
-            <div class="diagnostika-grid">
-                <!-- Levá: formulář -->
-                <div class="diagnostika-col diagnostika-col--form" data-reveal>
-                    <div class="diagnostika-col__header">
-                        <span class="eyebrow" style="color:var(--signal-gold);">· 01 · Písemná diagnostika</span>
-                        <h2>Vyplňte, co vás trápí. Pošleme brief specialistovi.</h2>
-                        <p class="diagnostika-col__intro">
-                            Deset polí. Tři minuty. Informace, které specialista potřebuje,
-                            abychom na první hovor přišli už s konkrétním návrhem — ne s otázkami.
-                        </p>
-                    </div>
+    <!-- Sekce 2 — State switcher (klíčová sekce) -->
+    <section class="diag-section">
+        <div class="container container--narrow">
+            <div class="diag-switcher-head">
+                <span class="eyebrow">· Vyberte cestu</span>
+                <h2>Jak vám to bude pohodlnější?</h2>
+                <p class="diag-switcher-head__lead">Obě cesty vedou ke stejnému závěru. Záleží jen na vás.</p>
+            </div>
 
+            <DiagnosticSwitcher
+                written={{
+                    eyebrow: 'PÍSEMNÁ',
+                    title: '10 otázek. Odpovězte ve svém tempu.',
+                    cta: 'Vyplnit',
+                }}
+                voice={{
+                    eyebrow: 'HLASOVÁ',
+                    title: '10–15 minut s naším agentem. Mluvte jako s kolegou.',
+                    cta: 'Začít hovor',
+                }}
+            >
+                <!-- 3-column reasons pod buttons (state A) -->
+                <div slot="reasons" class="diag-reasons">
+                    <div>
+                        <span class="eyebrow">· Do 24 hodin ·</span>
+                        <p>Ozveme se s konkrétním návrhem a cenou.</p>
+                    </div>
+                    <div>
+                        <span class="eyebrow">· Bez obchodníka ·</span>
+                        <p>Nikdo vám nebude volat z prodeje.</p>
+                    </div>
+                    <div>
+                        <span class="eyebrow">· Bez závazku ·</span>
+                        <p>Pokud nejsme to, co hledáte, řekneme to rovnou.</p>
+                    </div>
+                </div>
+
+                <!-- State B: písemná -->
+                <div slot="written-content">
+                    <header class="diag-state-head">
+                        <span class="eyebrow">· Písemná diagnostika</span>
+                        <h2>10 otázek. Pět minut.</h2>
+                        <p>Odpovídejte ve svém tempu. Ozveme se do 24 hodin na e-mail.</p>
+                    </header>
                     <DiagnosticForm lang="cs" />
                 </div>
 
-                <!-- Pravá: widget -->
-                <div class="diagnostika-col diagnostika-col--agent" data-reveal>
-                    <div class="diagnostika-col__header">
-                        <span class="eyebrow" style="color:var(--velocity-orange);">· 02 · Hlasová diagnostika</span>
-                        <h2>Raději si popovídáte? Řekněte to agentovi.</h2>
-                        <p class="diagnostika-col__intro">
-                            Přirozený hlasový rozhovor s AI agentem Stelou.
-                            Pět až sedm minut, žádný formulář, žádný obchodní tlak.
+                <!-- State C: hlasová -->
+                <div slot="voice-content">
+                    <header class="diag-state-head">
+                        <span class="eyebrow">· Hlasová diagnostika</span>
+                        <h2>Promluvte si s naším agentem. 10–15 minut.</h2>
+                        <p>
+                            Agent provede stejný rozhovor jako specialista.
+                            Pak vám odešle shrnutí na e-mail.
                         </p>
-                    </div>
+                    </header>
 
-                    <div class="agent-card">
-                        <div class="agent-card__badge">
-                            <span class="agent-card__dot"></span>
-                            <span>Agent online · odpovídá hned</span>
-                        </div>
+                    <ol class="diag-voice-steps">
+                        <li>
+                            <span class="diag-voice-steps__num">01</span>
+                            <span class="diag-voice-steps__label">KLIKNĚTE</span>
+                            <span class="diag-voice-steps__body">Na oranžovou kontrolku vpravo dole. Widget se rozbalí.</span>
+                        </li>
+                        <li>
+                            <span class="diag-voice-steps__num">02</span>
+                            <span class="diag-voice-steps__label">POVÍDEJTE</span>
+                            <span class="diag-voice-steps__body">Agent se ptá. Vy odpovídáte. Mluvte přirozeně, jako s kolegou přes telefon.</span>
+                        </li>
+                        <li>
+                            <span class="diag-voice-steps__num">03</span>
+                            <span class="diag-voice-steps__label">SHRNUTÍ E-MAILEM</span>
+                            <span class="diag-voice-steps__body">Do hodiny dostanete brief, do 24 hodin se ozveme s návrhem.</span>
+                        </li>
+                    </ol>
 
-                        <div class="agent-card__pointer">
-                            <svg class="agent-card__arrow" width="96" height="96" viewBox="0 0 96 96" fill="none" aria-hidden="true">
-                                <path d="M16 16 C 16 60, 50 80, 82 82" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 6" fill="none"/>
-                                <path d="M76 74 L 84 84 L 74 86" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                            </svg>
-                            <div class="agent-card__pointer-text">
-                                <strong>Klikněte na oranžovou kontrolku vpravo dole.</strong><br>
-                                Widget se rozbalí a Stela začne naslouchat.
-                            </div>
-                        </div>
-
-                        <ul class="agent-card__points">
-                            <li>Mluví česky, anglicky, německy + 10 dalších jazyků</li>
-                            <li>Hovor je zdarma, bez obchodního tlaku, bez prezentace</li>
-                            <li>Brief automaticky přeposlán specialistovi</li>
-                        </ul>
-
-                        <div class="agent-card__footnote">
-                            Specialista vám zavolá do 24 hodin. Stejně jako po odeslání formuláře vlevo.
-                        </div>
-                    </div>
+                    <p class="diag-voice-note">
+                        Hlasová verze je experimentální. Pokud něco nesedí, klikněte na
+                        <em>Zpět k výběru</em> a zkuste písemnou.
+                    </p>
                 </div>
-            </div>
+            </DiagnosticSwitcher>
         </div>
     </section>
 
-    <section class="section--editorial section--tight">
-        <div class="container container--narrow" data-reveal>
-            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--space-8); text-align:center;">
-                <div>
-                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Do 24 hodin</span>
-                    <p style="margin:0; color:var(--black-60); font-size:0.95rem;">
-                        Odpovídáme v pracovní dny během 24 hodin. V obchodní době často rychleji.
-                    </p>
-                </div>
-                <div>
-                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Bez obchodníka</span>
-                    <p style="margin:0; color:var(--black-60); font-size:0.95rem;">
-                        První hovor jde přímo se zakladatelem nebo seniorním specialistou. Ne s obchodním asistentem.
-                    </p>
-                </div>
-                <div>
-                    <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Bez závazku</span>
-                    <p style="margin:0; color:var(--black-60); font-size:0.95rem;">
-                        Diagnostika je zdarma. Pokud VELYOS nebude pro vás, řekneme to rovnou.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
 </Layout>
 
 <style>
-    .diagnostika-hero {
-        background: var(--ivory-silver);
-        padding: var(--space-20) 0 var(--space-12);
+    /* Hero — lightweight, ne sticky scroll */
+    .diag-hero {
         position: relative;
+        padding: var(--space-20) 0 var(--space-12);
         overflow: hidden;
-        border-bottom: 1px solid var(--black-08);
+        text-align: center;
+        border-bottom: 1px solid var(--border-soft);
     }
 
-    .diagnostika-hero__grid {
+    .diag-hero__glow {
         position: absolute;
-        inset: 0;
-        background-image:
-            linear-gradient(rgba(11, 15, 25, 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(11, 15, 25, 0.06) 1px, transparent 1px);
-        background-size: 72px 72px;
-        mask-image: radial-gradient(ellipse at 50% 0%, black 10%, transparent 70%);
-        pointer-events: none;
-    }
-
-    .diagnostika-hero__glow {
-        position: absolute;
-        width: 800px;
-        height: 400px;
-        top: -200px;
+        top: -250px;
         left: 50%;
         transform: translateX(-50%);
-        background: radial-gradient(circle, rgba(184, 147, 92, 0.2) 0%, transparent 65%);
+        width: 900px;
+        height: 600px;
+        background:
+            radial-gradient(ellipse at center, rgba(232, 93, 31, 0.18), transparent 60%),
+            radial-gradient(ellipse at center, rgba(184, 147, 92, 0.12), transparent 70%);
         pointer-events: none;
-        animation: glowBreathe 8s ease-in-out infinite;
+        filter: blur(50px);
     }
 
-    .diagnostika-hero .container { position: relative; z-index: 1; }
+    [data-theme="dark"] .diag-hero__glow {
+        background:
+            radial-gradient(ellipse at center, rgba(232, 93, 31, 0.28), transparent 60%),
+            radial-gradient(ellipse at center, rgba(184, 147, 92, 0.18), transparent 70%);
+    }
 
-    .diagnostika-hero__inner {
-        text-align: center;
+    .diag-hero .container { position: relative; z-index: 1; }
+
+    .diag-hero__inner {
         max-width: 60ch;
         margin: 0 auto;
     }
 
-    .diagnostika-hero__inner .eyebrow {
-        display: block;
+    .diag-hero__tagline {
+        color: var(--signal-gold);
+        font-size: clamp(1rem, 1.4vw, 1.2rem);
         margin-bottom: var(--space-4);
     }
 
-    .diagnostika-hero__title {
-        font-size: clamp(2.2rem, 4.2vw, 3.4rem);
-        letter-spacing: -0.03em;
-        line-height: 1.08;
+    .diag-hero__title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+        font-weight: 700;
         margin: 0 0 var(--space-6);
+        color: var(--text-primary);
     }
 
-    .diagnostika-hero__title .accent {
-        color: var(--velocity-orange);
-    }
-
-    .diagnostika-hero__lead {
+    .diag-hero__lead {
         font-size: 1.15rem;
-        color: var(--black-60);
         line-height: 1.55;
+        color: var(--text-secondary);
         margin: 0;
     }
 
-    .diagnostika-main {
-        padding: var(--space-16) 0;
-        background: var(--alpine-white);
+    /* Switcher section */
+    .diag-section {
+        padding: var(--space-16) 0 var(--space-24);
     }
 
-    .diagnostika-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-12);
-        align-items: start;
+    .diag-switcher-head {
+        text-align: center;
+        margin-bottom: var(--space-12);
     }
 
-    .diagnostika-col {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-8);
-    }
-
-    .diagnostika-col__header h2 {
-        font-size: clamp(1.4rem, 2.2vw, 1.75rem);
-        letter-spacing: -0.02em;
-        margin: var(--space-3) 0 var(--space-3);
-        line-height: 1.2;
-    }
-
-    .diagnostika-col__intro {
-        color: var(--black-60);
-        font-size: 1rem;
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    /* Pravý sloupec s agent-card zůstává statický — widget pluje v rohu viewportu */
-
-    /* Agent card */
-    .agent-card {
-        background: var(--velocity-black);
-        color: var(--ivory-silver);
-        padding: var(--space-8);
-        border-radius: var(--radius-lg);
-        position: relative;
-        overflow: hidden;
-        border-top: 3px solid var(--velocity-orange);
-        box-shadow: 0 30px 70px -30px rgba(11, 15, 25, 0.35);
-    }
-
-    .agent-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-            radial-gradient(circle at 80% 20%, rgba(232, 93, 31, 0.15) 0%, transparent 50%),
-            radial-gradient(circle at 20% 80%, rgba(184, 147, 92, 0.1) 0%, transparent 50%);
-        pointer-events: none;
-    }
-
-    .agent-card > * {
-        position: relative;
-        z-index: 1;
-    }
-
-    .agent-card__badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.55rem;
-        padding: 0.35rem 0.85rem;
-        background: rgba(232, 93, 31, 0.15);
-        border: 1px solid rgba(232, 93, 31, 0.35);
-        border-radius: 999px;
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--velocity-orange);
-        margin-bottom: var(--space-6);
-    }
-
-    .agent-card__dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--velocity-orange);
-        animation: agentPulse 2s ease-in-out infinite;
-    }
-
-    .agent-card__pointer {
-        padding: var(--space-6) var(--space-6);
-        border: 1px solid rgba(232, 93, 31, 0.3);
-        border-radius: var(--radius);
-        background: linear-gradient(135deg, rgba(232, 93, 31, 0.08) 0%, rgba(184, 147, 92, 0.06) 100%);
-        text-align: left;
-        margin-bottom: var(--space-6);
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: var(--space-5);
-        align-items: center;
-    }
-
-    .agent-card__arrow {
-        color: var(--velocity-orange);
-        flex-shrink: 0;
-        animation: agentArrowSway 3.2s ease-in-out infinite;
-    }
-
-    @keyframes agentArrowSway {
-        0%, 100% { transform: translate(0, 0); }
-        50%      { transform: translate(4px, 4px); }
-    }
-
-    .agent-card__pointer-text {
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        letter-spacing: 0.06em;
+    .diag-switcher-head .eyebrow {
+        display: block;
+        margin-bottom: var(--space-3);
         color: var(--signal-gold);
-        line-height: 1.55;
     }
 
-    .agent-card__pointer-text strong {
-        color: var(--ivory-silver);
-        letter-spacing: 0.04em;
+    .diag-switcher-head h2 {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 var(--space-3);
+        line-height: 1.2;
+        color: var(--text-primary);
     }
 
-    .agent-card__points {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 var(--space-6);
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-2);
+    .diag-switcher-head__lead {
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        max-width: 48ch;
+        margin: 0 auto;
     }
 
-    .agent-card__points li {
-        padding-left: 1.2rem;
-        position: relative;
-        font-size: 0.92rem;
+    /* Reasons (3-column pod big buttons) */
+    .diag-reasons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
+        text-align: center;
+    }
+
+    .diag-reasons .eyebrow {
+        display: block;
+        margin-bottom: var(--space-3);
+        color: var(--signal-gold);
+    }
+
+    .diag-reasons p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
         line-height: 1.5;
-        color: var(--ivory-70);
-    }
-
-    .agent-card__points li::before {
-        content: "→";
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: var(--velocity-orange);
-        font-family: var(--font-mono);
-        font-weight: 500;
-    }
-
-    .agent-card__footnote {
-        padding-top: var(--space-4);
-        border-top: 1px solid rgba(245, 243, 238, 0.1);
-        font-family: var(--font-serif);
-        font-style: italic;
-        font-size: 0.88rem;
-        color: var(--mist-gray);
-        line-height: 1.55;
-    }
-
-    @media (max-width: 980px) {
-        .diagnostika-grid {
-            grid-template-columns: 1fr;
-            gap: var(--space-16);
-        }
-
     }
 
     @media (max-width: 720px) {
-        .diagnostika-hero {
-            padding: var(--space-16) 0 var(--space-10);
+        .diag-reasons { grid-template-columns: 1fr; gap: var(--space-6); }
+    }
+
+    /* State header (společný pro B + C) */
+    .diag-state-head {
+        text-align: left;
+        margin-bottom: var(--space-8);
+    }
+
+    .diag-state-head .eyebrow {
+        display: block;
+        margin-bottom: var(--space-3);
+        color: var(--accent);
+    }
+
+    .diag-state-head h2 {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 var(--space-3);
+        line-height: 1.2;
+        color: var(--text-primary);
+    }
+
+    .diag-state-head p {
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        max-width: 60ch;
+        margin: 0;
+    }
+
+    /* Voice steps */
+    .diag-voice-steps {
+        list-style: none;
+        margin: var(--space-8) 0;
+        padding: 0;
+    }
+
+    .diag-voice-steps li {
+        display: grid;
+        grid-template-columns: auto 14rem 1fr;
+        gap: var(--space-4);
+        align-items: baseline;
+        padding: var(--space-4) 0;
+        border-bottom: 1px solid var(--border-soft);
+    }
+
+    .diag-voice-steps li:first-child {
+        border-top: 1px solid var(--border-soft);
+    }
+
+    .diag-voice-steps__num {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+
+    .diag-voice-steps__label {
+        font-family: var(--font-mono);
+        font-size: 0.92rem;
+        letter-spacing: 0.06em;
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    .diag-voice-steps__body {
+        color: var(--text-secondary);
+        font-size: 0.98rem;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 720px) {
+        .diag-voice-steps li {
+            grid-template-columns: 1fr;
+            gap: var(--space-1);
+            padding: var(--space-3) 0;
         }
+    }
+
+    .diag-voice-note {
+        margin: var(--space-10) 0 0;
+        padding: var(--space-4) var(--space-6);
+        border: 1px solid var(--border-soft);
+        border-left: 3px solid var(--signal-gold);
+        border-radius: var(--radius);
+        background: var(--surface-subtle);
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        line-height: 1.55;
+    }
+
+    .diag-voice-note em {
+        font-family: var(--font-mono);
+        font-style: normal;
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+        color: var(--text-primary);
     }
 </style>

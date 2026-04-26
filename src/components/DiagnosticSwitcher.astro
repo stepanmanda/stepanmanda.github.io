@@ -1,0 +1,211 @@
+---
+interface OptionLabel {
+    eyebrow: string;
+    title: string;
+    cta: string;
+}
+interface Props {
+    written: OptionLabel;
+    voice: OptionLabel;
+    backLabel?: string;
+}
+
+const { written, voice, backLabel = '← Zpět k výběru' } = Astro.props;
+---
+
+<div class="diag-switcher" data-diag-switcher data-state="select">
+    <!-- STATE A: výběr -->
+    <div class="diag-switcher__state diag-switcher__state--select" data-state-pane="select">
+        <div class="diag-switcher__buttons">
+            <button class="diag-bigbtn" type="button" data-diag-pick="written">
+                <svg class="diag-bigbtn__icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+                    <path d="M4 20h16M5 17l8-12 4 3-8 12-4-3z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="diag-bigbtn__eyebrow">· {written.eyebrow}</span>
+                <span class="diag-bigbtn__title">{written.title}</span>
+                <span class="diag-bigbtn__cta">{written.cta} →</span>
+            </button>
+
+            <button class="diag-bigbtn" type="button" data-diag-pick="voice">
+                <svg class="diag-bigbtn__icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+                    <path d="M12 4a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V7a3 3 0 0 0-3-3zM6 11v2a6 6 0 0 0 12 0v-2M12 19v3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="diag-bigbtn__eyebrow">· {voice.eyebrow}</span>
+                <span class="diag-bigbtn__title">{voice.title}</span>
+                <span class="diag-bigbtn__cta">{voice.cta} →</span>
+            </button>
+        </div>
+
+        <div class="diag-switcher__reasons">
+            <slot name="reasons" />
+        </div>
+    </div>
+
+    <!-- STATE B: písemná -->
+    <div class="diag-switcher__state diag-switcher__state--written" data-state-pane="written">
+        <button class="diag-switcher__back" type="button" data-diag-back>{backLabel}</button>
+        <slot name="written-content" />
+    </div>
+
+    <!-- STATE C: hlasová -->
+    <div class="diag-switcher__state diag-switcher__state--voice" data-state-pane="voice">
+        <button class="diag-switcher__back" type="button" data-diag-back>{backLabel}</button>
+        <slot name="voice-content" />
+    </div>
+</div>
+
+<style>
+    .diag-switcher {
+        position: relative;
+    }
+
+    .diag-switcher__state {
+        opacity: 0;
+        transform: translateY(8px);
+        pointer-events: none;
+        transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        position: absolute;
+        inset: 0;
+    }
+
+    .diag-switcher[data-state="select"] .diag-switcher__state--select,
+    .diag-switcher[data-state="written"] .diag-switcher__state--written,
+    .diag-switcher[data-state="voice"] .diag-switcher__state--voice {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        position: relative;
+    }
+
+    .diag-switcher__buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+    }
+
+    @media (max-width: 720px) {
+        .diag-switcher__buttons { grid-template-columns: 1fr; }
+    }
+
+    .diag-bigbtn {
+        background: var(--surface-card);
+        border: 2px solid var(--border-soft);
+        border-radius: var(--radius-lg);
+        padding: var(--space-10) var(--space-8);
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+        text-align: left;
+        cursor: pointer;
+        color: var(--text-primary);
+        font-family: inherit;
+        transition: border-color 0.25s ease,
+                    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.25s ease,
+                    background 0.25s ease;
+    }
+
+    .diag-bigbtn:hover {
+        border-color: var(--accent);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 48px rgba(232, 93, 31, 0.18);
+        background: rgba(232, 93, 31, 0.04);
+    }
+
+    .diag-bigbtn__icon {
+        color: var(--accent);
+        margin-bottom: var(--space-4);
+    }
+
+    .diag-bigbtn__eyebrow {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+    }
+
+    .diag-bigbtn__title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        max-width: 24ch;
+    }
+
+    .diag-bigbtn__cta {
+        margin-top: auto;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+        color: var(--accent);
+        font-weight: 500;
+    }
+
+    [data-theme="dark"] .diag-bigbtn:hover {
+        background: rgba(232, 93, 31, 0.10);
+    }
+
+    .diag-switcher__back {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+        color: var(--text-secondary);
+        background: transparent;
+        border: 1px solid var(--border-soft);
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        cursor: pointer;
+        margin-bottom: var(--space-8);
+        transition: border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .diag-switcher__back:hover {
+        border-color: var(--border-emphasis);
+        color: var(--text-primary);
+    }
+
+    .diag-switcher__reasons {
+        margin-top: var(--space-12);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .diag-switcher__state,
+        .diag-bigbtn {
+            transition: none !important;
+        }
+        .diag-bigbtn:hover { transform: none !important; }
+    }
+</style>
+
+<script>
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (!target || !(target instanceof Element)) return;
+        const switcher = target.closest('[data-diag-switcher]');
+        if (!switcher) return;
+
+        const pickBtn = target.closest('[data-diag-pick]');
+        if (pickBtn instanceof HTMLElement) {
+            const next = pickBtn.dataset.diagPick;
+            if (next) {
+                switcher.setAttribute('data-state', next);
+                if (switcher instanceof HTMLElement) {
+                    const top = switcher.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            }
+            return;
+        }
+
+        if (target.closest('[data-diag-back]')) {
+            switcher.setAttribute('data-state', 'select');
+            if (switcher instanceof HTMLElement) {
+                const top = switcher.getBoundingClientRect().top + window.scrollY - 80;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        }
+    });
+</script>

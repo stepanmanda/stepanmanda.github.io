@@ -1,0 +1,191 @@
+---
+interface Props {
+    num: string;
+    title: string;
+    body: string;
+}
+
+const { num, title, body } = Astro.props;
+---
+
+<article class="reveal-card">
+    <button class="reveal-card__btn" type="button" aria-expanded="false">
+        <span class="reveal-card__num">{num}</span>
+        <h3 class="reveal-card__title" set:html={title}></h3>
+        <div class="reveal-card__body" set:html={body}></div>
+        <span class="reveal-card__more" aria-hidden="true">
+            <span class="reveal-card__more-text">Více</span>
+            <span class="reveal-card__more-arrow">↓</span>
+        </span>
+        <span class="reveal-card__dot" aria-hidden="true"></span>
+    </button>
+</article>
+
+<style>
+    .reveal-card { position: relative; }
+
+    .reveal-card__btn {
+        width: 100%;
+        text-align: left;
+        background: var(--surface-card);
+        border: 1px solid var(--border-soft);
+        border-radius: var(--radius-lg);
+        padding: var(--space-8);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        font-family: inherit;
+        color: inherit;
+        cursor: pointer;
+        position: relative;
+        transition: border-color 0.25s ease,
+                    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.25s ease;
+    }
+
+    .reveal-card__num {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 500;
+    }
+
+    .reveal-card__title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--text-primary);
+        margin: 0;
+        line-height: 1.3;
+    }
+
+    .reveal-card__body {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.55;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.3s ease,
+                    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-card__body :global(p) { margin: 0; }
+    .reveal-card__body :global(p + p) { margin-top: 0.5rem; }
+
+    .reveal-card__more {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        display: none;
+        align-items: center;
+        gap: 0.5rem;
+        opacity: 0.7;
+    }
+
+    .reveal-card__more-arrow {
+        display: inline-block;
+        transition: transform 0.25s ease;
+    }
+
+    .reveal-card__dot {
+        position: absolute;
+        bottom: var(--space-6);
+        left: 50%;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--text-muted);
+        transform: translateX(-50%);
+        opacity: 0.4;
+        transition: opacity 0.25s ease;
+    }
+
+    /* Desktop / hover-capable — reveal at hover OR aria-expanded */
+    @media (hover: hover) {
+        .reveal-card__btn:hover {
+            border-color: var(--border-emphasis);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(11, 15, 25, 0.04);
+        }
+
+        .reveal-card__btn:hover .reveal-card__body,
+        .reveal-card__btn[aria-expanded="true"] .reveal-card__body {
+            max-height: 360px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-card__btn:hover .reveal-card__dot,
+        .reveal-card__btn[aria-expanded="true"] .reveal-card__dot {
+            opacity: 0;
+        }
+
+        .reveal-card__btn:focus-visible .reveal-card__body {
+            max-height: 360px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Mobile / touch — tap-to-expand */
+    @media (hover: none) {
+        .reveal-card__dot { display: none; }
+        .reveal-card__more { display: inline-flex; margin-top: var(--space-2); }
+
+        .reveal-card__btn[aria-expanded="true"] .reveal-card__body {
+            max-height: 360px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-card__btn[aria-expanded="true"] .reveal-card__more-text::before {
+            content: "Méně ";
+        }
+        .reveal-card__btn[aria-expanded="false"] .reveal-card__more-text::before {
+            content: "Více ";
+        }
+        .reveal-card__btn .reveal-card__more-text { font-size: 0; }
+        .reveal-card__btn .reveal-card__more-text::before { font-size: 0.72rem; }
+
+        .reveal-card__btn[aria-expanded="true"] .reveal-card__more-arrow {
+            transform: rotate(180deg);
+        }
+    }
+
+    [data-theme="dark"] .reveal-card__btn:hover {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .reveal-card__btn,
+        .reveal-card__body,
+        .reveal-card__more-arrow,
+        .reveal-card__dot {
+            transition: none !important;
+        }
+        .reveal-card__btn:hover { transform: none !important; }
+        .reveal-card__body { max-height: none; opacity: 1; transform: none; }
+        .reveal-card__dot { display: none; }
+    }
+</style>
+
+<script>
+    // Tap-to-expand pro non-hover zařízení. Desktop hover funguje CSS-only.
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (!target || !(target instanceof Element)) return;
+        const btn = target.closest('.reveal-card__btn');
+        if (!btn) return;
+        const hoverable = window.matchMedia('(hover: hover)').matches;
+        if (hoverable) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    });
+</script>

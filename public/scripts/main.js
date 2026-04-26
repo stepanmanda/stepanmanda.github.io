@@ -391,7 +391,8 @@ function initVelyos() {
     const contactTrigger = document.querySelector(".nav-contact__trigger");
     const contactPanel = document.querySelector(".nav-contact__panel");
 
-    if (contactTrigger && contactPanel) {
+    if (contactTrigger && contactPanel && !contactTrigger.dataset.bound) {
+        contactTrigger.dataset.bound = "1";
         const closePanel = () => {
             contactPanel.classList.remove("is-open");
             contactTrigger.setAttribute("aria-expanded", "false");
@@ -434,7 +435,8 @@ function initVelyos() {
     const navToggle = document.getElementById("nav-toggle");
     const mobileDrawer = document.getElementById("mobile-drawer");
 
-    if (navToggle && mobileDrawer) {
+    if (navToggle && mobileDrawer && !navToggle.dataset.bound) {
+        navToggle.dataset.bound = "1";
         const openDrawer = () => {
             mobileDrawer.classList.add("is-open");
             navToggle.setAttribute("aria-expanded", "true");

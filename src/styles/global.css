@@ -51,6 +51,32 @@
     --container-narrow: 880px;
     --radius: 2px;
     --radius-lg: 6px;
+
+    /* Sémantické tokeny — light theme default. Theming přes [data-theme="dark"] níže. */
+    --bg: var(--ivory-silver);
+    --surface-card: var(--alpine-white);
+    --surface-subtle: rgba(11, 15, 25, 0.025);
+    --text-primary: var(--velocity-black);
+    --text-secondary: rgba(11, 15, 25, 0.78);
+    --text-muted: rgba(11, 15, 25, 0.50);
+    --accent: var(--velocity-orange);
+    --accent-hover: #D04E15;
+    --border-soft: rgba(11, 15, 25, 0.08);
+    --border-emphasis: rgba(11, 15, 25, 0.18);
+}
+
+/* Dark theme — toggle přes <html data-theme="dark">. NE default. */
+[data-theme="dark"] {
+    --bg: var(--velocity-black);
+    --surface-card: rgba(245, 243, 238, 0.04);
+    --surface-subtle: rgba(245, 243, 238, 0.025);
+    --text-primary: var(--ivory-silver);
+    --text-secondary: rgba(245, 243, 238, 0.78);
+    --text-muted: rgba(245, 243, 238, 0.50);
+    --accent: var(--velocity-orange);
+    --accent-hover: #FF7035;
+    --border-soft: rgba(245, 243, 238, 0.10);
+    --border-emphasis: rgba(245, 243, 238, 0.20);
 }
 
 /* Reset ---------------------------------------------- */
@@ -62,11 +88,12 @@ body {
     font-family: var(--font-sans);
     font-size: 17px;
     line-height: 1.6;
-    color: var(--velocity-black);
-    background: var(--ivory-silver);
+    color: var(--text-primary);
+    background: var(--bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "ss01", "cv11";
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 img, svg { display: block; max-width: 100%; }
@@ -2036,22 +2063,6 @@ elevenlabs-convai {
     will-change: transform;
 }
 
-.preview-ribbon {
-    position: fixed;
-    top: 1rem;
-    right: -3rem;
-    transform: rotate(35deg);
-    background: var(--velocity-orange);
-    color: var(--alpine-white);
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.22em;
-    padding: 0.35rem 3rem;
-    z-index: 40;
-    box-shadow: 0 4px 20px -5px rgba(232, 93, 31, 0.6);
-    pointer-events: none;
-}
-
 /* ====================================================
    ANIMACE — keyframes, reveals, micro-interactions
    ==================================================== */
@@ -2547,4 +2558,75 @@ html:not(.first-load) .hero__title .word {
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.7rem; }
     .hero__lead { font-size: 1.05rem; }
+}
+
+/* ============================================================
+   Fáze 1 — Foundation: logo lockup + theme toggle + dark nav
+   ============================================================ */
+
+/* Brand override — image lockup místo text. Fixujeme výšku, vystředění. */
+.brand {
+    align-items: center;
+}
+
+.brand__logo {
+    display: block;
+    height: 28px;
+    width: auto;
+}
+
+.brand__logo--dark { display: none; }
+
+[data-theme="dark"] .brand__logo--light { display: none; }
+[data-theme="dark"] .brand__logo--dark { display: block; }
+
+/* Theme toggle button — sun/moon swap dle data-theme */
+.theme-toggle {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+    color: var(--text-primary);
+    background: transparent;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--border-emphasis);
+    transform: translateY(-1px);
+    color: var(--accent);
+}
+
+.theme-toggle__icon { display: none; }
+.theme-toggle__icon--moon { display: block; }
+
+[data-theme="dark"] .theme-toggle__icon--moon { display: none; }
+[data-theme="dark"] .theme-toggle__icon--sun { display: block; }
+
+@media (max-width: 880px) {
+    /* Desktop nav je skrytý v mobilu — toggle se přesune do drawer ve Fázi 1.5 (později). */
+    .theme-toggle { display: none; }
+}
+
+/* Dark theme — sticky nav background flip */
+[data-theme="dark"] .site-header {
+    background: rgba(11, 15, 25, 0.78);
+    border-bottom-color: var(--border-soft);
+}
+
+[data-theme="dark"] .site-header .nav a {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .site-header .nav a:hover {
+    color: var(--text-primary);
+}
+
+/* Dark theme — body bg s noise overlay zachová warm pozadí */
+[data-theme="dark"] {
+    color-scheme: dark;
 }

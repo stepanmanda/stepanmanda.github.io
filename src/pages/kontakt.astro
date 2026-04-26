@@ -1,195 +1,308 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import SectionHead from '../components/SectionHead.astro';
 import Features from '../components/Features.astro';
-import Feature from '../components/Feature.astro';
-import Callout from '../components/Callout.astro';
-import AgentDiagnostic from '../components/AgentDiagnostic.astro';
+import RevealCard from '../components/RevealCard.astro';
+
+const faqs = [
+    {
+        q: 'Kolik to stojí?',
+        a: 'Nemáme veřejný ceník. Každý projekt je jiný — záleží, co stavíme, na co se napojujeme a kolik lidí se ho dotýká. Konkrétní kalkulaci dostanete po prvním hovoru, ne z dotazníku.',
+    },
+    {
+        q: 'Jak dlouho trvá nasazení?',
+        a: 'Typicky 4 týdny od podpisu smlouvy do ostrého provozu. Menší projekty rychleji, komplexní případy do 6 týdnů. Rychlost je princip — rozvleklé projekty nás nezajímají.',
+    },
+    {
+        q: 'Co když to nebude fungovat?',
+        a: 'Ve smlouvě máme garanci návratnosti do 6 měsíců. Pokud nedodáme, doděláme zdarma nebo vrátíme rozdíl.',
+    },
+    {
+        q: 'Co s mými daty?',
+        a: 'Jen náš tým a vámi schválené systémy. Šifrování AES-256, GDPR, architektura v duchu ISO 27001. Vaše data nikdy nepoužíváme k tréninku cizích modelů.',
+    },
+    {
+        q: 'Jsem na vás zamčený?',
+        a: 'Ne. Všechna nasazení stavíme tak, aby fungovala i bez nás. Používáme standardní nástroje a při ukončení dostanete předávací dokument: přihlašovací údaje, popis architektury, kontakty na integrátory. Krátká výpovědní lhůta. Žádné penalizace.',
+    },
+    {
+        q: 'Můžeme se sejít osobně?',
+        a: 'Ano. Sídlo je ve Františkových Lázních, ale pracujeme po celé ČR — můžeme přijet k vám. Pokud rozumíte byznysu, který chceme automatizovat, je to levnější pro obě strany.',
+    },
+];
 ---
 
 <Layout
-    title="VELYOS — Kontakt | Tři cesty, jak začít."
-    description="Tři způsoby, jak kontaktovat VELYOS: AI diagnostický agent, e-mail, telefon. Odpovídáme do 24 hodin. Bez obchodníka, bez prezentace."
+    title="VELYOS — Kontakt"
+    description="Tři způsoby, jak nás zastihnout: diagnostika, e-mail, telefon. Odpovídáme do 24 hodin. Bez obchodníka, bez prezentace."
     active="kontakt"
     primaryCta={null}
     footerTagline="Bez obchodníka. Bez prezentace."
-    footerVariant="v0.2 preview · kontakt"
 >
-    <Hero tagline="· Kontakt · Definujeme náskok.">
-        <h1 class="hero__title">Tři způsoby. <span class="accent">Odpovídáme do 24 hodin.</span></h1>
-        <p class="hero__lead">
-            Agentem, e-mailem nebo telefonem. Bez obchodníka. Bez prezentací. Bez „vyplňte formulář, zavoláme vám".
-            Vyberte si, co vám vyhovuje — my se postaráme o zbytek.
-        </p>
-    </Hero>
 
+    <!-- Sekce 1 — Hero kompaktní -->
+    <section class="contact-hero">
+        <div class="contact-hero__glow" aria-hidden="true"></div>
+        <div class="container">
+            <div class="contact-hero__inner">
+                <span class="eyebrow">· KONTAKT</span>
+                <h1 class="contact-hero__title">Tři způsoby, jak nás zastihnout.</h1>
+                <p class="contact-hero__lead">Vyberte si, co vám sedí. My to bereme rychle.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekce 2 — Tři cesty (3 reveal cards) -->
     <section>
         <div class="container">
-            <SectionHead
-                eyebrow="· 02 · Vyberte cestu"
-                title="Tři způsoby, jak začít rozhovor."
-                lead="Každá cesta končí u stejného specialisty. Liší se jen tím, kolik na začátku investujete času."
-            />
-
             <Features cols={3}>
-                <Feature
-                    num="Nejrychlejší"
-                    title="AI diagnostický agent"
-                    body="Hlasový rozhovor s naší Stelou. 5–7 minut, přirozený tón, žádné formuláře. Specialista vám zavolá do 24 hodin s briefem. Spusťte níž →"
+                <RevealCard
+                    num="01"
+                    title="DIAGNOSTIKA"
+                    body={`5 minut formulář, nebo 15 minut hovor s naším agentem. Pro vás, pokud chcete strukturu. <a href="/diagnostika">Spustit diagnostiku →</a>`}
                 />
-                <Feature
-                    num="Nejpohodlnější"
-                    title="E-mail"
-                    body="Krátká zpráva. Popište situaci ve dvou větách. Odpovíme do 24 hodin konkrétními dalšími kroky — ne prezentací."
+                <RevealCard
+                    num="02"
+                    title="E-MAIL"
+                    body={`Pište přímo Štěpánovi. Odpovídá do 24 hodin. <a href="mailto:stepan@velyos.ai">stepan@velyos.ai</a>`}
                 />
-                <Feature
-                    num="Nejosobnější"
-                    title="Telefon"
-                    body="Číslo doplníme po registraci firmy. Do té doby vás po e-mailu či formuláři sami zavoláme zpět — obvykle do jednoho pracovního dne."
+                <RevealCard
+                    num="03"
+                    title="TELEFON"
+                    body={`Po–Pá 9–17. Po 20:00 výjimečně. <span class="contact-pending">Číslo doplníme po registraci firmy.</span>`}
                 />
             </Features>
         </div>
     </section>
 
-    <AgentDiagnostic agentId="cu9gllbBtpZWU6CuJXky" />
-
-    <section class="section--alt">
-        <div class="container">
-            <SectionHead
-                eyebrow="· 03 · Přímé kanály"
-                title="Kontakt na obchod, specialistu, a zakladatele."
-                lead="Pokud víte, s kým chcete mluvit, napište rovnou. Každý kanál má jasného vlastníka, žádné přepojování."
-            />
-
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:var(--space-8); margin-top:var(--space-10);" data-stagger>
-                <div style="padding:var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-radius:var(--radius-lg); border-top:3px solid var(--velocity-orange);">
-                    <span class="eyebrow" style="color:var(--velocity-orange);">Obchod &amp; diagnostika</span>
-                    <h3 style="margin-top:var(--space-3); margin-bottom:var(--space-4);">Štěpán Manda</h3>
-                    <p style="color:var(--black-60); margin-bottom:var(--space-6);">Founder &amp; CEO. Bere osobně každého nového klienta — první call jdete přímo se zakladatelem.</p>
-                    <p style="line-height:2; margin:0;">
-                        <a href="mailto:stepan@velyos.ai" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30); font-weight:500;">stepan@velyos.ai</a><br>
-                        <span style="color:var(--mist-gray); font-size:0.9rem; font-style:italic;">Telefon doplníme po registraci firmy.</span>
-                    </p>
-                </div>
-
-                <div style="padding:var(--space-8); background:var(--alpine-white); border:1px solid var(--black-08); border-radius:var(--radius-lg); border-top:3px solid var(--signal-gold);">
-                    <span class="eyebrow" style="color:var(--signal-gold);">Médii &amp; partneři</span>
-                    <h3 style="margin-top:var(--space-3); margin-bottom:var(--space-4);">Spolupráce, PR, investoři</h3>
-                    <p style="color:var(--black-60); margin-bottom:var(--space-6);">Novinářské dotazy, žádosti o rozhovor, partnerské iniciativy, investorské dotazy.</p>
-                    <p style="line-height:2; margin:0;">
-                        <a href="mailto:hello@velyos.ai" style="color:var(--velocity-black); border-bottom:1px solid var(--gold-30); font-weight:500;">hello@velyos.ai</a><br>
-                        <span style="color:var(--mist-gray); font-size:0.9rem; font-style:italic;">LinkedIn po registraci firmy.</span>
-                    </p>
-                </div>
-            </div>
+    <!-- Sekce 3 — Čas a místo (1 odstavec, žádné karty) -->
+    <section class="contact-where">
+        <div class="container container--narrow">
+            <span class="eyebrow">· KDE JSME</span>
+            <h2 class="contact-where__title">Františkovy Lázně. Domluvit se dá i ve vaší firmě.</h2>
+            <p class="contact-where__body">
+                Sídlo je ve Františkových Lázních. Pracujeme po celé ČR — vždy můžeme přijet
+                k vám. Když rozumíte byznysu, který chcete automatizovat, je to levnější pro
+                obě strany. Pracovní doba: Po–Pá 9:00–17:00 (CET).
+            </p>
         </div>
     </section>
 
+    <!-- Sekce 4 — FAQ (native <details> accordion) -->
     <section>
         <div class="container container--narrow">
-            <SectionHead
-                eyebrow="· 04 · Čas a místo"
-                title="Kde nás najdete a kdy odpovídáme."
-            />
-
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:var(--space-10); margin-top:var(--space-8);" data-stagger>
-                <div>
-                    <span class="eyebrow" style="color:var(--signal-gold);">Sídlo</span>
-                    <p style="margin-top:var(--space-3); font-size:1.1rem; line-height:1.6;">
-                        <strong>VELYOS</strong><br>
-                        Františkovy Lázně 553/7<br>
-                        351 01 Františkovy Lázně<br>
-                        <span style="color:var(--black-60); font-size:0.95rem;">Česká republika</span>
-                    </p>
-                </div>
-                <div>
-                    <span class="eyebrow" style="color:var(--signal-gold);">Pracovní doba</span>
-                    <p style="margin-top:var(--space-3); font-size:1.1rem; line-height:1.6;">
-                        Pondělí–pátek, 9:00–17:00 CET<br>
-                        <span style="color:var(--black-60); font-size:0.95rem;">
-                            E-mail odpovědi: <strong>do 24 hodin</strong><br>
-                            Telefonní číslo doplníme po registraci firmy
-                        </span>
-                    </p>
-                </div>
+            <div class="contact-faq-head">
+                <span class="eyebrow">· ČASTÉ OTÁZKY</span>
+                <h2>Než se zeptáte.</h2>
+            </div>
+            <div class="contact-faq">
+                {faqs.map((item) => (
+                    <details class="faq-item">
+                        <summary class="faq-item__summary">
+                            <span class="faq-item__q">{item.q}</span>
+                            <span class="faq-item__icon" aria-hidden="true">+</span>
+                        </summary>
+                        <div class="faq-item__answer">
+                            <p>{item.a}</p>
+                        </div>
+                    </details>
+                ))}
             </div>
         </div>
     </section>
 
-    <section class="section--editorial">
+    <!-- Sekce 5 — Final CTA (kompaktní, bez glow) -->
+    <section class="contact-final">
         <div class="container container--narrow">
-            <SectionHead
-                eyebrow="· 05 · Pro dodavatele a kariéru"
-                title="Spolupracujete s námi, nebo chcete?"
-            />
-
-            <div class="section-body" data-reveal>
-                <p>
-                    <strong>Dodavatelé a subdodavatelé:</strong> Hledáme jen ověřené partnery s doloženou historií a schopností dodat v čase. Napište nám stručně: obor, specializace, reference.
-                    Odpovídáme do týdne.
-                </p>
-                <p>
-                    <strong>Kariéra:</strong> Nejsme tým, který sbírá juniory. Přijímáme seniorní specialisty s minimálně 5 lety praxe v oboru —
-                    stavba, vývoj, analytika, design. Hledáme lidi, kteří už umí, ne ty, co se teprve učí. Pokud to jste vy, napište rovnou Štěpánovi.
-                </p>
-            </div>
+            <h2 class="contact-final__title">Pořád nevíte, kam dál?</h2>
+            <a href="/diagnostika" class="btn btn--primary btn-arrow btn--lg">Začněte diagnostikou →</a>
         </div>
     </section>
 
-    <section>
-        <div class="container container--narrow">
-            <SectionHead
-                eyebrow="· 06 · Nejčastější otázky"
-                title="Odpovědi, než se zeptáte."
-            />
-
-            <div class="section-body" data-reveal>
-                <h3>Kolik to stojí?</h3>
-                <p style="color:var(--black-60);">
-                    Nemáme veřejný ceník. Každý projekt je jiný — záleží, co stavíme, na co napojujeme a kolik lidí se ho dotýká.
-                    Konkrétní kalkulaci dostanete po prvním hovoru, ne z dotazníku.
-                </p>
-
-                <h3>Jak dlouho trvá nasazení?</h3>
-                <p style="color:var(--black-60);">
-                    Typicky 4 týdny od podpisu smlouvy do ostrého provozu. Menší projekty rychleji, komplexní případy do 6 týdnů. Rychlost je náš princip —
-                    rozvleklé projekty nás nezajímají.
-                </p>
-
-                <h3>Co když to nebude fungovat?</h3>
-                <p style="color:var(--black-60);">
-                    Ve smlouvě máme garanci návratnosti do 6 měsíců. Pokud nedodáme, doděláme zdarma nebo vrátíme rozdíl. Nemáte co ztratit.
-                </p>
-
-                <h3>Kdo má k datům přístup?</h3>
-                <p style="color:var(--black-60);">
-                    Jen náš tým a vámi schválené systémy. Šifrování AES-256, GDPR, architektura v duchu ISO 27001.
-                    Vaše data nikdy nepoužíváme k tréninku cizích modelů.
-                </p>
-
-                <h3>Co když s vámi ukončíme spolupráci — zůstaneme na tom sami?</h3>
-                <p style="color:var(--black-60);">
-                    Ne. Všechna nasazení stavíme tak, aby fungovala i bez nás. Používáme standardní nástroje a dodáváme kompletní dokumentaci.
-                    Při ukončení dostanete <strong>předávací dokument</strong>: přihlašovací údaje, popis architektury, kontakty na integrátory.
-                    Krátká výpovědní lhůta — žádný vendor lock-in, žádné penalizace.
-                </p>
-
-                <h3>Můžu VELYOS pozvat na schůzku?</h3>
-                <p style="color:var(--black-60);">
-                    Ano, pokud jste vážný zájemce a prošli jste alespoň krátkým agent diagnosticem nebo e-mailem. Ne proto, že jsme zaneprázdnění —
-                    ale abyste od prvního setkání dostali hodnotu, ne prezentaci.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section--alt section--tight">
-        <div class="container container--narrow">
-            <Callout>
-                <strong>Ještě nevíte, jestli VELYOS dává smysl?</strong>
-                Nejrychlejší způsob je 5 minut s naším agentem výše. Zjistí, jestli jsme pro vás — a pokud ne, upřímně vám to řekne.
-            </Callout>
-        </div>
-    </section>
 </Layout>
+
+<style>
+    /* Hero kompaktní */
+    .contact-hero {
+        position: relative;
+        padding: var(--space-16) 0 var(--space-10);
+        overflow: hidden;
+        text-align: center;
+        border-bottom: 1px solid var(--border-soft);
+    }
+
+    .contact-hero__glow {
+        position: absolute;
+        top: -180px;
+        left: 20%;
+        width: 600px;
+        height: 360px;
+        background: radial-gradient(circle, rgba(184, 147, 92, 0.18), transparent 65%);
+        pointer-events: none;
+        filter: blur(50px);
+    }
+
+    [data-theme="dark"] .contact-hero__glow {
+        background: radial-gradient(circle, rgba(184, 147, 92, 0.32), transparent 65%);
+    }
+
+    .contact-hero .container { position: relative; z-index: 1; }
+
+    .contact-hero__inner {
+        max-width: 56ch;
+        margin: 0 auto;
+    }
+
+    .contact-hero__inner .eyebrow {
+        display: block;
+        margin-bottom: var(--space-3);
+        color: var(--signal-gold);
+    }
+
+    .contact-hero__title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+        font-weight: 700;
+        margin: 0 0 var(--space-4);
+        color: var(--text-primary);
+    }
+
+    .contact-hero__lead {
+        font-size: 1.15rem;
+        line-height: 1.55;
+        color: var(--text-secondary);
+        margin: 0;
+    }
+
+    /* RevealCard pending text */
+    :global(.contact-pending) {
+        display: block;
+        margin-top: 0.5rem;
+        font-style: italic;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    /* Sekce 3 — Kde jsme */
+    .contact-where {
+        padding: var(--space-16) 0;
+    }
+
+    .contact-where .eyebrow {
+        display: block;
+        margin-bottom: var(--space-3);
+        color: var(--signal-gold);
+    }
+
+    .contact-where__title {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 var(--space-4);
+        color: var(--text-primary);
+        line-height: 1.2;
+    }
+
+    .contact-where__body {
+        font-size: 1.05rem;
+        line-height: 1.65;
+        color: var(--text-secondary);
+        max-width: 60ch;
+        margin: 0;
+    }
+
+    /* Sekce 4 — FAQ */
+    .contact-faq-head {
+        margin-bottom: var(--space-10);
+    }
+
+    .contact-faq-head .eyebrow {
+        display: block;
+        margin-bottom: var(--space-3);
+        color: var(--signal-gold);
+    }
+
+    .contact-faq-head h2 {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        letter-spacing: -0.02em;
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .contact-faq {
+        border-top: 1px solid var(--border-soft);
+    }
+
+    .faq-item {
+        border-bottom: 1px solid var(--border-soft);
+    }
+
+    .faq-item__summary {
+        list-style: none;
+        cursor: pointer;
+        padding: var(--space-5) 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-4);
+        font-family: var(--font-sans);
+        transition: color 0.2s ease;
+    }
+
+    .faq-item__summary::-webkit-details-marker { display: none; }
+
+    .faq-item__q {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+    }
+
+    .faq-item__icon {
+        font-family: var(--font-mono);
+        font-size: 1.4rem;
+        color: var(--accent);
+        font-weight: 400;
+        flex-shrink: 0;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        line-height: 1;
+    }
+
+    .faq-item[open] .faq-item__icon {
+        transform: rotate(45deg);
+    }
+
+    .faq-item__summary:hover .faq-item__q {
+        color: var(--accent);
+    }
+
+    .faq-item__answer {
+        padding: 0 0 var(--space-5);
+        max-width: 60ch;
+    }
+
+    .faq-item__answer p {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--text-secondary);
+    }
+
+    /* Sekce 5 — Final CTA kompaktní */
+    .contact-final {
+        padding: var(--space-16) 0 var(--space-24);
+        text-align: center;
+        border-top: 1px solid var(--border-soft);
+    }
+
+    .contact-final__title {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 var(--space-6);
+        color: var(--text-primary);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .faq-item__icon { transition: none !important; }
+    }
+</style>
