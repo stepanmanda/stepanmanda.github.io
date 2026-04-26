@@ -2063,22 +2063,6 @@ elevenlabs-convai {
     will-change: transform;
 }
 
-.preview-ribbon {
-    position: fixed;
-    top: 1rem;
-    right: -3rem;
-    transform: rotate(35deg);
-    background: var(--velocity-orange);
-    color: var(--alpine-white);
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.22em;
-    padding: 0.35rem 3rem;
-    z-index: 40;
-    box-shadow: 0 4px 20px -5px rgba(232, 93, 31, 0.6);
-    pointer-events: none;
-}
-
 /* ====================================================
    ANIMACE — keyframes, reveals, micro-interactions
    ==================================================== */
