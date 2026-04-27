@@ -172,6 +172,49 @@ const services = [
     .services-strip-wrap {
         position: relative;
         margin: var(--space-12) calc(-1 * var(--space-8)) 0;
+        padding-top: var(--space-8);
+    }
+
+    .services-strip-hint {
+        position: absolute;
+        top: 0;
+        right: var(--space-8);
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        pointer-events: none;
+    }
+
+    .services-strip-hint__bar {
+        display: block;
+        width: 2px;
+        height: 14px;
+        background: var(--velocity-orange);
+    }
+
+    .services-strip-hint__arrow {
+        color: var(--velocity-orange);
+        font-size: 0.95rem;
+        line-height: 1;
+        transition: transform 0.3s ease;
+    }
+
+    @keyframes services-hint-pulse {
+        0%, 100% { transform: translateX(0); }
+        50%      { transform: translateX(4px); }
+    }
+
+    .services-strip-hint__arrow {
+        animation: services-hint-pulse 2.4s ease-in-out infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .services-strip-hint__arrow { animation: none; }
     }
 
     .services-strip {
