@@ -82,6 +82,10 @@
     --accent-hover: #FF7035;
     --border-soft: rgba(245, 243, 238, 0.10);
     --border-emphasis: rgba(245, 243, 238, 0.20);
+
+    /* Tmavé varianty alt sekcí — jemné posuny od --bg, ne hardcoded barvy */
+    --section-alt-white: rgba(245, 243, 238, 0.03);
+    --section-alt-warm: rgba(232, 93, 31, 0.06);
 }
 
 /* Reset ---------------------------------------------- */
