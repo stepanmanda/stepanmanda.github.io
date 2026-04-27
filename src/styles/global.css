@@ -64,6 +64,10 @@
     --accent-hover: #D04E15;
     --border-soft: rgba(11, 15, 25, 0.08);
     --border-emphasis: rgba(11, 15, 25, 0.18);
+
+    /* Alternující pozadí sekcí — tokeny flipnou v dark theme níže */
+    --section-alt-white: var(--alpine-white);
+    --section-alt-warm: var(--warm-bg);
 }
 
 /* Dark theme — toggle přes <html data-theme="dark">. NE default. */
