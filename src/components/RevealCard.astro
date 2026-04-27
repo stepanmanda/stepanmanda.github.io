@@ -26,6 +26,7 @@ const { title, body } = Astro.props;
 
     .reveal-card__btn {
         width: 100%;
+        min-height: 200px;
         text-align: left;
         background: var(--surface-card);
         border: 1px solid var(--border-soft);
@@ -44,12 +45,12 @@ const { title, body } = Astro.props;
     }
 
     .reveal-card__num {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: var(--accent);
-        font-weight: 500;
+        display: block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--velocity-orange);
+        flex-shrink: 0;
     }
 
     .reveal-card__title {
