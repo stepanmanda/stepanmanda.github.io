@@ -1277,8 +1277,8 @@ body.nav-open {
 }
 
 /* Alternating section backgrounds (rhythm) ------------ */
-.section--alt-white { background: var(--alpine-white); }
-.section--alt-warm  { background: var(--warm-bg); }
+.section--alt-white { background: var(--section-alt-white); }
+.section--alt-warm  { background: var(--section-alt-warm); }
 
 /* Generic content sections --------------------------- */
 .section-head {
