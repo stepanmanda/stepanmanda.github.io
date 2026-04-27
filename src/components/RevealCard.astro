@@ -1,16 +1,16 @@
 ---
 interface Props {
-    num: string;
+    num?: string;
     title: string;
     body: string;
 }
 
-const { num, title, body } = Astro.props;
+const { title, body } = Astro.props;
 ---
 
 <article class="reveal-card">
     <button class="reveal-card__btn" type="button" aria-expanded="false">
-        <span class="reveal-card__num">{num}</span>
+        <span class="reveal-card__num" aria-hidden="true"></span>
         <h3 class="reveal-card__title" set:html={title}></h3>
         <div class="reveal-card__body" set:html={body}></div>
         <span class="reveal-card__more" aria-hidden="true">
