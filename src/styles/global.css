@@ -1337,12 +1337,12 @@ body.nav-open {
 }
 
 .section--alt {
-    background: var(--alpine-white);
+    background: var(--section-alt-white);
 }
 
 /* Editorial band — jasný kontrast uvnitř light verze */
 .section--editorial {
-    background: var(--alpine-white);
+    background: var(--section-alt-white);
     position: relative;
 }
 
