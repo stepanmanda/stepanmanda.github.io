@@ -86,6 +86,11 @@ const services = [
             />
 
             <div class="services-strip-wrap">
+                <div class="services-strip-hint" aria-hidden="true">
+                    <span class="services-strip-hint__bar"></span>
+                    <span class="services-strip-hint__label">Pokračujte</span>
+                    <span class="services-strip-hint__arrow">→</span>
+                </div>
                 <div class="services-strip" role="list">
                     {services.map((s) => (
                         <article class="services-strip__item" role="listitem">
