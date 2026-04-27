@@ -1268,6 +1268,10 @@ body.nav-open {
     margin-top: auto;
 }
 
+/* Alternating section backgrounds (rhythm) ------------ */
+.section--alt-white { background: var(--alpine-white); }
+.section--alt-warm  { background: var(--warm-bg); }
+
 /* Generic content sections --------------------------- */
 .section-head {
     display: flex;
