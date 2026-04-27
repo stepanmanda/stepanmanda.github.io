@@ -167,7 +167,7 @@ export const ui = {
             legalGdpr: 'Datenschutz',
             copyright: 'Wir nehmen nur eine begrenzte Anzahl von Kunden pro Jahr an.',
             statusLabel: 'Q2 2026 · Begrenztes Kontingent',
-            manifesto: 'Wir arbeiten nicht für jeden. Wir arbeiten für diejenigen, die verstehen, warum sie bei uns sind.',
+            manifesto: 'Wir machen nicht alles für alle. Wir machen alles für Sie.',
             trustDeploy: 'Einsatz in 4 Wochen',
             trustContract: 'Vertragsgarantie',
             trustIso: 'ISO-27001-Prinzipien',
