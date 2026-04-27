@@ -117,7 +117,7 @@ export const ui = {
             legalGdpr: 'Ochrana osobních údajů',
             copyright: 'Přijímáme omezený počet klientů ročně.',
             statusLabel: 'Q2 2026 · Omezená kapacita',
-            manifesto: 'Nepracujeme pro každého. Pracujeme pro ty, kteří chápou, proč jsou u nás.',
+            manifesto: 'Neděláme všechno pro všechny. Děláme všechno pro Vás.',
             trustDeploy: 'Nasazení 4 týdny',
             trustContract: 'Garance ve smlouvě',
             trustIso: 'ISO 27001 principy',
