@@ -197,19 +197,15 @@ const services = [
         background: var(--velocity-orange);
     }
 
-    .services-strip-hint__arrow {
-        color: var(--velocity-orange);
-        font-size: 0.95rem;
-        line-height: 1;
-        transition: transform 0.3s ease;
-    }
-
     @keyframes services-hint-pulse {
         0%, 100% { transform: translateX(0); }
         50%      { transform: translateX(4px); }
     }
 
     .services-strip-hint__arrow {
+        color: var(--velocity-orange);
+        font-size: 0.95rem;
+        line-height: 1;
         animation: services-hint-pulse 2.4s ease-in-out infinite;
     }
 
