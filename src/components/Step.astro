@@ -1,15 +1,15 @@
 ---
 interface Props {
-    num: string;
+    num?: string;
     title: string;
     body: string;
 }
 
-const { num, title, body } = Astro.props;
+const { title, body } = Astro.props;
 ---
 
 <div class="step">
-    <span class="step__num">{num}</span>
+    <span class="step__dot" aria-hidden="true"></span>
     <h4 set:html={title}></h4>
     <p set:html={body}></p>
 </div>
