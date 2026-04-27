@@ -170,7 +170,7 @@ strong { font-weight: 600; color: var(--velocity-black); }
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--signal-gold);
+    color: var(--velocity-orange);
 }
 
 .mono { font-family: var(--font-mono); font-feature-settings: "tnum"; }
