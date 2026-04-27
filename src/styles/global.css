@@ -2549,6 +2549,8 @@ html:not(.first-load) .hero__title .word {
     .split { grid-template-columns: 1fr; }
     .features, .features--3, .pricing { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr 1fr !important; }
+    /* Hide connecting line on rightmost item of each row in 2-col layout */
+    .step:nth-child(2n)::after { display: none; }
     .audience { grid-template-columns: 1fr; }
     .site-footer__grid { grid-template-columns: 1fr 1fr; }
     .hero__meta { gap: var(--space-6); }
