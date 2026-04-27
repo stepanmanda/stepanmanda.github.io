@@ -1502,7 +1502,7 @@ section:not(.section--alt):not(.section--editorial) .duo__divider::before {
     margin: 0;
 }
 
-/* Numbered steps ------------------------------------- */
+/* Steps — minimal timeline (dot + connecting line) ---- */
 .steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1511,18 +1511,38 @@ section:not(.section--alt):not(.section--editorial) .duo__divider::before {
 }
 
 .step {
-    border-top: 1px solid var(--gold-30);
-    padding-top: var(--space-5);
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
+    position: relative;
+    padding-top: var(--space-5);
 }
 
-.step__num {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.22em;
-    color: var(--signal-gold);
+.step__dot {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--velocity-orange);
+    position: relative;
+    z-index: 1;
+}
+
+/* Horizontal line connecting dots (hidden on last step) */
+.step::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--space-5) + 3px);
+    left: 6px;
+    right: calc(-1 * var(--space-6));
+    height: 1px;
+    background: var(--border-soft);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.step:last-child::after {
+    display: none;
 }
 
 .step h4 {
@@ -1538,7 +1558,7 @@ section:not(.section--alt):not(.section--editorial) .duo__divider::before {
 }
 
 .section--dark .step p { color: var(--ivory-70); }
-.section--dark .step { border-top-color: rgba(184, 147, 92, 0.5); }
+.section--dark .step::after { background: rgba(245, 243, 238, 0.15); }
 
 /* Day-in-life (jednotlivci) -------------------------- */
 .timeline {
