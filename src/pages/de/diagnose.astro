@@ -92,19 +92,19 @@ import DiagnosticForm from '../../components/DiagnosticForm.astro';
             <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--space-8); text-align:center;">
                 <div>
                     <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Innerhalb 24 Stunden</span>
-                    <p style="margin:0; color:var(--black-60); font-size:0.95rem;">
+                    <p style="margin:0; color:var(--text-secondary); font-size:0.95rem;">
                         Wir antworten innerhalb von 24 Stunden an Werktagen. In den Geschäftszeiten oft schneller.
                     </p>
                 </div>
                 <div>
                     <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Kein Vertrieb</span>
-                    <p style="margin:0; color:var(--black-60); font-size:0.95rem;">
+                    <p style="margin:0; color:var(--text-secondary); font-size:0.95rem;">
                         Das erste Gespräch führt direkt der Gründer oder ein Senior-Spezialist. Kein Vertriebsassistent.
                     </p>
                 </div>
                 <div>
                     <span class="eyebrow" style="color:var(--signal-gold); display:block; margin-bottom:var(--space-3);">Unverbindlich</span>
-                    <p style="margin:0; color:var(--black-60); font-size:0.95rem;">
+                    <p style="margin:0; color:var(--text-secondary); font-size:0.95rem;">
                         Die Diagnose ist kostenlos. Wenn VELYOS nicht zu Ihnen passt, sagen wir es Ihnen direkt.
                     </p>
                 </div>
@@ -115,11 +115,11 @@ import DiagnosticForm from '../../components/DiagnosticForm.astro';
 
 <style>
     .diagnostika-hero {
-        background: var(--ivory-silver);
+        background: var(--bg);
         padding: var(--space-20) 0 var(--space-12);
         position: relative;
         overflow: hidden;
-        border-bottom: 1px solid var(--black-08);
+        border-bottom: 1px solid var(--border-soft);
     }
     .diagnostika-hero__grid {
         position: absolute;
@@ -161,13 +161,13 @@ import DiagnosticForm from '../../components/DiagnosticForm.astro';
     .diagnostika-hero__title .accent { color: var(--velocity-orange); }
     .diagnostika-hero__lead {
         font-size: 1.15rem;
-        color: var(--black-60);
+        color: var(--text-secondary);
         line-height: 1.55;
         margin: 0;
     }
     .diagnostika-main {
         padding: var(--space-16) 0;
-        background: var(--alpine-white);
+        background: var(--surface-card);
     }
     .diagnostika-grid {
         display: grid;
@@ -187,7 +187,7 @@ import DiagnosticForm from '../../components/DiagnosticForm.astro';
         line-height: 1.2;
     }
     .diagnostika-col__intro {
-        color: var(--black-60);
+        color: var(--text-secondary);
         font-size: 1rem;
         line-height: 1.6;
         margin: 0;

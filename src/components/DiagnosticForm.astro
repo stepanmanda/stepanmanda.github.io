@@ -138,7 +138,7 @@ const f = formStrings[lang];
         font-size: 0.72rem;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: var(--black-90);
+        color: var(--text-primary);
         font-weight: 500;
         display: flex;
         justify-content: space-between;
@@ -164,15 +164,15 @@ const f = formStrings[lang];
         padding: 0.85rem 1rem;
         font-family: var(--font-sans);
         font-size: 1rem;
-        color: var(--velocity-black);
-        background: var(--alpine-white);
-        border: 1px solid var(--black-15);
+        color: var(--text-primary);
+        background: var(--surface-card);
+        border: 1px solid var(--border-emphasis);
         border-radius: var(--radius);
         transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         appearance: none;
         -webkit-appearance: none;
     }
-    .diag-form__input:hover { border-color: var(--black-40); }
+    .diag-form__input:hover { border-color: var(--text-muted); }
     .diag-form__input:focus {
         outline: none;
         border-color: var(--velocity-orange);
@@ -209,7 +209,7 @@ const f = formStrings[lang];
         align-items: start;
         cursor: pointer;
         font-size: 0.9rem;
-        color: var(--black-60);
+        color: var(--text-secondary);
         line-height: 1.5;
     }
     .diag-form__checkbox input[type="checkbox"] {

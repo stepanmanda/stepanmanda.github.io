@@ -16,7 +16,7 @@ const subject = encodeURIComponent(t.subject);
     <div style="display:flex; flex-direction:column; gap:var(--space-3);">
         <span class="hero__grant__label">{t.label}</span>
         <h3 style="margin:0; font-size:1.4rem;">{t.title}</h3>
-        <p style="margin:0; color:var(--black-60); font-size:1rem; line-height:1.6; max-width:62ch;" set:html={t.body}></p>
+        <p style="margin:0; color:var(--text-secondary); font-size:1rem; line-height:1.6; max-width:62ch;" set:html={t.body}></p>
     </div>
     <a href={`mailto:${email}?subject=${subject}`} class="btn btn--primary btn-arrow" style="align-self:center; justify-self:end;">{t.cta}</a>
 </div>
