@@ -26,7 +26,7 @@ const {
     <div class="cta-band__glow"></div>
     <div class="container container--narrow">
         {eyebrow && <span class="eyebrow" style="display:block;margin-bottom:var(--space-4);" data-reveal>{eyebrow}</span>}
-        <h2 data-reveal set:html={title}></h2>
+        <h2 data-reveal set:html={title} style={titleMax ? `max-width:${titleMax};margin-left:auto;margin-right:auto;` : undefined}></h2>
         {lead && <p data-reveal set:html={lead}></p>}
         <div class="cta-band__ctas" data-reveal>
             <slot />
