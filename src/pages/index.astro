@@ -83,21 +83,21 @@ const services = [
                 lead="Od prvního hovoru po měsíční report. Jedna smlouva, žádné přehazování odpovědnosti."
             />
 
-            <dl class="home-services">
-                {services.map((s) => (
-                    <div class="home-services__row">
-                        <dt>
-                            <span class="home-services__num">{s.num}</span>
-                            <span class="home-services__label">{s.title}</span>
-                        </dt>
-                        <dd>{s.body}</dd>
-                    </div>
-                ))}
-            </dl>
-
-            <p class="home-services__more">
-                <a href="/pristup">Více o našem přístupu →</a>
-            </p>
+            <div class="services-strip-wrap">
+                <div class="services-strip" role="list">
+                    {services.map((s) => (
+                        <article class="services-strip__item" role="listitem">
+                            <span class="services-strip__dot" aria-hidden="true"></span>
+                            <h3 class="services-strip__title">{s.title}</h3>
+                            <p class="services-strip__body">{s.body}</p>
+                        </article>
+                    ))}
+                    <a href="/pristup" class="services-strip__cta">
+                        <span class="services-strip__cta-label">Více o přístupu</span>
+                        <span class="services-strip__cta-arrow" aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
